@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 10:46:45 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/08 12:55:37 by jcros            ###   ########.fr       */
+/*   Created: 2022/11/08 12:52:40 by jcros             #+#    #+#             */
+/*   Updated: 2022/11/08 13:03:18 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t size)
+int ft_toupper(int c)
 {
-    int i;
-    int size_dst;
-    int size_src;
-    
-    i = 0;
-    size_dst = ft_strlen(dst);
-    size_src = ft_strlen(src);
-    if (size_dst > size)
-        return (size + size_src);
-    while ((i < size_src))
-    {
-        dst[i+ size_dst] = src[i];
-        i++;
-    }
-    dst[i + size_dst] = '\0';
-    return (size_dst + i);
+    if (c >= 97 && c <= 122)
+        return (c -32);
+    else
+        return (c);
 }
