@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:00:48 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/08 13:03:10 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/08 14:53:44 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ int ft_tolower(int c)
 {
     if (c >= 65 && c <= 90)
         return (c + 32);
-    else
-        return (c);
+    return (c);
 }
