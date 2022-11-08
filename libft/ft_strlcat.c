@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:46:45 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/08 15:16:32 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/08 19:54:12 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ size_t ft_strlcat(char *dst, const char *src, size_t size)
         return (size_src);
     if (size_dst >= size)
         return (size + size_src);
-    while ((i < size_src))
+    while (src[i] && i < size -size_dst-1)
     {
         dst[i+ size_dst] = src[i];
         i++;
     }
     dst[i + size_dst] = '\0';
-    return (size_dst + i);
+    return (size_dst + size_src);
 }

@@ -6,7 +6,7 @@
 #    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/08 13:16:39 by jcros            ###   ########.fr        #
+#    Updated: 2022/11/08 19:02:09 by jcros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,12 @@ SRCS= \
 	./ft_toupper.c    \
 	./ft_tolower.c	\
 	./ft_strchr.c    \
+	./ft_memchr.c    \
+	./ft_strrchr.c    \
+	./ft_strncmp.c    \
 	# ./ft_memccpy.c    \
-	# ./ft_memchr.c    \
 	# ./ft_memcmp.c    \
 	# ./ft_calloc.c    \
-	# ./ft_strrchr.c    \
-	# ./ft_strncmp.c    \
 	# ./ft_strnstr.c    \
 	# ./ft_strdup.c    \
 	# ./ft_atoi.c        \

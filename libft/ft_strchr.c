@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:05:12 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/08 15:28:18 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/08 18:55:07 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ char *ft_strchr(const char *s, int c)
     int i;
     
     i = 0;
+    if (!c)
+        return (s + ft_strlen(s));
     while (s[i])
     {
-        if (s[i] == c)
-            return (s + i); //pointuer de s + i (index de la position ou je suis)
+        if (s[i] == (char)c)
+            return (s + i);
         i++;
     }
     return (0);
