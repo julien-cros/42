@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 09:52:01 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/09 12:50:20 by jcros            ###   ########.fr       */
+/*   Created: 2022/11/09 12:52:16 by jcros             #+#    #+#             */
+/*   Updated: 2022/11/09 13:35:01 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcpy(char *dst, const char *src, size_t size)
+char *ft_strdup(const char *s)
 {
     int i;
-    
+    char *strdup;
+
     i = 0;
-    if (size <= 0)
-        return (ft_strlen(src));
-    while (src[i] && i < size - 1)
+    strdup = malloc(sizeof(char) * ft_strlen(s) +1 );
+    if (!strdup)
+        return (NULL);
+    while (s[i])
     {
-        dst[i] = src[i];
+        strdup = s[i];
         i++;
     }
-    dst[i] = '\0';
-    return (i);
+    strdup[i] = '\0';
+    return (strdup);
 }
