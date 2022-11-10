@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:58:58 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/10 11:44:38 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/10 15:46:11 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void *ft_calloc(size_t nmemb, size_t size)
 {
-    void *size_calloc;
-    
+    void *calloc;
+
     if (nmemb * size < size)
         return (0);
-    size_calloc = malloc(sizeof(size) * nmemb);
-    if(!size_calloc)
+    calloc = malloc(size * nmemb);
+    if (!calloc)
         return (0);
-    ft_bzero(size_calloc, nmemb);
+    ft_bzero(calloc, nmemb * size);
+    return (calloc);
 }

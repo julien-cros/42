@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:42:13 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/09 12:58:51 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/10 15:01:09 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FT_H
+#define FT_H
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -35,3 +38,6 @@ int ft_memcmp(const void *s1, const void *s2, size_t n);
 char *ft_strnstr(const char *big, const char *little, size_t len);
 int ft_atoi(const char *nptr);
 char *ft_strdup(const char *s);
+void *ft_calloc(size_t nmemb, size_t size);
+
+#endif
