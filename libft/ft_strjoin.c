@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 12:52:16 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/11 11:52:07 by jcros            ###   ########.fr       */
+/*   Created: 2022/11/11 12:54:19 by jcros             #+#    #+#             */
+/*   Updated: 2022/11/11 13:03:22 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strdup(const char *s)
+char *ft_strjoin(char const *s1, char const *s2)
 {
     int i;
-    char *dup;
-
-    i = 0;
-    dup = (char *)ft_calloc((ft_strlen(s) + 1), sizeof(char));
-    if (!dup)
+    int j;
+    char *str;
+    
+    str = (char *)ft_calloc((ft_strlen(s1)+ ft_strlen(s2)+1), sizeof(char));
+    if (!str)
         return NULL;
-    while (s[i])
-    {
-        dup[i] = s[i];
-        i++;
-    }
-    dup[i] = '\0';
-    return (dup);
+    i = -1;
+    j = -1;
+    while (s1[++i])
+        str[++j] = ((char *)s1)[i];
+    i = -1;
+    while (s2[++i])
+        str[++j] = ((char *)s2)[i];
+    return (str);
 }

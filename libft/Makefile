@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
+#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/10 14:38:30 by juliencros       ###   ########.fr        #
+#    Updated: 2022/11/11 13:03:40 by jcros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,8 @@ SRCS= \
 	./ft_atoi.c         \
 	./ft_strdup.c       \
 	./ft_calloc.c       \
-	# ./ft_substr.c       \
-	# ./ft_strjoin.c      \
+	./ft_substr.c       \
+	./ft_strjoin.c      \
 	# ./ft_strtrim.c      \
 	# ./ft_split.c        \
 	# ./ft_itoa.c         \
