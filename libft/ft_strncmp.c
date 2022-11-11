@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:53:12 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/10 13:27:06 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/11 16:01:00 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    int i;
+    size_t i;
 
     i = 0;
     if (n <= 0)

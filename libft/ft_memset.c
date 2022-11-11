@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:47:02 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/09 12:14:38 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/11 15:32:05 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void *ft_memset (void *s, int c, size_t n)
 {
-    int i;
+    size_t i;
     char *buffer;
 
     i = 0;

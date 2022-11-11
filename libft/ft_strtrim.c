@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:04:03 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/11 14:22:13 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/11 21:02:58 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int is_set(char *str, char *set)
-{
-    int i = 0;
-}
 
 char *ft_strtrim(char const *s1, char const *set)
 {
@@ -25,19 +20,50 @@ char *ft_strtrim(char const *s1, char const *set)
     char *str;
     
     i = -1;
+    size = 0;
+    if (! s1 || !set)
+        return (0);
     while (s1[++i])
     {
-        if (!ft_strncmp(s1[i], set, ft_strlen(set)))
-            size++;
+        while (s1[i] && ft_strchr(set, s1[i]))
+            i += ft_strlen(set);
+        size++;
     }
     str = (char *)ft_calloc(size+1, sizeof(char));
+    if (!str)
+        return NULL;
     i = -1;
-    j = -1;
-    while (s1[++i])
+    j = 0;
+    while (++i < size)
     {
-        if (ft_strncmp(s1[i], set, ft_strlen(set)))
-            i += ft_strlen(set);
-        str[++j] = s1[i];
+        if((!ft_strchr(set, s1[i])) && (ft_strchr(set, str[i+1])))
+        {
+            ft_substr(s1, i, j);
+            j = i;
+        }
     }
     return (str);
 }
+
+// {
+//     size_t i;
+//     size_t count;
+    
+//     if (!set || !s1)
+//         return (0);
+//     while ((char *)s1[i])
+//     {
+//         if (ft_strchr(set, s1[i]))
+//         {
+//             while (ft_strchr(set, (char *)s1[i]))
+//             {
+//                 i++;
+//                 count++;
+//             }
+//         }
+//         i++;
+//     }
+// }
+
+// if (!ft_strncmp(&s1[i], (char *)set, ft_strlen(set)))
+//             str[++j] = s1[i];

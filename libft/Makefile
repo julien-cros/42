@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
+#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/11 13:03:40 by jcros            ###   ########.fr        #
+#    Updated: 2022/11/11 21:46:36 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ AR = ar
 ARFLAGS = crs
 
 CC = gcc
-CFLAG = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm
 RMFLAG = -f
@@ -49,18 +49,34 @@ SRCS= \
 	./ft_calloc.c       \
 	./ft_substr.c       \
 	./ft_strjoin.c      \
-	# ./ft_strtrim.c      \
-	# ./ft_split.c        \
+	./ft_strtrim.c      \
+	./ft_split.c        \
 	# ./ft_itoa.c         \
 	# ./ft_strmapi.c      \
 	# ./ft_putchar_fd.c   \
 	# ./ft_putstr_fd.c    \
 	# ./ft_putendl_fd.c   \
 	# ./ft_putnbr_fd.c
-	
+
+# BONUS_SRC = \
+# 	ft_lstlew.c			\
+# 	ft_lstadd_front.c	\	
+# 	ft_lstsize.c		\
+# 	ft_lstlast.c		\
+# 	ft_lstadd_back.c	\
+# 	ft_lstdelone.c		\
+# 	ft_lstclear.c		\
+# 	ft_lstiter.c		\
+# 	ft_lstmap.c			\
+
 OBJS = $(SRCS:.c=.o)
+# BONUS_OBJS = $(BONUS_SRC:.c=.o)
 
 all: $(NAME)
+
+
+# bonus: $(BONUS_OBJS) $(NAME)
+# 	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
 
 .c.o: $(SRCS) $(INCLUDES)
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)

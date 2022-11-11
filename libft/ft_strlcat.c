@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:46:45 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/10 13:30:47 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/11 17:58:26 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t ft_strlcat(char *dst, const char *src, size_t size)
 {
-    int i;
-    int size_dst;
-    int size_src;
+    size_t i;
+    size_t size_dst;
+    size_t size_src;
     
     i = 0;
     size_dst = ft_strlen(dst);

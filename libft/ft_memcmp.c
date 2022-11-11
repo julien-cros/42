@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:58:49 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/10 13:25:25 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/11 16:05:03 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	if (n <= 0)

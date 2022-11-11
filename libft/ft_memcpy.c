@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:50:28 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/10 13:19:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/11 15:33:01 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char *ft_memcpy (void *dest, const void *src, size_t n)
 {
-	int i;
+	size_t i;
 	
 	i = 0;
 	if (!dest && !src)
