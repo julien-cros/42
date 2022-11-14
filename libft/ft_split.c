@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 21:05:04 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/13 20:09:54 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/14 14:28:12 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,56 +175,93 @@ char **ft_init_split(char const *str, char sep)
 	char **split;
 	
 	i = 0;
-	k = -1;
+	k = 0;
 	len = ft_wordcont(str, sep);
-	printf("len = %zu", len); /////////
-	split = (char **)ft_calloc(len , sizeof(char));
+	printf("len = %zu\n", len);
+	split = (char **)ft_calloc(len, sizeof(char));
 	if (!split)
 		return NULL;
 	while (str[i])
 	{
 		len = 0;
-		while (str[i] != sep)
+		while (str[i] && str[i] != sep)
 		{
+			printf("len i[%zu] = %zu et str[%zu] = %c\n", i, len, i, str[i]);
 			i++;
-			len++;;
+			len++;
 		}
-		if (str[i] == sep && str[i+1] != sep)
+		while (str[i] && str[i] == sep && str[i-1] == sep)
+			i++;
+		if (str[i] && str[i] == sep && str[i-1] != sep)
 		{
-			split[++k] = (char *)ft_calloc(len + 1, sizeof(char));
+			split[k] = (char *)ft_calloc(len +1, sizeof(char));
 			if (!split)
 				return NULL;
+			printf("str[%zu] = %zu\n", k, len);
+			k++;
 		}
-		while (str[i] == sep && str[i+1] == sep)
-			i++;
+		i++;
 	}
+	printf("ok\n");
 	return (split);
 }
 
-char **ft_fill_split(char **split)
+char **ft_fill_split(char const *str, char **split ,char sep)
 {
+	size_t i;
+	size_t j;
+	size_t k;
+	
+	i = 0;
+	while (k < ft_wordcont(str, sep))
+	{
+		j = 0;
+		while (str[i] != sep)
+		{
+			split[k][j] = str[i];
+			printf("str[%zu][%zu] = %c\n", k, j, split[k][j]);	
+			i++;
+			j++;
+		}
+		if (str[i] && str[i] == sep && str[i-1] != sep)
+			k++;
+		while (str[i] && str[i] == sep && str[i-1] == sep)
+			i++;
+		i++;
+	}
+	printf("ok");
 	return (split);
 }
 
 
 
-// char **ft_split(char const *str, char sep)
-// {
-// 	char **split;
+char **ft_split(char const *str, char sep)
+{
+	char **split;
 
-// 	while (*str == sep)
-// 		str++;
-// 	split = ft_init_split(str, sep);
-// 	if (!split)
-// 		return NULL;
-// }
+	while (*str == sep)
+		str++;
+	split = ft_init_split(str, sep);
+	if (!split)
+		return NULL;
+	split = ft_fill_split(str, split, sep);
+	return(split);
+}
 
 
 
 int main()
 {
 	char *str = "julien cros est beau";
-	ft_split(str, ' ');
+	char **split;
+	int i;
+	
+	split = ft_split(str, ' ');
+	while (split[i])
+	{
+			printf("str[%d] = %s\n", i, split[i]);
+			i++;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
