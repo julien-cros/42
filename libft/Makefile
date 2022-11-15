@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/15 13:04:42 by juliencros       ###   ########.fr        #
+#    Updated: 2022/11/15 22:43:01 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRCS= \
 	./ft_strtrim.c      \
 	./ft_split.c        \
 	./ft_itoa.c         \
-	# ./ft_strmapi.c      \
+	./ft_strmapi.c      \
 	# ./ft_putchar_fd.c   \
 	# ./ft_putstr_fd.c    \
 	# ./ft_putendl_fd.c   \

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:16:11 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/15 22:24:05 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/15 22:51:37 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ char **ft_split(char const *s, char c)
 {
 	char **split;
 
-	if (!s)
-		return (0);
+
 	while(*s == c)
 		s++;
+	if (!s)
+		return (0);
 	split = ft_init_split(s, c);
 	if(!split)
 		return (NULL);
@@ -47,7 +48,7 @@ static char **ft_init_split(char const *s, char c)
 		return (ft_calloc(1, sizeof(char *)));
 	while (s[i])
 	{
-		if ((s[i] == c && s[i-1] != c) || (s[i-1] == '\0'))
+		if ((s[i]) && (s[i] == c && s[i-1] != c))
 			len++;
 		i++;
 	}
@@ -64,7 +65,7 @@ static void ft_fill_split(char const *s, char **split, char c)
 	j = 0;
 	while (s[i])
 	{
-		len =0;
+		len = 0;
 		while (s[i] && s[i] != c)
 			if (++i && ++len)
 				continue;
