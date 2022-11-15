@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:24:50 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/14 11:41:46 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/15 17:07:57 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
 	return (0);
 }
 
-int main()
-{
-    char big[] = "aaacabcd";
-    char little[] = "abcd";
+// int main()
+// {
+//     char big[] = "aaacabcd";
+//     char little[] = "abcd";
 
-    printf("%s", ft_strnstr(big, little, 9));
-}
+//     printf("%s", ft_strnstr(big, little, 9));
+// }
