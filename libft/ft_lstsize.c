@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 22:33:16 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/16 22:35:58 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/16 23:18:54 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int ft_lstsize(t_list *lst)
 
     i = 0;
     while (lst != NULL)
-        if(i++ && lst++)
-            continue;
+    {
+        lst = lst -> next;
+        i++;
+    }
     return (i);
 
 }
