@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/16 19:23:57 by juliencros       ###   ########.fr        #
+#    Updated: 2022/11/16 22:21:44 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 AR = ar
 ARFLAGS = crs
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm
@@ -59,25 +59,24 @@ SRCS= \
 	./ft_putnbr_fd.c	\
 	./ft_putendl_fd.c
 
-# BONUS_SRC = \
-# 	ft_lstlew.c			\
-# 	ft_lstadd_front.c	\	
-# 	ft_lstsize.c		\
-# 	ft_lstlast.c		\
-# 	ft_lstadd_back.c	\
-# 	ft_lstdelone.c		\
-# 	ft_lstclear.c		\
-# 	ft_lstiter.c		\
-# 	ft_lstmap.c			\
+ BONUS_SRCS = \
+ 	./ft_lstlew.c		\
+# 	./ft_lstadd_front.c	\	
+# 	./ft_lstsize.c		\
+# 	./ft_lstlast.c		\
+# 	./ft_lstadd_back.c	\
+# 	./ft_lstdelone.c	\
+# 	./ft_lstclear.c		\
+# 	./ft_lstiter.c		\
+# 	./ft_lstmap.c		\
 
 OBJS = $(SRCS:.c=.o)
-# BONUS_OBJS = $(BONUS_SRC:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
-
-# bonus: $(BONUS_OBJS) $(NAME)
-# 	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
+bonus: $(BONUS_OBJS) $(NAME)
+	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
 
 .c.o: $(SRCS) $(INCLUDES)
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)

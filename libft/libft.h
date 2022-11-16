@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:42:13 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/16 21:40:25 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/16 22:07:58 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ void ft_putchar_fd(char c, int fd);
 void ft_putstr_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
 void ft_putendl_fd(char *s, int fd);
-
+t_list *ft_lstnew( void *content);
 #endif
