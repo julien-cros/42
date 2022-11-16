@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 11:09:03 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/16 21:32:02 by juliencros       ###   ########.fr       */
+/*   Created: 2022/11/16 21:22:35 by juliencros        #+#    #+#             */
+/*   Updated: 2022/11/16 21:30:21 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit (int c)
+#include "libft.h"
+
+t_list *ft_lstnew( void *content)
 {
- if (c >= '0' && c <= '9')
-    return (1);
-else
-    return (0);
+    
 }
