@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:42:13 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/15 22:42:50 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/16 19:24:00 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <stddef.h>
 #include <stdlib.h>
+#include <unistd.h>
+
 
 void *ft_memset (void *b, int c, size_t n);
 int ft_isalnum (int i);
@@ -45,5 +47,10 @@ char *ft_strtrim(char const *s1, char const *set);
 char **ft_split(char const *s, char c);
 char *ft_itoa(int n);
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void ft_striteri(char *s, void (*f)(unsigned int, char*));
+void ft_putchar_fd(char c, int fd);
+void ft_putstr_fd(char *s, int fd);
+void ft_putnbr_fd(int n, int fd);
+void ft_putendl_fd(char *s, int fd);
 
 #endif
