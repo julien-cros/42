@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:09:03 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/16 21:32:02 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/17 10:18:47 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit (int c)
+int	ft_isdigit(int c)
 {
- if (c >= '0' && c <= '9')
-    return (1);
-else
-    return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

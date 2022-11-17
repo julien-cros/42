@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:16:11 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/15 22:51:37 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/17 10:21:12 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,31 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static char **ft_init_split(char const *s, char c);
-static void ft_fill_split(char const *s, char **split, char c);
-static void ft_free(char ** split, size_t j);
+static char	**ft_init_split(char const *s, char c);
+static void	ft_fill_split(char const *s, char **split, char c);
+static void	ft_free(char **split, size_t j);
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **split;
+	char	**split;
 
-
-	while(*s == c)
+	while (*s == c)
 		s++;
 	if (!s)
 		return (0);
 	split = ft_init_split(s, c);
-	if(!split)
+	if (!split)
 		return (NULL);
 	ft_fill_split(s, split, c);
-	if(!split)
+	if (!split)
 		return (NULL);
 	return (split);
 }
 
-static char **ft_init_split(char const *s, char c)
+static char	**ft_init_split(char const *s, char c)
 {
-	size_t i;
-	size_t len;
+	size_t	i;
+	size_t	len;
 
 	i = 1;
 	len = 1;
@@ -48,18 +47,18 @@ static char **ft_init_split(char const *s, char c)
 		return (ft_calloc(1, sizeof(char *)));
 	while (s[i])
 	{
-		if ((s[i]) && (s[i] == c && s[i-1] != c))
+		if ((s[i]) && (s[i] == c && s[i - 1] != c))
 			len++;
 		i++;
 	}
 	return ((char **)ft_calloc(len + 1, sizeof(char *)));
 }
 
-static void ft_fill_split(char const *s, char **split, char c)
+static void	ft_fill_split(char const *s, char **split, char c)
 {
-	size_t i;
-	size_t j;
-	size_t len;
+	size_t	i;
+	size_t	j;
+	size_t	len;
 
 	i = 0;
 	j = 0;
@@ -68,10 +67,10 @@ static void ft_fill_split(char const *s, char **split, char c)
 		len = 0;
 		while (s[i] && s[i] != c)
 			if (++i && ++len)
-				continue;
+				continue ;
 		if (len > 0)
 		{
-			split[j++] = ft_substr(s, i-len, len);
+			split[j++] = ft_substr(s, i - len, len);
 			if (!split[j - 1])
 			{
 				ft_free(split, j);
@@ -83,12 +82,12 @@ static void ft_fill_split(char const *s, char **split, char c)
 	}
 }
 
-static void ft_free(char ** split, size_t j)
+static void	ft_free(char **split, size_t j)
 {
 	while (j)
 	{
 		free(split[j]);
 		j--;
-	} 
+	}
 	free(split);
 }

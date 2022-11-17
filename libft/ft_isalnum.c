@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:14:17 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/16 21:31:36 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/17 10:18:35 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalnum (int c)
+int	ft_isalnum(int c)
 {
-    if ((c >= 65 && c <= 90)
-     || (c >= 97 && c <= 122) 
-     || (c >= '0' && c <= '9'))
-        return (1);
-    else
-        return (0);
+	if ((c >= 65 && c <= 90)
+		|| (c >= 97 && c <= 122)
+		|| (c >= '0' && c <= '9'))
+		return (1);
+	else
+		return (0);
 }
