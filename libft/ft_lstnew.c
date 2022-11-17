@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:22:35 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/17 11:15:31 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/17 15:31:00 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*list;
+	t_list	*new;
 
-	list = malloc(sizeof(t_list));
-	if (!list)
+	if (!content)
+		return (0);
+	new = malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	return (list);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
+

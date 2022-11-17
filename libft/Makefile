@@ -6,7 +6,7 @@
 #    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/17 11:57:06 by jcros            ###   ########.fr        #
+#    Updated: 2022/11/17 15:11:54 by jcros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,8 @@ BONUS_SRCS= \
 	./ft_lstsize.c       \
 	./ft_lstadd_front.c  \
 	./ft_lstlast.c       \
-	# ./ft_lstadd_back.c   \
-	# ./ft_lstdelone.c     \
+	./ft_lstadd_back.c   \
+	./ft_lstdelone.c     \
 	# ./ft_lstclear.c      \
 	# ./ft_lstiter.c       \
 	# ./ft_lstmap.c        \

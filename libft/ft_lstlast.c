@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:44:31 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/17 11:17:42 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/17 15:28:18 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while ((lst -> next )!= NULL)
-		lst = lst -> next;
+	if (!lst)
+		return(0);
+	while (lst && lst->next != NULL)
+		lst = lst->next;
 	return (lst);
 }
