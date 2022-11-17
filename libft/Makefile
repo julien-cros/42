@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
+#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/16 22:21:44 by juliencros       ###   ########.fr        #
+#    Updated: 2022/11/17 11:57:06 by jcros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,16 +59,16 @@ SRCS= \
 	./ft_putnbr_fd.c	\
 	./ft_putendl_fd.c
 
- BONUS_SRCS = \
- 	./ft_lstlew.c		\
-# 	./ft_lstadd_front.c	\	
-# 	./ft_lstsize.c		\
-# 	./ft_lstlast.c		\
-# 	./ft_lstadd_back.c	\
-# 	./ft_lstdelone.c	\
-# 	./ft_lstclear.c		\
-# 	./ft_lstiter.c		\
-# 	./ft_lstmap.c		\
+BONUS_SRCS= \
+	./ft_lstnew.c        \
+	./ft_lstsize.c       \
+	./ft_lstadd_front.c  \
+	./ft_lstlast.c       \
+	# ./ft_lstadd_back.c   \
+	# ./ft_lstdelone.c     \
+	# ./ft_lstclear.c      \
+	# ./ft_lstiter.c       \
+	# ./ft_lstmap.c        \
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
@@ -82,7 +82,7 @@ bonus: $(BONUS_OBJS) $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 clean:
-	$(RM) $(RMFLAG) $(OBJS)
+	$(RM) $(RMFLAG) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	$(RM) $(RMFLAG) $(NAME)
