@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:16:11 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/17 10:21:12 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/17 19:04:27 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char	**ft_split(char const *s, char c)
 {
 	char	**split;
 
-	while (*s == c)
-		s++;
 	if (!s)
 		return (0);
+	while (*s == c)
+		s++;
 	split = ft_init_split(s, c);
 	if (!split)
 		return (NULL);
