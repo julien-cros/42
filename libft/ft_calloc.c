@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:58:58 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/17 10:25:46 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/18 09:37:36 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*calloc;
+	void	*ptr;
 
-	if (nmemb * size < size)
+	if (size && nmemb > SIZE_MAX / size)
 		return (0);
-	calloc = malloc(size * nmemb);
-	if (!calloc)
+	ptr = malloc(size * nmemb);
+	if (!ptr)
 		return (0);
-	ft_bzero(calloc, nmemb * size);
-	return (calloc);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
 }

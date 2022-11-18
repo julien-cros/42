@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:16:11 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/18 00:26:23 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/18 09:12:53 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	// while (*s == c)
-	// 	s++;
 	split = ft_init_split(s, c);
 	if (!split)
 		return (NULL);
@@ -39,15 +37,17 @@ static char	**ft_init_split(char const *s, char c)
 	size_t	len;
 
 	i = 1;
-	len = 1;
+	len = 0;
 	if (!*s)
 		return (ft_calloc(1, sizeof(char *)));
 	while (s[i])
 	{
-		if (s[i] && (s[i] == c && s[i - 1] != c) && s[i])
+		if (s[i] == c && s[i - 1] != c && s[i - 1] != '\0')
 			len++;
 		i++;
 	}
+	if (s[i - 1] != c)
+		len++;
 	return ((char **)ft_calloc(len + 1, sizeof(char *)));
 }
 

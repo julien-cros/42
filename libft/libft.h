@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:42:13 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/17 22:21:15 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/18 09:36:58 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-} t_list;
+}	t_list;
 
 void	*ft_memset(void *s, int c, size_t n);
 int		ft_isalnum(int c);
