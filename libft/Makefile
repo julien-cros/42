@@ -70,26 +70,77 @@ BONUS_SRCS= \
 	./ft_lstiter.c       \
 	./ft_lstmap.c
 
-OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-all: $(NAME)
+OBJS        =        $(SRCS:.c=.o)
 
-bonus: $(BONUS_OBJS) $(NAME)
-	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
+$(NAME):	$(OBJS)
+		@$(AR) $(ARFLAGS) $@ $^
 
-.c.o: $(SRCS) $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.cd o)
+.c.o:		$(SRCS) $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	@printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@)$(COM_COLOR)]\n";
+	
+all:	$(NAME)
+	@printf "%b" "$(COM_COLOR)#######################################$(NO)\n"
+	@printf "%b" "$(OK_COLOR)      *¤ * * ¤* * ¤*          *¤ * *¤ *$(NO)\n"
+	@printf "%b" "$(OK_COLOR)   ¤* ** *¤  * *¤          ** * ¤ * ¤ ¤$(NO)\n"
+	@printf "%b" "$(OK_COLOR)¤* ¤ *  *¤  **   $(OK_COLOR)$(OK_STRING)$(OK_COLOR)   ¤* * *¤ ¤* ¤*  $(NO)\n"
+	@printf "%b" "$(OK_COLOR)*  * ¤*  ¤*          ¤* * ¤  * * ¤*    $(NO)\n"
+	@printf "%b" "$(OK_COLOR)* ¤ *¤*          ** ¤ * * ¤ *¤*        $(NO)\n"
+	@printf "%b" "$(COM_COLOR)#######################################$(NO)\n"
+	@printf "%b" "$(MESSAGE_COLOR)[Compilation completed]\n"
 
 clean:
-	$(RM) $(RMFLAG) $(OBJS) $(BONUS_OBJS)
+			@rm -f $(OBJS)
+			@printf "%b" "$(CLEAN_COLOR)#######################################\n"
+			@printf "%b" "$(CLEAN_COLOR)$(CLEAN_STRING)$(OBJ_COLOR) all$(CLEAN_COLOR)]\n";
+			@printf "%b" "$(CLEAN_COLOR)#######################################\n"
+			@printf "%b" "$(OK_COLOR)      *¤ * * ¤* * ¤*          *¤ * *¤ *\n"
+			@printf "%b" "$(OK_COLOR)   ¤* ** *¤  * *¤          ** * ¤ * ¤ ¤\n"
+			@printf "%b" "¤* ¤ *  *¤  **   $(OK_COLOR)$(OK_STRING)   ¤* * *¤ ¤* ¤ *\n"
+			@printf "%b" "$(OK_COLOR)*  * ¤*  ¤*          ¤* * ¤  * * *¤    \n"
+			@printf "%b" "$(OK_COLOR)* ¤ *¤*          ** ¤ * * ¤ *¤*        \n"
+			@printf "%b" "$(CLEAN_COLOR)#######################################\n\n"
+			@printf "%b" "$(MESSAGE_COLOR)[Cleaning completed]\n"
 
-fclean: clean
-	$(RM) $(RMFLAG) $(NAME)
+fclean:		clean
+		@rm -f $(NAME)
 
-re: fclean all
+re:		fclean all
 
-$(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+COM_COLOR = \033[0;32m
+OBJ_COLOR = \033[0;45m
+OK_COLOR  = \033[0;44m
+CLEAN_COLOR  = \033[0;33m
+MESSAGE_COLOR = \033[0;33m
+NO = \033[0;0m
+
+OK_STRING = "[OK]"
+COM_STRING = "[Compiling"
+CLEAN_STRING = "[Cleaning"
 
 .PHONY: all clean fclean re
+
+# OBJS = $(SRCS:.c=.o)
+# BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+
+# all: $(NAME)
+
+# bonus: $(BONUS_OBJS) $(NAME)
+# 	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
+
+# .c.o: $(SRCS) $(INCLUDES)
+# 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.cd o)
+
+# clean:
+# 	$(RM) $(RMFLAG) $(OBJS) $(BONUS_OBJS)
+
+# fclean: clean
+# 	$(RM) $(RMFLAG) $(NAME)
+
+# re: fclean all
+
+# $(NAME): $(OBJS)
+# 	$(AR) $(ARFLAGS) $@ $^
+
+# .PHONY: all clean fclean re

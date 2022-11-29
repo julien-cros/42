@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_pritf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 11:45:19 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/18 16:34:52 by juliencros       ###   ########.fr       */
+/*   Created: 2022/11/18 16:26:31 by juliencros        #+#    #+#             */
+/*   Updated: 2022/11/20 13:22:33 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_printf(const char *str, ...)
 {
-	size_t	i;
+    int i;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+    i = 0;
+    while (*str[i])
+        {
+            if(str[i] == '%')
+                ft_
+        }
 }
