@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 15:08:04 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/29 17:52:26 by juliencros       ###   ########.fr       */
+/*   Created: 2022/11/29 17:56:54 by juliencros        #+#    #+#             */
+/*   Updated: 2022/12/02 17:20:25 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+# include "ft_printf.h"
 
-int	ft_putnbr_fd(int n, int fd)
+char	*ft_strchr(const char *s, int c)
 {
-	if (n == 2147483647)
+	int	i;
+
+	i = 0;
+	if (!c)
+		return ((char *)s + ft_strlen(s));
+	while (s[i])
 	{
-		ft_putstr_fd("2147483647", fd);
-		return (0);
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
 	}
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return (0);
-	}
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n *= -1;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + 48, fd);
 	return (0);
 }

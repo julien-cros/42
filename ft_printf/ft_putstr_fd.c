@@ -6,22 +6,25 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:48:25 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/18 16:34:47 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/12/02 17:19:06 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
+	int bytes;
 
+	bytes = 0;
 	i = 0;
 	if (!s || !fd)
-		return ;
+		return (0);
 	while (s[i])
 	{
-		write(fd, &s[i], 1);
+		bytes += write(fd, &s[i], 1);
 		i++;
 	}
+	return (bytes);
 }
