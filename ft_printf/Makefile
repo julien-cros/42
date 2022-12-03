@@ -32,11 +32,7 @@ SRCS = \
 	./ft_putstr_fd.c \
 	./ft_putnbr_base_fd.c \
 	./ft_putptr_fd.c \
-	./ft_putunnbr_fd.c \
-	# ./ft_putunbr_fd.c \
-	./ft_puthex_fd.c \
-	./ft_puthex_up_fd.c \
-	./ft_intlen.c
+	./ft_putunnbr_fd.c 
 	
 OBJS = $(SRCS:.c=.o)
 
