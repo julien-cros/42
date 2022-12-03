@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:14:59 by juliencros        #+#    #+#             */
-/*   Updated: 2022/11/29 17:50:04 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/12/03 22:36:24 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	return( write(fd, &c, 1));
+	return (write(fd, &c, 1));
 }

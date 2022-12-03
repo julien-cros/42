@@ -6,26 +6,34 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 22:15:51 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/02 17:20:56 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/12/03 22:33:31 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
+static int	ft_printnbr_fd(unsigned long n, char *base, int fd);
 
 int	ft_putnbr_base_fd(unsigned long n, char *base, int fd)
 {
-	size_t size;
-	int bytes;
-	
+	if (n == 0)
+		return (ft_putchar_fd(base[0], fd));
+	else
+		return (ft_printnbr_fd(n, base, fd) - 1);
+}
+
+int	ft_printnbr_fd(unsigned long n, char *base, int fd)
+{
+	int	size;
+	int	bytes;
+
 	bytes = 1;
 	size = ft_strlen(base);
-	while(n > 0)
+
+	if (n)
 	{
-		bytes += ft_putnbr_base_fd(n/size, base, fd);
+		bytes += ft_printnbr_fd(n / size, base, fd);
 		ft_putchar_fd(base[n % size], fd);
 	}
-		// ft_putchar_fd(base[n % size], fd);
-		return (bytes);
+	return (bytes);
 }
