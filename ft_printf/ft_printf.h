@@ -6,12 +6,12 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:42:13 by jcros             #+#    #+#             */
-/*   Updated: 2022/12/03 22:32:23 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/12/03 22:44:17 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
 # include <unistd.h>
