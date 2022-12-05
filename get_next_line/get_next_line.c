@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:49 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/04 19:58:34 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/12/05 12:17:52 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 char	*get_next_line(int fd)
 {
 	char *str;
-	
+	static int line;
+	int i;
+
+	line = 0;
+	i = 0;
 	if (!fd)
 		return (0);
 	str = malloc(sizeof(char) * BUFFER_SIZE);
@@ -24,6 +28,9 @@ char	*get_next_line(int fd)
 	{
 		
 	}
+	if (read(fd, str, BUFFER_SIZE) == '\n'
+		|| read(fd, str, BUFFER_SIZE) ==0)
+		line++;
 	
 }
 
