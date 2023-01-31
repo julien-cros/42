@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:26:31 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/03 22:37:37 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/12/05 12:39:12 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_printf(const char *format, ...)
 
 static int	ft_is_legal(char s1, char s2)
 {
-	const char	*legal = "cspdiuxX";
+	const char	*legal = "cspdiuxX%";
 
 	if (s1 == '%' && ft_strchr(legal, s2))
 		return (1);
@@ -61,5 +61,7 @@ static int	ft_print(char s, va_list *ap)
 		return (ft_putnbr_base_fd(va_arg(*ap, unsigned int), "0123456789abcdef", 1));
 	if (s == 'X')
 		return (ft_putnbr_base_fd(va_arg(*ap, unsigned int), "0123456789ABCDEF", 1));
+	if (s == '%')
+		return (ft(putchar('%')));
 	return (0);
 }
