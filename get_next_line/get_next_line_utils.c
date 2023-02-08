@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:45 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/21 16:48:43 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/02/07 22:59:07 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,29 @@ char	*ft_strchr(const char *s, int c)
 		i++;
 	}
 	return (0);
+}
+
+
+char *ft_strndup(const char *s, size_t n)
+{
+	char *dup;
+
+	dup = (char *)malloc((n + 1) * sizeof(char));
+	if (!dup)
+		return (0);
+	ft_strlcpy(dup, s, n + 1);
+	return (dup);
+}
+
+size_t ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t i;
+
+	i = -1;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[++i] && i < size - 1)
+		dst[i] = src[i];
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:57 by juliencros        #+#    #+#             */
-/*   Updated: 2023/01/31 15:15:52 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/02/08 18:25:37 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
 int	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-
+char *ft_strndup(const char *s, size_t n);
+size_t ft_strlcpy(char *dst, const char *src, size_t size);
 #endif
