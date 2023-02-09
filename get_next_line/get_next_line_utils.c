@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:45 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/09 11:25:05 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/02/09 15:47:41 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		dup[i++] = *s2++;
 	return (dup);
 }
-
 
 int	ft_strlen(const char *s)
 {
@@ -56,10 +55,9 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-
-char *ft_strndup(const char *s, size_t n)
+char	*ft_strndup(const char *s, size_t n)
 {
-	char *dup;
+	char	*dup;
 
 	dup = (char *)malloc((n + 1) * sizeof(char));
 	if (!dup)
@@ -68,9 +66,9 @@ char *ft_strndup(const char *s, size_t n)
 	return (dup);
 }
 
-size_t ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t i;
+	size_t	i;
 
 	i = -1;
 	if (size == 0)
