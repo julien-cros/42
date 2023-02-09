@@ -6,33 +6,29 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:45 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/07 22:59:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/02/09 11:25:05 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	char	*str;
+	char	*dup;
+	size_t	i;
 
 	if (!s1 || !s2)
 		return (0);
-	str = malloc(sizeof(char *) * (ft_strlen(s1)+ ft_strlen(s2)+1));
-	if (!str)
-		return (NULL);
-	i = -1;
-	j = -1;
-	while (s1[++i])
-		str[++j] = ((char *)s1)[i];
-	i = -1;
-	while (s2[++i])
-		str[++j] = ((char *)s2)[i];
-	return (str);
+	dup = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!dup)
+		return (0);
+	dup[ft_strlen(s1) + ft_strlen(s2)] = 0;
+	i = ft_strlcpy(dup, s1, ft_strlen(s1) + 1);
+	while (*s2)
+		dup[i++] = *s2++;
+	return (dup);
 }
+
 
 int	ft_strlen(const char *s)
 {

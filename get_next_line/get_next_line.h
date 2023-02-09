@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:57 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/08 18:25:37 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/02/09 09:46:25 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #include <fcntl.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 5
+#define BUFFER_SIZE 42
 #endif
 
 char	*get_next_line(int fd);
