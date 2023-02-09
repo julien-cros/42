@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:49 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/09 16:10:55 by jcros            ###   ########.fr       */
+/*   Updated: 2023/02/09 17:05:25 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ char	*add_next_line(int fd, char *line);
 char	*clear_line( char *buffer);
 char	*clean_buffer(char *buffer);
 
+
+
 char	*get_next_line(int fd)
 {	
-	static char	*buffer;
-	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (NULL);
-	if (!buffer)
-		buffer = (char *)malloc(1);
-	if (!buffer)
+	static char *buffer;
+	char *line;
+	
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = add_next_line(fd, buffer);
+	if (!buffer)
+		return (NULL);
 	if (!buffer[0])
 		line = (NULL);
-	else
+	else 
 	{
 		line = clear_line(buffer);
 		if (!line)
@@ -43,19 +43,22 @@ char	*get_next_line(int fd)
 
 char	*add_next_line(int fd, char *line)
 {
-	char	*buffer;
-	char	*tmp;
-	int		bytes;
-
+	char *buffer;
+	char *tmp;
+	int bytes;
+	
+	if (!line)
+		line = (char *)malloc(1);
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
+	if (!buffer || !line)
 		return (NULL);
 	bytes = 1;
-	while (bytes > 0)
+	while(bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes == -1)
+		if (bytes < 0)
 		{
+			free(line);
 			free(buffer);
 			return (NULL);
 		}
@@ -63,16 +66,18 @@ char	*add_next_line(int fd, char *line)
 		tmp = line;
 		line = ft_strjoin(line, buffer);
 		free(tmp);
+		if (!line)
+			return (NULL);
 		if (ft_strchr(buffer, '\n'))
-			break ;
+			break;
 	}
 	free(buffer);
 	return (line);
 }
 
-char	*clear_line(char *buffer)
+ char *clear_line( char *buffer)
 {
-	int	pos_of_newline;
+	int pos_of_newline;
 
 	if (ft_strchr(buffer, '\n'))
 		pos_of_newline = (ft_strchr(buffer, '\n') - buffer + 1);
@@ -81,32 +86,33 @@ char	*clear_line(char *buffer)
 	return (ft_strndup(buffer, pos_of_newline));
 }
 
-char	*clean_buffer(char *buffer)
+char *clean_buffer(char *buffer)
 {
-	char	*tmp;
-	int		pos_of_newline;
-
+	char *tmp;
+	int pos_of_newline;
+	
 	if (!buffer[0] || ft_strchr(buffer, '\n') == NULL)
 	{
 		free(buffer);
-		return (NULL);
+		return NULL;
 	}
 	if (ft_strchr(buffer, '\n'))
 		pos_of_newline = (ft_strchr(buffer, '\n') - buffer + 1);
 	else
-		pos_of_newline = (ft_strlen(buffer) + 1);
-		tmp = buffer;
-	buffer = ft_strndup(buffer + pos_of_newline, ft_strlen(buffer));
+		pos_of_newline = (ft_strlen(buffer) + 1);	
+	tmp = buffer;
+	buffer = ft_strndup(buffer + pos_of_newline , ft_strlen(buffer));
 	free(tmp);
 	if (!buffer)
 		return (NULL);
 	return (buffer);
 }
 
+
 // int main()
 // {
 // 	int fd = open("./test", O_RDONLY);
-//	
+	
 // 	for (int i = 0; i < 30; i++)
 // 	{
 // 		char *tmp = get_next_line(fd);
