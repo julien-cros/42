@@ -6,10 +6,9 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:14:21 by jcros             #+#    #+#             */
-/*   Updated: 2023/02/09 16:18:39 by jcros            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:33:49 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
