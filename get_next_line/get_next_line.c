@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:49 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/09 17:45:28 by jcros            ###   ########.fr       */
+/*   Updated: 2023/02/09 17:49:52 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!line)
-		line = (char *)malloc(1);
 	buffer = add_next_line(fd, buffer);
 	if (!buffer)
 		return (NULL);
@@ -49,7 +47,9 @@ char	*add_next_line(int fd, char *line)
 	int		bytes;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
+	if (!line)
+		line = (char *)malloc(1);
+	if (!buffer || !line)
 		return (NULL);
 	bytes = 1;
 	while (bytes > 0)
