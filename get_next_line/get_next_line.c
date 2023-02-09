@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:49 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/09 17:49:52 by jcros            ###   ########.fr       */
+/*   Updated: 2023/02/09 17:59:50 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*get_next_line(int fd);
 char	*add_next_line(int fd, char *line);
 char	*clear_line( char *buffer);
 char	*clean_buffer(char *buffer);
-char	*free_line(char *line, char *buffer);
 
 char	*get_next_line(int fd)
 {
@@ -95,16 +94,6 @@ char	*clean_buffer(char *buffer)
 	if (!buffer)
 		return (NULL);
 	return (buffer);
-}
-
-char	*free_line(char *line, char *buffer)
-{
-	char	*tmp;
-
-	tmp = line;
-	line = ft_strjoin(line, buffer);
-	free(tmp);
-	return (line);
 }
 
 // int main()
