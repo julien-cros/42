@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 14:18:45 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/09 16:15:53 by jcros            ###   ########.fr       */
+/*   Created: 2023/02/09 16:15:57 by jcros             #+#    #+#             */
+/*   Updated: 2023/02/09 16:16:18 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
