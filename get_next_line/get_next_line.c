@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:18:49 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/09 17:59:50 by jcros            ###   ########.fr       */
+/*   Updated: 2023/02/10 14:16:17 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*get_next_line(int fd);
 char	*add_next_line(int fd, char *line);
 char	*clear_line( char *buffer);
 char	*clean_buffer(char *buffer);
+char	*free_line(char *line, char *buffer);
 
 char	*get_next_line(int fd)
 {
@@ -41,27 +42,29 @@ char	*get_next_line(int fd)
 
 char	*add_next_line(int fd, char *line)
 {
-	char	*tmp;
 	char	*buffer;
 	int		bytes;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!line)
+	{
 		line = (char *)malloc(1);
+		line[0] = 0;
+	}
 	if (!buffer || !line)
-		return (NULL);
+		return (free(buffer), free(line), NULL);
 	bytes = 1;
-	while (bytes > 0)
+	while (bytes > 0 && !ft_strchr(line, '\n'))
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes < 0)
-			return (free(line), free(buffer), NULL);
+		{
+			free(buffer);
+			free(line);
+			return (NULL);
+		}
 		buffer[bytes] = 0;
-		tmp = line;
-		line = ft_strjoin(line, buffer);
-		free(tmp);
-		if (ft_strchr(buffer, '\n'))
-			break ;
+		line = free_line(line, buffer);
 	}
 	return (free(buffer), line);
 }
@@ -96,15 +99,27 @@ char	*clean_buffer(char *buffer)
 	return (buffer);
 }
 
+char	*free_line(char *line, char *buffer)
+{
+	char	*tmp;
+
+	tmp = line;
+	line = ft_strjoin(line, buffer);
+	if (!line)
+		return (NULL);
+	free(tmp);
+	return (line);
+}
+
 // int main()
 // {
 // 	int fd = open("./test", O_RDONLY);
-//	
+
 // 	for (int i = 0; i < 30; i++)
 // 	{
-// 		char *tmp = get_next_line(fd);
-// 		printf("%s", tmp);
+//  		char *tmp = get_next_line(fd);
+//  		printf("%s", tmp);
 // 		if (tmp)
-// 			free(tmp);
+//  			free(tmp);
 // 	}
 // }
