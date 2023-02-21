@@ -1,12 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ints.c                                             :+:      :+:    :+:   */
+/*   strings.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 16:03:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/18 16:03:24 by juliencros       ###   ########.fr       */
+/*   Created: 2023/02/17 22:02:00 by herbie            #+#    #+#             */
+/*   Updated: 2023/02/18 16:07:54 by herbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef STRINGS_H
+# define STRINGS_H
+
+# include <stdlib.h>
+
+size_t	ft_strlen(const char *s);
+int		ft_atoi(const char *nptr);
+
+#endif /* STRINGS_H */

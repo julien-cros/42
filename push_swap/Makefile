@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
+#    By: herbie <herbie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/18 14:45:31 by juliencros        #+#    #+#              #
-#    Updated: 2023/02/18 15:43:03 by juliencros       ###   ########.fr        #
+#    Created: 2022/11/11 21:43:09 by herbie            #+#    #+#              #
+#    Updated: 2023/02/21 14:11:03 by herbie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,19 +21,28 @@ RMFLAG = -f
 SRCS = \
 	main.c \
 	lib.c \
-	num.c \
-	strings.c
+	strings.c \
+	ops.c \
+	display.c \
+	lists.c \
+	arrays.c \
+	parse.c \
+	utils.c 
 
 INCLUDES = \
-	./ft_atoi.c \
-	./ft_lstadd_back.c \
-	./ft_lstadd_front.c \
-	./ft_lstclear.c \
-	
+	./lib.h \
+	./strings.h \
+	./ops.h \
+	./display.h \
+	./lists.h \
+	./arrays.h \
+	./parse.h \
+	./utils.h
 
 OBJS = $(SRCS:.c=.o)
 
 # Some shit from SO. `make run [...args]` will run the program with args
+# Won't work for negatif numbers though...
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
   $(eval $(RUN_ARGS):;@:)
@@ -43,9 +52,6 @@ all: $(NAME) compile
 
 $(NAME): $(OBJS) $(INCLUDES)
 	$(CC) $(CFLAGS) -o $< -c $(<:.o=.c)
-
-$(PACKAGES):
-	$(MAKE) -C $(addprefix $(PACKAGES_PATH)/, $@)
 
 clean:
 	$(RM) $(RMFLAG) $(OBJS)

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strings.h                                          :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 16:01:05 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/18 18:49:58 by juliencros       ###   ########.fr       */
+/*   Created: 2023/02/19 21:49:53 by herbie            #+#    #+#             */
+/*   Updated: 2023/02/21 11:50:11 by herbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRINGS_H
-# define STRINGS_H
+#include "parse.h"
+#include "strings.h"
 
-#include "stdlib.h"
-#include "unistd.h"
+int	*ft_parse_args(int argc, char **argv)
+{
+	int	i;
+	int	*args;
 
-int ft_atoi(const char *nptr);
-void ft_putnbr_fd(int n, int fd);
-void ft_putchar_fd(char c, int fd);
-void ft_putstr_fd(char *s, int fd);
-
-#endif
+	i = -1;
+	args = malloc(sizeof(int) * (argc - 1));
+	while (++i < argc - 1)
+		args[i] = ft_atoi(argv[i + 1]);
+	return (args);
+}

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   arrays.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 14:48:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/02/18 18:52:53 by juliencros       ###   ########.fr       */
+/*   Created: 2023/02/20 20:31:48 by herbie            #+#    #+#             */
+/*   Updated: 2023/02/20 20:32:05 by herbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#ifndef ARRAYS_H
+# define ARRAYS_H
 
-typedef struct s_list
-{
-	void *content;
-	struct s_list *next;
-} t_list;
+void	ft_sort_int_tab(int **arr, int size);
 
-#endif
+#endif /* ARRAYS_H */
