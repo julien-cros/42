@@ -3,41 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   arrays.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 20:32:25 by herbie            #+#    #+#             */
-/*   Updated: 2023/02/20 20:36:31 by herbie           ###   ########.fr       */
+/*   Created: 2023/03/01 21:45:27 by juliencros        #+#    #+#             */
+/*   Updated: 2023/03/01 21:53:12 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arrays.h"
 
-/**
- * @brief Sorts an array of integers in ascending order
- * 
- * @param arr 
- * @param size 
- */
-void	ft_sort_int_tab(int **arr, int size)
+void ft_sort_array(int **arr, int size)
 {
-	int	i;
-	int	j;
-	int	temp;
+	int i;
+	int j;
+	int tmp;
 
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
 		j = i + 1;
 		while (j < size)
 		{
 			if ((*arr)[i] > (*arr)[j])
 			{
-				temp = (*arr)[i];
+				tmp = (*arr)[j];
 				(*arr)[i] = (*arr)[j];
-				(*arr)[j] = temp;
+				(*arr)[j] = tmp;
 			}
-			j++;
 		}
-		i++;
+		j++;
 	}
 }

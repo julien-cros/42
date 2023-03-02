@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 17:55:36 by herbie            #+#    #+#             */
-/*   Updated: 2023/02/21 11:50:39 by herbie           ###   ########.fr       */
+/*   Created: 2023/03/01 18:35:23 by juliencros        #+#    #+#             */
+/*   Updated: 2023/03/02 00:05:13 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 #include "strings.h"
 #include "utils.h"
 #include "parse.h"
+#include "split.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	int	*args;
-	int	size;
+	t_args *args;
 
-	args = ft_parse_args(argc, argv);
-	size = argc - 1;
-	if (ft_replace_args_by_indices(&args, size) == -1)
+	if (argc == 1)
 		return (0);
-	ft_sort_args(args, size);
+	args = ft_parse_args(argc, argv);
+	if (!args || ft_replace_by_indices(&(args->int_array), args->count) == -1)
+		return (0);
+	ft_sort_args(args->int_array, args->count);
+	free(args->int_array);
+	if (args->is_malloced)
+		ft_free(args->str_array, args->count);
 	free(args);
 	return (0);
 }

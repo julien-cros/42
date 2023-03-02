@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: herbie <herbie@student.42.fr>              +#+  +:+       +#+         #
+#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/11 21:43:09 by herbie            #+#    #+#              #
-#    Updated: 2023/02/21 14:11:03 by herbie           ###   ########.fr        #
+#    Created: 2023/03/01 18:39:45 by juliencros        #+#    #+#              #
+#    Updated: 2023/03/01 19:38:43 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS = \
 	lists.c \
 	arrays.c \
 	parse.c \
-	utils.c 
+	utils.c \
+	split.c
 
 INCLUDES = \
 	./lib.h \
@@ -37,30 +38,24 @@ INCLUDES = \
 	./lists.h \
 	./arrays.h \
 	./parse.h \
-	./utils.h
+	./utils.h \
+	./split.h
 
 OBJS = $(SRCS:.c=.o)
 
-# Some shit from SO. `make run [...args]` will run the program with args
-# Won't work for negatif numbers though...
-ifeq (run,$(firstword $(MAKECMDGOALS)))
-  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-  $(eval $(RUN_ARGS):;@:)
-endif
+all: $(NAME)
 
-all: $(NAME) compile
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS) $(INCLUDES)
-	$(CC) $(CFLAGS) -o $< -c $(<:.o=.c)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(RMFLAG) $(OBJS)
 
-compile:
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-
-run: all
-	./$(NAME) $(RUN_ARGS)
+# compile: $(NAME)
+# 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 fclean: clean
 	$(RM) $(RMFLAG) $(NAME)

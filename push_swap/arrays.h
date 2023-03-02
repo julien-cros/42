@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   arrays.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 20:31:48 by herbie            #+#    #+#             */
-/*   Updated: 2023/02/20 20:32:05 by herbie           ###   ########.fr       */
+/*   Created: 2023/03/01 21:45:50 by juliencros        #+#    #+#             */
+/*   Updated: 2023/03/01 21:54:24 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAYS_H
-# define ARRAYS_H
+#define ARRAYS_H
 
-void	ft_sort_int_tab(int **arr, int size);
+void ft_sort_array(int **arr, int size);
 
-#endif /* ARRAYS_H */
+#endif

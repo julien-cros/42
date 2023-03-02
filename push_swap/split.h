@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lists.h                                            :+:      :+:    :+:   */
+/*   split.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 22:17:47 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/02 16:45:21 by juliencros       ###   ########.fr       */
+/*   Created: 2023/03/01 21:00:53 by juliencros        #+#    #+#             */
+/*   Updated: 2023/03/01 22:19:24 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LISTS_H
-#define LISTS_H
+#ifndef SPLIT_H
+#define SPLIT_H
 
 #include <stdlib.h>
 
-typedef struct s_list
-{
-	int v;
-	struct s_list *n;
-} t_list;
-
-t_list *ft_lstnew(int content);
-void ft_lstadd_front(t_list **lst, t_list *new);
-void ft_lstadd_back(t_list **lst, t_list *new);
-t_list *ft_lstlast(t_list *lst);
-void ft_lstclear(t_list **lst);
+char **ft_split(char const *s, char c);
+void ft_free(char **list, size_t idx);
 
 #endif
