@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:35:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/02 00:05:13 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/02 17:08:45 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	args = ft_parse_args(argc, argv);
+	printf("aft parse\n");
 	if (!args || ft_replace_by_indices(&(args->int_array), args->count) == -1)
 		return (0);
+	printf("aft replace indices\n");
 	ft_sort_args(args->int_array, args->count);
 	free(args->int_array);
 	if (args->is_malloced)
