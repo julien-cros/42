@@ -3,22 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   strings.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:51:57 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/02 18:06:58 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/12 11:23:04 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strings.h"
-#include "display.h"
-#include <unistd.h>
+#include <stdint.h>
 
-static void ft_putchar_fd(char s, int fd);
-
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i[s])
@@ -26,11 +23,11 @@ size_t ft_strlen(const char *s)
 	return (i);
 }
 
-long ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	long i;
-	long sign;
-	long res;
+	long	i;
+	long	sign;
+	long	res;
 
 	i = 0;
 	sign = 1;
@@ -48,9 +45,9 @@ long ft_atoi(const char *nptr)
 	return ((long)(res * sign));
 }
 
-void *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *space;
+	void	*space;
 
 	if (size && nmemb > SIZE_MAX / size)
 		return (0);
@@ -61,17 +58,17 @@ void *ft_calloc(size_t nmemb, size_t size)
 	return (space);
 }
 
-void *ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	while (n-- > 0)
 		((char *)s)[n] = (unsigned char)c;
 	return (s);
 }
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t i;
-	char *str;
+	size_t	i;
+	char	*str;
 
 	if (!s)
 		return (0);
@@ -92,30 +89,4 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	while (s[start + ++i] && i < len)
 		str[i] = s[start + i];
 	return (str);
-}
-
-void ft_putchar_fd(char s, int fd)
-{
-	write(fd, &s, 1);
-}
-
-void ft_putnbr_fd(int n, int fd)
-{
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return;
-	}
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n *= -1;
-	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + 48, fd);
-	}
-	else
-		ft_putchar_fd(n + 48, fd);
 }

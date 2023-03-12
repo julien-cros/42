@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strings.h                                          :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 18:52:38 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/12 11:19:41 by jcros            ###   ########.fr       */
+/*   Created: 2023/03/12 11:05:42 by jcros             #+#    #+#             */
+/*   Updated: 2023/03/12 11:06:16 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRINGS_H
-# define STRINGS_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-# include <stdlib.h>
+typedef enum e_bool
+{
+	false,
+	true
+}	t_bool;
 
-size_t	ft_strlen(const char *s);
-long	ft_atoi(const char *nptr);
-void	*ft_calloc(size_t nmemb, size_t size);
-void	*ft_memset(void *s, int c, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+typedef struct s_args
+{
+	char	**str_array;
+	int		*int_array;
+	int		count;
+	t_bool	is_str_array_alloced;
+}				t_args;
+
+typedef struct s_list
+{
+	int				v;
+	struct s_list	*n;
+}	t_list;
 
 #endif
