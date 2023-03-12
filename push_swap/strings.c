@@ -6,11 +6,15 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:51:57 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/02 16:53:28 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/02 18:06:58 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strings.h"
+#include "display.h"
+#include <unistd.h>
+
+static void ft_putchar_fd(char s, int fd);
 
 size_t ft_strlen(const char *s)
 {
@@ -88,4 +92,30 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	while (s[start + ++i] && i < len)
 		str[i] = s[start + i];
 	return (str);
+}
+
+void ft_putchar_fd(char s, int fd)
+{
+	write(fd, &s, 1);
+}
+
+void ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + 48, fd);
+	}
+	else
+		ft_putchar_fd(n + 48, fd);
 }

@@ -6,12 +6,13 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 22:17:41 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/02 16:58:40 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/12 09:46:31 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lists.h"
 #include "display.h"
+#include "strings.h"
 
 t_list *ft_lstnew(int content)
 {

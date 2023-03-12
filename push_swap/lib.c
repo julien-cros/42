@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 21:56:12 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/02 16:42:32 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/03 13:29:07 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "utils.h"
 #include "ops.h"
 #include "display.h"
+#include <stdio.h>
 
 void ft_sort_args(int *args, int size)
 {
@@ -23,17 +24,24 @@ void ft_sort_args(int *args, int size)
 
 	a = ft_fill_list(args, size);
 	b = NULL;
+	// printf("in sort args\n");
+	// ft_lstptint(a);
 	if (!ft_is_sorted(a))
 	{
+		// printf("in if\n");
 		if (size == 2 && args[0] > args[1])
 			ft_putstr_fd("sa\n", 1);
 		else if (size == 3)
+		{
+			// printf("in 3\n");
 			ft_sort_three(&a);
+		}
 		else if (size == 5)
 			ft_sort_five(&a, &b);
 		else
 			ft_sort_large(&a, &b, size);
 	}
+	// printf("ok\n");
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 }
@@ -94,7 +102,7 @@ void ft_sort_large(t_list **a, t_list **b, int size)
 			if (((*a)->v >> i) & 1)
 				ft_rotate(a, "ra\n");
 			else
-				ft_push(a, b, "pb");
+				ft_push(a, b, "pb\n");
 		}
 		while (*b != NULL)
 			ft_push(b, a, "pa\n");

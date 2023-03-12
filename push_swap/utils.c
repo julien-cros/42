@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 21:28:01 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/02 16:56:16 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/03 13:31:23 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "arrays.h"
 #include "lists.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int ft_replace_by_indices(int **args, int size)
 {
@@ -21,12 +22,12 @@ int ft_replace_by_indices(int **args, int size)
 	int j;
 	int *sorted_array;
 
-	sorted_array = (int *)malloc(sizeof(int) * size);
+	i = -1;
+	sorted_array = (int *)malloc(size * sizeof(int));
 	if (!sorted_array)
 		return (free(*args), -1);
-	i = -1;
 	while (++i < size)
-		sorted_array[i] = (*args)[i]; // je fais une copie pour mettre dnas lordre et changer ensuite la vrai
+		sorted_array[i] = (*args)[i];
 	ft_sort_array(&sorted_array, size);
 	i = -1;
 	while (++i < size)
@@ -52,8 +53,10 @@ t_list *ft_fill_list(int *args, int size)
 	i = 1;
 	list = ft_lstnew(args[0]);
 	while (i < size)
+	{
 		ft_lstadd_back(&list, ft_lstnew(args[i]));
-	i++;
+		i++;
+	}
 	return (list);
 }
 
