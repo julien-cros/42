@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:43:17 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/12 11:20:04 by jcros            ###   ########.fr       */
+/*   Updated: 2023/03/15 13:41:28 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@
 #include <stdio.h>
 #include <limits.h>
 
-t_args	*ft_parse_args(int argc, char **argv)
+t_args *ft_parse_args(int argc, char **argv)
 {
-	int		i;
-	t_args	*arg;
+	int i;
+	t_args *arg;
 
 	if (argc == 2)
 		arg = ft_get_args_from_str(argv[1]);
 	else
 		arg = ft_get_args_from_argv(argc, argv);
+	if (!arg)
+		return (
+			ft_free_args(arg, arg->is_str_array_alloced),
+			ft_putstr_fd("Error\n", 2), exit(1), NULL);
 	ft_check_if_args_are_numbers(arg, arg->count);
 	arg->int_array = malloc(sizeof(int) * (arg->count));
 	if (!arg->int_array)
@@ -36,8 +40,7 @@ t_args	*ft_parse_args(int argc, char **argv)
 	i = -1;
 	while (++i < arg->count)
 	{
-		if (ft_atoi(arg->str_array[i]) > INT_MAX
-			|| ft_atoi(arg->str_array[i]) < INT_MIN)
+		if (ft_atoi(arg->str_array[i]) > INT_MAX || ft_atoi(arg->str_array[i]) < INT_MIN)
 			return (
 				ft_free_args(arg, true),
 				ft_putstr_fd("Error\n", 2), exit(1), NULL);
@@ -47,9 +50,9 @@ t_args	*ft_parse_args(int argc, char **argv)
 	return (arg);
 }
 
-t_args	*ft_get_args_from_argv(int argc, char **argv)
+t_args *ft_get_args_from_argv(int argc, char **argv)
 {
-	t_args	*arg;
+	t_args *arg;
 
 	arg = malloc(sizeof(t_args));
 	if (!arg)
@@ -61,11 +64,11 @@ t_args	*ft_get_args_from_argv(int argc, char **argv)
 	return (arg);
 }
 
-t_args	*ft_get_args_from_str(char *str)
+t_args *ft_get_args_from_str(char *str)
 {
-	char	**args;
-	t_args	*arg;
-	int		i;
+	char **args;
+	t_args *arg;
+	int i;
 
 	args = ft_split(str, ' ');
 	if (!args)
@@ -83,9 +86,9 @@ t_args	*ft_get_args_from_str(char *str)
 	return (arg);
 }
 
-void	ft_check_if_args_are_numbers(t_args *arg, int count)
+void ft_check_if_args_are_numbers(t_args *arg, int count)
 {
-	int	i;
+	int i;
 
 	while (count-- > 0)
 	{
@@ -93,14 +96,10 @@ void	ft_check_if_args_are_numbers(t_args *arg, int count)
 		while (arg->str_array[count][i])
 		{
 			if (
-				(i == 0 && arg->str_array[count][i] == '-')
-				|| (i == 0 && arg->str_array[count][i] == '+')
-			)
+				(i == 0 && arg->str_array[count][i] == '-') || (i == 0 && arg->str_array[count][i] == '+'))
 				i++;
 			if (
-				arg->str_array[count][i] >= 48
-				&& arg->str_array[count][i] <= 57
-			)
+				arg->str_array[count][i] >= 48 && arg->str_array[count][i] <= 57)
 				i++;
 			else
 				return (
@@ -110,10 +109,10 @@ void	ft_check_if_args_are_numbers(t_args *arg, int count)
 	}
 }
 
-void	ft_check_duplicates(t_args *arg)
+void ft_check_duplicates(t_args *arg)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = -1;
 	while (++i < arg->count)
