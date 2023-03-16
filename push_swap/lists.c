@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lists.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 22:17:41 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/15 15:00:05 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/16 11:27:19 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "display.h"
 #include "strings.h"
 
-t_list *ft_lstnew(int content)
+t_list	*ft_lstnew(int content)
 {
-	t_list *new;
+	t_list	*new;
 
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
@@ -26,20 +26,20 @@ t_list *ft_lstnew(int content)
 	return (new);
 }
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = *lst;
 	if (!lst || !new)
-		return;
+		return ;
 	new->n = head;
 	*lst = new;
 }
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *last;
+	t_list	*last;
 
 	if (*lst)
 	{
@@ -50,7 +50,7 @@ void ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 }
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (0);
@@ -59,13 +59,13 @@ t_list *ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void ft_lstclear(t_list **lst)
+void	ft_lstclear(t_list **lst)
 {
-	t_list *head;
-	t_list *tmp;
+	t_list	*head;
+	t_list	*tmp;
 
 	if (!lst)
-		return;
+		return ;
 	head = *lst;
 	while (head)
 	{

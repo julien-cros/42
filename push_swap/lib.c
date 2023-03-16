@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 21:56:12 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/15 13:49:57 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/16 11:19:25 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 #include "display.h"
 #include <stdio.h>
 
-void ft_sort_args(int *args, int size)
+void	ft_sort_args(int *args, int size)
 {
-	t_list *a;
-	t_list *b;
+	t_list	*a;
+	t_list	*b;
 
 	a = ft_fill_list_with_args(args, size);
 	b = NULL;
@@ -40,7 +40,7 @@ void ft_sort_args(int *args, int size)
 	ft_lstclear(&b);
 }
 
-void ft_sort_three_array(t_list **a)
+void	ft_sort_three_array(t_list **a)
 {
 	if ((*a)->v < (*a)->n->v && (*a)->v > (*a)->n->n->v)
 		return (ft_reverse_rotate(a, "rra\n"));
@@ -54,7 +54,7 @@ void ft_sort_three_array(t_list **a)
 		return (ft_swap(a, "sa\n"));
 }
 
-void ft_sort_five_array(t_list **a, t_list **b)
+void	ft_sort_five_array(t_list **a, t_list **b)
 {
 	ft_push(a, b, "pb\n");
 	ft_push(a, b, "pb\n");
@@ -62,7 +62,9 @@ void ft_sort_five_array(t_list **a, t_list **b)
 	while ((*b) != NULL)
 	{
 		if (
-			((*b)->v + 1 == (*a)->v) || ((*b)->v == 0 && ft_lstlast(*a)->v == ft_highest_value(*a)) || ((*b)->v == 4 && ft_lstlast(*a)->v == ft_highest_value(*a)))
+			((*b)->v + 1 == (*a)->v)
+			|| ((*b)->v == 0 && ft_lstlast(*a)->v == ft_highest_value(*a))
+			|| ((*b)->v == 4 && ft_lstlast(*a)->v == ft_highest_value(*a)))
 			ft_push(b, a, "pa\n");
 		else if (((*b)->v - 1 == (*a)->v))
 		{
@@ -78,11 +80,11 @@ void ft_sort_five_array(t_list **a, t_list **b)
 		ft_rotate(a, "ra\n");
 }
 
-void ft_sort_large_array(t_list **a, t_list **b, int size)
+void	ft_sort_large_array(t_list **a, t_list **b, int size)
 {
-	int max_binary_length;
-	int i;
-	int j;
+	int	max_binary_length;
+	int	i;
+	int	j;
 
 	max_binary_length = 0;
 	while (((size - 1) >> max_binary_length) != 0)
