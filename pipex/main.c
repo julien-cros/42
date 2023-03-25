@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/21 15:40:06 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/03/24 18:38:41 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,50 @@
 #include <strings.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
-    int fd[2];
-    if (pipe(fd) == -1)
-    {
-        return 1;
-    }
+	int fd[2];
+	if (pipe(fd) == -1)
+	{
+		return 1;
+	}
+	// int text = open("test", O_CREAT | O_RDWR);
 
-    int pid1 = fork();
-    if (pid1 < 0)
-    {
-        return 2;
-    }
+	int pid1 = fork();
+	if (pid1 < 0)
+	{
+		return 2;
+	}
+	if (pid1 == 0)
+	{
+		dup2(fd[1], STDOUT_FILENO);
+		close(fd[0]);
+		close(fd[1]);
+		execlp("cat", "cat", "Makefile", NULL);
+	}
 
-    if (pid1 == 0)
-    {
-        dup2(fd[1], STDOUT_FILENO);
-        close(fd[0]);
-        close(fd[1]);
-        execlp("ping", "ping", "-c", "5", "google.com", NULL);
-    }
+	int pid2 = fork();
+	if (pid2 < 0)
+	{
+		return 3;
+	}
 
-    int pid2 = fork();
-    if (pid < 0)
-    {
-        return 3;
-    }
+	if (pid2 == 0)
+	{
+		dup2(fd[0], STDIN_FILENO);
+		close(fd[0]);
+		close(fd[1]);
+		execlp("wc", "wc", "-l", NULL);
+	}
 
-    if (pid2 == 0)
-    {
-        dup2(fd[0], STDIN_FILENO);
-        close(fd[0]);
-        close(fd[1]);
-        execlp("grep", "grep", "rtt", NULL);
-    }
+	close(fd[0]);
+	close(fd[1]);
 
-    close(fd[0]);
-    close(fd[1]);
-
-    waitpid(pid1, NULL, 0);
-    waitpid(pid2, NULL, 0);
-    return 0;
+	waitpid(pid1, NULL, 0);
+	waitpid(pid2, NULL, 0);
+	return (0);
 }
 
 // par exemple lire un ficher , pipe donc ce que veux dire faire une autre commande et ecrire
