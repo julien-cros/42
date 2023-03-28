@@ -7,7 +7,8 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
 /*   Updated: 2023/03/24 18:38:41 by juliencros       ###   ########.fr       */
-/*                                                                            */
+/*                ls
+                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
@@ -26,7 +27,7 @@ int main(int argc, char **argv, char **env)
 	}
 	// int text = open("test", O_CREAT | O_RDWR);
 
-	int pid1 = fork();
+	int pid1 = fork(); // bob
 	if (pid1 < 0)
 	{
 		return 2;
@@ -39,10 +40,10 @@ int main(int argc, char **argv, char **env)
 		execlp("cat", "cat", "Makefile", NULL);
 	}
 
-	int pid2 = fork();
+	int pid2 = fork(); // jack
 	if (pid2 < 0)
 	{
-		return 3;
+		return 421;
 	}
 
 	if (pid2 == 0)

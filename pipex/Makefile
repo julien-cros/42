@@ -32,7 +32,8 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS) $(INCLUDES)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "mdr t con"
+	# $(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(RMFLAG) $(OBJS)
