@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:37 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 18:26:29 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/07 19:56:38 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 		if (line)
 			free(line);
 		line = malloc(10000 * sizeof(char));
+		if (!line)
+			return (-1);
 		line = ft_get_line(line);
 		if (!line)
 			return (-1);

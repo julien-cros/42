@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 18:31:52 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/07 19:57:47 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,24 @@
 #include "parsing.h"
 
 
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **envp)
 {
 	
 	t_pipex *pipex;
+	int fd[2];
+
 	pipex = malloc(sizeof(t_pipex));
-	pipex->here_doc = false;
 	pipex->in_fd = -1;
 	pipex->out_fd = -1;
-	return (ft_valid_args(argc, argv, pipex), 1);
+	// pipex->valid_cmds = 2;
+	pipex-> valid_file = 0;
+	pipex->here_doc = false;
+	pipex->cmd1 = NULL;
+	pipex->cmd2 = NULL;
+	if (ft_valid_args(argc, argv, pipex) != 0)
+		return (ft_free_pipex(pipex), -1);
+	if (ft_parse_args() != 0)
+		return (ft_free_pipex(pipex), -1);
 		
 }
 

@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/07 16:48:59 by juliencros       ###   ########.fr        #
+#    Updated: 2023/04/07 18:59:30 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,15 @@ SRCS = \
 	strs.c \
 	display.c \
 	here_doc.c \
+	free.c \
 
 INCLUDES =	./utils.h \
 			./struct.h \
 			./strs.h \
 			./parsing.h \
 			./display.h \
-			./here_doc. \
+			./here_doc.h \
+			./free.h \
 
 
 	
@@ -56,6 +58,7 @@ clean:
 
 fclean: clean
 	$(RM) $(RMFLAG) $(NAME)
+	$(RM) $(RMFLAG) .here_doc_fd
 
 re: fclean all
 
