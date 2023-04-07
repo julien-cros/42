@@ -6,34 +6,35 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:27:59 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/27 17:30:43 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/03 17:07:39 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <strings.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <fcntl.h>
+#include "utils.h"
+#include "strs.h"
 
-size_t	ft_strlen(const char *s);
-
-int ft_strchr(char *s, char *base)
+int ft_strchr(char *s, char **base)
 {
-	int i;
-	int j;
+	size_t i;
+	size_t j;
+	size_t k;
 
 	i = 0;
 	j = 0;
-	if (!s || !base)
+	k = 0;
+	if (!s || !*base)
 		return (1);
-	while (i < ft_strlen(base))
+	while (i < ft_strlen(base[k]))
 	{
-		j = 0;
-		if (base[i] == s[j])
+		if (i+1 == ft_strlen(base[k]) && base[k+1])
 		{
-			while (base[i] == s[j])
+			k++;
+			i = 0;
+		}
+		j = 0;
+		if (base[k][i] == s[j])
+		{
+			while (base[k][i] == s[j])
 			{
 				i++;
 				j++;
@@ -41,19 +42,7 @@ int ft_strchr(char *s, char *base)
 		if (j == ft_strlen(s))
 			return (0);
 		}
-		printf("%d\n", j);
 		i++;
 	}
 	return (1);
-}
-
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-	
-	i = 0;
-	while (i[s])
-		++i;
-	return (i);
 }

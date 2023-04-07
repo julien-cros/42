@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:14:33 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/27 16:24:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/07 17:01:57 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-typedef struct s_args
+typedef enum e_bool
 {
-	char *file;
-	char **argv;
-	int fds;
-}	t_args;
+	false,
+	true
+}	t_bool;
+
+typedef struct s_pipex
+{
+	int in_fd;
+	int out_fd;
+	t_bool here_doc;
+} t_pipex;
 
 #endif
