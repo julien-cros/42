@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 19:57:47 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/09 17:45:29 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,30 @@
 #include "parsing.h"
 
 
-int main(int argc, char **argv, char **envp)
+int main(int argc, char **argv)
 {
 	
 	t_pipex *pipex;
-	int fd[2];
+	// int fd[2];
 
 	pipex = malloc(sizeof(t_pipex));
+	if (!pipex)
+		return (1);
 	pipex->in_fd = -1;
 	pipex->out_fd = -1;
-	// pipex->valid_cmds = 2;
 	pipex-> valid_file = 0;
 	pipex->here_doc = false;
-	pipex->cmd1 = NULL;
-	pipex->cmd2 = NULL;
-	if (ft_valid_args(argc, argv, pipex) != 0)
-		return (ft_free_pipex(pipex), -1);
-	if (ft_parse_args() != 0)
-		return (ft_free_pipex(pipex), -1);
-		
+	pipex->cmds = 0;
+	pipex->cmds_count = 0;
+	if (ft_check_heredoc(argv, pipex) != 0)
+		return (ft_free_pipex(pipex), 1);
+	printf("atf check here_doc\n");
+	if (ft_parse_cmds(argc, argv, pipex) != 0)
+		return (ft_free_pipex(pipex), 1);
+	// if (ft_check_file(argv, pipex) != 0)
+	// 	return (ft_free_pipex(pipex), 1);
+	printf("pipex =  %s\n%s\n", pipex->cmds[0], pipex->cmds[1]);
+	printf("pipex->out_name = %s\n", pipex->out_name);
 }
 
 ///////////////////////////// apprendres les pipe

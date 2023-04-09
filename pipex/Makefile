@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/07 18:59:30 by juliencros       ###   ########.fr        #
+#    Updated: 2023/04/09 14:22:18 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = \
 	display.c \
 	here_doc.c \
 	free.c \
+	split.c \
 
 INCLUDES =	./utils.h \
 			./struct.h \
@@ -34,6 +35,7 @@ INCLUDES =	./utils.h \
 			./display.h \
 			./here_doc.h \
 			./free.h \
+			./split.h \
 
 
 	

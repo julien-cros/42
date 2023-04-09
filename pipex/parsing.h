@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:08:56 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 18:56:02 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/09 14:25:10 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 #include "struct.h"
 #include "here_doc.h"
 #include "free.h"
+#include "split.h"
 
-int ft_valid_args(int argc, char **argv, t_pipex *pipex);
+int ft_check_heredoc(char **argv, t_pipex *pipex);
+int ft_parse_cmds(int argc, char **argv, t_pipex *pipex);
 
 #endif

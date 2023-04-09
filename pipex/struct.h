@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:14:33 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 19:52:20 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/09 14:19:32 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ typedef struct s_pipex
 	// int valid_cmds; // 0pour les deux bonnes 1 pour la premiere et pas l'autre 2 pour la seconde mais pas l'autre 3 pour les deux mauvaises;
 	int valid_file; //1 pour valide 0 pour pas valide;
 	t_bool here_doc; // vrai si je fais un here_doc et faux si non;
-	char *cmd1;
-	char *cmd2;
+	char **cmds;
+	char *out_name;
+	int cmds_count;
 } t_pipex;
 
 #endif

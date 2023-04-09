@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:00:52 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 18:23:56 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/09 16:52:12 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,41 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size)
 	return (ft_strlen(src));
 }
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*str;
+
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		return (ft_calloc(1, sizeof(char)));
+	if (ft_strlen(s) < len + start)
+		str = (char *)ft_calloc(ft_strlen(s) - start + 1, sizeof(char));
+	else
+		str = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (0);
+	i = -1;
+	while (s[start + ++i] && i < len)
+		str[i] = s[start + i];
+	return (str);
+}
+
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*dup;
+
+	i = 0;
+	dup = (char *)ft_calloc((ft_strlen(s) + 1), sizeof(char));
+	if (!dup)
+		return (NULL);
+	while (s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
