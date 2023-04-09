@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/09 17:45:29 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/09 17:49:29 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 	pipex->here_doc = false;
 	pipex->cmds = 0;
 	pipex->cmds_count = 0;
+	pipex->out_name = 0;
 	if (ft_check_heredoc(argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
 	printf("atf check here_doc\n");
