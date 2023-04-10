@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:29:40 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 11:05:19 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/10 21:05:49 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include "struct.h"
 #include "strs.h"
+#include "error.h"
 
 int ft_check_file(char **argv, t_pipex *pipex);
 

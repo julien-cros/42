@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/10 11:59:46 by juliencros       ###   ########.fr        #
+#    Updated: 2023/04/10 21:13:56 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ clean:
 fclean: clean
 	$(RM) $(RMFLAG) $(NAME)
 	$(RM) $(RMFLAG) .here_doc_fd
+	$(RM) $(RMFLAG) .error_fd
 
 re: fclean all
 

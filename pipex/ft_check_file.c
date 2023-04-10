@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 11:14:16 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/10 21:11:20 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int ft_check_file(char **argv, t_pipex *pipex)
 {
+	int fd;
+	
 	if (pipex->here_doc == true)
 		return (0);
 	else if (access(argv[1], F_OK|R_OK) == 0)
@@ -24,6 +26,14 @@ int ft_check_file(char **argv, t_pipex *pipex)
 		pipex->file = ft_strdup(argv[1]);
 		if (!pipex->file)
 			return (1);
+		pipex->in_fd = open(argv[1], O_RDONLY);
+	}
+	else
+	{
+		fd = open(".error_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
+		close(fd);
+		pipex->in_fd = open(".error_fd", O_RDONLY);
+		ft_file_error(argv[1]);
 	}
 	return (0);
 }

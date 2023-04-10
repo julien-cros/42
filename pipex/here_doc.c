@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:37 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 19:56:38 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/10 21:09:05 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 		free(line);
 	close(fd);
 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
-	return (1);
+	return (0);
 }
 
 char *ft_get_line(char *line)
