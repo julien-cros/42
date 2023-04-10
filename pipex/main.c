@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 11:06:14 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/10 12:03:54 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <fcntl.h>
 #include "parsing.h"
 #include "ft_check_file.h"
+#include "error.h"
 
 int main(int argc, char **argv)
 {
@@ -41,6 +42,8 @@ int main(int argc, char **argv)
 		return (ft_free_pipex(pipex), 1);
 	if (ft_check_file(argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
+	ft_cmds_error(pipex->cmds[0]);
+	ft_file_error(pipex->file);
 }
 
 ///////////////////////////// apprendres les pipe

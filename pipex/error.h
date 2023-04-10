@@ -6,11 +6,17 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:15:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 11:15:30 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/10 12:05:28 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
-#define ERRO_H
+#define ERROR_H
+
+#include "struct.h"
+#include "display.h"
+
+void ft_cmds_error(char *cmd);
+void ft_file_error(char *file);
 
 #endif
