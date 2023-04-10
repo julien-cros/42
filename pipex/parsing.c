@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:12:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/09 17:34:35 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/10 11:06:37 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,18 @@ int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 
 	j = 2;
 	i = 0;
-	printf("in parse\n");
 	if (pipex->here_doc == true)
 		j++;
 	pipex->cmds = (char **)malloc((argc - j) * sizeof(char *));
 	while (j < argc - 1)
 	{
-		
-		printf("la\n");
 		pipex->cmds[i] = (char *)malloc(ft_strlen(argv[j]) * sizeof(char) + 1);
 		if (!pipex->cmds[i])
 			return (1);
-		printf("ke sais pas ce qu'il se passe\n");
 		pipex->cmds[i] = ft_strdup(argv[j]);
-		printf("pas la\n");
 		j++;
 		i++;
 		pipex->cmds_count += 1;
-		printf("in while parse_cmds\n");
 	}
 	pipex->out_name = (char *)malloc(ft_strlen(argv[j]) * sizeof(char));
 	if (!pipex->out_name)

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/09 17:49:29 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/10 11:06:14 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include "parsing.h"
-
+#include "ft_check_file.h"
 
 int main(int argc, char **argv)
 {
@@ -37,13 +37,10 @@ int main(int argc, char **argv)
 	pipex->out_name = 0;
 	if (ft_check_heredoc(argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
-	printf("atf check here_doc\n");
 	if (ft_parse_cmds(argc, argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
-	// if (ft_check_file(argv, pipex) != 0)
-	// 	return (ft_free_pipex(pipex), 1);
-	printf("pipex =  %s\n%s\n", pipex->cmds[0], pipex->cmds[1]);
-	printf("pipex->out_name = %s\n", pipex->out_name);
+	if (ft_check_file(argv, pipex) != 0)
+		return (ft_free_pipex(pipex), 1);
 }
 
 ///////////////////////////// apprendres les pipe
