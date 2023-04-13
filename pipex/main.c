@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/13 19:11:52 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 22:16:53 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "parsing.h"
 #include "ft_check_file.h"
 #include "error.h"
+#include "ft_pipex.h"
 
 int main(int argc, char **argv, char **envp)
 {
@@ -51,12 +52,14 @@ int main(int argc, char **argv, char **envp)
 		i++;
 	}
 	i = 0;
-	while (i < pipex->cmds_count)
-	{
-		if (!ft_pipex(pipex, envp, i))
-		i++;
-	}
-	return (0);
+	// while (i < pipex->cmds_count)
+	// {
+	// 	printf("je usis la?\n");
+	// 	if (!ft_pipex(pipex, envp, i))
+	// 		return (ft_free_pipex(pipex), 1);
+	// 	i++;
+	// }
+	return (ft_free_pipex(pipex), 0);
 }
 
 ///////////////////////////// apprendres les pipe

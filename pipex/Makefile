@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/10 21:13:56 by juliencros       ###   ########.fr        #
+#    Updated: 2023/04/13 20:12:41 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = \
 	split.c \
 	ft_check_file.c \
 	error.c \
+	ft_pipex.c \
 
 INCLUDES =	./utils.h \
 			./struct.h \
@@ -40,6 +41,7 @@ INCLUDES =	./utils.h \
 			./split.h \
 			./ft_check_file.h \
 			./error.h \
+			./ft_pipex.h \
 
 	
 

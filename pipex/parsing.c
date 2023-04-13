@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:12:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/13 19:02:42 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 22:16:45 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,14 @@ char *ft_path_cmds(char *cmd, char **envp)
 			return (ft_free_2(paths), NULL);
 		if (access(path, F_OK) == 0)
 		{
-			free(path);
 			ft_free_2(paths);
 			return (path);
 			
 		}
-		else
-			free(path);
+		free(path);
 		i++;
 	}
-	ft_cmds_error(cmd);
+	// ft_cmds_error(cmd);
 	return (NULL);
 }
 
