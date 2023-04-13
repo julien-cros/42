@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:12:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/12 20:42:26 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 19:02:42 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,40 +21,7 @@ int ft_check_heredoc(char **argv, t_pipex *pipex)
 			return (-1);
 	}
 	return (0);
-}	
-
-// int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
-// {
-// 	int j;
-// 	int i;
-
-// 	j = 2;
-// 	i = 0;
-// 	if (pipex->here_doc == true)
-// 		j++;
-// 	// if (ft_check_spaces(argv) > 0)
-// 		// i = ft_check_spaces(argv);
-// 	// else 
-// 	// 	i = 0;
-// 	pipex->cmds = (char **)malloc((argc - j)+ i * sizeof(char *));
-// 	while (j < argc - 1)
-// 	{
-// 		pipex->cmds[i] = (char *)malloc(ft_strlen(argv[j]) * sizeof(char) + 1);
-// 		if (!pipex->cmds[i])
-// 			return (1);
-// 		// if (ft_strchr(argv[j], ' '))
-// 		// 	ft_split(argv[j], ' ');
-// 		pipex->cmds[i] = ft_strdup(argv[j]);
-// 		j++;
-// 		i++;
-// 		pipex->cmds_count += 1;
-// 	}
-// 	pipex->out_name = (char *)malloc(ft_strlen(argv[j]) * sizeof(char));
-// 	if (!pipex->out_name)
-// 		return (1);
-// 	pipex->out_name = ft_strdup(argv[j]);
-// 	return (0);
-// }
+}
 
 int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 {
@@ -75,6 +42,7 @@ int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 		if (!cmds)
 			return (1);
 		pipex->cmds[i] = cmds;
+		pipex->cmds_count++;
 		i++;
 		j++;
 	}
@@ -85,32 +53,112 @@ int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 	return (0);
 }
 
+char *ft_path_cmds(char *cmd, char **envp)
+{
+	int i;
+	char **paths;
+	char *path;
 
+	i = 0;
+	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
+		i++;
+	paths = ft_split(envp[i], ':');
+	if (!paths)
+		return (NULL);
+	i = 0;
+	while (paths[i])
+	{
+		path = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(path, cmd);
+		if (!path)
+			return (ft_free_2(paths), NULL);
+		if (access(path, F_OK) == 0)
+		{
+			free(path);
+			ft_free_2(paths);
+			return (path);
+			
+		}
+		else
+			free(path);
+		i++;
+	}
+	ft_cmds_error(cmd);
+	return (NULL);
+}
 
-// int ft_check_spaces(char **argv)
+// int ft_cmds_path(t_pipex *pipex, char **envp)
 // {
 // 	int i;
 // 	int j;
-// 	int count;
+// 	char *path;
+// 	char *tmp;
+// 	char *tmp2;
 
 // 	i = 0;
 // 	j = 0;
-// 	count = 0;
-// 	while (argv[i])
+// 	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
+// 		i++;
+// 	path = ft_strdup(envp[i] + 5);
+// 	while (path[j] != '\0')
 // 	{
-// 		while (argv[i][j])
-// 		{
-// 			if (argv[i][j] == ' ')
-// 				count++;
-// 			j++;
-// 		}
+// 		if (path[j] == ':')
+// 			path[j] = '/';
+// 		j++;
+// 	}
+// 	j = 0;
+// 	while (pipex->cmds[j] != NULL)
+// 	{
+// 		tmp = ft_strjoin(path, "/");
+// 		tmp2 = ft_strjoin(tmp, pipex->cmds[j][0]);
+// 		pipex->cmds[j][0] = ft_strdup(tmp2);
+// 		j++;
+// 	}
+// 	return (0);	
+// }
+
+
+
+// char *ft_path_cmds(t_pipex *pipex, char **envp)
+// {
+// 	int i;
+// 	int j;
+// 	char *buffer;
+// 	char **paths;
+	
+// 	i = 0;
+// 	j = 0;
+// 	printf("je suis la\n");
+// 	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
+// 		i++;
+// 	paths = ft_split(envp[i] + 5, ':');
+// 	if (!paths)
+// 		return (1);
+// 	while (buffer[i] != '\0')
+// 	{
+// 		if (buffer[i] == ':')
+// 			buffer[i] = '/';
 // 		i++;
 // 	}
-// 	return (count);
+// 	printf("je suis aussi la\n");
+// 	while (ft_strncmp(&envp[i][j], "/bin", 4) != 0)
+// 			j++;
+// 	printf("avant strjoin\n");
+// 	buffer = ft_strjoin(buffer, "/bin");
+// 	if (!buffer)
+// 		return (1);
+// 	printf("apres strjoin\n");
+// 	i = 0;
+// 	j = 0;
+// 	printf("encore moi\n");
+// 	buffer = ft_strjoin(buffer, *pipex->cmds[i]);
+// 	if (!buffer)
+// 		return (1);
+// 	if (access(buffer, F_OK) > 0)
+// 		printf("vat is in it\n");
+// 	else
+// 		printf("it's not working\n");
+// 	return (0);
 // }
 
-
-// int ft_cmds_path(t_pipex *pipex)
-// {
-	
-// }
+// acess to find the path of the command

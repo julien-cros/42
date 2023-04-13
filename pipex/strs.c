@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:00:52 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/09 16:52:12 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 12:42:47 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,22 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char *ft_strjoin(char const *s, char const c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *dup;
-	size_t i;
-	if (!s || !c)
+	char	*dup;
+	size_t	i;
+
+	if (!s1 || !s2)
 		return (0);
-	dup = (char *)malloc((ft_strlen(s) + 2) * sizeof(char));
+	dup = (char *)ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (!dup)
 		return (0);
-	dup[ft_strlen(s) + 1] = 0;
-	i = ft_strlcpy(dup, s, ft_strlen(s) + 1);
-	dup[i++] = c;
-	dup[i++] = '\0';
+	dup[ft_strlen(s1) + ft_strlen(s2)] = 0;
+	i = 0;
+	while (*s1)
+		dup[i++] = *s1++;
+	while (*s2)
+		dup[i++] = *s2++;
 	return (dup);
 }
 

@@ -6,15 +6,13 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:37 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 21:09:05 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 14:27:21 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "here_doc.h"
 
 char *ft_get_line(char *line);
-char *ft_strjoin(char const *s, char const c);
-size_t ft_strlcpy(char *dst, const char *src, size_t size);
 
 int ft_here_doc(char **argv, t_pipex *pipex)
 {

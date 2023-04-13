@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:14:33 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/12 20:08:39 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 19:01:42 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_pipex
 	char *out_name;
 	char *file;
 	char ***cmds;
+	char **cmds_path;
 } t_pipex;
 
 #endif

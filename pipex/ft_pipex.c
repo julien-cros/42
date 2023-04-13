@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_pipex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 11:15:36 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/13 19:01:50 by juliencros       ###   ########.fr       */
+/*   Created: 2023/04/13 19:12:07 by juliencros        #+#    #+#             */
+/*   Updated: 2023/04/13 19:26:58 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "ft_pipex.h"
 
-void ft_cmds_error(char *cmd)
+int ft_pipex(t_pipex *pipex, char **envp, int i)
 {
-	write(1, "bash: ", 6);
-	ft_putstr_fd(cmd, 1);
-	write(1,": command not found\n",20);
-}
+	pid_t pid;
+	int fd[2];
 
-void ft_file_error(char *file)
-{
-	write(1,"bash: ",6);
-	ft_putstr_fd(file, 1);
-	write (1, ": No such file or directory\n", 28);
+	
 }

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/12 20:41:25 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 19:11:52 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 #include "ft_check_file.h"
 #include "error.h"
 
-int main(int argc, char **argv) // char **envp
+int main(int argc, char **argv, char **envp)
 {
-	
 	t_pipex *pipex;
+	int i;
 
+	i =0;
 	pipex = malloc(sizeof(t_pipex));
 	if (!pipex)
 		return (1);
@@ -41,9 +42,21 @@ int main(int argc, char **argv) // char **envp
 		return (ft_free_pipex(pipex), 1);
 	if (ft_check_file(argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
-	return (ft_free_pipex(pipex), 0);
-	// if (execve(, &pipex->cmds[0], envp) < 0 )
-	// 	ft_cmds_error(pipex->cmds[0]);
+	pipex->cmds_path = (char **)malloc(1 * sizeof(char *));
+	while (i < pipex->cmds_count)
+	{
+		pipex->cmds_path[i] = ft_path_cmds(*pipex->cmds[i], envp);
+		if (!pipex->cmds_path)
+			return (ft_free_pipex(pipex), 1);
+		i++;
+	}
+	i = 0;
+	while (i < pipex->cmds_count)
+	{
+		if (!ft_pipex(pipex, envp, i))
+		i++;
+	}
+	return (0);
 }
 
 ///////////////////////////// apprendres les pipe

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/12 20:40:26 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 17:38:15 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,13 @@ void ft_free_pipex(t_pipex *pipex)
 		}
 	}
 	free(pipex);
+}
+
+void ft_free_2(char **strs)
+{
+	int i;
+
+	i = -1;
+	while (strs[++i])
+		free(strs[i]);
 }
