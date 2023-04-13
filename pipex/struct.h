@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:14:33 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 20:52:17 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/12 20:08:39 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_pipex
 	int cmds_count;
 	char *out_name;
 	char *file;
-	char **cmds;
+	char ***cmds;
 } t_pipex;
 
 #endif

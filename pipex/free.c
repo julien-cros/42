@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 20:58:03 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/12 20:40:26 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void ft_free_pipex(t_pipex *pipex)
 {
 	int i;
+	int j;
 
 	i = 0;
 	if (pipex->in_fd)
@@ -29,7 +30,12 @@ void ft_free_pipex(t_pipex *pipex)
 	{
 		while (pipex->cmds[i])
 		{
-			free(pipex->cmds[i]);
+			j = 0;
+			while (pipex->cmds[i][j])
+			{
+				free(pipex->cmds[i][j]);
+				j++;
+			}
 			i++;
 		}
 	}

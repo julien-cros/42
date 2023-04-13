@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 21:10:54 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/12 20:41:25 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int main(int argc, char **argv) // char **envp
 {
 	
 	t_pipex *pipex;
-	// int fd[2];
 
 	pipex = malloc(sizeof(t_pipex));
 	if (!pipex)

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/10 21:11:20 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/13 10:51:25 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ int ft_check_file(char **argv, t_pipex *pipex)
 	}
 	return (0);
 }
+
