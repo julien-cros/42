@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/13 22:16:53 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/17 21:04:49 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include "parsing.h"
-#include "ft_check_file.h"
+#include "files.h"
 #include "error.h"
 #include "ft_pipex.h"
 
@@ -39,9 +39,10 @@ int main(int argc, char **argv, char **envp)
 	pipex->out_name = 0;
 	if (ft_check_heredoc(argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
-	if (ft_parse_cmds(argc, argv, pipex) != 0)
-		return (ft_free_pipex(pipex), 1);
 	if (ft_check_file(argv, pipex) != 0)
+		return (ft_free_pipex(pipex), 1);
+	ft_outfile(argc, argv, pipex);
+	if (ft_parse_cmds(argc, argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
 	pipex->cmds_path = (char **)malloc(1 * sizeof(char *));
 	while (i < pipex->cmds_count)
@@ -51,14 +52,14 @@ int main(int argc, char **argv, char **envp)
 			return (ft_free_pipex(pipex), 1);
 		i++;
 	}
-	i = 0;
-	// while (i < pipex->cmds_count)
-	// {
-	// 	printf("je usis la?\n");
-	// 	if (!ft_pipex(pipex, envp, i))
-	// 		return (ft_free_pipex(pipex), 1);
-	// 	i++;
-	// }
+	i = -1;
+	printf("pipex->cmds_count=%d\n", pipex->cmds_count);
+	while (++i < pipex->cmds_count)
+	{
+		printf("i=%d\n", i);
+		if (ft_pipex(pipex, envp, i) != 0)
+			return (ft_free_pipex(pipex), 1);
+	}
 	return (ft_free_pipex(pipex), 0);
 }
 
