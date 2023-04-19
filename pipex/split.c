@@ -6,15 +6,15 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:26 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/09 14:04:18 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:52:40 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "split.h"
 
 static char	**ft_init_split(char const *s, char c);
-static void	ft_fill_split(char const *s, char **split, char c);
-static void	ft_free(char **split, size_t j);
+static	void	ft_fill_split(char const *s, char **split, char c);
+static	void	ft_free(char **split, size_t j);
 
 char	**ft_split(char const *s, char c)
 {

@@ -6,14 +6,14 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:12:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/13 22:16:45 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:48:40 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
- 
-int ft_check_heredoc(char **argv, t_pipex *pipex)
-{		
+
+int	ft_check_heredoc(char **argv, t_pipex *pipex)
+{
 	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
 	{
 		pipex->here_doc = true;
@@ -23,11 +23,11 @@ int ft_check_heredoc(char **argv, t_pipex *pipex)
 	return (0);
 }
 
-int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
+int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 {
-	int i;
-	int j;
-	char **cmds;
+	int		i;
+	int		j;
+	char	**cmds;
 
 	i = 0;
 	j = 2;
@@ -35,7 +35,7 @@ int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 		j++;
 	pipex->cmds = malloc((argc - j) * sizeof(char **));
 	if (!pipex->cmds)
-		return (1);	
+		return (1);
 	while (j < argc - 1)
 	{
 		cmds = ft_split(argv[j], ' ');
@@ -46,18 +46,18 @@ int ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 		i++;
 		j++;
 	}
-	pipex->out_name = (char *)malloc(ft_strlen(argv[j])+ 1 * sizeof(char));
+	pipex->out_name = (char *)malloc(ft_strlen(argv[j]) + 1 * sizeof(char));
 	if (!pipex->out_name)
 		return (1);
 	pipex->out_name = ft_strdup(argv[j]);
 	return (0);
 }
 
-char *ft_path_cmds(char *cmd, char **envp)
+char	*ft_path_cmds(char *cmd, char **envp)
 {
-	int i;
-	char **paths;
-	char *path;
+	int		i;
+	char	**paths;
+	char	*path;
 
 	i = 0;
 	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
@@ -76,12 +76,11 @@ char *ft_path_cmds(char *cmd, char **envp)
 		{
 			ft_free_2(paths);
 			return (path);
-			
 		}
 		free(path);
 		i++;
 	}
-	// ft_cmds_error(cmd);
+	ft_cmds_error(cmd);
 	return (NULL);
 }
 
@@ -112,10 +111,8 @@ char *ft_path_cmds(char *cmd, char **envp)
 // 		pipex->cmds[j][0] = ft_strdup(tmp2);
 // 		j++;
 // 	}
-// 	return (0);	
+// 	return (0);
 // }
-
-
 
 // char *ft_path_cmds(t_pipex *pipex, char **envp)
 // {
@@ -123,7 +120,7 @@ char *ft_path_cmds(char *cmd, char **envp)
 // 	int j;
 // 	char *buffer;
 // 	char **paths;
-	
+
 // 	i = 0;
 // 	j = 0;
 // 	printf("je suis la\n");

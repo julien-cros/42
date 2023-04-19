@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:12:42 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 21:19:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:52:27 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #include <sys/wait.h>
 #include "struct.h"
 
-int ft_pipex(t_pipex *pipex, char **envp, int i);
+int	ft_pipex(t_pipex *pipex, char **envp, int i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:00:52 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/13 12:42:47 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:52:54 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 size_t ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t i;
+	size_t	i;
 
 	i = -1;
 	if (size == 0)

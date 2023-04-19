@@ -6,15 +6,15 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 21:16:26 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:50:17 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "files.h" 
 
-int ft_check_file(char **argv, t_pipex *pipex)
+int	ft_check_file(char **argv, t_pipex *pipex)
 {
-	int fd;
+	int	fd;
 	
 	if (pipex->here_doc == true)
 	{
@@ -41,11 +41,10 @@ int ft_check_file(char **argv, t_pipex *pipex)
 	return (0);
 }
 
-	void ft_outfile(int argc, char **argv, t_pipex *pipex)
+void	ft_outfile(int argc, char **argv, t_pipex *pipex)
 {
 	if (pipex->here_doc == true)
 		pipex->out_fd = open(argv[argc - 1], O_RDWR| O_CREAT | O_APPEND, 0644);
 	else
 		pipex->out_fd =	open(argv[argc - 1], O_RDWR | O_CREAT| O_TRUNC, 0644);
 }
-

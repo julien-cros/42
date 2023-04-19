@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 21:19:34 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:51:17 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 #include "error.h"
 #include "pipe_execute.h"
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	t_pipex *pipex;
-	int i;
+	t_pipex	*pipex;
+	int		i;
 
-	i =0;
+	i = 0;
 	pipex = malloc(sizeof(t_pipex));
 	if (!pipex)
 		return (1);
 	pipex->in_fd = -1;
 	pipex->out_fd = -1;
-	pipex-> valid_file = 0;
+	pipex->valid_file = 0;
 	pipex->here_doc = false;
 	pipex->cmds = 0;
 	pipex->cmds_count = 0;
@@ -102,7 +102,6 @@ int main(int argc, char **argv, char **envp)
 // 	waitpid(pid1, NULL, 0);
 // 	waitpid(pid2, NULL, 0);
 // 	return (0);
-
 
 //////////////////// ce que je doit faire
 

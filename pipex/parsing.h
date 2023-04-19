@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:08:56 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/13 19:01:58 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:51:45 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 #include "split.h"
 #include "error.h"
 
-int ft_check_heredoc(char **argv, t_pipex *pipex);
-int ft_parse_cmds(int argc, char **argv, t_pipex *pipex);
-char *ft_path_cmds(char *cmd, char **envp);
+int	ft_check_heredoc(char **argv, t_pipex *pipex);
+int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex);
+char	*ft_path_cmds(char *cmd, char **envp);
 
 #endif
