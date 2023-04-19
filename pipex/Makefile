@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/17 21:07:15 by juliencros       ###   ########.fr        #
+#    Updated: 2023/04/19 21:20:19 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS = \
 	split.c \
 	files.c \
 	error.c \
-	ft_pipex.c \
+	pipe_execute.c \
 
 INCLUDES =	./utils.h \
 			./struct.h \
@@ -41,7 +41,7 @@ INCLUDES =	./utils.h \
 			./split.h \
 			./files.h \
 			./error.h \
-			./ft_pipex.h \
+			./pipe_execute.h \
 
 	
 
@@ -67,6 +67,7 @@ fclean: clean
 	$(RM) $(RMFLAG) $(NAME)
 	$(RM) $(RMFLAG) .here_doc_fd
 	$(RM) $(RMFLAG) .error_fd
+	$(RM) $(RMFLAG) .first_fd
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/17 21:36:39 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:19:34 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "parsing.h"
 #include "files.h"
 #include "error.h"
-#include "ft_pipex.h"
+#include "pipe_execute.h"
 
 int main(int argc, char **argv, char **envp)
 {
@@ -55,7 +55,6 @@ int main(int argc, char **argv, char **envp)
 	i = -1;
 	while (++i < pipex->cmds_count)
 	{
-		printf("mian\n");
 		if (ft_pipex(pipex, envp, i) != 0)
 			return (ft_free_pipex(pipex), 1);
 	}

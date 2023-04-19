@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/17 21:06:11 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 21:16:26 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int ft_check_file(char **argv, t_pipex *pipex)
 	if (pipex->here_doc == true)
 		pipex->out_fd = open(argv[argc - 1], O_RDWR| O_CREAT | O_APPEND, 0644);
 	else
-		pipex->out_fd =	open(argv[argc - 1], O_RDWR | O_CREAT| O_APPEND, 0644);
+		pipex->out_fd =	open(argv[argc - 1], O_RDWR | O_CREAT| O_TRUNC, 0644);
 }
 
