@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 21:51:17 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/19 22:56:09 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,26 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 
 	i = 0;
-	pipex = malloc(sizeof(t_pipex));
-	if (!pipex)
+	if (argc < 5 || !envp)
 		return (1);
-	pipex->in_fd = -1;
-	pipex->out_fd = -1;
-	pipex->valid_file = 0;
-	pipex->here_doc = false;
-	pipex->cmds = 0;
-	pipex->cmds_count = 0;
-	pipex->out_name = 0;
+	pipex = malloc(sizeof(t_pipex));
+	if (!pipex )
+		return (1);
+	ft_init(pipex);
+	printf("je suis la\n");
 	if (ft_check_heredoc(argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
+	printf("je encore suis la\n");
 	if (ft_check_file(argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
+	printf("je re encore suis la\n");
 	ft_outfile(argc, argv, pipex);
 	if (ft_parse_cmds(argc, argv, pipex) != 0)
 		return (ft_free_pipex(pipex), 1);
+	printf("je comme toujours ici et la\n");
 	pipex->cmds_path = (char **)malloc(1 * sizeof(char *));
+	if (!pipex->cmds_path)
+		return(ft_free_pipex(pipex), 1);
 	while (i < pipex->cmds_count)
 	{
 		pipex->cmds_path[i] = ft_path_cmds(*pipex->cmds[i], envp);
@@ -54,10 +56,9 @@ int	main(int argc, char **argv, char **envp)
 	}
 	i = -1;
 	while (++i < pipex->cmds_count)
-	{
 		if (ft_pipex(pipex, envp, i) != 0)
 			return (ft_free_pipex(pipex), 1);
-	}
+	printf("c'est la fin\n");
 	return (ft_free_pipex(pipex), 0);
 }
 
