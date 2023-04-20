@@ -42,14 +42,14 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 		if (!cmds)
 			return (1);
 		pipex->cmds[i] = cmds;
+		git 
 		pipex->cmds_count++;
 		i++;
 		j++;
 	}
-	pipex->out_name = (char *)malloc(ft_strlen(argv[j]) + 1 * sizeof(char));
+	pipex->out_name = ft_strdup(argv[j]);
 	if (!pipex->out_name)
 		return (1);
-	pipex->out_name = ft_strdup(argv[j]);
 	return (0);
 }
 
@@ -58,6 +58,7 @@ char	*ft_path_cmds(char *cmd, char **envp)
 	int		i;
 	char	**paths;
 	char	*path;
+	char	*temp;
 
 	i = 0;
 	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
@@ -68,8 +69,11 @@ char	*ft_path_cmds(char *cmd, char **envp)
 	i = 0;
 	while (paths[i])
 	{
-		path = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(path, cmd);
+		temp = ft_strjoin(paths[i], "/");
+		if (!temp)
+			return(ft_free_2d(paths), NULL);
+		path = ft_strjoin(temp, cmd);
+		free(temp);
 		if (!path)
 			return (ft_free_2d(paths), NULL);
 		if (access(path, F_OK) == 0)
@@ -80,6 +84,7 @@ char	*ft_path_cmds(char *cmd, char **envp)
 		free(path);
 		i++;
 	}
+	ft_free_2d(paths);
 	ft_cmds_error(cmd);
 	return (NULL);
 }

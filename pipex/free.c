@@ -28,10 +28,17 @@ void	ft_free_pipex(t_pipex *pipex)
 	if (pipex->file)
 		free(pipex->file);
 	if (pipex->cmds)
-		ft_free_3d(pipex->cmds);
+	{
+		while (++i < pipex->cmds_count)
+			ft_free_2d(pipex->cmds[i]);
+	}
+	i = -1;
 	if (pipex->cmds_path)
+	{
 		while (++i <  pipex->cmds_count)
 			free(pipex->cmds_path[i]);
+		free(pipex->cmds_path);
+	}
 	free(pipex);
 }
 
@@ -42,6 +49,7 @@ void	ft_free_2d(char **strs)
 	i = -1;
 	while (strs[++i])
 		free(strs[i]);
+	free(strs);
 }
 
 void	ft_free_3d(char ***strs)
@@ -60,4 +68,5 @@ void	ft_free_3d(char ***strs)
 		}
 		i++;
 	}
+	free(strs);
 }

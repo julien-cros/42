@@ -22,9 +22,6 @@ int	ft_check_file(char **argv, t_pipex *pipex)
 	}
 	else if (access(argv[1], F_OK|R_OK) == 0)
 	{
-		pipex->file = (char *)malloc(ft_strlen(argv[1]) * sizeof(char) + 1);
-		if (!pipex->file)
-			return (1);
 		pipex->file = ft_strdup(argv[1]);
 		if (!pipex->file)
 			return (1);

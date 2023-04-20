@@ -20,6 +20,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include "struct.h"
+#include <stdint.h>
 
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
