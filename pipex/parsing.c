@@ -33,16 +33,15 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 	j = 2;
 	if (pipex->here_doc == true)
 		j++;
-	pipex->cmds = malloc((argc - j) * sizeof(char **));
+	pipex->cmds = malloc(sizeof(char **) * (argc - j));
 	if (!pipex->cmds)
 		return (1);
 	while (j < argc - 1)
 	{
 		cmds = ft_split(argv[j], ' ');
 		if (!cmds)
-			return (1);
+			return (ft_free_2d_with_i(pipex->cmds, j), 1);
 		pipex->cmds[i] = cmds;
-		git 
 		pipex->cmds_count++;
 		i++;
 		j++;
@@ -71,20 +70,20 @@ char	*ft_path_cmds(char *cmd, char **envp)
 	{
 		temp = ft_strjoin(paths[i], "/");
 		if (!temp)
-			return(ft_free_2d(paths), NULL);
+			return(ft_free_with_i(paths, -1), NULL);
 		path = ft_strjoin(temp, cmd);
 		free(temp);
 		if (!path)
-			return (ft_free_2d(paths), NULL);
+			return (ft_free_with_i(paths, -1), NULL);
 		if (access(path, F_OK) == 0)
 		{
-			ft_free_2d(paths);
+			ft_free_with_i(paths, -i);
 			return (path);
 		}
 		free(path);
 		i++;
 	}
-	ft_free_2d(paths);
+	ft_free_with_i(paths, -1);
 	ft_cmds_error(cmd);
 	return (NULL);
 }

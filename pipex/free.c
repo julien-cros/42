@@ -16,9 +16,6 @@ void ft_free_path(char **strs);
 
 void	ft_free_pipex(t_pipex *pipex)
 {
-	int	i;
-
-	i = -1;
 	if (pipex->in_fd)
 		close (pipex->in_fd);
 	if (pipex->out_fd)
@@ -28,17 +25,9 @@ void	ft_free_pipex(t_pipex *pipex)
 	if (pipex->file)
 		free(pipex->file);
 	if (pipex->cmds)
-	{
-		while (++i < pipex->cmds_count)
-			ft_free_2d(pipex->cmds[i]);
-	}
-	i = -1;
+			ft_free_2d_with_i(pipex->cmds, pipex->cmds_count);
 	if (pipex->cmds_path)
-	{
-		while (++i <  pipex->cmds_count)
-			free(pipex->cmds_path[i]);
-		free(pipex->cmds_path);
-	}
+		ft_free_with_i(pipex->cmds_path, pipex->cmds_count);
 	free(pipex);
 }
 
@@ -68,5 +57,34 @@ void	ft_free_3d(char ***strs)
 		}
 		i++;
 	}
+	free(strs);
+}
+
+
+void ft_free_with_i(char **strs, int i)
+{
+	int j;
+
+	j = -1;
+	if (i != -1)
+		while (++j < i)
+			free(strs[j]);
+	else
+		while (strs[++j])
+			free(strs[j]);
+	free(strs);
+}
+
+void ft_free_2d_with_i(char ***strs, int i)
+{
+	int j;
+
+	j = 0;
+	if (i != -1)
+		while (++j < i)
+			ft_free_with_i(strs[j], -1);
+	else
+		while (strs[++j])
+			ft_free_with_i(strs[j], -1);
 	free(strs);
 }
