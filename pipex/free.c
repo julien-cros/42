@@ -6,11 +6,13 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 23:04:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/20 16:51:14 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "free.h"
+
+void ft_free_path(char **strs);
 
 void	ft_free_pipex(t_pipex *pipex)
 {
@@ -28,7 +30,7 @@ void	ft_free_pipex(t_pipex *pipex)
 	if (pipex->cmds)
 		ft_free_3d(pipex->cmds);
 	if (pipex->cmds_path)
-		while (++i < pipex->cmds_count)
+		while (++i <  pipex->cmds_count)
 			free(pipex->cmds_path[i]);
 	free(pipex);
 }
