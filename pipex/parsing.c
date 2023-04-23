@@ -40,7 +40,7 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 	{
 		cmds = ft_split(argv[j], ' ');
 		if (!cmds)
-			return (ft_free_2d_with_i(pipex->cmds, j), 1);
+			return (ft_free_2d_with_i(pipex->cmds, i), 1);
 		pipex->cmds[i] = cmds;
 		pipex->cmds_count++;
 		i++;
