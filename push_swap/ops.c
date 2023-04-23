@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ops.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 23:23:21 by juliencros        #+#    #+#             */
-/*   Updated: 2023/03/16 14:51:53 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/23 15:54:22 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ops.h"
 #include "display.h"
 
-void ft_rotate(t_list **list, char *op)
+void	ft_rotate(t_list **list, char *op)
 {
-	t_list *last;
-	t_list *tmp;
+	t_list	*last;
+	t_list	*tmp;
 
 	if (!*list)
-		return;
+		return ;
 	last = ft_lstlast(*list);
 	tmp = ft_lstnew((*list)->v);
 	if (!tmp)
-		return;
+		return ;
 	last->n = tmp;
 	tmp = (*list)->n;
 	free(*list);
@@ -31,23 +31,23 @@ void ft_rotate(t_list **list, char *op)
 	ft_putstr_fd(op, 1);
 }
 
-void ft_push(t_list **src, t_list **dst, char *op)
+void	ft_push(t_list **src, t_list **dst, char *op)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (!*src)
-		return;
+		return ;
 	if (!*dst)
 	{
 		*dst = ft_lstnew((*src)->v);
 		if (!*dst)
-			return;
+			return ;
 	}
 	else
 	{
 		tmp = ft_lstnew((*src)->v);
 		if (!tmp)
-			return;
+			return ;
 		ft_lstadd_front(dst, tmp);
 	}
 	tmp = (*src)->n;
@@ -56,30 +56,30 @@ void ft_push(t_list **src, t_list **dst, char *op)
 	ft_putstr_fd(op, 1);
 }
 
-void ft_swap(t_list **list, char *op)
+void	ft_swap(t_list **list, char *op)
 {
-	int tmp;
+	int	tmp;
 
 	if (!*list)
-		return;
+		return ;
 	tmp = (*list)->v;
 	(*list)->v = (*list)->n->v;
 	(*list)->n->v = tmp;
 	ft_putstr_fd(op, 1);
 }
 
-void ft_reverse_rotate(t_list **list, char *op)
+void	ft_reverse_rotate(t_list **list, char *op)
 {
-	t_list *last;
-	t_list *second_last;
+	t_list	*last;
+	t_list	*second_last;
 
 	if (!*list)
-		return;
+		return ;
 	second_last = *list;
 	last = ft_lstlast(*list);
 	ft_lstadd_front(list, ft_lstnew(last->v));
 	if (!list)
-		return;
+		return ;
 	while (second_last->n->n)
 		second_last = second_last->n;
 	free(second_last->n);
