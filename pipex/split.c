@@ -24,10 +24,10 @@ char	**ft_split(char const *s, char c)
 		return (0);
 	split = ft_init_split(s, c);
 	if (!split)
-		return (0); // NULL
+		return (0);
 	ft_fill_split(s, split, c);
 	if (!split)
-		return (0); // NULL
+		return (0);
 	return (split);
 }
 

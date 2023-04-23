@@ -19,5 +19,7 @@
 void	ft_free_pipex(t_pipex *pipex);
 void	ft_free_2d(char **strs);
 void	ft_free_3d(char ***strs);
+void    ft_free_2d_with_i(char ***strs, int i);
+void    ft_free_with_i(char **strs, int i);
 
 #endif
