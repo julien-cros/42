@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:12:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/23 14:36:34 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/24 13:17:32 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 	{
 		cmds = ft_split(argv[j], ' ');
 		if (!cmds)
-			return (ft_free_2d_with_i(pipex->cmds, i), 1);
+			return (ft_free_2d_with_i(pipex->cmds, -1), 1);
 		pipex->cmds[i] = cmds;
 		pipex->cmds_count++;
 		i++;
@@ -77,7 +77,7 @@ char	*ft_path_cmds(char *cmd, char **envp)
 			return (ft_free_with_i(paths, -1), NULL);
 		if (access(path, F_OK) == 0)
 		{
-			ft_free_with_i(paths, -i);
+			ft_free_with_i(paths, -1);
 			return (path);
 		}
 		free(path);

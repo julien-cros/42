@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/20 16:51:14 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/24 11:58:34 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void ft_free_2d_with_i(char ***strs, int i)
 {
 	int j;
 
-	j = 0;
+	j = -1;
 	if (i != -1)
 		while (++j < i)
 			ft_free_with_i(strs[j], -1);
