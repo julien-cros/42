@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:49:01 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/20 16:22:15 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/24 19:24:25 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 #include "strs.h"
 
 void	ft_free_pipex(t_pipex *pipex);
-void	ft_free_2d(char **strs);
-void	ft_free_3d(char ***strs);
-void    ft_free_2d_with_i(char ***strs, int i);
-void    ft_free_with_i(char **strs, int i);
+void	ft_free_2d_with_i(char ***strs, int i);
+void	ft_free_with_i(char **strs, int i);
 
 #endif

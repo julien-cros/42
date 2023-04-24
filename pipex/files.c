@@ -6,20 +6,16 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 21:50:17 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/24 19:59:42 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "files.h" 
 
-int	ft_check_file(char **argv, t_pipex *pipex)
-{
-	int	fd;
-	
+int	ft_check_file(int argc, char **argv, t_pipex *pipex)
+{	
 	if (pipex->here_doc == true)
-	{
-		return (0);
-	}
+		return (ft_outfile(argc, argv, pipex), 0);
 	else if (access(argv[1], F_OK|R_OK) == 0)
 	{
 		pipex->file = ft_strdup(argv[1]);
@@ -29,12 +25,11 @@ int	ft_check_file(char **argv, t_pipex *pipex)
 	}
 	else
 	{
-		fd = open(".error_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
-		close(fd);
+		pipex->in_fd = open(".error_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
 		pipex->file = ft_strdup(".error_fd");
-		pipex->in_fd = open(".error_fd", O_RDONLY);
 		ft_file_error(argv[1]);
 	}
+	ft_outfile(argc, argv, pipex);
 	return (0);
 }
 

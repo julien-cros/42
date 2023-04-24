@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:54:40 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/07 18:57:08 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/24 19:13:35 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 #include "strs.h"
 #include "free.h"
 
-int ft_here_doc(char **argv, t_pipex *pipex);
+int	ft_here_doc(char **argv, t_pipex *pipex);
 
 #endif

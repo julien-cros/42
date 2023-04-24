@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 11:58:34 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/24 19:24:14 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "free.h"
-
-void ft_free_path(char **strs);
 
 void	ft_free_pipex(t_pipex *pipex)
 {
@@ -31,39 +29,9 @@ void	ft_free_pipex(t_pipex *pipex)
 	free(pipex);
 }
 
-void	ft_free_2d(char **strs)
+void	ft_free_with_i(char **strs, int i)
 {
-	int	i;
-
-	i = -1;
-	while (strs[++i])
-		free(strs[i]);
-	free(strs);
-}
-
-void	ft_free_3d(char ***strs)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (strs[i])
-	{
-		j = 0;
-		while (strs[i][j])
-		{
-			free(strs[i][j]);
-			j++;
-		}
-		i++;
-	}
-	free(strs);
-}
-
-
-void ft_free_with_i(char **strs, int i)
-{
-	int j;
+	int	j;
 
 	j = -1;
 	if (i != -1)
@@ -75,9 +43,9 @@ void ft_free_with_i(char **strs, int i)
 	free(strs);
 }
 
-void ft_free_2d_with_i(char ***strs, int i)
+void	ft_free_2d_with_i(char ***strs, int i)
 {
-	int j;
+	int	j;
 
 	j = -1;
 	if (i != -1)
