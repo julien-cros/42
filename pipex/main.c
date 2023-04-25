@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 11:19:36 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/25 13:46:00 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,41 @@
 #include "error.h"
 #include "pipe_execute.h"
 
+t_pipex	*ft_init(t_pipex *pipex)
+{
+	pipex = malloc(sizeof(t_pipex));
+	if (!pipex)
+		return (NULL);
+	pipex->in_fd = -1;
+	pipex->out_fd = -1;
+	pipex->valid_file = 0;
+	pipex->here_doc = false;
+	pipex->cmds = NULL;
+	pipex->cmds_count = 0;
+	pipex->cmds_path = NULL;
+	pipex->out_name = NULL;
+	return (pipex);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	*pipex;
 	int		i;
 
 	i = -1;
+	pipex = NULL;
 	if (argc < 5 || !envp)
 		return (1);
-	pipex = ft_init();
+	pipex = ft_init(pipex);
 	if (!pipex)
 		return (1);
-	if ((ft_check_heredoc(argv, pipex) != 0) ||
-		(ft_check_file(argc, argv, pipex) != 0) ||
-		(ft_parse_cmds(argc, argv, pipex) != 0))
+	if ((ft_check_heredoc(argv, pipex) != 0)
+		|| (ft_check_file(argc, argv, pipex) != 0)
+		|| (ft_parse_cmds(argc, argv, pipex) != 0))
 		return (ft_free_pipex(pipex), 1);
 	pipex->cmds_path = malloc(pipex->cmds_count * sizeof(char *));
 	if (!pipex->cmds_path)
-		return(ft_free_pipex(pipex), 1);
+		return (ft_free_pipex(pipex), 1);
 	while (++i < pipex->cmds_count)
 	{
 		pipex->cmds_path[i] = ft_path_cmds(*pipex->cmds[i], envp);

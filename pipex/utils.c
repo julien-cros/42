@@ -6,14 +6,14 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:27:59 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 10:38:48 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/25 13:49:08 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "struct.h"
 #include "utils.h"
 #include "strs.h"
+#include "mem.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
@@ -28,41 +28,24 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	return ((void)ft_memset(s, 0, n));
-}
-
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	char	*buffer;
 
 	i = 0;
-	buffer = s;
-	while (i < n)
-	{
-		buffer[i] = (unsigned char)c;
+	if (n <= 0)
+		return (0);
+	while (s1[i] && s1[i] == s2[i] && i < n - 1)
 		i++;
-	}
-	return (s);
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }
 
-
-t_pipex	*ft_init()
+size_t	ft_strlen(const char *s)
 {
-	t_pipex *pipex;
-	
-	pipex = malloc(sizeof(t_pipex));
-	if (!pipex)
-		return (NULL);
-	pipex->in_fd = -1;
-	pipex->out_fd = -1;
-	pipex->valid_file = 0;
-	pipex->here_doc = false;
-	pipex->cmds = NULL;
-	pipex->cmds_count = 0;
-	pipex->cmds_path = NULL;
-	pipex->out_name = NULL;
-	return (pipex);
+	size_t	i;
+
+	i = 0;
+	while (i[s])
+		++i;
+	return (i);
 }

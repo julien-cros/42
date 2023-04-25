@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_execute.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:12:07 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 21:52:24 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 13:22:58 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ int	ft_fork_and_pipe(int fd[2], pid_t *pid)
 int	ft_pipex(t_pipex *pipex, char **envp, int i)
 {
 	pid_t	pid;
-	int	fd[2];
+	int		fd[2];
 
 	if (ft_fork_and_pipe(fd, &pid))
 		return (1);
 	if (pid == 0)
 	{
-		if (i == 0) // if () premier argument in fd si il existe sinon error_fd
+		if (i == 0)
 			dup2(pipex->in_fd, STDIN_FILENO);
-		if (i == pipex->cmds_count - 1) // if () dernier argument creer out fd avec le nom donné
+		if (i == pipex->cmds_count - 1)
 			dup2(pipex->out_fd, STDOUT_FILENO);
 		else
 		{
 			dup2(fd[1], STDOUT_FILENO);
 		}
 		close(fd[0]);
-		execve(pipex->cmds_path[i], pipex->cmds[i], envp); // je execve si je peux
+		execve(pipex->cmds_path[i], pipex->cmds[i], envp);
 		exit(0);
 	}
 	else

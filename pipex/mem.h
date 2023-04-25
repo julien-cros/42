@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   mem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 11:15:36 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 13:29:43 by jcros            ###   ########.fr       */
+/*   Created: 2023/04/25 13:41:58 by jcros             #+#    #+#             */
+/*   Updated: 2023/04/25 13:50:18 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#ifndef MEM_H
+# define MEM_H
 
-void	ft_cmds_error(char *cmd)
-{
-	write(1, "bash: ", 6);
-	ft_putstr_fd(cmd, 1);
-	write(1, ": command not found\n", 20);
-}
+# include <unistd.h> 
 
-void	ft_file_error(char *file)
-{
-	write(1, "bash: ", 6);
-	ft_putstr_fd(file, 1);
-	write (1, ": No such file or directory\n", 28);
-}
+void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
+
+#endif

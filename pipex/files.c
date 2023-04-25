@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 19:59:42 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 13:35:34 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_check_file(int argc, char **argv, t_pipex *pipex)
 {	
 	if (pipex->here_doc == true)
 		return (ft_outfile(argc, argv, pipex), 0);
-	else if (access(argv[1], F_OK|R_OK) == 0)
+	else if (access(argv[1], F_OK | R_OK) == 0)
 	{
 		pipex->file = ft_strdup(argv[1]);
 		if (!pipex->file)
@@ -36,7 +36,7 @@ int	ft_check_file(int argc, char **argv, t_pipex *pipex)
 void	ft_outfile(int argc, char **argv, t_pipex *pipex)
 {
 	if (pipex->here_doc == true)
-		pipex->out_fd = open(argv[argc - 1], O_RDWR| O_CREAT | O_APPEND, 0644);
+		pipex->out_fd = open(argv[argc - 1], O_RDWR | O_CREAT | O_APPEND, 0644);
 	else
-		pipex->out_fd =	open(argv[argc - 1], O_RDWR | O_CREAT| O_TRUNC, 0644);
+		pipex->out_fd = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
 }

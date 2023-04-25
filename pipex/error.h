@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:15:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 19:13:51 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 13:16:59 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
-#define ERROR_H
+# define ERROR_H
 
-#include "struct.h"
-#include "display.h"
+# include "struct.h"
+# include "display.h"
 
 void	ft_cmds_error(char *cmd);
 void	ft_file_error(char *file);

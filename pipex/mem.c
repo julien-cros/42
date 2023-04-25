@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 11:15:36 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 13:29:43 by jcros            ###   ########.fr       */
+/*   Created: 2023/04/25 13:41:34 by jcros             #+#    #+#             */
+/*   Updated: 2023/04/25 13:49:15 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "mem.h"
 
-void	ft_cmds_error(char *cmd)
+void	ft_bzero(void *s, size_t n)
 {
-	write(1, "bash: ", 6);
-	ft_putstr_fd(cmd, 1);
-	write(1, ": command not found\n", 20);
+	return ((void)ft_memset(s, 0, n));
 }
-
-void	ft_file_error(char *file)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	write(1, "bash: ", 6);
-	ft_putstr_fd(file, 1);
-	write (1, ": No such file or directory\n", 28);
+	size_t	i;
+	char	*buffer;
+
+	i = 0;
+	buffer = s;
+	while (i < n)
+	{
+		buffer[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }

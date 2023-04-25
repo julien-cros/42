@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:37 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 12:20:28 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 13:27:10 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@ int	ft_here_doc(char **argv, t_pipex *pipex)
 	line = malloc(10000 * sizeof(char));
 	if (!line)
 		return (-1);
-	while (ft_strlen(argv[2])+1 != ft_strlen(line) 
-		&& pipex->in_fd > 0
+	while ((ft_strlen(argv[2]) + 1 != ft_strlen(line))
+		// && (pipex->in_fd > 0)
 		&& (ft_strncmp(argv[2], line, ft_strlen(argv[2]) != 0)))
 	{
+		if (line)
 			ft_print_heredoc(line, pipex->in_fd);
 		line = malloc(10000 * sizeof(char));
-		line = ft_get_line(line);
 		if (!line)
 			return (-1);
+		line = ft_get_line(line);
 	}
 	close(pipex->in_fd);
 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
@@ -40,7 +41,7 @@ int	ft_here_doc(char **argv, t_pipex *pipex)
 
 static char	*ft_get_line(char *line)
 {
-	int	i;
+	int		i;
 	char	buffer;
 
 	i = 0;
@@ -57,7 +58,8 @@ static char	*ft_get_line(char *line)
 
 static void	ft_print_heredoc(char *line, int fd)
 {
-	ft_putstr_fd(line, fd);
+	if (line)
+		ft_putstr_fd(line, fd);
 	write(1, "heredoc>", 9);
 	free(line);
 }
@@ -66,7 +68,7 @@ static void	ft_print_heredoc(char *line, int fd)
 // {
 // 	char	*buffer;
 // 	char	*temp;
-	
+
 // 	buffer = malloc(10000 * sizeof(char));
 // 	if (!buffer)
 // 		return(-1);
@@ -87,4 +89,4 @@ static void	ft_print_heredoc(char *line, int fd)
 // 	close(pipex->in_fd);
 // 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
 // 	return (free(buffer), 0);
-// }
+//	}

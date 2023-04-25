@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:12:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 20:39:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 13:25:32 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_path_cmds(char *cmd, char **envp)
 	{
 		temp = ft_strjoin(paths[i], "/");
 		if (!temp)
-			return(ft_free_with_i(paths, -1), NULL);
+			return (ft_free_with_i(paths, -1), NULL);
 		path = ft_strjoin(temp, cmd);
 		free(temp);
 		if (!path)
@@ -83,7 +83,7 @@ static char	**ft_create_paths(char **envp)
 {
 	char	**paths;
 	int		i;
-	
+
 	i = 0;
 	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;

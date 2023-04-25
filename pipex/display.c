@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:11:45 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 21:50:27 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 13:31:46 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void ft_puchar_fd(char c, int fd)
+void	ft_puchar_fd(char c, int fd)
 {
 	if (!c || !fd)
 		return ;

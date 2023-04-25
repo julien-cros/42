@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
+#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/19 21:20:19 by juliencros       ###   ########.fr        #
+#    Updated: 2023/04/25 13:48:43 by jcros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS = \
 	files.c \
 	error.c \
 	pipe_execute.c \
+	mem.c \
 
 INCLUDES =	./utils.h \
 			./struct.h \
@@ -42,7 +43,7 @@ INCLUDES =	./utils.h \
 			./files.h \
 			./error.h \
 			./pipe_execute.h \
-
+			./mem.h \
 	
 
 OBJS = $(SRCS:.c=.o)
