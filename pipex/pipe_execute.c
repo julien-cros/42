@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:12:07 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 13:22:58 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/25 13:56:32 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include "parsing.h"
 #include "files.h"
 #include "error.h"
+
+static void	ft_wait(int fd[2], pid_t pid);
 
 int	ft_fork_and_pipe(int fd[2], pid_t *pid)
 {
@@ -58,10 +60,13 @@ int	ft_pipex(t_pipex *pipex, char **envp, int i)
 		exit(0);
 	}
 	else
-	{
-		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
-		waitpid(pid, NULL, 0);
-	}
+		ft_wait(fd, pid);
 	return (0);
+}
+
+static void	ft_wait(int fd[2], pid_t pid)
+{
+	close(fd[1]);
+	dup2(fd[0], STDIN_FILENO);
+	waitpid(pid, NULL, 0);
 }

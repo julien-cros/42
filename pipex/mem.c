@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:41:34 by jcros             #+#    #+#             */
-/*   Updated: 2023/04/25 13:49:15 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/25 13:57:24 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_bzero(void *s, size_t n)
 {
 	return ((void)ft_memset(s, 0, n));
 }
+
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
