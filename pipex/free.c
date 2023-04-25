@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 19:24:14 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 11:19:20 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,23 @@ void	ft_free_with_i(char **strs, int i)
 {
 	int	j;
 
-	j = -1;
+	j = 0;
 	if (i != -1)
-		while (++j < i)
+	{
+		while (j < i)
+		{
 			free(strs[j]);
+			j++;
+		}
+	}
 	else
-		while (strs[++j])
+	{
+		while (strs[j])
+		{
 			free(strs[j]);
+			j++;
+		}
+	}
 	free(strs);
 }
 

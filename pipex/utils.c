@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:27:59 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/19 22:41:04 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/25 10:38:48 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,20 @@ void	*ft_memset(void *s, int c, size_t n)
 }
 
 
-void	ft_init(t_pipex *pipex)
+t_pipex	*ft_init()
 {
+	t_pipex *pipex;
+	
+	pipex = malloc(sizeof(t_pipex));
+	if (!pipex)
+		return (NULL);
 	pipex->in_fd = -1;
 	pipex->out_fd = -1;
 	pipex->valid_file = 0;
 	pipex->here_doc = false;
-	pipex->cmds = 0;
+	pipex->cmds = NULL;
 	pipex->cmds_count = 0;
-	pipex->out_name = 0;
+	pipex->cmds_path = NULL;
+	pipex->out_name = NULL;
+	return (pipex);
 }
