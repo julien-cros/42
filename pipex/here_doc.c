@@ -124,7 +124,7 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 	while (pipex->in_fd > 0)
 	{
 		if ((buffer 
-			&& strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0) 
+			&& ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0) 
 			&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
 			break;
 		if (buffer)
