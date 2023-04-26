@@ -30,6 +30,7 @@ static char	*ft_get_line(char *line)
 		i++;
 	}
 	line[i] = '\n';
+	line[i + 1] = '\0'; 
 	return (line);
 }
 
@@ -47,7 +48,6 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 
 	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	write(1, "heredoc>", 9);
-	// printf("buffer = %s\n", buffer);
 	while (pipex->in_fd > 0)
 	{
 		printf("buufer = %s\n", buffer);
@@ -56,7 +56,10 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 			printf("je suis dnas if buffer\n");
 			if ((ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0) 
 				&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
+			{
+				free(buffer);
 				break;
+			}
 			else
 				ft_print_heredoc(buffer, pipex->in_fd);
 			free(buffer);
@@ -74,10 +77,9 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 		buffer = malloc(10000 * sizeof(char *));
 		if (!buffer)
 			return (-1);
-		// printf("faut verifier\n");
 		buffer = ft_get_line(buffer);
 	}
 	close(pipex->in_fd);
 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
-	return (free(buffer), 0);
+	return (0);
 }
