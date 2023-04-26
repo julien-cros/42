@@ -16,30 +16,6 @@
 static char	*ft_get_line(char *line);
 static void	ft_print_heredoc(char *line, int fd);
 
-// int	ft_here_doc(char **argv, t_pipex *pipex)
-// {
-// 	char	*line;
-
-// 	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
-// 	line = malloc(10000 * sizeof(char));
-// 	if (!line)
-// 		return (-1);
-// 	while ((ft_strlen(argv[2]) + 1 != ft_strlen(line))
-// 		// && (pipex->in_fd > 0)
-// 		&& (ft_strncmp(argv[2], line, ft_strlen(argv[2]) != 0)))
-// 	{
-// 		if (line)
-// 			ft_print_heredoc(line, pipex->in_fd);
-// 		line = malloc(10000 * sizeof(char));
-// 		if (!line)
-// 			return (-1);
-// 		line = ft_get_line(line);
-// 	}
-// 	close(pipex->in_fd);
-// 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
-// 	return (free(line), 0);
-// }
-
 static char	*ft_get_line(char *line)
 {
 	int		i;
@@ -62,59 +38,8 @@ static void	ft_print_heredoc(char *line, int fd)
 	if (line)
 		ft_putstr_fd(line, fd);
 	write(1, "heredoc>", 9);
+	// free(line);
 }
-
-// int ft_here_doc(char **argv, t_pipex *pipex)
-// {
-// 	char *buffer;
-	
-// 	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
-// 	write(1, "heredoc>", 9);
-// 	while (pipex->in_fd > 0)
-// 	{
-// 		free(buffer);
-// 		buffer = malloc(10000 * sizeof(char));
-// 		if (!buffer)
-// 			return (-1);
-// 		ft_print_heredoc(buffer, pipex->in_fd);
-// 		if ((ft_strlen(argv[2])+1 != ft_strlen(buffer))
-// 	 		&& (ft_strncmp(argv[2], buffer, ft_strlen(argv[2]+1)) != 0))
-// 				break ;
-// 		buffer = ft_get_line(buffer);
-// 	}
-// 	close(pipex->in_fd);
-// 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
-// 	return (0);
-// }
-
-// int ft_here_doc(char **argv, t_pipex *pipex)
-// {
-// 	char *buffer;
-
-// 	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
-// 	write (1, "heredoc>", 9);
-// 	while (pipex->in_fd > 0)
-// 	{
-// 		if (buffer)
-// 		{
-// 			if (ft_strlen(argv[2])+1 != ft_strlen(buffer)
-// 	 			&& (ft_strncmp(argv[2], buffer, ft_strlen(argv[2]+1)) != 0))
-// 					break;
-// 			else
-// 			{
-// 				ft_print_heredoc(buffer, pipex->in_fd);
-// 				free(buffer);
-// 			}
-// 		}
-// 		buffer = malloc(10000 * sizeof(char));
-// 		if (!buffer)
-// 			return (-1);
-// 		buffer = ft_get_line(buffer);
-// 	}
-// 	close(pipex->in_fd);
-// 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
-// 	return (free(buffer), 0);
-// }
 
 int ft_here_doc(char **argv, t_pipex *pipex)
 {
@@ -125,22 +50,28 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 	// printf("buffer = %s\n", buffer);
 	while (pipex->in_fd > 0)
 	{
-		// printf("buufer = %s\n", buffer);
-		if ((buffer)
-			&& (ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0) 
-			&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
-			break;
-		// printf("ok2\n");
+		printf("buufer = %s\n", buffer);
 		if (buffer)
 		{
-			// printf("buffer = %s\n", buffer);
-			ft_print_heredoc(buffer, pipex->in_fd);
-		}
-		// printf("encore ok\n");
-		if (buffer)
+			printf("je suis dnas if buffer\n");
+			if ((ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0) 
+				&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
+				break;
+			else
+				ft_print_heredoc(buffer, pipex->in_fd);
 			free(buffer);
+		}
+		// printf("ok2\n");
+		// if (buffer)
+		// {
+			// printf("buffer = %s\n", buffer);
+			// ft_print_heredoc(buffer, pipex->in_fd);
+		// }
+		// printf("encore ok\n");
+		// if (buffer)
+			// free(buffer);
 		// printf("j'en met partout\n");
-		buffer = calloc(10000, sizeof(char));
+		buffer = malloc(10000 * sizeof(char *));
 		if (!buffer)
 			return (-1);
 		// printf("faut verifier\n");
@@ -150,30 +81,3 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
 	return (free(buffer), 0);
 }
-
-// int	ft_here_doc(char **argv, t_pipex *pipex)
-// {
-// 	char	*buffer;
-// 	char	*temp;
-
-// 	buffer = malloc(10000 * sizeof(char));
-// 	if (!buffer)
-// 		return(-1);
-// 	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
-// 	while (ft_strlen(argv[2])+1 != ft_strlen(buffer)
-// 	 	&& (ft_strncmp(argv[2], buffer, ft_strlen(argv[2]) != 0)))
-// 	{
-// 		ft_print_heredoc(buffer, pipex->in_fd);
-// 		buffer = malloc(10000 * sizeof(char));
-// 		if (!buffer)
-// 			return(-1);
-// 		temp = buffer;
-// 		buffer = ft_get_line(buffer);
-// 		free(temp);
-// 		if (!buffer)
-// 			return (-1);
-// 	}
-// 	close(pipex->in_fd);
-// 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);
-// 	return (free(buffer), 0);
-//	}
