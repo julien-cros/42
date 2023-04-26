@@ -4,7 +4,6 @@
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:24:50 by jcros             #+#    #+#             */
 /*   Updated: 2022/11/14 10:09:20 by jcros            ###   ########.fr       */
