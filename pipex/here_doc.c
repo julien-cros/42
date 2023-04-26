@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:37 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/26 11:15:38 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/26 13:52:35 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,25 +125,25 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 	// printf("buffer = %s\n", buffer);
 	while (pipex->in_fd > 0)
 	{
-		printf("buufer = %s\n", buffer);
-		if (buffer
+		// printf("buufer = %s\n", buffer);
+		if ((buffer)
 			&& (ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0) 
 			&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
 			break;
-		printf("ok2\n");
+		// printf("ok2\n");
 		if (buffer)
 		{
-			printf("buffer = %s\n", buffer);
+			// printf("buffer = %s\n", buffer);
 			ft_print_heredoc(buffer, pipex->in_fd);
 		}
-		printf("encore ok\n");
+		// printf("encore ok\n");
 		if (buffer)
 			free(buffer);
-		printf("j'en met partout\n");
+		// printf("j'en met partout\n");
 		buffer = calloc(10000, sizeof(char));
 		if (!buffer)
 			return (-1);
-		printf("faut verifier\n");
+		// printf("faut verifier\n");
 		buffer = ft_get_line(buffer);
 	}
 	close(pipex->in_fd);
