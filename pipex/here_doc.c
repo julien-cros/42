@@ -50,11 +50,12 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 	write(1, "heredoc>", 9);
 	while (pipex->in_fd > 0)
 	{
-		printf("buufer = %s\n", buffer);
-		if (buffer)
+		buffer = ft_calloc(10000, sizeof(char *));
+		if (!buffer)
+			return (-1);
+		if (ft_get_line(buffer))
 		{
-			printf("je suis dnas if buffer\n");
-			if ((ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0) 
+			if ((ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0)
 				&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
 			{
 				free(buffer);
@@ -64,20 +65,6 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 				ft_print_heredoc(buffer, pipex->in_fd);
 			free(buffer);
 		}
-		// printf("ok2\n");
-		// if (buffer)
-		// {
-			// printf("buffer = %s\n", buffer);
-			// ft_print_heredoc(buffer, pipex->in_fd);
-		// }
-		// printf("encore ok\n");
-		// if (buffer)
-			// free(buffer);
-		// printf("j'en met partout\n");
-		buffer = malloc(10000 * sizeof(char *));
-		if (!buffer)
-			return (-1);
-		buffer = ft_get_line(buffer);
 	}
 	close(pipex->in_fd);
 	pipex->in_fd = open(".here_doc_fd", O_RDONLY);

@@ -46,8 +46,6 @@ int	main(int argc, char **argv, char **envp)
 
 	i = -1;
 	pipex = NULL;
-	if (argc < 5 || !envp)
-		return (-1);
 	pipex = ft_init(pipex);
 	if (!pipex)
 		return (-1);
@@ -55,6 +53,8 @@ int	main(int argc, char **argv, char **envp)
 		|| (ft_check_file(argc, argv, pipex) != 0)
 		|| (ft_parse_cmds(argc, argv, pipex) != 0))
 		return (ft_free_pipex(pipex), 1);
+	if (argc - pipex->here_doc > 5 || !envp)
+		return (ft_free_pipex(pipex), 0-1);
 	if (ft_create_path(pipex, envp) != 0)
 		return (ft_free_pipex(pipex), -1);
 	while (++i < pipex->cmds_count)

@@ -21,6 +21,9 @@ int	ft_check_heredoc(char **argv, t_pipex *pipex)
 		pipex->here_doc = true;
 		if (ft_here_doc(argv, pipex) < 0)
 			return (-1);
+		pipex->file = ft_strdup(".here_doc_fd");
+		if (!pipex->file)
+			return (-1);
 	}
 	return (0);
 }
@@ -37,7 +40,7 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 		j++;
 	pipex->cmds = malloc(sizeof(char **) * (argc - j));
 	if (!pipex->cmds)
-		return (1);
+		return (-1);
 	while (++j < argc - 1)
 	{
 		cmds = ft_split(argv[j], ' ');
@@ -48,7 +51,7 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 	}
 	pipex->out_name = ft_strdup(argv[argc - 1]);
 	if (!pipex->out_name)
-		return (1);
+		return (-1);
 	return (0);
 }
 
