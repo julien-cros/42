@@ -27,9 +27,6 @@ int	ft_check_heredoc(char **argv, t_pipex *pipex)
 
 int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 {
-	int		i;
-	int		j;
-	char	**cmds;
 
 	i = -1;
 	j = 1;
@@ -46,7 +43,7 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 		pipex->cmds[++i] = cmds;
 		pipex->cmds_count++;
 	}
-	pipex->out_name = ft_strdup(argv[j]);
+	pipex->out_name = ft_strdup(argv[argc - 1]);
 	if (!pipex->out_name)
 		return (1);
 	return (0);
