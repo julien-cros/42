@@ -21,6 +21,7 @@
 # include "struct.h"
 # include "strs.h"
 # include "free.h"
+#include "utils.h"
 
 int	ft_here_doc(char **argv, t_pipex *pipex);
 
