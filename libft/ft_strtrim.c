@@ -3,67 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:04:03 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/11 21:02:58 by juliencros       ###   ########.fr       */
+/*   Updated: 2022/11/18 09:47:33 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strtrim(char const *s1, char const *set)
+static int	ft_is_set(char s, char const *set);
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
-    int i;
-    int j;
-    int size;
-    char *str;
-    
-    i = -1;
-    size = 0;
-    if (! s1 || !set)
-        return (0);
-    while (s1[++i])
-    {
-        while (s1[i] && ft_strchr(set, s1[i]))
-            i += ft_strlen(set);
-        size++;
-    }
-    str = (char *)ft_calloc(size+1, sizeof(char));
-    if (!str)
-        return NULL;
-    i = -1;
-    j = 0;
-    while (++i < size)
-    {
-        if((!ft_strchr(set, s1[i])) && (ft_strchr(set, str[i+1])))
-        {
-            ft_substr(s1, i, j);
-            j = i;
-        }
-    }
-    return (str);
+	size_t	len;
+	char	*str;
+
+	if (!s1 || !set)
+		return (0);
+	while (*s1 && ft_is_set(*s1, set))
+		s1++;
+	len = ft_strlen(s1);
+	while (len > 0 && ft_is_set(s1[len - 1], set))
+		len--;
+	str = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	while (len--)
+		str[len] = s1[len];
+	return (str);
 }
 
-// {
-//     size_t i;
-//     size_t count;
-    
-//     if (!set || !s1)
-//         return (0);
-//     while ((char *)s1[i])
-//     {
-//         if (ft_strchr(set, s1[i]))
-//         {
-//             while (ft_strchr(set, (char *)s1[i]))
-//             {
-//                 i++;
-//                 count++;
-//             }
-//         }
-//         i++;
-//     }
-// }
+int	ft_is_set(char c, char const *set)
+{
+	int	i;
 
-// if (!ft_strncmp(&s1[i], (char *)set, ft_strlen(set)))
-//             str[++j] = s1[i];
+	i = -1;
+	while (set[++i])
+		if (set[i] == c)
+			return (1);
+	return (0);
+}

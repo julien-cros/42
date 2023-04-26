@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
+#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 12:44:32 by jcros             #+#    #+#              #
-#    Updated: 2022/11/12 15:45:26 by jcros            ###   ########.fr        #
+#    Updated: 2023/04/03 14:16:35 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 AR = ar
 ARFLAGS = crs
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm
@@ -52,37 +52,88 @@ SRCS= \
 	./ft_strtrim.c      \
 	./ft_split.c        \
 	./ft_itoa.c         \
-	# ./ft_strmapi.c      \
-	# ./ft_putchar_fd.c   \
-	# ./ft_putstr_fd.c    \
-	# ./ft_putendl_fd.c   \
-	# ./ft_putnbr_fd.c
+	./ft_strmapi.c      \
+	./ft_striteri.c		\
+	./ft_putchar_fd.c   \
+	./ft_putstr_fd.c    \
+	./ft_putnbr_fd.c	\
+	./ft_putendl_fd.c
 
-# BONUS_SRC = \
-# 	ft_lstlew.c			\
-# 	ft_lstadd_front.c	\	
-# 	ft_lstsize.c		\
-# 	ft_lstlast.c		\
-# 	ft_lstadd_back.c	\
-# 	ft_lstdelone.c		\
-# 	ft_lstclear.c		\
-# 	ft_lstiter.c		\
-# 	ft_lstmap.c			\
+BONUS_SRCS= \
+	./ft_lstnew.c        \
+	./ft_lstsize.c       \
+	./ft_lstadd_front.c  \
+	./ft_lstlast.c       \
+	./ft_lstadd_back.c   \
+	./ft_lstdelone.c     \
+	./ft_lstclear.c      \
+	./ft_lstiter.c       \
+	./ft_lstmap.c
+
+
+# OBJS        =        $(SRCS:.c=.o)
+
+# $(NAME):	$(OBJS)
+# 		@$(AR) $(ARFLAGS) $@ $^
+
+# .c.o:		$(SRCS) $(INCLUDES)
+# 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+# 	@printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@)$(COM_COLOR)]\n";
+	
+# all:	$(NAME)
+# 	@printf "%b" "$(COM_COLOR)#######################################$(NO)\n"
+# 	@printf "%b" "$(OK_COLOR)      *¤ * * ¤* * ¤*          *¤ * *¤ *$(NO)\n"
+# 	@printf "%b" "$(OK_COLOR)   ¤* ** *¤  * *¤          ** * ¤ * ¤ ¤$(NO)\n"
+# 	@printf "%b" "$(OK_COLOR)¤* ¤ *  *¤  **   $(OK_COLOR)$(OK_STRING)$(OK_COLOR)   ¤* * *¤ ¤* ¤*  $(NO)\n"
+# 	@printf "%b" "$(OK_COLOR)*  * ¤*  ¤*          ¤* * ¤  * * ¤*    $(NO)\n"
+# 	@printf "%b" "$(OK_COLOR)* ¤ *¤*          ** ¤ * * ¤ *¤*        $(NO)\n"
+# 	@printf "%b" "$(COM_COLOR)#######################################$(NO)\n"
+# 	@printf "%b" "$(MESSAGE_COLOR)[Compilation completed]\n"
+
+# clean:
+# 			@rm -f $(OBJS)
+# 			@printf "%b" "$(CLEAN_COLOR)#######################################\n"
+# 			@printf "%b" "$(CLEAN_COLOR)$(CLEAN_STRING)$(OBJ_COLOR) all$(CLEAN_COLOR)]\n";
+# 			@printf "%b" "$(CLEAN_COLOR)#######################################\n"
+# 			@printf "%b" "$(OK_COLOR)      *¤ * * ¤* * ¤*          *¤ * *¤ *\n"
+# 			@printf "%b" "$(OK_COLOR)   ¤* ** *¤  * *¤          ** * ¤ * ¤ ¤\n"
+# 			@printf "%b" "¤* ¤ *  *¤  **   $(OK_COLOR)$(OK_STRING)   ¤* * *¤ ¤* ¤ *\n"
+# 			@printf "%b" "$(OK_COLOR)*  * ¤*  ¤*          ¤* * ¤  * * *¤    \n"
+# 			@printf "%b" "$(OK_COLOR)* ¤ *¤*          ** ¤ * * ¤ *¤*        \n"
+# 			@printf "%b" "$(CLEAN_COLOR)#######################################\n\n"
+# 			@printf "%b" "$(MESSAGE_COLOR)[Cleaning completed]\n"
+
+# fclean:		clean
+# 		@rm -f $(NAME)
+
+# re:		fclean all
+
+# COM_COLOR = \033[0;32m
+# OBJ_COLOR = \033[0;45m
+# OK_COLOR  = \033[0;44m
+# CLEAN_COLOR  = \033[0;33m
+# MESSAGE_COLOR = \033[0;33m
+# NO = \033[0;0m
+
+# OK_STRING = "[OK]"
+# COM_STRING = "[Compiling"
+# CLEAN_STRING = "[Cleaning"
+
+# .PHONY: all clean fclean re
 
 OBJS = $(SRCS:.c=.o)
-# BONUS_OBJS = $(BONUS_SRC:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
-
-# bonus: $(BONUS_OBJS) $(NAME)
-# 	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
+bonus: $(BONUS_OBJS) $(NAME)
+	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
 
 .c.o: $(SRCS) $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.cd o)
 
 clean:
-	$(RM) $(RMFLAG) $(OBJS)
+	$(RM) $(RMFLAG) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	$(RM) $(RMFLAG) $(NAME)

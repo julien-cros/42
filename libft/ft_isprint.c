@@ -6,15 +6,14 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:42:20 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/07 14:40:58 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/18 09:46:44 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isprint (int i)
+int	ft_isprint(int c)
 {
-	if (i >= 32 && i <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
-	
 	else
 		return (0);
 }

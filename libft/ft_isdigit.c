@@ -6,14 +6,14 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:09:03 by jcros             #+#    #+#             */
-/*   Updated: 2022/11/07 14:38:43 by jcros            ###   ########.fr       */
+/*   Updated: 2022/11/18 09:46:43 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit (int i)
+int	ft_isdigit(int c)
 {
- if (i >= '0' && i <= '9')
-    return (1);
-else
-    return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
