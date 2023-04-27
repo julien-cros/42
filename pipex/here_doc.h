@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:54:40 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 13:20:55 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/27 10:05:55 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "struct.h"
 # include "strs.h"
 # include "free.h"
-#include "utils.h"
+# include "utils.h"
 
 int	ft_here_doc(char **argv, t_pipex *pipex);
 

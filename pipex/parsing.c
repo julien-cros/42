@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:12:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 13:25:32 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/27 10:44:00 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	ft_check_heredoc(char **argv, t_pipex *pipex)
 
 int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 {
-	int i;
-	int j;
-	char **cmds;
+	int		i;
+	int		j;
+	char	**cmds;
 
 	i = -1;
 	j = 1;
