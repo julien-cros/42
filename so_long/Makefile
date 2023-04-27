@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
+#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/24 10:36:56 by juliencros       ###   ########.fr        #
+#    Updated: 2023/04/27 16:40:01 by jcros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,17 @@ SRCS = \
 	valid_map.c \
 	display.c \
 	errors.c \
+	utils.c \
+	mem.c \
 	
 INCLUDES =	./struct.h \
 			./parsing.h \
 			./valid_map.h \
 			./display.h \
-			errors.h \
+			./errors.h \
+			./mem.h \
+			./utils.h \
+			
 
 
 	

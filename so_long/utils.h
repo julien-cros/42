@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.h                                        :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 08:48:00 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 16:41:41 by jcros            ###   ########.fr       */
+/*   Created: 2023/04/27 16:23:51 by jcros             #+#    #+#             */
+/*   Updated: 2023/04/27 16:43:25 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALID_MAP_H
-#define VALID_MAP_H
+#ifndef UTILS_H
+# define UTILS_H
 
-#include "struct.h"
-#include "errors.h"
-#include "utils.h"
-#include <fcntl.h>
-#include <stdio.h>
+#include <unistd.h>
+#include <stdint.h>
 #include <stdlib.h>
+#include "mem.h"
 
-t_map *ft_valid_map(t_map *map, int fd);
+
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strdup(const char *s);
 
 #endif

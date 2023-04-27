@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.h                                        :+:      :+:    :+:   */
+/*   mem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 08:48:00 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 16:41:41 by jcros            ###   ########.fr       */
+/*   Created: 2023/04/25 13:41:58 by jcros             #+#    #+#             */
+/*   Updated: 2023/04/25 13:50:18 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALID_MAP_H
-#define VALID_MAP_H
+#ifndef MEM_H
+# define MEM_H
 
-#include "struct.h"
-#include "errors.h"
-#include "utils.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include <unistd.h> 
 
-t_map *ft_valid_map(t_map *map, int fd);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif
