@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 10:53:06 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/27 13:58:16 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_pipex	*ft_init(t_pipex *pipex)
 	pipex->cmds_count = 0;
 	pipex->cmds_path = NULL;
 	pipex->out_name = NULL;
+	pipex->invalid_in = false;
 	return (pipex);
 }
 

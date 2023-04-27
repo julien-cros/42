@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 10:51:17 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/27 13:50:19 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_check_file(int argc, char **argv, t_pipex *pipex)
 	}
 	else
 	{
+		pipex->invalid_in = true;
 		pipex->in_fd = open(".error_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
 		pipex->file = ft_strdup(".error_fd");
 		ft_file_error(argv[1]);
