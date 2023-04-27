@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 10:54:37 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/27 14:56:26 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_map *ft_valid_map(t_map *map, int fd)
 {
 	char buffer;
 
-	if (!read(0, buffer, 0))
-		return(ft_no_map(), NULL);
+	if (read(0, buffer, 0))
+		printf("ok\n");
 	else 
-		printf("not ok");
+		printf("not ok\n");
 	return (map);
 }
