@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:46:16 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 10:15:32 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/27 15:12:15 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_map
 	t_bool exit;
 	t_bool spawn;
 	t_bool finishable;
+	char **plan;
 	
 } t_map;
 
