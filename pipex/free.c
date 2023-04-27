@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/25 13:17:21 by jcros            ###   ########.fr       */
+/*   Updated: 2023/04/27 11:57:42 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_free_pipex(t_pipex *pipex)
 {
 	if (pipex->in_fd)
-		close (pipex->in_fd);
+		close(pipex->in_fd);
 	if (pipex->out_fd)
 		close(pipex->out_fd);
 	if (pipex->out_name)
@@ -26,6 +26,10 @@ void	ft_free_pipex(t_pipex *pipex)
 		ft_free_2d_with_i(pipex->cmds, pipex->cmds_count);
 	if (pipex->cmds_path)
 		ft_free_with_i(pipex->cmds_path, pipex->cmds_count);
+	if (pipex->here_doc)
+		unlink(".here_doc_fd");
+	if (pipex->invalid_in)
+		unlink(".error_fd");
 	free(pipex);
 }
 

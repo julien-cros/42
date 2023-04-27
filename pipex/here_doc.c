@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:37 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/26 13:52:35 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/27 10:06:20 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*ft_get_line(char *line)
 		i++;
 	}
 	line[i] = '\n';
-	line[i + 1] = '\0'; 
+	line[i + 1] = '\0';
 	return (line);
 }
 
@@ -39,12 +39,11 @@ static void	ft_print_heredoc(char *line, int fd)
 	if (line)
 		ft_putstr_fd(line, fd);
 	write(1, "heredoc>", 9);
-	// free(line);
 }
 
-int ft_here_doc(char **argv, t_pipex *pipex)
+int	ft_here_doc(char **argv, t_pipex *pipex)
 {
-	char *buffer;
+	char	*buffer;
 
 	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	write(1, "heredoc>", 9);
@@ -59,7 +58,7 @@ int ft_here_doc(char **argv, t_pipex *pipex)
 				&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
 			{
 				free(buffer);
-				break;
+				break ;
 			}
 			else
 				ft_print_heredoc(buffer, pipex->in_fd);
