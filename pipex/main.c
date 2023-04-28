@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/28 13:56:17 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/04/28 14:09:15 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "error.h"
 #include "pipe_execute.h"
 
-static int ft_first_check(int argc, char **argv, char **envp);
+static int	ft_first_check(int argc, char **argv, char **envp);
 static int	ft_create_path(t_pipex *pipex, char **envp);
 
 t_pipex	*ft_init(t_pipex *pipex)
@@ -48,7 +48,7 @@ int	main(int argc, char **argv, char **envp)
 
 	i = -1;
 	pipex = NULL;
-	if (!first_check(argc, argv, envp))
+	if (ft_first_check(argc, argv, envp) == -1)
 		return (-1);
 	pipex = ft_init(pipex);
 	if (!pipex)
@@ -82,13 +82,14 @@ static int	ft_create_path(t_pipex *pipex, char **envp)
 	return (0);
 }
 
-
-static int ft_first_check(int argc, char **argv, char **envp)
+static int	ft_first_check(int argc, char **argv, char **envp)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if (ft_strncmp(argv[1], "here_doc", 9))
+	if (!envp)
+		return (-1);
+	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
 		i++;
 	if (argc - i < 5)
 		return (-1);
