@@ -61,6 +61,7 @@ int	ft_pipex(t_pipex *pipex, char **envp, int i)
 			close (pipex->out_fd);
 		}
 		close(fd[1]);
+		exit(0);
 	}
 	ft_wait(fd, pid);
 	return (0);

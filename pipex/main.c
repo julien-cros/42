@@ -47,9 +47,9 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 
 	i = -1;
-	pipex = NULL;
 	if (ft_first_check(argc, argv, envp) == -1)
-		return (-1);
+		return (0);
+	pipex = NULL;
 	pipex = ft_init(pipex);
 	if (!pipex)
 		return (-1);
@@ -87,7 +87,7 @@ static int	ft_first_check(int argc, char **argv, char **envp)
 	int	i;
 
 	i = 0;
-	if (!envp)
+	if (!envp || argc < 5)
 		return (-1);
 	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
 		i++;
