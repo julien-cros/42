@@ -53,8 +53,8 @@ int	main(int argc, char **argv, char **envp)
 	pipex = ft_init(pipex);
 	if (!pipex)
 		return (-1);
-	if ((ft_check_heredoc(argv, pipex) != 0)
-		|| (ft_check_file(argc, argv, pipex) != 0)
+	if ((ft_check_file(argv, pipex) != 0)
+		|| (ft_init_out(argc, argv, pipex) !=0)
 		|| (ft_parse_cmds(argc, argv, pipex) != 0))
 		return (ft_free_pipex(pipex), 1);
 	if (ft_create_path(pipex, envp) != 0)

@@ -18,8 +18,13 @@
 # include "struct.h"
 # include "strs.h"
 # include "error.h"
+#include "here_doc.h"
 
-int		ft_check_file(int argc, char **argv, t_pipex *pipex);
-void	ft_outfile(int argc, char **argv, t_pipex *pipex);
-int     create_out_name(t_pipex *pipex, int argc, char **argv);
+int		ft_check_file(char **argv, t_pipex *pipex);
+// void	ft_outfile(int argc, char **argv, t_pipex *pipex);
+// int     create_out_name(t_pipex *pipex, int argc, char **argv);
+int ft_init_out(int argc, char **argv, t_pipex *pipex);
+int ft_create_valid_in(char **argv, t_pipex *pipex);
+int ft_create_invalid_in(t_pipex *pipex);
+
 #endif

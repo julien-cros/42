@@ -16,17 +16,30 @@
 static char	*ft_get_line(char *line);
 static void	ft_print_heredoc(char *line, int fd);
 
-int	ft_check_heredoc(char **argv, t_pipex *pipex)
+// int	ft_check_heredoc(char **argv, t_pipex *pipex)
+// {
+// 	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
+// 	{
+// 		pipex->here_doc = true;
+// 		if (ft_here_doc(argv, pipex) < 0)
+// 			return (-1);
+// 		pipex->file = ft_strdup(".here_doc_fd");
+// 		if (!pipex->file)
+// 			return (-1);
+// 	}
+// 	return (0);
+// }
+
+ static int ft_init_here_doc(t_pipex *pipex)
 {
-	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
-	{
-		pipex->here_doc = true;
-		if (ft_here_doc(argv, pipex) < 0)
-			return (-1);
-		pipex->file = ft_strdup(".here_doc_fd");
-		if (!pipex->file)
-			return (-1);
-	}
+	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (!pipex->in_fd)
+		return (-1);
+	pipex->here_doc = true;
+	pipex->file = ft_strdup(".here_doc_fd");
+	if (!pipex->file)
+		return (-1);
+	write(1, "heredoc>", 9);
 	return (0);
 }
 
@@ -59,8 +72,8 @@ int	ft_here_doc(char **argv, t_pipex *pipex)
 {
 	char	*buffer;
 
-	pipex->in_fd = open(".here_doc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
-	write(1, "heredoc>", 9);
+	if (ft_init_here_doc(pipex) != 0)
+		return (-1);
 	while (pipex->in_fd > 0)
 	{
 		buffer = ft_calloc(10000, sizeof(char *));

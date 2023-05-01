@@ -128,9 +128,11 @@ int	ft_pipex(t_pipex *pipex, char **envp, int i)
 		return (-1);
 	if (pid == 0)
 	{
+		close(fd[0]);
 		if (pipex->cmds_path[i])
 			execve(pipex->cmds_path[i], pipex->cmds[i], envp);
 		ft_free_pipex(pipex);
+		close(fd[1]);
 		exit(0);
 	}
 	else
