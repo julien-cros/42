@@ -14,20 +14,6 @@
 
 static char	**ft_create_paths(char **envp);
 
-int	ft_check_heredoc(char **argv, t_pipex *pipex)
-{
-	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
-	{
-		pipex->here_doc = true;
-		if (ft_here_doc(argv, pipex) < 0)
-			return (-1);
-		pipex->file = ft_strdup(".here_doc_fd");
-		if (!pipex->file)
-			return (-1);
-	}
-	return (0);
-}
-
 int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 {
 	int		i;
@@ -35,23 +21,18 @@ int	ft_parse_cmds(int argc, char **argv, t_pipex *pipex)
 	char	**cmds;
 
 	i = -1;
-	j = 1;
-	if (pipex->here_doc == true)
-		j++;
+	j = 1 + pipex->here_doc;
 	pipex->cmds = malloc(sizeof(char **) * (argc - j));
 	if (!pipex->cmds)
 		return (-1);
 	while (++j < argc - 1)
 	{
-		cmds = ft_split(argv[j], ' ');
-		if (!cmds)
-			return (ft_free_2d_with_i(pipex->cmds, -1), 1);
+			cmds = ft_split(argv[j], ' ');
+			if (!cmds)
+				return (ft_free_2d_with_i(pipex->cmds, -1), 1);
 		pipex->cmds[++i] = cmds;
 		pipex->cmds_count++;
 	}
-	pipex->out_name = ft_strdup(argv[argc - 1]);
-	if (!pipex->out_name)
-		return (-1);
 	return (0);
 }
 
@@ -62,6 +43,11 @@ char	*ft_path_cmds(char *cmd, char **envp)
 	char	*path;
 	char	*temp;
 
+	if (access(cmd, F_OK) == 0)
+	{
+		path = ft_strdup(cmd);
+		return (path);
+	}
 	paths = ft_create_paths(envp);
 	if (!paths)
 		return (NULL);
@@ -79,7 +65,7 @@ char	*ft_path_cmds(char *cmd, char **envp)
 			return (ft_free_with_i(paths, -1), path);
 		free(path);
 	}
-	return (ft_free_with_i(paths, -1), ft_cmds_error(cmd), NULL);
+	return (ft_free_with_i(paths, -1), ft_cmds_error(cmd, 1), NULL);
 }
 
 static char	**ft_create_paths(char **envp)
@@ -91,5 +77,7 @@ static char	**ft_create_paths(char **envp)
 	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
 	paths = ft_split(envp[i], ':');
+	if (!paths)
+		return (NULL);
 	return (paths);
 }

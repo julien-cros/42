@@ -12,16 +12,16 @@
 
 #include "error.h"
 
-void	ft_cmds_error(char *cmd)
+void	ft_cmds_error(char *cmd, int fd)
 {
-	write(1, "bash: ", 6);
-	ft_putstr_fd(cmd, 1);
-	write(1, ": command not found\n", 20);
+	write(fd, "bash: ", 6);
+	ft_putstr_fd(cmd, fd);
+	write(fd, ": command not found\n", 20);
 }
 
-void	ft_file_error(char *file)
+void	ft_file_error(char *file, int fd)
 {
-	write(1, "bash: ", 6);
-	ft_putstr_fd(file, 1);
-	write (1, ": No such file or directory\n", 28);
+	write(fd, "bash: ", 6);
+	ft_putstr_fd(file, fd);
+	write (fd, ": No such file or directory\n", 28);
 }

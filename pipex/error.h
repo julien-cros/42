@@ -16,7 +16,7 @@
 # include "struct.h"
 # include "display.h"
 
-void	ft_cmds_error(char *cmd);
-void	ft_file_error(char *file);
+void	ft_cmds_error(char *cmd, int fd);
+void	ft_file_error(char *file, int fd);
 
 #endif

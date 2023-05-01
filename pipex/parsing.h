@@ -28,7 +28,6 @@
 # include "split.h"
 # include "error.h"
 
-int		ft_check_heredoc(char **argv, t_pipex *pipex);
 int		ft_parse_cmds(int argc, char **argv, t_pipex *pipex);
 char	*ft_path_cmds(char *cmd, char **envp);
 

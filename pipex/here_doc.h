@@ -24,5 +24,6 @@
 # include "utils.h"
 
 int	ft_here_doc(char **argv, t_pipex *pipex);
+int	ft_check_heredoc(char **argv, t_pipex *pipex);
 
 #endif

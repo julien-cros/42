@@ -60,8 +60,11 @@ int	main(int argc, char **argv, char **envp)
 	if (ft_create_path(pipex, envp) != 0)
 		return (ft_free_pipex(pipex), -1);
 	while (++i < pipex->cmds_count)
-		if (ft_pipex(pipex, envp, i) != 0)
-			return (ft_free_pipex(pipex), -1);
+	if (ft_pipex(pipex, envp, i) != 0)
+		return (ft_free_pipex(pipex), -1);
+	i = -1;
+	while (++i < pipex->cmds_count)
+		wait (NULL);
 	return (ft_free_pipex(pipex), 0);
 }
 

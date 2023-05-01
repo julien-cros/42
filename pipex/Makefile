@@ -68,7 +68,6 @@ fclean: clean
 	$(RM) $(RMFLAG) $(NAME)
 	$(RM) $(RMFLAG) .here_doc_fd
 	$(RM) $(RMFLAG) .error_fd
-	$(RM) $(RMFLAG) .first_fd
 
 re: fclean all
 

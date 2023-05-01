@@ -16,6 +16,20 @@
 static char	*ft_get_line(char *line);
 static void	ft_print_heredoc(char *line, int fd);
 
+int	ft_check_heredoc(char **argv, t_pipex *pipex)
+{
+	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
+	{
+		pipex->here_doc = true;
+		if (ft_here_doc(argv, pipex) < 0)
+			return (-1);
+		pipex->file = ft_strdup(".here_doc_fd");
+		if (!pipex->file)
+			return (-1);
+	}
+	return (0);
+}
+
 static char	*ft_get_line(char *line)
 {
 	int		i;

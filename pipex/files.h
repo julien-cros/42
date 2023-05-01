@@ -21,5 +21,5 @@
 
 int		ft_check_file(int argc, char **argv, t_pipex *pipex);
 void	ft_outfile(int argc, char **argv, t_pipex *pipex);
-
+int     create_out_name(t_pipex *pipex, int argc, char **argv);
 #endif
