@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:31:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 13:50:19 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/01 15:58:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,33 +63,36 @@ int ft_init_out(int argc, char **argv, t_pipex *pipex)
 		pipex->out_fd = open(argv[argc - 1], O_RDWR | O_CREAT | O_APPEND, 0644);
 	else
 		pipex->out_fd = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
-	pipex->out_name = ft_strdup(argv[argc - 1]); // peut etre voir ici si je strdup
+	pipex->out_name = ft_strdup(argv[argc - 1]);
 	if (!pipex->out_name)
 		return(-1);
-
 	return (0);
 }
 
 int	ft_check_file(char **argv, t_pipex *pipex)
 {
-	if (ft_strncmp(argv[1], "here_doc", 9) == 0) // here_doc evoyer 
+	if (ft_strncmp(argv[1], "here_doc", 8) == 0
+		&& ft_strlen(argv[1]) == 8)
 	{
 		if (ft_here_doc(argv, pipex) != 0)
 			return (-1);
 	}
-	// else if () // urandom
-		// if (ft_urandom(argc, argv, pipex) != 0)
-		// 	return (-1);
+	if (ft_strncmp(argv[1], "/dev/urandom", 12) == 0
+		&& ft_strlen(argv[1])== 12)
+	{
+			if (ft_urandom(pipex) != 0)
+				return (-1);
+	}
 	else
 	{
-		if (access(argv[1], F_OK) == -1)
+		if (access(argv[1], F_OK) == 0)
 		{
-			if (ft_create_invalid_in(pipex) != 0)
+			if (ft_create_valid_in(argv, pipex) != 0)
 				return (-1);
 		}
 		else
 		{
-			if (ft_create_valid_in(argv, pipex) != 0)
+			if (ft_create_invalid_in(pipex) != 0)
 				return (-1);
 		}
 	}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/25 13:48:43 by jcros            ###   ########.fr        #
+#    Updated: 2023/05/01 12:32:47 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS = \
 	error.c \
 	pipe_execute.c \
 	mem.c \
+	ft_urandom.c \
 
 INCLUDES =	./utils.h \
 			./struct.h \
@@ -44,6 +45,7 @@ INCLUDES =	./utils.h \
 			./error.h \
 			./pipe_execute.h \
 			./mem.h \
+			./ft_urandom.h \
 	
 
 OBJS = $(SRCS:.c=.o)

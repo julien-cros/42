@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:47:10 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 11:57:42 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/01 15:48:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	ft_free_pipex(t_pipex *pipex)
 		unlink(".here_doc_fd");
 	if (pipex->invalid_in)
 		unlink(".error_fd");
+	if (pipex->urandom == true)
+		unlink(".urandom_fd");
 	free(pipex);
 }
 

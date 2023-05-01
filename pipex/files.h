@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:29:40 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 10:33:11 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/01 12:36:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "strs.h"
 # include "error.h"
 #include "here_doc.h"
+#include "ft_urandom.h"
 
 int		ft_check_file(char **argv, t_pipex *pipex);
 // void	ft_outfile(int argc, char **argv, t_pipex *pipex);

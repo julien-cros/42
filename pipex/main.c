@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/28 14:09:15 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/01 16:03:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,17 @@ t_pipex	*ft_init(t_pipex *pipex)
 	pipex = malloc(sizeof(t_pipex));
 	if (!pipex)
 		return (NULL);
+	pipex->here_doc = false;
+	pipex->invalid_in = false;
+	pipex->urandom = false;
 	pipex->in_fd = -1;
 	pipex->out_fd = -1;
 	pipex->valid_file = 0;
-	pipex->here_doc = false;
-	pipex->cmds = NULL;
 	pipex->cmds_count = 0;
-	pipex->cmds_path = NULL;
 	pipex->out_name = NULL;
-	pipex->invalid_in = false;
+	pipex->file = NULL;
+	pipex->cmds = NULL;
+	pipex->cmds_path = NULL;
 	return (pipex);
 }
 

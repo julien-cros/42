@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_execute.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:12:07 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 14:27:38 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/01 15:18:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,9 @@ int	ft_pipex(t_pipex *pipex, char **envp, int i)
 		return (-1);
 	if (pid == 0)
 	{
-		close(fd[0]);
 		if (pipex->cmds_path[i])
 			execve(pipex->cmds_path[i], pipex->cmds[i], envp);
 		ft_free_pipex(pipex);
-		close(fd[1]);
 		exit(0);
 	}
 	else

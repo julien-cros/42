@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:37 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 14:54:43 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/01 13:52:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "here_doc.h"
 #include <stdio.h>
 
-static char	*ft_get_line(char *line);
 static void	ft_print_heredoc(char *line, int fd);
 
 // int	ft_check_heredoc(char **argv, t_pipex *pipex)
@@ -43,7 +42,7 @@ static void	ft_print_heredoc(char *line, int fd);
 	return (0);
 }
 
-static char	*ft_get_line(char *line)
+char	*ft_get_line(char *line, char limitter, int fd)
 {
 	int		i;
 	char	buffer;
@@ -51,7 +50,7 @@ static char	*ft_get_line(char *line)
 	i = 0;
 	if (!line)
 		return (NULL);
-	while (read(0, &buffer, 1) > 0 && buffer != '\n')
+	while (read(fd, &buffer, 1) > 0 && buffer != limitter)
 	{
 		line[i] = buffer;
 		i++;
@@ -79,7 +78,7 @@ int	ft_here_doc(char **argv, t_pipex *pipex)
 		buffer = ft_calloc(10000, sizeof(char *));
 		if (!buffer)
 			return (-1);
-		if (ft_get_line(buffer))
+		if (ft_get_line(buffer, '\n', pipex->in_fd))
 		{
 			if ((ft_strncmp(argv[2], buffer, ft_strlen(argv[2])) == 0)
 				&& (ft_strlen(argv[2]) + 1 == ft_strlen(buffer)))
