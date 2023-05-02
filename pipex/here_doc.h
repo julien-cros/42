@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:54:40 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/01 13:38:13 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/02 13:57:15 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 # include "free.h"
 # include "utils.h"
 
-int	ft_here_doc(char **argv, t_pipex *pipex);
-char	*ft_get_line(char *line, char limitter, int fd);
-// int	ft_check_heredoc(char **argv, t_pipex *pipex);
+int		ft_here_doc(char **argv, t_pipex *pipex);
+char	*ft_get_line(char *line, char limiter, int fd);
 
 #endif

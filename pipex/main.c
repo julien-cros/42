@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/02 13:04:20 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/02 14:42:53 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!pipex)
 		return (-1);
 	if ((ft_check_file(argv, pipex) != 0)
-		|| (ft_init_out(argc, argv, pipex) !=0)
+		|| (ft_init_out(argc, argv, pipex) != 0)
 		|| (ft_parse_cmds(argc, argv, pipex) != 0))
 		return (ft_free_pipex(pipex), 1);
 	if (ft_create_path(pipex, envp) != 0)
