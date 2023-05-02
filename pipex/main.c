@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:01:02 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/01 16:03:11 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/02 13:04:20 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	main(int argc, char **argv, char **envp)
 	if (ft_create_path(pipex, envp) != 0)
 		return (ft_free_pipex(pipex), -1);
 	while (++i < pipex->cmds_count)
-	if (ft_pipex(pipex, envp, i) != 0)
-		return (ft_free_pipex(pipex), -1);
+		if (ft_pipex(pipex, envp, i) != 0)
+			return (ft_free_pipex(pipex), -1);
 	i = -1;
 	while (++i < pipex->cmds_count)
 		wait (NULL);
