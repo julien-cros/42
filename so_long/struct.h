@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:46:16 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/27 15:12:15 by jcros            ###   ########.fr       */
+/*   Updated: 2023/05/03 19:57:57 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ typedef enum e_bool
 
 typedef struct s_map
 {
-	int y;
-	int z;
+	int length;
+	int width;
 	int collectible;
-	t_bool exit;
-	t_bool spawn;
+	int exit;
+	int spawn;
 	t_bool finishable;
-	char **plan;
+	char *plan;
 	
 } t_map;
 

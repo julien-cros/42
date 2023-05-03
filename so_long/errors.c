@@ -6,13 +6,30 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:50 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 10:24:04 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/03 19:52:52 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 
-void ft_no_map()
+void	ft_no_map()
 {
 	ft_putstr_fd("Can't find the map\n", 1);
+}
+
+void	error_lenght_line()
+{
+	ft_putstr_fd("Error: The map isn't rectangle.\n", 1);
+}
+
+void	error_wrong_character(char c)
+{
+	write(1,"Error: ",7);
+	ft_putchar_fd(c, 1);
+	ft_putstr_fd(". Not a valid argument in the map.\n", 1);
+}
+
+void	ft_error_square()
+{
+	ft_putstr_fd("Error: Your map is a square.", 1);
 }

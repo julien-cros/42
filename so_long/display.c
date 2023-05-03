@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:59:34 by juliencros        #+#    #+#             */
-/*   Updated: 2023/04/24 10:04:24 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/03 19:36:10 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void ft_puchar_fd(char c, int fd)
+void ft_putchar_fd(char c, int fd)
 {
 	if (!c || !fd)
 		return ;
