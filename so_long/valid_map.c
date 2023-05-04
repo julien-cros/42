@@ -6,15 +6,17 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/03 20:27:37 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/04 15:32:48 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "valid_map.h"
+#include "check_finishable.h"
 
 char *ft_fill_map(int fd);
 char *ft_strjoinne(char *str, char c);
 int ft_check_chars(t_map *map);
+int ft_check_walls(t_map *map);
 
 int ft_valid_map(t_map *map, int fd)
 {
@@ -25,7 +27,12 @@ int ft_valid_map(t_map *map, int fd)
 	// printf("map->plan =\n%s\n", map->plan);
 	if (ft_check_chars(map) != 0)
 		return (-1);
+	printf("//\n%s\n//\n", map->plan);
 	if (ft_check_walls(map) != 0)
+		return (-1);
+	if (map->exit != 1 || map->spawn != 1)
+		return (-1);
+	if (if_can(map) != 0)
 		return (-1);
 	printf ("ok!\n");
 	return (0);
@@ -38,7 +45,7 @@ char *ft_fill_map(int fd)
 	char	*temp;
 	char	*line;
 	i = 0;
-	line = malloc(sizeof(char));
+	line = malloc(sizeof(char                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ));
 	if (!line)
 		return (NULL);
 	while (read(fd, &buffer, 1) > 0 && buffer != '\0')
@@ -71,7 +78,6 @@ char *ft_strjoinne(char *str, char c)
 	}
 	new[i] = c;
 	new[++i] = '\0';
-	// printf("new = %s\n", new);
 	return (new);
 }
 
@@ -85,34 +91,60 @@ int ft_check_chars(t_map *map)
 		while(map->plan[i])
 		{
 			if (map->plan[i] == '\n' && map->length == 0)
-			{
 				map->length = i;
-			}
 			if (map->plan[i] == '\n')
 			{
-				// printf("line_size = %d\nmap->length = %d\n", line_size, map->length);
 				if (line_size != map->length)
-					return (error_lenght_line(),-1); // ft_error_length_line;
+					return (error_lenght_line(),-1);
 				map->width++;
 				line_size = -1;
 			}
 			else if (map->plan[i] == 'P')
+			{
+				map->start_raw_pos = i - (map->length * (map->width-1))-2;
+				map->start_col_pos = map->width - 1;
 				map->spawn++;
+			}
 			else if (map->plan[i] == 'E')
 				map->exit++;
 			else if (map->plan[i] == 'C')
 				map->collectible++;
 			else if (map->plan[i] != '0' && map->plan[i] != '1')
-				return (error_wrong_character(map->plan[i]), -1); // ft_wrong_character(map->plan[i])
+				return (error_wrong_character(map->plan[i]), -1);
 			i++;
 			line_size++;
 		}
 		if (map->length == map->width)
-			return (ft_error_square(),-1); // ft_error_square()
+			return (error_square(),-1);
 		return (0);
 	}
 
-	// int ft_check_walls(t_map *map)
-	// {
-		
-	// }
+int ft_check_walls(t_map *map)
+{
+	int i;
+	int indx;
+
+	indx = 0;
+	i = -1;
+	while (map->plan[++i])
+	{
+		if (indx == 0 || indx == map->width)
+		{
+			while (map->plan[i] != '\n' && map->plan[i] != '\0')
+			{
+				if (map->plan[i] != '1')
+					return (error_wall(), -1);	
+				i++;
+			}
+			indx++;
+		}
+		if (map->plan[i] == '\n')
+		{
+			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
+				return (error_wall(), -1);
+			i++;
+			indx++;
+		}
+	}
+	return (0);
+}

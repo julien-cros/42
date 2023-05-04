@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/03 19:51:26 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/03 21:44:01 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 #include "display.h"
 
-void ft_no_map();
+void	ft_no_map();
 void	error_lenght_line();
 void	error_wrong_character(char c);
-void	ft_error_square();
+void	error_square();
+void	error_wall();
 #endif

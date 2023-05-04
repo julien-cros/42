@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/03 20:01:15 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/04 11:58:24 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,6 @@ void	ft_init(t_map *map)
 	map->plan = NULL;
 	map->spawn = 0;
 	map->width = 1;
+	map->start_col_pos = 0;
+	map->start_raw_pos = 0;
 }

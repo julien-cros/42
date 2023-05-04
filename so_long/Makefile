@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
+#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/04/27 16:40:01 by jcros            ###   ########.fr        #
+#    Updated: 2023/05/04 09:54:39 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = \
 	errors.c \
 	utils.c \
 	mem.c \
+	check_finishable.c \
 	
 INCLUDES =	./struct.h \
 			./parsing.h \
@@ -34,6 +35,7 @@ INCLUDES =	./struct.h \
 			./errors.h \
 			./mem.h \
 			./utils.h \
+			./check_finishable.h \
 			
 
 

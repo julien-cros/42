@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:50 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/03 19:52:52 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/03 21:44:15 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ void	error_wrong_character(char c)
 	ft_putstr_fd(". Not a valid argument in the map.\n", 1);
 }
 
-void	ft_error_square()
+void	error_square()
 {
 	ft_putstr_fd("Error: Your map is a square.", 1);
+}
+
+void error_wall()
+{
+	ft_putstr_fd("Error: The walls are not encompasses the map.", 1);
 }
