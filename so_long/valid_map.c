@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/05 00:15:54 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/05 15:46:43 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int ft_valid_map(t_map *map, int fd)
 		return(-1);
 	if (ft_check_chars(map) != 0)
 		return (-1);
-	printf("//\n%s\ n//\n", map->plan);
+	printf("//\n%s\n//\n", map->plan);
 	if (ft_check_walls(map) != 0)
 		return (-1);
 	if (map->exit != 1 || map->spawn != 1)
-		return (-1);
+		return (ft_invalid_map(), -1);
 	if (if_can(map) != 0)
 		return (-1);
 	printf ("ok!\n");
@@ -44,7 +44,7 @@ char *ft_fill_map(int fd)
 	char	*temp;
 	char	*line;
 	i = 0;
-	line = malloc(sizeof(char                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ));
+	line = malloc(sizeof(char));
 	if (!line)
 		return (NULL);
 	while (read(fd, &buffer, 1) > 0 && buffer != '\0')
@@ -95,12 +95,12 @@ int ft_check_chars(t_map *map)
 			{
 				if (line_size != map->length)
 					return (error_lenght_line(),-1);
-				map->width++;
+				map->row++;
 				line_size = -1;
 			}
 			else if (map->plan[i] == 'P')
 			{
-				map->start_col_pos = map->width - 1;
+				map->start_col_pos = map->row - 1;
 				map->start_raw_pos = i - ((map->start_col_pos) * (map->length));
 				map->spawn++;
 			}
@@ -113,7 +113,7 @@ int ft_check_chars(t_map *map)
 			i++;
 			line_size++;
 		}
-		if (map->length == map->width)
+		if (map->length == map->row)
 			return (error_square(),-1);
 		return (0);
 	}
@@ -127,7 +127,7 @@ int ft_check_walls(t_map *map)
 	i = -1;
 	while (map->plan[++i])
 	{
-		if (indx == 0 || indx == map->width)
+		if (indx == 0 || indx == map->row)
 		{
 			while (map->plan[i] != '\n' && map->plan[i] != '\0')
 			{

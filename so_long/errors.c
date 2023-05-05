@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:50 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/04 21:42:50 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/05 14:46:11 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 void	ft_no_map()
 {
 	ft_putstr_fd("Can't find the map\n", 1);
+}
+
+void	ft_invalid_map()
+{
+	ft_putstr_fd("Error: Invalid map.\n", 1);
 }
 
 void	error_lenght_line()
@@ -42,4 +47,9 @@ void	error_wall()
 void	ft_error_finding_exit()
 {
 	ft_putstr_fd("Error: Can't find the exit.", 1);
+}
+
+void	ft_error_collectible()
+{
+	ft_putstr_fd("Error: Can't find the collectible.", 1);
 }

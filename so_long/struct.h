@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:46:16 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/04 12:06:13 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/05 15:54:15 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ typedef enum e_bool
 typedef struct s_map
 {
 	int length;
-	int width;
+	int row;
 	int collectible;
 	int exit;
 	int spawn;
-	t_bool finishable;
+	t_bool is_valid;
 	char *plan;
 	int start_raw_pos;
 	int start_col_pos;
-	
+	int i;
+	int j;
+	char index;
 	
 } t_map;
 

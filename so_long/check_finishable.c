@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 09:23:32 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/04 23:46:28 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/05 17:43:11 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 char	**ft_create_2d(t_map *map);
 int		ft_find_exit(char **strs, t_map *map);
-int ft_search_e(char **strs, int i, int j);
-int ft_search_row(char **strs, int i, int j);
-int ft_search_col(char **strs, int i, int j);
+int ft_search_row(char **strs, t_map *map);
+int ft_search_col(char **strs, t_map *map);
 int ft_find_p(char **strs, t_map *map);
+int ft_find_char(char **strs, t_map *map, char c);
+int ft_search_z(char **strs, int i, int j);
+int ft_get_back_i(char **strs, t_map *map);
+int ft_get_back_j(char **strs, t_map *map);
 
 int if_can(t_map *map)
 {
@@ -29,7 +32,7 @@ int if_can(t_map *map)
 	map_2d = ft_create_2d(map);
 	if (!map_2d)
 		return (-1);
-	while (i < map->width)
+	while (i < map->row)
 	{
 		printf("%s == %d\n", map_2d[i], i);
 		i++;
@@ -50,10 +53,10 @@ char **ft_create_2d(t_map *map)
 
 	i = 0;
 	indx = 0;
-	strs = malloc((map->width + 1) * sizeof(char **));
+	strs = malloc((map->row + 1) * sizeof(char **));
 	if (!strs)
 		return (NULL);
-	while (i < map->width)
+	while (i < map->row)
 	{
 		strs[i] = ft_strndup(map->plan+indx ,map->length + 1);
 		if (!strs)
@@ -66,92 +69,74 @@ char **ft_create_2d(t_map *map)
 
 int	ft_find_exit(char **strs, t_map *map)
 {
-	char index;
-	int i;
-	int j;
-	i = map->start_col_pos;
-	j = map->start_raw_pos;
-	index = 97;
-	printf("strs[%d][%d] = %c\n", i, j, strs[i][j]);
-	while(strs[i][j] != 'E')
+	int collectible_count;
+	
+	collectible_count = 0;
+	map->i = map->start_col_pos;
+	map->j = map->start_raw_pos;
+	map->index = 97;
+	printf("strs[%d][%d] = %c\n", map->i, map->j, strs[map->i][map->j]);
+	while(strs[map->i][map->j] != 'E')
 	{
-		printf("strs[%d][%d] = %c\n", i, j, strs[i][j]);
-		if (ft_search_e(strs, i, j) == 0)
+		if (ft_find_char(strs, map, 'E') == 0)
 			return(0);
-		if (ft_search_row(strs, i, j) != -1)
+		if (ft_find_char(strs, map, 'C') == 0)
+			collectible_count++;
+		if (ft_search_row(strs, map) != -1)
 		{
-			
-			strs[i][j] = index++;
-			j = ft_search_row(strs, i, j);
+			strs[map->i][map->j] = map->index++;
+			map->j = ft_search_row(strs, map);
 		}
-		else if (ft_search_col(strs, i, j) != -1)
+		else if (ft_search_col(strs, map) != -1)
 		{
-			strs[i][j] = index++;
-			i = ft_search_col(strs, i, j);
+			strs[map->i][map->j] = map->index++;
+			map->i = ft_search_col(strs, map);
 		}
 		else
 		{
-			if (strs[i][j-1] == index - 1)
+			if (ft_get_back_j(strs, map) != -1)
 			{
-				strs[i][j] = '\0';
-				j--;
-				index--;
+				printf ("j\n");
+					strs[map->i][map->j] = '\0';
+					map->j = ft_get_back_j(strs, map);
+					map->index--;
 			}
-			else if (strs[i-1][j] == index - 1)
+			else if (ft_get_back_i(strs, map) != -1)
 			{
-				strs[i][j] = '\0';
-				i--;
-				index--;
+				printf ("i\n");
+					map->i = ft_get_back_i(strs, map);
+					strs[map->i][map->j] = '\0';
+					map->index--;
 			}
-			else if (strs[i][j+1] == index - 1)
-			{
-				strs[i][j] = '\0';
-				j++;
-				index--;
-			}
-			else if (strs[i+1][j] == index - 1)
-			{
-				strs[i][j] = '\0';
-				i++;
-				index--;
-			}
-			else if (index == 97 && ft_search_col(strs, i, j) == -1 && ft_search_row(strs, i, j) == -1)
+			if (map->index == 97 && ft_search_col(strs, map) == -1 && ft_search_row(strs, map) == -1)
 				return(ft_error_finding_exit(), -1); 
-			
+			// else if (ft_search_z(strs, i, j) == 0)
+			// {
+			// 	index = 122;
+			// }
 		}
+		printf("strs[%d][%d] = %c\n", map->i, map->j, strs[map->i][map->j]);
 	}
+	if (collectible_count != map->collectible)
+		return(ft_error_collectible(), -1);
+	return (0);
+}
+
+int ft_search_row(char **strs, t_map *map)
+{
+	if (strs[map->i][map->j+1] == '0')
+		return (map->j+1);
+	else if (strs[map->i][map->j-1] == '0')
+		return (map->j-1);
 	return (-1);
 }
 
-
-int ft_search_e(char **strs, int i, int j)
+int ft_search_col(char **strs, t_map *map)
 {
-	if (strs[i][j+1] == 'E')
-		return (0);
-	else if (strs[i+1][j] == 'E')
-		return (0);
-	else if (strs[i-1][j] == 'E')
-		return (0);
-	else if (strs[i][j-1] == 'E')
-		return (0);
-	return (-1);
-}
-
-int ft_search_row(char **strs, int i, int j)
-{
-	if (strs[i][j+1] == '0')
-		return (++j);
-	else if (strs[i][j-1] == '0')
-		return (++j);
-	return (-1);
-}
-
-int ft_search_col(char **strs, int i, int j)
-{
-	if (strs[i+1][j] == '0')
-		return (++i);
-	else if (strs[i-1][j] == '0')
-		return (++i);
+	if (strs[map->i+1][map->j] == '0')
+		return (map->i+1);
+	else if (strs[map->i-1][map->j] == '0')
+		return (map->i-1);
 	return (-1);
 }
 
@@ -181,27 +166,50 @@ int ft_find_p(char **strs, t_map *map)
 }
 
 
-		// printf("1strs[%d][%d] = %c\n", i, j, strs[i][j]);
-		// if (strs[i][j+1] == '0' || strs[i][j+1] == 'E')
-		// {
-		// 	strs[i][j] = index++;
-		// 	j++;
-		// }
-		// else if (strs[i+1][j] == '0')
-		// {
-		// 	strs[i][j] = index++;
-		// 	printf("3strs[%d][%d] = %c\n", i, j, strs[i][j]);
-		// 	i++;
-		// }
-		// else if (strs[i-1][j] == '0')
-		// {
-		// 	strs[i][j] = index++;
-		// 	printf("4strs[%d][%d] = %c\n", i, j, strs[i][j]);
-		// 	i--;
-		// }
-		// else if (strs[i][j-1] == '0')
-		// {
-		// 	strs[i][j] = index++;
-		// 	printf("5strs[%d][%d] = %c\n", i, j, strs[i][j]);
-		// 	j--;
-		// }
+int ft_find_char(char **strs, t_map *map, char c)
+{
+	if (strs[map->i][map->j+1] == c)
+		return (0);
+	else if (strs[map->i+1][map->j] == c)
+		return (0);
+	else if (strs[map->i-1][map->j] == c)
+		return (0);
+	else if (strs[map->i][map->j-1] == c)
+		return (0);
+	else
+		return (-1);
+}
+
+int ft_search_z(char **strs, int i, int j)
+{
+	if (strs[i][j+1] == 122)
+		return (0);
+	else if (strs[i+1][j] == 122)
+		return (0);
+	else if (strs[i-1][j] == 122)
+		return (0);
+	else if (strs[i][j-1] == 122)
+		return (0);
+	else
+		return (-1);
+}
+
+
+int ft_get_back_j(char **strs, t_map *map)
+{
+	if (strs[map->i][map->j-1] == map->index - 1)
+		return (map->j-1);
+	else if (strs[map->i][map->j+1] == map->index - 1)
+		return (map->j+1);
+	return(-1);
+}
+
+int ft_get_back_i(char **strs, t_map *map)
+{
+	if (strs[map->i-1][map->j] == map->index - 1)
+		return (map->i-1);
+	else if (strs[map->i+1][map->j] == map->index - 1)
+		return (map->i+1);
+	return(-1);
+
+}

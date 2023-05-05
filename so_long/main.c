@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/04 11:58:24 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/05 15:45:47 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 
 void	ft_init(t_map *map);
 
-int main()
+int main(int argc, char **argv)
 {
 	t_map *map;
 	int fd;
-	fd = (open("map.ber", O_RDONLY));
+	if (argc != 2)
+		return (-1);
+	fd = (open(argv[1], O_RDONLY));
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (-1);
@@ -36,11 +38,14 @@ void	ft_init(t_map *map)
 {
 	map->collectible = 0;
 	map->exit = 0;
-	map->finishable = false;
+	map->is_valid = false;
 	map->length = 0;
 	map->plan = NULL;
 	map->spawn = 0;
-	map->width = 1;
+	map->row = 1;
 	map->start_col_pos = 0;
 	map->start_raw_pos = 0;
+	map->i = 0;
+	map->j = 0;
+	map->index = 0;
 }
