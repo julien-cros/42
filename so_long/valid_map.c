@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/04 15:32:48 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/05 00:15:54 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ int ft_valid_map(t_map *map, int fd)
 	map->plan = ft_fill_map(fd);
 	if (!map->plan)
 		return(-1);
-	// printf("map->plan =\n%s\n", map->plan);
 	if (ft_check_chars(map) != 0)
 		return (-1);
-	printf("//\n%s\n//\n", map->plan);
+	printf("//\n%s\ n//\n", map->plan);
 	if (ft_check_walls(map) != 0)
 		return (-1);
 	if (map->exit != 1 || map->spawn != 1)
@@ -101,8 +100,8 @@ int ft_check_chars(t_map *map)
 			}
 			else if (map->plan[i] == 'P')
 			{
-				map->start_raw_pos = i - (map->length * (map->width-1))-2;
 				map->start_col_pos = map->width - 1;
+				map->start_raw_pos = i - ((map->start_col_pos) * (map->length));
 				map->spawn++;
 			}
 			else if (map->plan[i] == 'E')

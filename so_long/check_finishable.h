@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 09:22:30 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/04 10:42:01 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/04 21:34:52 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 #include "utils.h"
+#include "errors.h"
 
 int if_can(t_map *map);
 
