@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   find_valid.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 08:46:16 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/07 21:00:01 by juliencros       ###   ########.fr       */
+/*   Created: 2023/05/07 20:24:15 by juliencros        #+#    #+#             */
+/*   Updated: 2023/05/07 21:01:04 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-#define STRUCT_H
+#ifndef FIND_VALID_H
+#define FIND_VALID_H
 
-typedef enum e_bool
-{
-	false,
-	true
-}	t_bool;
+#include "check_finishable.h"
 
-typedef struct s_map
-{
-	int length;
-	int row;
-	int collectible;
-	int exit;
-	int spawn;
-	t_bool is_valid;
-	char *plan;
-	int start_raw_pos;
-	int start_col_pos;
-	int i;
-	int j;
-	char index;
-	char **strs;
-} t_map;
+int	ft_find_if_possible(t_map *map);
 
 #endif

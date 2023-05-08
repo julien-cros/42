@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 09:23:32 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/05 17:43:11 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/08 11:24:50 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 char	**ft_create_2d(t_map *map);
 int		ft_find_exit(char **strs, t_map *map);
-int ft_search_row(char **strs, t_map *map);
-int ft_search_col(char **strs, t_map *map);
+int ft_search_row(char **strs, t_map *map, char c);
+int ft_search_col(char **strs, t_map *map, char c);
 int ft_find_p(char **strs, t_map *map);
 int ft_find_char(char **strs, t_map *map, char c);
 int ft_search_z(char **strs, int i, int j);
@@ -74,23 +74,35 @@ int	ft_find_exit(char **strs, t_map *map)
 	collectible_count = 0;
 	map->i = map->start_col_pos;
 	map->j = map->start_raw_pos;
-	map->index = 97;
+	map->index = 96;
 	printf("strs[%d][%d] = %c\n", map->i, map->j, strs[map->i][map->j]);
-	while(strs[map->i][map->j] != 'E')
+	while(map->is_valid != true || map->collectible != collectible_count)
 	{
+		if (map->index == 'z')
+			map->index = 'a';
 		if (ft_find_char(strs, map, 'E') == 0)
-			return(0);
-		if (ft_find_char(strs, map, 'C') == 0)
-			collectible_count++;
-		if (ft_search_row(strs, map) != -1)
 		{
-			strs[map->i][map->j] = map->index++;
-			map->j = ft_search_row(strs, map);
+			printf("in e\n");
+			map->is_valid = true;
 		}
-		else if (ft_search_col(strs, map) != -1)
+		if (ft_find_char(strs, map, 'C') == 0)
 		{
 			strs[map->i][map->j] = map->index++;
-			map->i = ft_search_col(strs, map);
+			if (ft_search_row(strs, map, 'C') != -1)
+				map->j = ft_search_row(strs, map, 'C');
+			if (ft_search_col(strs, map, 'C') != -1)
+				map->i = ft_search_col(strs, map, 'C');
+			collectible_count++;
+		}
+		if (ft_search_row(strs, map, '0') != -1)
+		{
+			strs[map->i][map->j] = map->index++;
+			map->j = ft_search_row(strs, map, '0');
+		}
+		else if (ft_search_col(strs, map, '0') != -1)
+		{
+			strs[map->i][map->j] = map->index++;
+			map->i = ft_search_col(strs, map, '0');
 		}
 		else
 		{
@@ -108,34 +120,45 @@ int	ft_find_exit(char **strs, t_map *map)
 					strs[map->i][map->j] = '\0';
 					map->index--;
 			}
-			if (map->index == 97 && ft_search_col(strs, map) == -1 && ft_search_row(strs, map) == -1)
-				return(ft_error_finding_exit(), -1); 
-			// else if (ft_search_z(strs, i, j) == 0)
-			// {
-			// 	index = 122;
-			// }
+			if (strs[map->i][map->j] == 'a' && ft_find_char(strs, map, 'z'))
+			{
+				strs[map->i][map->j] = '\0';
+				if (ft_search_col(strs, map, 'z') != -1)
+					map->i = ft_search_col(strs, map, 'z');
+				if(ft_search_row(strs, map, 'z') != -1)
+					map->j = ft_search_row(strs, map, 'z');
+				map->index = 122;
+			}
+			else if (map->index == 97 && ft_search_col(strs, map, '0') == -1 && ft_search_row(strs, map, '0') == -1)
+				return(ft_error_finding_exit(), -1);
+			if (map->i == map->row && map->j == map->length && map->collectible == collectible_count && map->exit == true)
+			{
+				printf("all ok");
+				return (0);
+			}
 		}
-		printf("strs[%d][%d] = %c\n", map->i, map->j, strs[map->i][map->j]);
+		printf("strs[%d][%d] = %c         index = %c\n", map->i, map->j, strs[map->i][map->j], map->index);
 	}
+	printf("map->collectible = %d\ncollectible_count = %d\n", map->collectible, collectible_count);
 	if (collectible_count != map->collectible)
 		return(ft_error_collectible(), -1);
 	return (0);
 }
 
-int ft_search_row(char **strs, t_map *map)
+int ft_search_row(char **strs, t_map *map, char c)
 {
-	if (strs[map->i][map->j+1] == '0')
+	if (strs[map->i][map->j+1] == c)
 		return (map->j+1);
-	else if (strs[map->i][map->j-1] == '0')
+	else if (strs[map->i][map->j-1] == c)
 		return (map->j-1);
 	return (-1);
 }
 
-int ft_search_col(char **strs, t_map *map)
+int ft_search_col(char **strs, t_map *map, char c)
 {
-	if (strs[map->i+1][map->j] == '0')
+	if (strs[map->i+1][map->j] == c)
 		return (map->i+1);
-	else if (strs[map->i-1][map->j] == '0')
+	else if (strs[map->i-1][map->j] == c)
 		return (map->i-1);
 	return (-1);
 }
@@ -180,19 +203,19 @@ int ft_find_char(char **strs, t_map *map, char c)
 		return (-1);
 }
 
-int ft_search_z(char **strs, int i, int j)
-{
-	if (strs[i][j+1] == 122)
-		return (0);
-	else if (strs[i+1][j] == 122)
-		return (0);
-	else if (strs[i-1][j] == 122)
-		return (0);
-	else if (strs[i][j-1] == 122)
-		return (0);
-	else
-		return (-1);
-}
+// int ft_search_z(char **strs, t_map)
+// {
+// 	if (strs[i][j+1] == 122)
+// 		return (0);
+// 	else if (strs[i+1][j] == 122)
+// 		return (0);
+// 	else if (strs[i-1][j] == 122)
+// 		return (0);
+// 	else if (strs[i][j-1] == 122)
+// 		return (0);
+// 	else
+// 		return (-1);
+// }
 
 
 int ft_get_back_j(char **strs, t_map *map)
@@ -213,3 +236,15 @@ int ft_get_back_i(char **strs, t_map *map)
 	return(-1);
 
 }
+
+// non je doir peut etre juste faire un booleen et continuer justqu a avoir tout les parametres
+// if (map->finishable == true && map->collectible == collectible_count)
+//	return (0);
+
+// comment copier le chemin vers la sortie
+
+// creer copie de P vers E et ensuite reculer pour trouver tout les C
+
+
+
+// pour la fin si arrive au point de depart et que j'ai pas exit ou que j'ai pas count return pas bon

@@ -6,9 +6,76 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/05/04 09:54:39 by juliencros       ###   ########.fr        #
+#    Updated: 2023/05/08 22:55:17 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# NAME = so_long
+
+# CC = gcc
+# CFLAGS = -Wall -Wextra -Werror
+
+# ifeq ($(shell uname), Linux)
+# 	INCLUDES = -I/usr/include -Imlx
+# else
+# 	INCLUDES = -I/opt/X11/include -Imlx
+# endif
+
+# RM = rm
+# RMFLAG = -f
+
+# MLX_DIR = ./mlx
+# MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
+# ifeq ($(shell uname), Linux)
+# 	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm -lz
+# else
+# 	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+# endif
+
+# SRCS = \
+# 	main.c \
+# 	parsing.c \
+# 	valid_map.c \
+# 	display.c \
+# 	errors.c \
+# 	utils.c \
+# 	mem.c \
+# 	check_finishable.c \
+# 	find_valid.c
+
+# Include = ./struct.h \
+# 			./parsing.h \
+# 			./valid_map.h \
+# 			./display.h \
+# 			./errors.h \
+# 			./mem.h \
+# 			./utils.h \
+# 			./check_finishable.h \
+# 			./find_valid.h \
+
+# OBJS = $(SRCS:.c=.o)
+
+# all: $(MLX_LIB) $(NAME)
+
+# .c.o:
+# 	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+
+# $(NAME): $(OBJS)
+# 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+
+# $(MLX_LIB):
+# 	@make -C $(MLX_DIR)
+
+# clean:
+# 	$(RM) $(RMFLAG) $(OBJS)
+
+# fclean: clean
+# 	$(RM) $(RMFLAG) $(NAME)
+# 	@make -C $(MLX_DIR) clean
+
+# re: fclean all
+
+# .PHONY: all clean run fclean re 
 
 NAME = so_long
 
@@ -27,7 +94,8 @@ SRCS = \
 	utils.c \
 	mem.c \
 	check_finishable.c \
-	
+	find_valid.c
+
 INCLUDES =	./struct.h \
 			./parsing.h \
 			./valid_map.h \
@@ -36,10 +104,11 @@ INCLUDES =	./struct.h \
 			./mem.h \
 			./utils.h \
 			./check_finishable.h \
-			
+			./find_valid.h \
 
 
-	
+
+
 
 OBJS = $(SRCS:.c=.o)
 
@@ -64,4 +133,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean run fclean re 
+.PHONY: all clean run fclean re %

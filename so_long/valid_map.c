@@ -6,12 +6,13 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/05 15:46:43 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/08 21:55:30 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "valid_map.h"
 #include "check_finishable.h"
+#include "find_valid.h"
 
 char *ft_fill_map(int fd);
 char *ft_strjoinne(char *str, char c);
@@ -20,7 +21,9 @@ int ft_check_walls(t_map *map);
 
 int ft_valid_map(t_map *map, int fd)
 {
-	
+	// int i = 0;
+	// int j = 0;
+
 	map->plan = ft_fill_map(fd);
 	if (!map->plan)
 		return(-1);
@@ -31,7 +34,10 @@ int ft_valid_map(t_map *map, int fd)
 		return (-1);
 	if (map->exit != 1 || map->spawn != 1)
 		return (ft_invalid_map(), -1);
-	if (if_can(map) != 0)
+	map->strs = ft_create_2d(map);
+	if (!map->strs)
+		return (-1);
+	if (ft_find_if_possible(map) != 0)
 		return (-1);
 	printf ("ok!\n");
 	return (0);
