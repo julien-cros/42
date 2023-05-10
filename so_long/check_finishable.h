@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 09:22:30 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/07 20:44:10 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/08 22:56:37 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int ft_search_row(char **strs, t_map *map, char c);
 int ft_search_col(char **strs, t_map *map, char c);
 int ft_find_p(char **strs, t_map *map);
 int ft_find_char(char **strs, t_map *map, char c);
-// int ft_search_z(char **strs, int i, int j);
 int ft_get_back_i(char **strs, t_map *map);
 int ft_get_back_j(char **strs, t_map *map);
 

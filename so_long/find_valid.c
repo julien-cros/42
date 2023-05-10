@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:24:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/08 21:53:03 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/10 17:03:38 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	ft_find_if_possible(t_map *map)
 		if ((map->collectible == collectible_count) && (map->is_valid == true))
 			return (0);
 		if (ft_find_character(map, 'E') == 0)
+		{
+			ft_change_position(map, 'E', 1);
 			map->is_valid = true;
+		}
 		if (ft_find_character(map, 'C') == 0)
 		{
 			ft_change_position(map, 'C', 1);

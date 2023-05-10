@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/08 21:55:30 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/10 17:01:52 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int ft_check_walls(t_map *map);
 
 int ft_valid_map(t_map *map, int fd)
 {
-	// int i = 0;
-	// int j = 0;
+	int i = 0;
+	int j = 0;
 
 	map->plan = ft_fill_map(fd);
 	if (!map->plan)
@@ -34,11 +34,34 @@ int ft_valid_map(t_map *map, int fd)
 		return (-1);
 	if (map->exit != 1 || map->spawn != 1)
 		return (ft_invalid_map(), -1);
+	// if (if_can(map) != 0)
+		// return (-1);
 	map->strs = ft_create_2d(map);
 	if (!map->strs)
 		return (-1);
+	while (map->strs[i])
+	{
+		j = 0;
+		while (map->strs[i][j])
+		{
+			printf ("%c", map->strs[i][j]);
+			j++;
+		}
+		i++;
+	}
+	i = 0;
 	if (ft_find_if_possible(map) != 0)
 		return (-1);
+	while (map->strs[i])
+	{
+		j = 0;
+		while (map->strs[i][j])
+		{
+			printf ("%c", map->strs[i][j]);
+			j++;
+		}
+		i++;
+	}
 	printf ("ok!\n");
 	return (0);
 }
