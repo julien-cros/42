@@ -1,0 +1,14 @@
+# The name of the project
+name = "pipex"
+
+[scripts]
+# The install script (optional)
+build = { cmd = "make", mlx = true }
+
+# The test script (optional)
+
+# The cleanup script (optional)
+clean = { cmd = "make fclean" }
+
+# The lint script (optional)
+lint = { cmd = "norminette ." }
