@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_valid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:24:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/10 17:03:38 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/10 16:51:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_find_if_possible(t_map *map)
 		return (-1);
 	map->i = map->start_col_pos;
 	map->j = map->start_raw_pos;
+	printf("ok");
 	while (map->collectible != collectible_count || map->is_valid != true)
 	{
 		if ((map->collectible == collectible_count) && (map->is_valid == true))
@@ -50,7 +51,7 @@ int	ft_change_position(t_map *map, char c, int way)
 	if (way > 0)
 		map->strs[map->i][map->j] = map->index;
 	if (way < 0)
-		map->strs[map->i][map->j] = '\0';
+		map->strs[map->i][map->j] = '1';
 	if (map->strs[map->i][map->j+1] == c)
 		map->j = map->j+1;
 	else if (map->strs[map->i+1][map->j] == c)

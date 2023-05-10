@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/05/10 15:34:23 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/10 17:34:33 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS = \
 	utils.c \
 	mem.c \
 	check_finishable.c \
-	find_valid.c
+	find_valid.c \
+	free.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/08 12:42:24 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/10 17:45:50 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "valid_map.h"
 #include <stdlib.h>
+#include "free.h"
 
 void	ft_init(t_map *map);
 
@@ -25,13 +26,13 @@ int main(int argc, char **argv)
 	fd = (open(argv[1], O_RDONLY));
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return (-1);
+		return (ft_clean(map), -1);
 	ft_init(map);
 	if (ft_valid_map(map, fd) != 0)
-		return(-1);
+		return(ft_clean(map), -1);
 	if (!map)
-		return(-1);
-	free(map);
+		return(ft_clean(map), -1);
+	return (ft_clean(map), 0);
 }
 
 void	ft_init(t_map *map)

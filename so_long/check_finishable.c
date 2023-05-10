@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_finishable.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 09:23:32 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/08 11:24:50 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/10 19:42:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char **ft_create_2d(t_map *map)
 		indx += map->length + 1;
 		i++;
 	}
+	strs[i] = '\0';
 	return(strs);
 }
 

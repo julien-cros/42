@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.h                                        :+:      :+:    :+:   */
+/*   free.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 08:48:00 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/10 18:37:56 by codespace        ###   ########.fr       */
+/*   Created: 2023/05/10 17:28:35 by codespace         #+#    #+#             */
+/*   Updated: 2023/05/10 18:06:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALID_MAP_H
-#define VALID_MAP_H
+#ifndef FREE_H
+#define FREE_H
 
 #include "struct.h"
-#include "errors.h"
-#include "utils.h"
-#include "utils.h"
-#include <fcntl.h>
-#include <stdio.h>
 #include <stdlib.h>
 
-int ft_valid_map(t_map *map, int fd);
+void ft_clean(t_map *map);
+void	ft_free_with_i(char **strs);
 
 #endif

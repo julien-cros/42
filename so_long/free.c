@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.h                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 08:48:00 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/10 18:37:56 by codespace        ###   ########.fr       */
+/*   Created: 2023/05/10 17:11:37 by codespace         #+#    #+#             */
+/*   Updated: 2023/05/10 18:36:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALID_MAP_H
-#define VALID_MAP_H
-
-#include "struct.h"
-#include "errors.h"
-#include "utils.h"
-#include "utils.h"
-#include <fcntl.h>
+#include "free.h"
 #include <stdio.h>
-#include <stdlib.h>
 
-int ft_valid_map(t_map *map, int fd);
+void ft_clean(t_map *map)
+{
+	int i;
 
-#endif
+	i = 0;
+	if (map->plan)
+		free(map->plan);
+	if (map->strs[i])
+		ft_free_with_i(map->strs);
+	// free(map->strs);
+	free(map);
+}
+
+void	ft_free_with_i(char **strs)
+{
+	int	j;
+
+	j = 0;
+	{
+		printf("strs[%d] = %s\n", j, strs[j]);
+		while (strs[j])
+		{
+			free(strs[j]);
+			j++;
+		}
+	}
+	free(strs);
+}
