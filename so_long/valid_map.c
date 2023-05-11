@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/10 19:59:47 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/10 19:59:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char *ft_fill_map(int fd)
 	char	*temp;
 	char	*line;
 	i = 0;
-	line = ft_calloc(sizeof(char), 1);
+	line = ft_calloc(sizeof(char),  1);
 	if (!line)
 		return (NULL);
 	while (read(fd, &buffer, 1) > 0 && buffer != '\0')
@@ -72,18 +72,19 @@ char *ft_strjoinne(char *str, char c)
 	char	*new;
 	size_t	i;
 
-	i = -1;
+	i = 0;
 	if (!str | !c)
 		return (NULL);
 	new = ft_calloc(sizeof(char), ft_strlen(str) + 2 );
 	if (!new)
 		return (NULL);
-	while (++i < ft_strlen(str))
+	while (i < ft_strlen(str))
 	{
 		new[i] = str[i];
+		i++;
 	}
 	new[i] = c;
-	new[++i] = '\0';
+	new[i+1] = '\0';
 	return (new);
 }
 
