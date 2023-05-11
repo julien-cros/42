@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:24:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/11 13:29:56 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/11 21:52:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_find_if_possible(t_map *map)
 		return (-1);
 	map->i = map->start_col_pos;
 	map->j = map->start_raw_pos;
-	printf("ok");
 	while (map->collectible != collectible_count || map->is_valid != true)
 	{
 		if ((map->collectible == collectible_count) && (map->is_valid == true))

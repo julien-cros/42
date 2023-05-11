@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/11 13:27:08 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/11 22:06:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ int ft_valid_map(t_map *map, int fd)
 	printf("//\n%s\n//\n", map->plan);
 	if (ft_check_walls(map) != 0)
 		return (-1);
-	if (map->exit != 1 || map->spawn != 1)
+	if (map->exit != 1 || map->spawn != 1 || map->collectible < 1)
 		return (ft_invalid_map(), -1);
 	map->strs = ft_create_2d(map);
 	if (!map->strs)
 		return (-1);
-	printf("c'est bon\n");
 	if (ft_find_if_possible(map) != 0)
 		return (-1);
 	printf ("ok!\n");
@@ -59,6 +58,8 @@ char *ft_fill_map(int fd)
 			return(NULL);
 		i++;
 	}
+	if (line[i - 1] == '\n')
+		line[i - 1] = '\0';
 	return (line);
 }
 
@@ -80,7 +81,7 @@ char *ft_strjoinne(char *str, char c)
 		i++;
 	}
 	new[i] = c;
-	new[i+1] = '\0';
+	new[++i] = '\0';
 	return (new);
 }
 
@@ -122,6 +123,35 @@ int ft_check_chars(t_map *map)
 		return (0);
 	}
 
+// int ft_check_walls(t_map *map)
+// {
+// 	int i;
+// 	int indx;
+
+// 	indx = 0;
+// 	i = 0;
+// 	while (map->plan[i])
+// 	{
+// 		if (indx == 0 || indx == map->row-1)
+// 		{
+// 			while (map->plan[i] != '\n' && map->plan[i] != '\0')
+// 			{
+// 				if (map->plan[i] != '1')
+// 					return (error_wall(), -1);
+// 				i++;
+// 			}
+// 		}
+// 		if ((map->plan[i] == '\n' && map->plan[i-1] != '1') 
+// 			|| (map->plan[i] == '\n' && map->plan[i+1] != '1'))
+// 				return (error_wall(), -1);
+// 		if ((map->plan[i] == '\n' && map->plan[i-1] == '1') 
+// 			|| (map->plan[i] == '\n' && map->plan[i+1] == '1'))
+// 				indx++;
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
 int ft_check_walls(t_map *map)
 {
 	int i;
@@ -131,7 +161,7 @@ int ft_check_walls(t_map *map)
 	i = -1;
 	while (map->plan[++i])
 	{
-		if (indx == 0 || indx == map->row)
+		if (indx == 0 || indx == map->row-1)
 		{
 			while (map->plan[i] != '\n' && map->plan[i] != '\0')
 			{
@@ -141,10 +171,41 @@ int ft_check_walls(t_map *map)
 			}
 		}
 		if (map->plan[i] == '\n')
+		{
 			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
 				return (error_wall(), -1);
-		i++;
-		indx++;
+			indx++;
+		}
 	}
 	return (0);
 }
+
+// int ft_check_walls(t_map *map)
+// {
+// 	int i;
+// 	int indx;
+
+// 	indx = 0;
+// 	i = 0;
+// 	while (map->plan[i])
+// 	{
+// 		if (indx == 0 || indx == map->row-1)
+// 		{
+// 			while (map->plan[i] != '\n' && map->plan[i] != '\0')
+// 			{
+// 				if (map->plan[i] != '1')
+// 					return (error_wall(), -1);
+// 				i++;
+// 			}
+// 		}
+// 		if (map->plan[i] == '\n')
+// 			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
+// 				return (error_wall(), -1);
+// 		if (map->plan[i] == '\n' && map->plan[i+1] == '\0')
+// 			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
+// 				return (error_wall(), -1);
+// 		indx++;
+// 		i++;
+// 	}
+// 	return (0);
+// }
