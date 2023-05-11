@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/05/10 17:34:33 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/11 13:27:36 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,11 @@ endif
 
 SRCS = \
 	main.c \
-	parsing.c \
 	valid_map.c \
 	display.c \
 	errors.c \
 	utils.c \
 	mem.c \
-	check_finishable.c \
 	find_valid.c \
 	free.c \
 

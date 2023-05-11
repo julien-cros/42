@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:50 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/05 14:46:11 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/11 13:24:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "errors.h"
+#include "includes.h"
 
 void	ft_no_map()
 {

@@ -6,14 +6,12 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/10 17:45:50 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/11 13:25:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes.h"
 #include "struct.h"
-#include "valid_map.h"
-#include <stdlib.h>
-#include "free.h"
 
 void	ft_init(t_map *map);
 

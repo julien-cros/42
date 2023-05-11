@@ -6,12 +6,11 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:37 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/10 18:36:43 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/11 13:25:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "free.h"
-#include <stdio.h>
+#include "includes.h"
 
 void ft_clean(t_map *map)
 {
@@ -22,7 +21,6 @@ void ft_clean(t_map *map)
 		free(map->plan);
 	if (map->strs[i])
 		ft_free_with_i(map->strs);
-	// free(map->strs);
 	free(map);
 }
 

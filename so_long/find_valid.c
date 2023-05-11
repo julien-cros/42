@@ -6,15 +6,11 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:24:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/10 16:51:52 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/11 13:29:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "find_valid.h"
-
-int	ft_change_position(t_map *map, char c, int way);
-int ft_go_back(t_map *map);
-int ft_find_character(t_map *map, char c);
+#include "includes.h"
 
 int	ft_find_if_possible(t_map *map)
 {
@@ -79,8 +75,6 @@ int ft_go_back(t_map *map)
 		ft_change_position(map, 'z', -1);
 		map->index = 'z';
 	}
-	// printf("index = %c\n", map->index);
-	// printf("strs[%d][%d] = %c\n", map->i, map->j, map->strs[map->i][map->j]);
 	if (ft_change_position(map, '0', 1) != 0 && map->i == map->start_col_pos && map->j == map->start_raw_pos)
 		return(-1);
 	return (0);
@@ -99,4 +93,27 @@ int ft_find_character(t_map *map, char c)
 		return (0);
 	else
 		return (-1);
+}
+
+char **ft_create_2d(t_map *map)
+{
+	char **strs;
+	int i;
+	int indx;
+
+	i = 0;
+	indx = 0;
+	strs = malloc((map->row + 1) * sizeof(char **));
+	if (!strs)
+		return (NULL);
+	while (i < map->row)
+	{
+		strs[i] = ft_strndup(map->plan+indx ,map->length + 1);
+		if (!strs)
+			return (NULL);
+		indx += map->length + 1;
+		i++;
+	}
+	strs[i] = '\0';
+	return(strs);
 }

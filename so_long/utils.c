@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:23:28 by jcros             #+#    #+#             */
-/*   Updated: 2023/05/04 11:34:14 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/11 13:31:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "includes.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -144,4 +144,29 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 	str = fill_str(str, n);
 	return (str);
+}
+
+int ft_find_p(char **strs, t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (strs[i][j])
+	{
+		if (strs[i][j] == 'P')
+		{
+			map->start_col_pos = i;
+			map->start_raw_pos = j;
+			return (0);
+		}
+		j++;
+		if (strs[i][j] == '\n')
+		{
+			i++;
+			j = 0;
+		}
+	}
+	return (-1);
 }

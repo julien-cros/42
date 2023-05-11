@@ -6,13 +6,11 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/10 19:59:07 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/11 13:27:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "valid_map.h"
-#include "check_finishable.h"
-#include "find_valid.h"
+#include "includes.h"
 
 char *ft_fill_map(int fd);
 char *ft_strjoinne(char *str, char c);
@@ -21,14 +19,12 @@ int ft_check_walls(t_map *map);
 
 int ft_valid_map(t_map *map, int fd)
 {
-	// int i = 0;
 
 	map->plan = ft_fill_map(fd);
 	if (!map->plan)
 		return(-1);
 	if (ft_check_chars(map) != 0)
 		return (-1);
-	// printf("map->row = %d\n", map->row);
 	printf("//\n%s\n//\n", map->plan);
 	if (ft_check_walls(map) != 0)
 		return (-1);
@@ -73,9 +69,9 @@ char *ft_strjoinne(char *str, char c)
 	size_t	i;
 
 	i = 0;
-	if (!str | !c)
+	if (!str || !c)
 		return (NULL);
-	new = ft_calloc(sizeof(char), ft_strlen(str) + 2 );
+	new = malloc((ft_strlen(str)+2) * sizeof(char));
 	if (!new)
 		return (NULL);
 	while (i < ft_strlen(str))
