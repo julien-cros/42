@@ -6,13 +6,13 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/05/11 13:27:36 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/11 14:26:12 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 ifeq ($(shell uname), Linux)
@@ -41,13 +41,14 @@ SRCS = \
 	mem.c \
 	find_valid.c \
 	free.c \
+	create_window.c \
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(MLX_LIB) $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)

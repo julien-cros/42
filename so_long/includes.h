@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/11 13:31:13 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/11 14:36:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ int ft_find_p(char **strs, t_map *map);
 //------------------   valid_map.c  ------------------//
 
 int ft_valid_map(t_map *map, int fd);
+
+
+//------------------   create_window.c  ------------------//
+void ft_init_window(); //t_map *map);
 
 // # include "../mlx/mlx.h"
 
