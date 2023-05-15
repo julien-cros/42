@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/11 14:36:26 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/15 17:12:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
-
+#include <X11/X.h>
+#include <X11/keysym.h>
 #include "struct.h"
+#include "mlx/mlx.h"
 
 //------------------    display.c   ------------------//
 
@@ -74,7 +76,16 @@ int ft_valid_map(t_map *map, int fd);
 //------------------   create_window.c  ------------------//
 void ft_init_window(); //t_map *map);
 
-// # include "../mlx/mlx.h"
+//------------------   hooks.c  ------------------//
 
+int ft_move(int keysym, t_data *data);
+int ft_check_move(int keysym, t_data *data);
+//------------------   init.c  ------------------//
+void ft_init_data(t_data *data, t_map *map);
+
+//------------------   textures.c  ------------------//
+void ft_init_texture(t_data *data);
+void ft_init_map(t_data *data);
+int ft_close(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/11 22:06:14 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/14 13:29:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ int ft_valid_map(t_map *map, int fd)
 	return (0);
 }
 
+
+/**
+ * @brief The ft_fill_map function fills the map with the content of the file
+ * and returns the map as a string. If the file is empty or if the file is not
+ * a valid map, the function returns NULL.
+ * 
+ * @param fd
+ * @return char*
+ * 
+*/
 char *ft_fill_map(int fd)
 {
 	int		i;

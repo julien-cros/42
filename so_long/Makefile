@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/05/11 14:26:12 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/15 13:35:09 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,9 @@ SRCS = \
 	find_valid.c \
 	free.c \
 	create_window.c \
+	hooks.c \
+	init.c \
+	textures.c \
 
 OBJS = $(SRCS:.c=.o)
 

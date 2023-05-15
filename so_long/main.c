@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/11 22:02:51 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/12 11:48:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		return(ft_clean(map), -1);
 	if (!map)
 		return(ft_clean(map), -1);
-	// ft_init_window();
+	ft_init_window(map);
 	return (ft_clean(map),  0);
 }
 
@@ -49,6 +49,4 @@ void	ft_init(t_map *map)
 	map->j = 0;
 	map->index = 97;
 	map->strs = NULL;
-	map->mlx = NULL;
-	map->win = NULL;
 }
