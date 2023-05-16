@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/14 13:29:20 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 10:29:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int ft_valid_map(t_map *map, int fd)
 		return(-1);
 	if (ft_check_chars(map) != 0)
 		return (-1);
-	printf("//\n%s\n//\n", map->plan);
 	if (ft_check_walls(map) != 0)
 		return (-1);
 	if (map->exit != 1 || map->spawn != 1 || map->collectible < 1)
@@ -35,7 +34,6 @@ int ft_valid_map(t_map *map, int fd)
 		return (-1);
 	if (ft_find_if_possible(map) != 0)
 		return (-1);
-	printf ("ok!\n");
 	return (0);
 }
 

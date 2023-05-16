@@ -6,115 +6,83 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/15 17:15:06 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 10:40:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 #include <X11/keysym.h>
 
-// int    key_hook(t_data *data)
-// {
-// 	if (keycode == KEY_ESC)
-// 		exit(0);
-// 	else if (keycode == KEY_W)
-// 		move_up(data);
-// 	else if (keycode == KEY_S)
-// 		move_down(data);
-// 	else if (keycode == KEY_A)
-// 		move_left(data);
-// 	else if (keycode == KEY_D)
-// 		move_right(data);
-// 	return (0);
-// }
-
 int ft_check_move(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-		ft_close(data);
-	if (ft_move(keysym, data))
-		ft_init_map(data);
-	if (data->collectible == 0 && data->map[data->player_x][data->player_y] == 'E')
+		ft_close_mlx(data);
+	if (ft_move(keysym, data) == 0)
+	{
+		ft_putstr_fd("you moved ", 1);
+		ft_putstr_fd(ft_itoa(data->step++), 1);
+		ft_putstr_fd(" times\n", 1);
+	}
+	ft_check_reachable(data);
+	if (data->collectible == 0 && data->exit == 1)
 	{
 		printf("You win\n");
-		ft_close(data);
+		ft_close_mlx(data);
 	}
+	ft_on_render(data);
 	return (0);
 }
 
-int ft_move(int keysym, t_data *data)
+int	ft_move(int keysym, t_data *data)
 {
-	int i = 0;
-	
-	printf("keycode: %d\n", keysym);
-	if (keysym == XK_Escape)
-		ft_close(data);
-	else if (keysym == XK_Up && data->map[data->player_x-1][data->player_y] != '1')
+	if (keysym == XK_w && data->map[data->player_x-1][data->player_y] != '1')
 	{
-		data->map[data->player_x][data->player_y] = '0';
+		ft_what_print(data);
 		data->player_x--;
 	}
-	else if (keysym == XK_Down && data->map[data->player_x+1][data->player_y] != '1')
+	else if (keysym == XK_s && data->map[data->player_x+1][data->player_y] != '1')
 	{
-		data->map[data->player_x][data->player_y] = '0';
+		ft_what_print(data);
 		data->player_x++;
 	}
-	else if (keysym == XK_Left && data->map[data->player_x][data->player_y-1] != '1')
+	else if (keysym == XK_a && data->map[data->player_x][data->player_y-1] != '1')
 	{
-		printf ("left\n");
-		data->map[data->player_x][data->player_y] = '0';
+		ft_what_print(data);
 		data->player_y--;
-		printf("end left\n");
 	}
-	else if (keysym == XK_Right && data->map[data->player_x][data->player_y+1] != '1')
+	else if (keysym == XK_d && data->map[data->player_x][data->player_y+1] != '1')
 	{
-		printf ("la cool\n");
-		data->map[data->player_x][data->player_y] = '0';
+		ft_what_print(data);
 		data->player_y++;
 	}
 	else
-		return (printf ("pas cool\n"), -1);
-	data->map[data->player_x][data->player_y] = 'P';
-	while (data->map[i])
-		printf("%s\n", data->map[i++]);
-	// ft_init_map(data);
-	return (printf ("la\n"), 0);
+		return (-1);
+	return (0);
 }
 
-
-
-void	ft_free_mlx(t_data *data)
+void ft_check_reachable(t_data *data)
 {
-	if (data->mlx_ptr)
+	if (data->map[data->player_x][data->player_y] == '0')
 	{
-		if (data->win)
-			mlx_destroy_window(data->mlx_ptr, data->win);
-		mlx_destroy_display(data->mlx_ptr);
-		free(data->mlx_ptr);
+		data->map[data->player_x][data->player_y] = 'P';
+		data->exit = 0;
+	}
+	else if (data->map[data->player_x][data->player_y] == 'E')
+		data->exit = 1;
+	else if (data->map[data->player_x][data->player_y] == 'C')
+	{
+		data->exit = 0;
+		data->map[data->player_x][data->player_y] = 'P';
+		data->collectible--;
 	}
 }
 
-void	ft_free_textures(t_data *data)
+void ft_what_print(t_data *data)
 {
-	int	i;
-
-	i = -1;
-	while (++i < 5)
-		if (data->img[i])
-			mlx_destroy_image(data->mlx_ptr, data->img[i]);
-}
-
-void	ft_free_data(t_data *data)
-{
-	free(data->map);
-	free(data);
-}
-
-int	ft_close(t_data *data)
-{
-	ft_free_textures(data);
-	ft_free_mlx(data);
-	ft_free_data(data);
-	exit(0);
-	return (0);
+	if (data->map[data->player_x][data->player_y] == 'P')
+		data->map[data->player_x][data->player_y] = '0';
+	else if (data->map[data->player_x][data->player_y] == 'E')
+		data->map[data->player_x][data->player_y] = 'E';
+	else if (data->map[data->player_x][data->player_y] == 'C')
+		data->map[data->player_x][data->player_y] = '0';
 }

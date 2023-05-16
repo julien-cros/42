@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:29:01 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/15 13:31:47 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 10:30:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void ft_init_texture(t_data *data)
 	i = 0;
 	while (i < 5)
 	{
-		printf("2ok\n");
 		data->img[i] = mlx_xpm_file_to_image(data->mlx_ptr, data->img_path[i], &size, &size);
 		if (!data->img[i])
 			return ;
@@ -48,7 +47,6 @@ void ft_init_map(t_data *data)
 		}	
 		if (data->map[data->i][data->j] == '\n')
 		{
-			printf ("ok\n");
 			data->i++;
 			data->j = -1;
 			data->position_y += 94;

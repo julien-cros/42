@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:23:28 by jcros             #+#    #+#             */
-/*   Updated: 2023/05/11 13:31:28 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 10:38:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,61 +89,6 @@ char	*ft_strndup(const char *s, size_t n)
 	}
 	dup[i] = '\0';
 	return (dup);
-}
-
-int	size_n(int n)
-{
-	int				count;
-	unsigned int	cpy;
-
-	count = 0;
-	if (n < 0)
-	{
-		count++;
-		n *= -1;
-	}
-	cpy = n;
-	while (cpy)
-	{
-		cpy /= 10;
-		count++;
-	}
-	return (count);
-}
-
-char	*fill_str(char *str, int n)
-{
-	int				i;
-	unsigned int	cpy;
-
-	i = size_n(n) - 1;
-	if (n < 0)
-		n *= -1;
-	cpy = n;
-	while (cpy > 0)
-	{
-		str[i] = cpy % 10 + 48;
-		cpy /= 10;
-		i--;
-	}
-	return (str);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*str;
-	int		len;
-
-	if (n == 0)
-		return (ft_strdup("0"));
-	len = size_n(n);
-	str = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	if (n < 0)
-		str[0] = '-';
-	str = fill_str(str, n);
-	return (str);
 }
 
 int ft_find_p(char **strs, t_map *map)

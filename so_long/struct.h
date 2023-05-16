@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:46:16 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/15 10:25:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 10:23:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_data
 	char	**map;
 	int 	position_x;
 	int 	position_y;
-	t_map	*map_info;
+	// t_map	*map_info;
 	int 	i;
 	int		j;
 	int 	length;
@@ -58,5 +58,6 @@ typedef struct s_data
 	int		keycode;
 	int 	player_x;
 	int 	player_y;
+	int 	step;
 }	t_data;
 #endif

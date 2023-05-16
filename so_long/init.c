@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:30:02 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/15 13:30:31 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 10:23:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ void ft_init_data(t_data *data, t_map *map)
 	data->img_path[4] = ft_strdup("./assets/ground.xpm");
 	data->position_x = 0;
 	data->position_y = 0;
-	data->i = 0;
-	data->j = 0;
+	data->i = map->start_col_pos;
+	data->j = map->start_raw_pos;
+	data->collectible = map->collectible;
 	data->length = 0;
 	data->row = 0;
 	data->keycode = 0;
 	data->player_x = map->start_col_pos;
 	data->player_y = map->start_raw_pos;
+	data->exit = 0;
+	data->step = 0;
 }

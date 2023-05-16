@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/05/15 13:35:09 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/16 10:37:28 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS = \
 	hooks.c \
 	init.c \
 	textures.c \
+	itoa.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/15 17:12:16 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 10:41:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ char **ft_create_2d(t_map *map);
 //------------------      free.c    ------------------//
 
 void	ft_clean(t_map *map);
-void	ft_free_with_i(char **strs);
+void	ft_free_with_i(char **strs, int i);
+int		ft_close_mlx(t_data *data);
 
 //------------------      mem.c     ------------------//
 
@@ -74,18 +75,23 @@ int ft_valid_map(t_map *map, int fd);
 
 
 //------------------   create_window.c  ------------------//
-void ft_init_window(); //t_map *map);
+void ft_init_window(t_map *map);
+int ft_on_render(t_data *data);
 
 //------------------   hooks.c  ------------------//
 
 int ft_move(int keysym, t_data *data);
 int ft_check_move(int keysym, t_data *data);
+void ft_check_reachable(t_data *data);
+void ft_what_print(t_data *data);
 //------------------   init.c  ------------------//
 void ft_init_data(t_data *data, t_map *map);
 
 //------------------   textures.c  ------------------//
 void ft_init_texture(t_data *data);
 void ft_init_map(t_data *data);
-int ft_close(t_data *data);
+
+//------------------   itoa.c  ------------------//
+char	*ft_itoa(int n);
 
 #endif
