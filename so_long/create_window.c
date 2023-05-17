@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/17 13:58:14 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/17 12:09:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_init_window(t_map *map)
 	if (!data->mlx_ptr)
 		return (ft_error());
 	if (ft_init_data(data, map) != 0 || ft_init_texture(data) != 0)
-		return (ft_close_mlx(data, map), ft_error());
+		return (ft_close_mlx(data), ft_error());
 	data->win = mlx_new_window(data->mlx_ptr, 94 * map->length,  94 * map->row, "so_long");
 	data->map = ft_create_2d(map);
 	if (!data->win || !data->map)

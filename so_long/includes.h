@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/17 13:45:09 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/17 12:09:00 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**ft_create_2d(t_map *map);
 
 void	ft_clean(t_map *map);
 void	ft_free_with_i(char **strs, int i);
-int		ft_close_mlx(t_data *data, t_map *map);
+int		ft_close_mlx(t_data *data);
 
 //------------------      mem.c     ------------------//
 
