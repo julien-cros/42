@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/16 14:43:48 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/17 13:45:09 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ int		ft_valid_map(t_map *map, int fd);
 //------------------   create_window.c  ------------------//
 
 void	ft_init_window(t_map *map);
-int		ft_on_render(t_data *data, t_map *map);
+int		ft_on_render(t_data *data);
 int		ft_print_steps(t_data *data);
 
 //------------------   hooks.c  ------------------//
 
 int		ft_move(int keysym, t_data *data);
-int		ft_check_move(int keysym, t_data *data, t_map *map);
+int		ft_check_move(int keysym, t_data *data);
 void	ft_check_reachable(t_data *data);
 void	ft_what_print(t_data *data);
 //------------------   init.c  ------------------//

@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/16 14:43:09 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/17 13:58:14 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 # include "mlx/mlx.h"
 
-int	ft_on_render(t_data *data, t_map * map)
+int	ft_on_render(t_data *data)
 {
 	if (data->win == NULL)
 		return (0);
 	ft_init_map(data);
 	if (ft_print_steps(data))
-		return (ft_close_mlx(data, map), -1);
+		return (ft_close_mlx(data), -1);
 	return (0);
 }
 
@@ -38,7 +38,7 @@ void	ft_init_window(t_map *map)
 	data->win = mlx_new_window(data->mlx_ptr, 94 * map->length,  94 * map->row, "so_long");
 	data->map = ft_create_2d(map);
 	if (!data->win || !data->map)
-		return (ft_close_mlx(data, map), ft_error());
+		return (ft_close_mlx(data), ft_error());
 	ft_init_map(data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_check_move, data);
 	mlx_loop(data->mlx_ptr);

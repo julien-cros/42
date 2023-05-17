@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/16 14:44:09 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/17 14:00:06 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 #include <X11/keysym.h>
 
-int ft_check_move(int keysym, t_data *data, t_map *map)
+int ft_check_move(int keysym, t_data *data)
 {
 	char *str;
 
@@ -23,7 +23,7 @@ int ft_check_move(int keysym, t_data *data, t_map *map)
 	if (keysym == XK_Escape)
 	{
 		free(str);
-		ft_close_mlx(data, map);
+		return(ft_close_mlx(data), 0);
 	}
 	if (ft_move(keysym, data) == 0)
 	{
@@ -36,10 +36,10 @@ int ft_check_move(int keysym, t_data *data, t_map *map)
 	{
 		ft_putstr_fd("you win\n", 1);
 		free(str);
-		ft_close_mlx(data, map);
+		ft_close_mlx(data);
 	}
-	if (ft_on_render(data, map) == -1)
-		return (ft_close_mlx(data, map), -1);
+	if (ft_on_render(data) == -1)
+		return (ft_close_mlx(data), -1);
 	free(str);
 	return (0);
 }
