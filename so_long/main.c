@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/16 09:40:30 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 14:37:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int argc, char **argv)
 	ft_init(map);
 	if (ft_valid_map(map, fd) != 0)
 		return(ft_clean(map), -1);
+	close(fd);
 	if (!map)
 		return(ft_clean(map), -1);
 	ft_init_window(map);

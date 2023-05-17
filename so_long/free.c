@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:37 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/16 09:09:29 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 14:41:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_free_mlx(t_data *data)
 	}
 }
 
-void	ft_free_textures(t_data *data)
+void	ft_free_img(t_data *data)
 {
 	int	i;
 
@@ -67,15 +67,17 @@ void	ft_free_textures(t_data *data)
 			mlx_destroy_image(data->mlx_ptr, data->img[i]);
 }
 
-int	ft_close_mlx(t_data *data)
+int	ft_close_mlx(t_data *data, t_map *map)
 {
 	if (data->map)
 		ft_free_with_i(data->map, -1);
 	if (data->img_path)
 		ft_free_with_i(data->img_path , 5);
-	ft_free_textures(data);
+	ft_free_img(data);
 	ft_free_mlx(data);
 	free(data);
+	if (map)
+		ft_clean(map);
 	exit(0);
 	return (0);
 }

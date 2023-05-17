@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:24:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/16 10:30:13 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 14:01:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_find_if_possible(t_map *map)
 		}
 		if (ft_change_position(map, '0', 1) != 0)
 			if (ft_go_back(map) != 0)
-				return (ft_error_finding_exit(), -1);
+				return (ft_invalid_map(), -1);
 	}
 	return (0);
 }
@@ -102,6 +102,8 @@ char **ft_create_2d(t_map *map)
 
 	i = 0;
 	indx = 0;
+	if (!map->plan || !map->length || !map->row)
+		return (NULL);
 	strs = malloc((map->row + 1) * sizeof(char **));
 	if (!strs)
 		return (NULL);

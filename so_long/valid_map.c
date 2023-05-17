@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/16 10:29:22 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/16 13:15:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int ft_check_chars(t_map *map)
 			if (map->plan[i] == '\n')
 			{
 				if (line_size != map->length)
-					return (error_lenght_line(),-1);
+					return (ft_invalid_map(),-1);
 				map->row++;
 				line_size = -1;
 			}
@@ -122,45 +122,16 @@ int ft_check_chars(t_map *map)
 			else if (map->plan[i] == 'C')
 				map->collectible++;
 			else if (map->plan[i] != '0' && map->plan[i] != '1')
-				return (error_wrong_character(map->plan[i]), -1);
+				return (ft_invalid_map(), -1);
 			i++;
 			line_size++;
 		}
 		if (map->length == map->row)
-			return (error_square(),-1);
+			return (ft_invalid_map(),-1);
 		return (0);
 	}
 
-// int ft_check_walls(t_map *map)
-// {
-// 	int i;
-// 	int indx;
-
-// 	indx = 0;
-// 	i = 0;
-// 	while (map->plan[i])
-// 	{
-// 		if (indx == 0 || indx == map->row-1)
-// 		{
-// 			while (map->plan[i] != '\n' && map->plan[i] != '\0')
-// 			{
-// 				if (map->plan[i] != '1')
-// 					return (error_wall(), -1);
-// 				i++;
-// 			}
-// 		}
-// 		if ((map->plan[i] == '\n' && map->plan[i-1] != '1') 
-// 			|| (map->plan[i] == '\n' && map->plan[i+1] != '1'))
-// 				return (error_wall(), -1);
-// 		if ((map->plan[i] == '\n' && map->plan[i-1] == '1') 
-// 			|| (map->plan[i] == '\n' && map->plan[i+1] == '1'))
-// 				indx++;
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-int ft_check_walls(t_map *map)
+int	ft_check_walls(t_map *map)
 {
 	int i;
 	int indx;
@@ -174,46 +145,16 @@ int ft_check_walls(t_map *map)
 			while (map->plan[i] != '\n' && map->plan[i] != '\0')
 			{
 				if (map->plan[i] != '1')
-					return (error_wall(), -1);
+					return (ft_invalid_map(), -1);
 				i++;
 			}
 		}
 		if (map->plan[i] == '\n')
 		{
 			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
-				return (error_wall(), -1);
+				return (ft_invalid_map(), -1);
 			indx++;
 		}
 	}
 	return (0);
 }
-
-// int ft_check_walls(t_map *map)
-// {
-// 	int i;
-// 	int indx;
-
-// 	indx = 0;
-// 	i = 0;
-// 	while (map->plan[i])
-// 	{
-// 		if (indx == 0 || indx == map->row-1)
-// 		{
-// 			while (map->plan[i] != '\n' && map->plan[i] != '\0')
-// 			{
-// 				if (map->plan[i] != '1')
-// 					return (error_wall(), -1);
-// 				i++;
-// 			}
-// 		}
-// 		if (map->plan[i] == '\n')
-// 			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
-// 				return (error_wall(), -1);
-// 		if (map->plan[i] == '\n' && map->plan[i+1] == '\0')
-// 			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
-// 				return (error_wall(), -1);
-// 		indx++;
-// 		i++;
-// 	}
-// 	return (0);
-// }
