@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/20 17:17:04 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/20 17:23:38 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,17 @@
 int	ft_on_render(t_data *data)
 {
 	if (data->win == NULL)
-		return (0);
+	{
+		exit(-1);
+		// return (0);
+	}
 	ft_init_map(data);
-	if (ft_print_steps(data))
-		return (ft_close_mlx(data), -1);
+	if (ft_print_steps(data) == -1)
+	{
+		ft_close_mlx(data);
+		exit(-1);
+		// return (ft_close_mlx(data), -1);
+	}
 	return (0);
 }
 
@@ -29,10 +36,10 @@ void	ft_init_window(t_map *map)
 	
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return ;
+		exit(-1);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return (ft_error());
+		exit(ft_error());
 	if (ft_init_data(data, map) != 0 || ft_init_texture(data) != 0)
 		return (ft_close_mlx(data), ft_error());
 	data->win = mlx_new_window(data->mlx_ptr, 94 * map->length,  94 * map->row, "so_long");
