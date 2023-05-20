@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/17 12:09:17 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/20 17:17:04 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void	ft_init_window(t_map *map)
 	data->map = ft_create_2d(map);
 	if (!data->win || !data->map)
 		return (ft_close_mlx(data), ft_error());
+	// while pas exit et pas tout les collectibles
 	ft_init_map(data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_check_move, data);
 	mlx_loop(data->mlx_ptr);
+	// peut etre return ici avec close_mlx
 }
 
 
@@ -57,3 +59,7 @@ int	ft_print_steps(t_data *data)
 	free(str);
 	return (0);
 }
+
+
+// juste essayer de break;
+// exit(0); au lieu de ft_close_mlx et je ft_close_mlx()apres;x
