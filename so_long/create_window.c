@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/20 17:23:38 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/21 10:16:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ int	ft_on_render(t_data *data)
 {
 	if (data->win == NULL)
 	{
-		exit(-1);
-		// return (0);
+		ft_close_mlx(data);
+		// exit(-1);
+		return (-1);
 	}
 	ft_init_map(data);
 	if (ft_print_steps(data) == -1)
 	{
-		ft_close_mlx(data);
-		exit(-1);
-		// return (ft_close_mlx(data), -1);
+		// ft_close_mlx(data);
+		// exit(-1);
+		return (ft_close_mlx(data), -1);
 	}
 	return (0);
 }
@@ -36,21 +37,35 @@ void	ft_init_window(t_map *map)
 	
 	data = malloc(sizeof(t_data));
 	if (!data)
-		exit(-1);
-	data->mlx_ptr = mlx_init();
-	if (!data->mlx_ptr)
-		exit(ft_error());
-	if (ft_init_data(data, map) != 0 || ft_init_texture(data) != 0)
-		return (ft_close_mlx(data), ft_error());
+		return ;
+	if (ft_init_data(data, map) != 0)
+		return ;
+	if ( ft_init_data(data, map) !=0 ||ft_init_texture(data) != 0)
+	{
+		printf("ft_init_window1\n");
+		// ft_close_mlx(data);
+		// exit(-1);
+		return (ft_error());
+	}
+	printf("ft_init_window2\n");
 	data->win = mlx_new_window(data->mlx_ptr, 94 * map->length,  94 * map->row, "so_long");
 	data->map = ft_create_2d(map);
 	if (!data->win || !data->map)
-		return (ft_close_mlx(data), ft_error());
-	// while pas exit et pas tout les collectibles
-	ft_init_map(data);
-	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_check_move, data);
-	mlx_loop(data->mlx_ptr);
+	{
+		// ft_close_mlx(data);
+		// exit(-1);
+		return (ft_error());
+	}
+	while (data->collectible > 0)
+	{
+		ft_init_map(data);
+		mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_check_move, data);
+		mlx_loop(data->mlx_ptr);
+	}
+	
 	// peut etre return ici avec close_mlx
+	ft_close_mlx(data);
+	return ;
 }
 
 

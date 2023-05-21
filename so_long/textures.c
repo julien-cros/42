@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:29:01 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/21 12:34:01 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/21 12:44:56 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_what_image(t_data *data);
 int	ft_init_texture(t_data *data)
 {
+	// printf ("ft_init_texture\n");
 	int i;
 	int size;
 
@@ -22,11 +23,13 @@ int	ft_init_texture(t_data *data)
 	while (i < 5)
 	{
 		printf (je )
+		// printf ("data->img_path = %s\n", data->img_path[i]);
 		data->img[i] = mlx_xpm_file_to_image(data->mlx_ptr, data->img_path[i], &size, &size);
 		if (!data->img[i])
 			return (-1);
 		i++;
 	}
+	// printf ("ft_init_texture end\n");
 	return (0);
 }
 
