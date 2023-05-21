@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/21 10:16:15 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/21 18:48:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	ft_what_print(t_data *data);
 
 int		ft_init_data(t_data *data, t_map *map);
 int		ft_init_img_path(t_data *data);
+
 //------------------   textures.c  ------------------//
 int		ft_init_texture(t_data *data);
 void	ft_init_map(t_data *data);

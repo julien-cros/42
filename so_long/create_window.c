@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/21 12:47:40 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/21 19:15:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ void	ft_init_window(t_map *map)
 	
 	data = malloc(sizeof(t_data));
 	if (!data)
-		exit(-1);
+		exit(0);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		exit(ft_error());
+		exit(0);
 	if (ft_init_data(data, map) != 0 || ft_init_texture(data) != 0)
 		return (ft_close_mlx(data), ft_error());
 	data->win = mlx_new_window(data->mlx_ptr, 94 * map->length,  94 * map->row, "so_long");
 	data->map = ft_create_2d(map);
 	if (!data->win || !data->map)
 		return (ft_close_mlx(data), ft_error());
-	// while pas exit et pas tout les collectibles
+	ft_clean(map);
 	ft_init_map(data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_check_move, data);
+	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, &ft_close_mlx, data);
 	mlx_loop(data->mlx_ptr);
-	// peut etre return ici avec close_mlx
 }
 
 

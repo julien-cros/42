@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/21 12:49:44 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/21 18:48:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main(int argc, char **argv)
 {
 	t_map *map;
 	int fd;
+	
 	if (argc != 2)
 		return (-1);
 	fd = (open(argv[1], O_RDONLY));
@@ -32,8 +33,6 @@ int main(int argc, char **argv)
 	if (!map)
 		return(ft_clean(map), -1);
 	ft_init_window(map);
-	printf("here\n");// je pense que je vais pas au return avant de free() donc je reste plus loin dans le code.
-	return (ft_clean(map), 0);
 }
 
 void	ft_init(t_map *map)

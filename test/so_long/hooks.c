@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/17 14:00:06 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/21 18:29:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int ft_check_move(int keysym, t_data *data)
 	if (keysym == XK_Escape)
 	{
 		free(str);
-		return(ft_close_mlx(data), 0);
+		// return(ft_close_mlx(data), 0);
+		return (0);
 	}
 	if (ft_move(keysym, data) == 0)
 	{
@@ -34,13 +35,18 @@ int ft_check_move(int keysym, t_data *data)
 	ft_check_reachable(data);
 	if (data->collectible == 0 && data->exit == 1)
 	{
+		printf("before win\n");
 		ft_putstr_fd("you win\n", 1);
 		free(str);
-		ft_close_mlx(data);
+		printf("after win\n");
+		// ft_close_mlx(data);
+		return (0);
 	}
 	if (ft_on_render(data) == -1)
-		return (ft_close_mlx(data), -1);
+		return (-1);
+		// return (ft_close_mlx(data), -1);
 	free(str);
+	printf ("after free\n");
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:37 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/20 16:49:24 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/21 18:46:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,4 @@ int	ft_close_mlx(t_data *data)
 	ft_free_mlx(data);
 	free(data);
 	exit(0);
-	return (0);
 }
