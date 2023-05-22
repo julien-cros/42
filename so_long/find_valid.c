@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_valid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:24:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/22 19:40:28 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/22 18:03:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_find_if_possible(t_map *map)
 	map->j = map->start_raw_pos;
 	while (map->collectible != collectible_count || map->is_valid != true)
 	{
-		else if (ft_find_character(map, 'E') == 0)
+		if (ft_find_character(map, 'E') == 0)
 		{
 			ft_change_position(map, 'E', 1);
 			map->is_valid = true;

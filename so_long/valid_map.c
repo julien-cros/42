@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/22 19:45:00 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/22 18:02:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,11 @@ int	ft_check_chars(t_map *map)
 			&& map->plan[i] != 'P' && map->plan[i] != '\n')
 			return (ft_invalid_map(), -1);
 		if (map->plan[i] == 'P')
+		{
 			map->start_col_pos = map->row - 1;
 			map->start_raw_pos = i - ((map->start_col_pos) * (map->length));
 			map->spawn++;
+		}
 		if (map->plan[i] == 'E')
 			map->exit++;
 		if (map->plan[i] == 'C')
@@ -165,4 +167,5 @@ int	ft_check_length(t_map *map)
 	}
 	if (map->length == map->row)
 		return (-1);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 19:06:20 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/22 18:07:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,18 @@ int	ft_check_move(int keysym, t_data *data)
 
 int	ft_move(int keysym, t_data *data)
 {
-	int		i;
-	char	c;
-
 	if (keysym == XK_w && data->map[data->player_x - 1][data->player_y] != '1')
-		return (ft_what_print(data, 'x', -1));
+		return (ft_what_print(data, 'x', -1), 0);
 	else if (keysym == XK_s
 		&& data->map[data->player_x + 1][data->player_y] != '1')
-		return (ft_what_print(data, 'x', 1));
+		return (ft_what_print(data, 'x', 1), 0);
 	else if (keysym == XK_a
 		&& data->map[data->player_x][data->player_y - 1] != '1')
-		return (ft_what_print(data, 'y', -1));
+		return (ft_what_print(data, 'y', -1), 0);
 	else if (keysym == XK_d
 		&& data->map[data->player_x][data->player_y + 1] != '1')
-		return (ft_what_print(data, 'y', 1));
-	else
-		return (-1);
+		return (ft_what_print(data, 'y', 1), 0);
+	return (-1);
 }
 
 void	ft_check_reachable(t_data *data)
@@ -81,9 +77,9 @@ void	ft_what_print(t_data *data, char c, int way)
 		data->map[data->player_x][data->player_y] = 'E';
 	else if (data->map[data->player_x][data->player_y] == 'C')
 		data->map[data->player_x][data->player_y] = '0';
-	if (char == 'x')
+	if (c == 'x')
 		data->player_x += way;
-	if (char == 'y')
+	if (c == 'y')
 		data->player_y += way;
 }
 
