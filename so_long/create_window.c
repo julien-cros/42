@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 18:40:32 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/22 18:35:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_print_steps(t_data *data)
 
 	str = ft_itoa(data->step - 1);
 	if (!str)
-		return (-1);
+		return (0);
 	mlx_string_put(data->mlx_ptr, data->win, 50, 50, 0x00FFFFFF, "Steps: ");
 	mlx_string_put(data->mlx_ptr, data->win, 140, 50, 0x00FFFFFF, str);
 	free(str);
