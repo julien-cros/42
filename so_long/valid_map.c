@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/22 18:02:58 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 18:28:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,44 +79,6 @@ int	ft_check_walls(t_map *map)
 	return (0);
 }
 
-// int	ft_check_chars(t_map *map)
-// {
-// 	int	i;
-// 	int	line_size;
-
-// 	i = 0;
-// 	line_size = 0;
-// 	while (map->plan[i])
-// 	{
-// 		if (map->plan[i] == '\n' && map->length == 0)
-// 			map->length = i;
-// 		if (map->plan[i] == '\n')
-// 		{
-// 			if (line_size != map->length)
-// 				return (ft_invalid_map(), -1);
-// 			map->row++;
-// 			line_size = -1;
-// 		}
-// 		else if (map->plan[i] == 'P')
-// 		{
-// 			map->start_col_pos = map->row - 1;
-// 			map->start_raw_pos = i - ((map->start_col_pos) * (map->length));
-// 			map->spawn++;
-// 		}
-// 		else if (map->plan[i] == 'E')
-// 			map->exit++;
-// 		else if (map->plan[i] == 'C')
-// 			map->collectible++;
-// 		else if (map->plan[i] != '0' && map->plan[i] != '1')
-// 			return (ft_invalid_map(), -1);
-// 		i++;
-// 		line_size++;
-// 	}
-// 	if (map->length == map->row)
-// 		return (ft_invalid_map(), -1);
-// 	return (0);
-// }
-
 int	ft_check_chars(t_map *map)
 {
 	int	i;
@@ -165,6 +127,8 @@ int	ft_check_length(t_map *map)
 		i++;
 		length++;
 	}
+	if  (map->length != length)
+		return (-1);
 	if (map->length == map->row)
 		return (-1);
 	return (0);
