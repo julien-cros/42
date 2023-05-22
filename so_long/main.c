@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/22 11:28:15 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 19:06:55 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 #include "struct.h"
 
-
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_map *map;
-	
-	
+	t_map	*map;
+
 	if (argc != 2)
 		return (-1);
 	map = malloc(sizeof(t_map));
@@ -30,9 +27,9 @@ int main(int argc, char **argv)
 	if (map->fd == -1)
 		return (ft_clean(map), -1);
 	if (ft_valid_map(map) != 0)
-		return(ft_clean(map), -1);
+		return (ft_clean(map), -1);
 	if (!map)
-		return(ft_clean(map), -1);
+		return (ft_clean(map), -1);
 	ft_init_window(map);
 	if (map)
 		ft_clean(map);
@@ -54,5 +51,5 @@ void	ft_init(t_map *map)
 	map->j = 0;
 	map->index = 97;
 	map->strs = NULL;
-	map->fd	= 0;
+	map->fd = 0;
 }

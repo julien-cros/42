@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 16:15:58 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 19:48:12 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_putchar_fd(char c, int fd);
 
 //------------------    errors.c    ------------------//
 
-void	ft_invalid_map();
-void	ft_error();
+void	ft_invalid_map(void);
+void	ft_error(void);
 
 //------------------   find_valid.c ------------------//
 
@@ -45,6 +45,10 @@ int		ft_find_if_possible(t_map *map);
 int		ft_change_position(t_map *map, char c, int way);
 int		ft_go_back(t_map *map);
 int		ft_find_character(t_map *map, char c);
+
+//------------------   fill_map.c   ------------------//
+
+char	*ft_fill_map(int fd);
 char	**ft_create_2d(t_map *map);
 
 //------------------      free.c    ------------------//
@@ -71,7 +75,10 @@ char	*ft_strndup(const char *s, size_t n);
 //------------------   valid_map.c  ------------------//
 
 int		ft_valid_map(t_map *map);
-
+char	*ft_strjoinne(char *str, char c);
+int		ft_check_chars(t_map *map);
+int		ft_check_walls(t_map *map);
+int		ft_check_length(t_map *map);
 
 //------------------   create_window.c  ------------------//
 
@@ -84,7 +91,7 @@ int		ft_print_steps(t_data *data);
 int		ft_move(int keysym, t_data *data);
 int		ft_check_move(int keysym, t_data *data);
 void	ft_check_reachable(t_data *data);
-void	ft_what_print(t_data *data);
+void	ft_what_print(t_data *data, char c, int way);
 int		ft_print_term(t_data *data);
 
 //------------------   init.c  ------------------//

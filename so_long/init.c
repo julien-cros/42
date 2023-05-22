@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:30:02 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 11:19:05 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 19:15:00 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-int ft_init_data(t_data *data, t_map *map)
+int	ft_init_data(t_data *data, t_map *map)
 {
 	if (ft_init_img_path(data) != 0)
 		return (-1);
@@ -33,7 +33,7 @@ int ft_init_data(t_data *data, t_map *map)
 
 int	ft_init_img_path(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	data->img_path = malloc(sizeof(char *) * 5);
@@ -50,10 +50,10 @@ int	ft_init_img_path(t_data *data)
 	return (0);
 }
 
-int ft_find_p(char **strs, t_map *map)
+int	ft_find_p(char **strs, t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

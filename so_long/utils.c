@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:23:28 by jcros             #+#    #+#             */
-/*   Updated: 2023/05/22 11:17:43 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 18:36:42 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dup);
 }
 
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
@@ -75,7 +74,7 @@ char	*ft_strdup(const char *s)
 
 char	*ft_strndup(const char *s, size_t n)
 {
-	size_t		i;
+	size_t	i;
 	char	*dup;
 
 	i = 0;

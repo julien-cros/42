@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:46:16 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/22 10:42:49 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 18:41:29 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
 # include "mlx/mlx.h"
 
@@ -37,7 +37,7 @@ typedef struct s_map
 	char	index;
 	char	**strs;
 	int		fd;
-} t_map;
+}	t_map;
 
 typedef struct s_data
 {
@@ -46,17 +46,17 @@ typedef struct s_data
 	void	*mlx_ptr;
 	char	**img_path;
 	char	**map;
-	int 	position_x;
-	int 	position_y;
-	int 	i;
+	int		position_x;
+	int		position_y;
+	int		i;
 	int		j;
-	int 	length;
-	int 	row;
-	int 	collectible;
-	int 	exit;
+	int		length;
+	int		row;
+	int		collectible;
+	int		exit;
 	int		keycode;
-	int 	player_x;
-	int 	player_y;
-	int 	step;
+	int		player_x;
+	int		player_y;
+	int		step;
 }	t_data;
 #endif

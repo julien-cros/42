@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 16:15:47 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 19:06:20 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 #include <X11/keysym.h>
 
-int ft_check_move(int keysym, t_data *data)
+int	ft_check_move(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 	{
-		return(ft_close_mlx(data), 0);
+		return (ft_close_mlx(data), 0);
 	}
 	if (ft_move(keysym, data) == 0)
 	{
@@ -38,32 +38,25 @@ int ft_check_move(int keysym, t_data *data)
 
 int	ft_move(int keysym, t_data *data)
 {
-	if (keysym == XK_w && data->map[data->player_x-1][data->player_y] != '1')
-	{
-		ft_what_print(data);
-		data->player_x--;
-	}
-	else if (keysym == XK_s && data->map[data->player_x+1][data->player_y] != '1')
-	{
-		ft_what_print(data);
-		data->player_x++;
-	}
-	else if (keysym == XK_a && data->map[data->player_x][data->player_y-1] != '1')
-	{
-		ft_what_print(data);
-		data->player_y--;
-	}
-	else if (keysym == XK_d && data->map[data->player_x][data->player_y+1] != '1')
-	{
-		ft_what_print(data);
-		data->player_y++;
-	}
+	int		i;
+	char	c;
+
+	if (keysym == XK_w && data->map[data->player_x - 1][data->player_y] != '1')
+		return (ft_what_print(data, 'x', -1));
+	else if (keysym == XK_s
+		&& data->map[data->player_x + 1][data->player_y] != '1')
+		return (ft_what_print(data, 'x', 1));
+	else if (keysym == XK_a
+		&& data->map[data->player_x][data->player_y - 1] != '1')
+		return (ft_what_print(data, 'y', -1));
+	else if (keysym == XK_d
+		&& data->map[data->player_x][data->player_y + 1] != '1')
+		return (ft_what_print(data, 'y', 1));
 	else
 		return (-1);
-	return (0);
 }
 
-void ft_check_reachable(t_data *data)
+void	ft_check_reachable(t_data *data)
 {
 	if (data->map[data->player_x][data->player_y] == '0')
 	{
@@ -80,7 +73,7 @@ void ft_check_reachable(t_data *data)
 	}
 }
 
-void ft_what_print(t_data *data)
+void	ft_what_print(t_data *data, char c, int way)
 {
 	if (data->map[data->player_x][data->player_y] == 'P')
 		data->map[data->player_x][data->player_y] = '0';
@@ -88,15 +81,19 @@ void ft_what_print(t_data *data)
 		data->map[data->player_x][data->player_y] = 'E';
 	else if (data->map[data->player_x][data->player_y] == 'C')
 		data->map[data->player_x][data->player_y] = '0';
+	if (char == 'x')
+		data->player_x += way;
+	if (char == 'y')
+		data->player_y += way;
 }
 
-int ft_print_term(t_data *data)
+int	ft_print_term(t_data *data)
 {
-	char *str;
+	char	*str;
 
 	str = ft_itoa(data->step++);
-		if (!str)
-			return (-1);
+	if (!str)
+		return (-1);
 	ft_putstr_fd("you moved ", 1);
 	ft_putstr_fd(str, 1);
 	ft_putstr_fd(" times.\n", 1);
