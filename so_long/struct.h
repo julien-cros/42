@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:46:16 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/21 19:33:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 10:42:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_map
 	int		j;
 	char	index;
 	char	**strs;
-
+	int		fd;
 } t_map;
 
 typedef struct s_data

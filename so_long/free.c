@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:37 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/21 18:46:03 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 10:45:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void ft_clean(t_map *map)
 {
+	if (map->fd != 0)
+		close(map->fd);
 	if (map->plan)
 		free(map->plan);
 	if (map->strs)

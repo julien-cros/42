@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/21 18:48:04 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 11:19:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # include <X11/keysym.h>
 # include "struct.h"
 # include "mlx/mlx.h"
+
+//------------------    main.c      ------------------//
+
+void	ft_init(t_map *map);
 
 //------------------    display.c   ------------------//
 
@@ -48,6 +52,8 @@ char	**ft_create_2d(t_map *map);
 void	ft_clean(t_map *map);
 void	ft_free_with_i(char **strs, int i);
 int		ft_close_mlx(t_data *data);
+void	ft_free_img(t_data *data);
+void	ft_free_mlx(t_data *data);
 
 //------------------      mem.c     ------------------//
 
@@ -61,11 +67,10 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_strndup(const char *s, size_t n);
-int		ft_find_p(char **strs, t_map *map);
 
 //------------------   valid_map.c  ------------------//
 
-int		ft_valid_map(t_map *map, int fd);
+int		ft_valid_map(t_map *map);
 
 
 //------------------   create_window.c  ------------------//
@@ -80,11 +85,13 @@ int		ft_move(int keysym, t_data *data);
 int		ft_check_move(int keysym, t_data *data);
 void	ft_check_reachable(t_data *data);
 void	ft_what_print(t_data *data);
+int ft_print_term(t_data *data);
+
 //------------------   init.c  ------------------//
 
 int		ft_init_data(t_data *data, t_map *map);
 int		ft_init_img_path(t_data *data);
-
+int		ft_find_p(char **strs, t_map *map);
 //------------------   textures.c  ------------------//
 int		ft_init_texture(t_data *data);
 void	ft_init_map(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/17 12:09:00 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 10:47:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_find_p(char **strs, t_map *map);
 
 //------------------   valid_map.c  ------------------//
 
-int		ft_valid_map(t_map *map, int fd);
+int		ft_valid_map(t_map *map);
 
 
 //------------------   create_window.c  ------------------//

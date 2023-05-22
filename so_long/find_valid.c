@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:24:23 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/16 14:01:12 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 10:38:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int	ft_find_if_possible(t_map *map)
 	{
 		if ((map->collectible == collectible_count) && (map->is_valid == true))
 			return (0);
-		if (ft_find_character(map, 'E') == 0)
+		else if (ft_find_character(map, 'E') == 0)
 		{
 			ft_change_position(map, 'E', 1);
 			map->is_valid = true;
 		}
-		if (ft_find_character(map, 'C') == 0)
+		else if (ft_find_character(map, 'C') == 0)
 		{
 			ft_change_position(map, 'C', 1);
 			collectible_count += 1;
 		}
-		if (ft_change_position(map, '0', 1) != 0)
+		else if (ft_change_position(map, '0', 1) != 0)
 			if (ft_go_back(map) != 0)
 				return (ft_invalid_map(), -1);
 	}

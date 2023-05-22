@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/21 19:34:53 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 11:15:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,14 @@
 
 int ft_check_move(int keysym, t_data *data)
 {
-	char *str;
-
 	if (keysym == XK_Escape)
 	{
 		return(ft_close_mlx(data), 0);
 	}
 	if (ft_move(keysym, data) == 0)
 	{
-		str = ft_itoa(data->step++);
-		if (!str)
+		if (ft_print_term(data) == -1)
 			return (-1);
-		ft_putstr_fd("you moved ", 1);
-		ft_putstr_fd(str, 1);
-		ft_putstr_fd(" times.\n", 1);
-		free(str);
 	}
 	ft_check_reachable(data);
 	if (data->collectible == 0 && data->exit == 1)
@@ -95,4 +88,18 @@ void ft_what_print(t_data *data)
 		data->map[data->player_x][data->player_y] = 'E';
 	else if (data->map[data->player_x][data->player_y] == 'C')
 		data->map[data->player_x][data->player_y] = '0';
+}
+
+int ft_print_term(t_data *data)
+{
+	char *str;
+
+	str = ft_itoa(data->step++);
+		if (!str)
+			return (-1);
+	ft_putstr_fd("you moved ", 1);
+	ft_putstr_fd(str, 1);
+	ft_putstr_fd(" times.\n", 1);
+	free(str);
+	return (0);
 }

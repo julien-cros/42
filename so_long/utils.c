@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:23:28 by jcros             #+#    #+#             */
-/*   Updated: 2023/05/16 10:38:40 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 11:17:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,29 +89,4 @@ char	*ft_strndup(const char *s, size_t n)
 	}
 	dup[i] = '\0';
 	return (dup);
-}
-
-int ft_find_p(char **strs, t_map *map)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (strs[i][j])
-	{
-		if (strs[i][j] == 'P')
-		{
-			map->start_col_pos = i;
-			map->start_raw_pos = j;
-			return (0);
-		}
-		j++;
-		if (strs[i][j] == '\n')
-		{
-			i++;
-			j = 0;
-		}
-	}
-	return (-1);
 }

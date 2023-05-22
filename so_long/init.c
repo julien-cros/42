@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:30:02 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/21 19:33:26 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 11:19:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_init_data(t_data *data, t_map *map)
 	data->player_x = map->start_col_pos;
 	data->player_y = map->start_raw_pos;
 	data->exit = 0;
-	data->step = 0;
+	data->step = 1;
 	return (0);
 }
 
@@ -48,4 +48,29 @@ int	ft_init_img_path(t_data *data)
 		if (!data->img_path[i])
 			return (-1);
 	return (0);
+}
+
+int ft_find_p(char **strs, t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (strs[i][j])
+	{
+		if (strs[i][j] == 'P')
+		{
+			map->start_col_pos = i;
+			map->start_raw_pos = j;
+			return (0);
+		}
+		j++;
+		if (strs[i][j] == '\n')
+		{
+			i++;
+			j = 0;
+		}
+	}
+	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/16 13:15:02 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 09:45:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char *ft_strjoinne(char *str, char c)
 	i = 0;
 	if (!str || !c)
 		return (NULL);
-	new = malloc((ft_strlen(str)+2) * sizeof(char));
+	new = ft_calloc((sizeof(char), ft_strlen(str)+2));
 	if (!new)
 		return (NULL);
 	while (i < ft_strlen(str))

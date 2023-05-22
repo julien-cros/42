@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:47:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/16 13:15:02 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 10:45:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,24 @@ char *ft_strjoinne(char *str, char c);
 int ft_check_chars(t_map *map);
 int ft_check_walls(t_map *map);
 
-int ft_valid_map(t_map *map, int fd)
+int ft_valid_map(t_map *map)
 {
 
-	map->plan = ft_fill_map(fd);
+	map->plan = ft_fill_map(map->fd);
 	if (!map->plan)
 		return(-1);
 	if (ft_check_chars(map) != 0)
 		return (-1);
-	if (ft_check_walls(map) != 0)
-		return (-1);
 	if (map->exit != 1 || map->spawn != 1 || map->collectible < 1)
 		return (ft_invalid_map(), -1);
+	if (ft_check_walls(map) != 0)
+		return (-1);
 	map->strs = ft_create_2d(map);
 	if (!map->strs)
 		return (-1);
 	if (ft_find_if_possible(map) != 0)
 		return (-1);
+	
 	return (0);
 }
 
@@ -80,7 +81,7 @@ char *ft_strjoinne(char *str, char c)
 	i = 0;
 	if (!str || !c)
 		return (NULL);
-	new = malloc((ft_strlen(str)+2) * sizeof(char));
+	new = ft_calloc(sizeof(char), (ft_strlen(str)+2));
 	if (!new)
 		return (NULL);
 	while (i < ft_strlen(str))
@@ -107,7 +108,7 @@ int ft_check_chars(t_map *map)
 			if (map->plan[i] == '\n')
 			{
 				if (line_size != map->length)
-					return (ft_invalid_map(),-1);
+					return (printf ("the lenght.\n"), ft_invalid_map(),-1);
 				map->row++;
 				line_size = -1;
 			}
@@ -122,12 +123,12 @@ int ft_check_chars(t_map *map)
 			else if (map->plan[i] == 'C')
 				map->collectible++;
 			else if (map->plan[i] != '0' && map->plan[i] != '1')
-				return (ft_invalid_map(), -1);
+				return (printf("not valid arg.\n"), ft_invalid_map(), -1);
 			i++;
 			line_size++;
 		}
 		if (map->length == map->row)
-			return (ft_invalid_map(),-1);
+			return (printf("error square.\n"), ft_invalid_map(),-1);
 		return (0);
 	}
 
@@ -140,20 +141,19 @@ int	ft_check_walls(t_map *map)
 	i = -1;
 	while (map->plan[++i])
 	{
-		if (indx == 0 || indx == map->row-1)
-		{
-			while (map->plan[i] != '\n' && map->plan[i] != '\0')
-			{
-				if (map->plan[i] != '1')
-					return (ft_invalid_map(), -1);
-				i++;
-			}
-		}
 		if (map->plan[i] == '\n')
 		{
 			if (map->plan[i-1] != '1' || map->plan[i+1] != '1')
-				return (ft_invalid_map(), -1);
+				return (printf("la\n"), ft_invalid_map(), -1);
 			indx++;
+		}
+		else if (indx == 0 || indx == map->row-1)
+		{
+			if (map->plan[i] != '\n' && map->plan[i] != '\0')
+			{
+				if (map->plan[i] != '1')
+					return (printf("map->plan[%d] = %c\n", i, map->plan[i]), ft_invalid_map(), -1);
+			}
 		}
 	}
 	return (0);
