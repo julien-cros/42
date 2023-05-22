@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 11:19:54 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 16:15:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		ft_move(int keysym, t_data *data);
 int		ft_check_move(int keysym, t_data *data);
 void	ft_check_reachable(t_data *data);
 void	ft_what_print(t_data *data);
-int ft_print_term(t_data *data);
+int		ft_print_term(t_data *data);
 
 //------------------   init.c  ------------------//
 

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 11:29:40 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/22 16:15:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_init_window(t_map *map)
 	ft_clean(map);
 	ft_init_map(data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_check_move, data);
+	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, &ft_close_mlx, data);
 	mlx_loop(data->mlx_ptr);
 }
 
