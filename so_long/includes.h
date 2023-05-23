@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:05:00 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 19:48:12 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/23 22:43:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	ft_putchar_fd(char c, int fd);
 
 void	ft_invalid_map(void);
 void	ft_error(void);
-
+void	ft_error_X11(void);
+int		just_mlx(t_data *data);	
 //------------------   find_valid.c ------------------//
 
 int		ft_find_if_possible(t_map *map);
@@ -58,6 +59,7 @@ void	ft_free_with_i(char **strs, int i);
 int		ft_close_mlx(t_data *data);
 void	ft_free_img(t_data *data);
 void	ft_free_mlx(t_data *data);
+
 
 //------------------      mem.c     ------------------//
 

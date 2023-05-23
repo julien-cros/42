@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:43:06 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/22 19:06:55 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/23 19:12:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	main(int argc, char **argv)
 		return (-1);
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return (ft_clean(map), -1);
+		return (1);
 	ft_init(map);
-	map->fd = (open(argv[1], O_RDONLY));
+	map->fd = open(argv[1], O_RDONLY);
 	if (map->fd == -1)
-		return (ft_clean(map), -1);
+		return (ft_clean(map), ft_invalid_map(), -1);
 	if (ft_valid_map(map) != 0)
 		return (ft_clean(map), -1);
 	if (!map)
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	if (map)
 		ft_clean(map);
 	return (ft_error(), -1);
+	return (0);
 }
 
 void	ft_init(t_map *map)

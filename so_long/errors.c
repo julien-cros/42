@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:50 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/22 18:24:42 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/23 22:43:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,22 @@ void	ft_invalid_map(void)
 void	ft_error(void)
 {
 	ft_putstr_fd("Error.\n", 1);
+	exit(0);
+}
+
+void	ft_error_X11(void)
+{
+	ft_putstr_fd("Error X11.", 1);
+	exit(0);
+}
+
+int just_mlx(t_data *data)
+{
+	if (data->mlx_ptr)
+	{
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+	}
+	free(data);
 	exit(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:29:01 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 19:12:33 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/23 22:09:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ int	ft_init_texture(t_data *data)
 	int	i;
 	int	size;
 
+
 	i = 0;
 	while (i < 5)
 	{
 		data->img[i] = mlx_xpm_file_to_image
 			(data->mlx_ptr, data->img_path[i], &size, &size);
-		if (!data->img[i])
+		if (!data->img[i]) // free all images before exit
+		{
+			while (--i >= 0)
+				mlx_destroy_image(data->mlx_ptr, data->img[i--]);
 			return (-1);
+		}
 		i++;
 	}
 	return (0);

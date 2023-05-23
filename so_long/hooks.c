@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 18:07:19 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/23 14:20:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 int	ft_check_move(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-	{
 		return (ft_close_mlx(data), 0);
-	}
 	if (ft_move(keysym, data) == 0)
-	{
 		if (ft_print_term(data) == -1)
 			return (-1);
-	}
 	ft_check_reachable(data);
 	if (data->collectible == 0 && data->exit == 1)
 	{

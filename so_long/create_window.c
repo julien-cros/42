@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/22 18:35:13 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/23 22:42:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ void	ft_init_window(t_map *map)
 		return ;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return ;
-	if (ft_init_data(data, map) != 0 || ft_init_texture(data) != 0)
-		return (ft_close_mlx(data), ft_error());
+		return (free(data), ft_clean(map), ft_error_X11());
+	if (ft_init_data(data, map) != 0)
+		return (just_mlx(data), ft_error());
 	data->win = mlx_new_window
 		(data->mlx_ptr, 94 * map->length, 94 * map->row, "so_long");
+	if (!data->win)
+		return (ft_clean(map), ft_close_mlx(data), ft_error());
 	data->map = ft_create_2d(map);
-	if (!data->win || !data->map)
-		return (ft_close_mlx(data), ft_error());
+	if (!data->map)
+		return (ft_clean(map), ft_close_mlx(data), ft_error());
 	ft_clean(map);
 	ft_init_map(data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &ft_check_move, data);
