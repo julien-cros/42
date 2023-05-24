@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:39:35 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/23 20:46:35 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 10:07:28 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ char	**ft_create_2d(t_map *map)
 		indx += map->length + 1;
 		i++;
 	}
-	strs[i] = '\0';
+	// strs[i] = '\0';
 	return (strs);
 }
