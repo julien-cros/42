@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:37 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/24 10:07:05 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/05/24 08:18:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_close_mlx(t_data *data)
 		ft_free_with_i(data->map, -1);
 	if (data->img_path)
 		ft_free_with_i(data->img_path, 5);
-	if (data->img[0])
+	if (data->img)
 		ft_free_img(data);
 	ft_free_mlx(data);
 	free(data);

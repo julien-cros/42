@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:29:01 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/23 22:09:28 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 08:59:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@ int	ft_init_texture(t_data *data)
 	int	size;
 
 
-	i = 0;
-	while (i < 5)
+	i = -1;
+	while (++i < 5)
 	{
 		data->img[i] = mlx_xpm_file_to_image
 			(data->mlx_ptr, data->img_path[i], &size, &size);
-		if (!data->img[i]) // free all images before exit
+		if (!data->img[i])
 		{
 			while (--i >= 0)
-				mlx_destroy_image(data->mlx_ptr, data->img[i--]);
+				mlx_destroy_image(data->mlx_ptr, data->img[i]);
 			return (-1);
 		}
-		i++;
 	}
 	return (0);
 }

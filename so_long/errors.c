@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:50 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/23 22:43:40 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 09:02:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int just_mlx(t_data *data)
 		free(data->mlx_ptr);
 	}
 	free(data);
+	ft_error();
 	exit(0);
 }

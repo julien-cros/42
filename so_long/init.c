@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:30:02 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/23 22:43:28 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 09:04:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,9 @@ int	ft_init_data(t_data *data, t_map *map)
 	data->step = 1;
 	data->map = NULL;
 	if (ft_init_img_path(data) != 0)
-	{
-		printf ("err init img path\n");
 		return (ft_clean(map), -1);
-	}
 	if (ft_init_texture(data) != 0)
-	{
-		printf ("err init texture\n");
-		return (ft_clean(map), -1);
-	}
+		return (ft_clean(map), ft_free_with_i(data->img_path, 5),  -1);
 	return (0);
 }
 
@@ -55,7 +49,7 @@ int	ft_init_img_path(t_data *data)
 	data->img_path[4] = ft_strdup("./assets/ground.xpm");
 	while (i < 5)
 	{
-		if (!data->img_path[i]) //? free strdup
+		if (!data->img_path[i])
 		{
 			i = 0;
 			while (i < 5)
