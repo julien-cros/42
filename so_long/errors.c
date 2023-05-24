@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:57:50 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/24 09:02:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 11:42:03 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	ft_error(void)
 	exit(0);
 }
 
-void	ft_error_X11(void)
+void	ft_error_x(void)
 {
 	ft_putstr_fd("Error X11.", 1);
 	exit(0);
 }
 
-int just_mlx(t_data *data)
+int	just_mlx(t_data *data)
 {
 	if (data->mlx_ptr)
 	{

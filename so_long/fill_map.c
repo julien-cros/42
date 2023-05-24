@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:39:35 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/24 08:20:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 11:41:41 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	**ft_create_2d(t_map *map)
 	{
 		strs[i] = ft_strndup(map->plan + indx, map->length + 1);
 		if (!strs[i])
-			return (ft_free_with_i(strs, i-1), NULL);
+			return (ft_free_with_i(strs, i - 1), NULL);
 		indx += map->length + 1;
 		i++;
 	}

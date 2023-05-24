@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:29:01 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/24 08:59:40 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 11:39:23 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_init_texture(t_data *data)
 {
 	int	i;
 	int	size;
-
 
 	i = -1;
 	while (++i < 5)

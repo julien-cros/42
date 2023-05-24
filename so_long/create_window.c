@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:27:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/05/24 09:04:22 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 11:41:00 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_init_window(t_map *map)
 		return ;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return (free(data), ft_clean(map), ft_error_X11());
+		return (free(data), ft_clean(map), ft_error_x());
 	if (ft_init_data(data, map) != 0)
 		return (just_mlx(data), ft_error());
 	data->win = mlx_new_window
