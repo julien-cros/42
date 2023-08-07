@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int.c                                              :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 16:01:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/07/29 12:19:03 by codespace        ###   ########.fr       */
+/*   Created: 2023/08/04 17:47:24 by codespace         #+#    #+#             */
+/*   Updated: 2023/08/04 17:53:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "int.h"
+#include "ft_print.h"
+#include <stdio.h>
 
-int	ft_atoi(const char *nptr)
+void	ft_print(t_philos *philos, char *str, long int time)
 {
-	int	i;
-	int	sign;
-	int	res;
-
-	i = 0;
-	res = 0;
-	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || (nptr[i] == ' '))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		res *= 10;
-		res = res + nptr[i] - 48;
-		i++;
-	}
-	return (res *= sign);
+	pthread_mutex_lock(&philos->data->print_mutex);
+	printf("[%ldms] %d %s\n", time, philos->id, str);
+	pthread_mutex_unlock(&philos->data->print_mutex);
 }

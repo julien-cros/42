@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 22:59:46 by juliencros        #+#    #+#             */
-/*   Updated: 2023/07/01 23:02:42 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/08/04 17:42:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "structs.h"
 
-int ft_create_threads(t_data *data, pthread_mutex_t *forks, t_philos *philos);
+// int ft_create_threads(t_data *data, pthread_mutex_t *forks, t_philos *philos);
+
+// t_bool	ft_create_philos(t_data *data, t_philos *philos);
+void	*ft_philo(void *arg);
+t_bool	ft_create_threads(t_data *data, t_philos *philos);
 
 #endif
