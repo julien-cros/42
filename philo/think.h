@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int.c                                              :+:      :+:    :+:   */
+/*   think.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 16:01:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/07/29 12:19:03 by codespace        ###   ########.fr       */
+/*   Created: 2023/08/02 16:08:12 by codespace         #+#    #+#             */
+/*   Updated: 2023/08/02 16:08:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "int.h"
+#ifndef THINK_H
+# define THINK_H
 
-int	ft_atoi(const char *nptr)
-{
-	int	i;
-	int	sign;
-	int	res;
+# include "structs.h"
 
-	i = 0;
-	res = 0;
-	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || (nptr[i] == ' '))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		res *= 10;
-		res = res + nptr[i] - 48;
-		i++;
-	}
-	return (res *= sign);
-}
+t_bool	ft_check_think(t_philos *philos, t_data *data);
+void	ft_is_thinking(t_philos *philos, t_data *data);
+
+#endif

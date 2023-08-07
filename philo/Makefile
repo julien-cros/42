@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/07/01 23:16:52 by juliencros       ###   ########.fr        #
+#    Updated: 2023/08/04 17:52:53 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,19 @@ SRCS = \
 	error.c \
 	free.c \
 	threads.c \
+	state.c \
+	eat.c \
+	sleep.c \
+	time.c \
+	ft_print.c \
+	# states.c \
 	# parsing.c \
 	# utils.c \
 	# create_philos.c \
 
 INCLUDES =	\
-	
+
+PTHREAD = -pthread
 
 OBJS = $(SRCS:.c=.o)
 
@@ -42,7 +49,7 @@ bonus: all
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS) # $(INCLUDES)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(PTHREAD)
 
 clean:
 	$(RM) $(RMFLAG) $(OBJS)
