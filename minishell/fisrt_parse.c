@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fisrt_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:04:44 by juliencros        #+#    #+#             */
-/*   Updated: 2023/07/20 14:39:45 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/08/07 17:13:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,91 +19,96 @@
 #include <unistd.h>
 
 
-extern char **env;
+// extern char **env;
 
-void	ft_init_tree(t_tree *tree)
+ft_find(t_command *command)
 {
-	tree->is_pipe = false;
-	tree->cmd_pos = 0;
-	tree->cmd_value = NULL;
-	tree->next = NULL;
-
+	
 }
 
-bool	ft_is_infile(t_token *tokens, t_tree *tree)
-{
-	if (access(tokens->value, F_OK) == 0)
-	{
-		tree->in_fd = open(tokens->value, O_RDONLY);
-		return (true);
-	}
-	else if (acces(tokensvalue, F_OK) == -1)
-	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(tokens->next->value, 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
-	}
-	else if (acces(tokens->value, R_OK) == -1)
-	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(tokens->next->value, 2);
-		ft_putstr_fd(": Permission denied\n", 2);
-	}
-	return (false);
-}
+// void	ft_init_tree(t_tree *tree)
+// {
+// 	tree->is_pipe = false;
+// 	tree->cmd_pos = 0;
+// 	tree->cmd_value = NULL;
+// 	tree->next = NULL;
 
-bool	ft_is_cmd(t_token *token)
-{
-	if (access(token->value, F_OK) == 0)
-		return (true);
-	else if (acces(token->value, F_OK) == -1)
-	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(token->value, 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
-	}
-	else if (acces(token->value, R_OK) == -1)
-	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(token->value, 2);
-		ft_putstr_fd(": Permission denied\n", 2);
-	}
-	return (false);
-}
+// }
 
-bool	ft_is_valid(t_token *token, t_tree *tree)
-{
-	if (token->type == "TOKEN_LT" && ft_is_infile(token->next, tree) == false)
-		return (false);
-	if (token->type == "TOKEN_SYMBOL" && ft_is_cmd(token) == false)
-		return (false);
-	if ((token->type == "TOKEN_GT" && token->next == NULL)
-		 || (token->type == "TOKEN_GTGT" && token->next == NULL))
-		return (false);
-	if (token->type == "TOKEN_GT" && ft_is_outfile(token, tree) == false)
-		return (false);
-	return (true);
-}
+// bool	ft_is_infile(t_token *tokens, t_tree *tree)
+// {
+// 	if (access(tokens->value, F_OK) == 0)
+// 	{
+// 		tree->in_fd = open(tokens->value, O_RDONLY);
+// 		return (true);
+// 	}
+// 	else if (acces(tokensvalue, F_OK) == -1)
+// 	{
+// 		ft_putstr_fd("minishell: ", 2);
+// 		ft_putstr_fd(tokens->next->value, 2);
+// 		ft_putstr_fd(": No such file or directory\n", 2);
+// 	}
+// 	else if (acces(tokens->value, R_OK) == -1)
+// 	{
+// 		ft_putstr_fd("minishell: ", 2);
+// 		ft_putstr_fd(tokens->next->value, 2);
+// 		ft_putstr_fd(": Permission denied\n", 2);
+// 	}
+// 	return (false);
+// }
 
-void	ft_search_type(t_command *command)
-{
-	t_token	*token;
-	t_tree *tree;
-	t_token *tmp;
+// bool	ft_is_cmd(t_token *token)
+// {
+// 	if (access(token->value, F_OK) == 0)
+// 		return (true);
+// 	else if (acces(token->value, F_OK) == -1)
+// 	{
+// 		ft_putstr_fd("minishell: ", 2);
+// 		ft_putstr_fd(token->value, 2);
+// 		ft_putstr_fd(": No such file or directory\n", 2);
+// 	}
+// 	else if (acces(token->value, R_OK) == -1)
+// 	{
+// 		ft_putstr_fd("minishell: ", 2);
+// 		ft_putstr_fd(token->value, 2);
+// 		ft_putstr_fd(": Permission denied\n", 2);
+// 	}
+// 	return (false);
+// }
 
-	ft_init_tree(tree);
-	tmp = command->tokens;
-	token = command->tokens;
-	while (token->next != NULL)
-	{
-		if (ft_is_valid(token, tree) == false);
-			return (ft_error(ECMD));
-		if (ft_what_type(token, tree) == false)
-			return (ft_error(ECMD));
-		token = token->next;	
-	}
-	ft_fill_tree(tmp, tree);
-}
+// bool	ft_is_valid(t_token *token, t_tree *tree)
+// {
+// 	if (token->type == "TOKEN_LT" && ft_is_infile(token->next, tree) == false)
+// 		return (false);
+// 	if (token->type == "TOKEN_SYMBOL" && ft_is_cmd(token) == false)
+// 		return (false);
+// 	if ((token->type == "TOKEN_GT" && token->next == NULL)
+// 		 || (token->type == "TOKEN_GTGT" && token->next == NULL))
+// 		return (false);
+// 	if (token->type == "TOKEN_GT" && ft_is_outfile(token, tree) == false)
+// 		return (false);
+// 	return (true);
+// }
+
+// void	ft_search_type(t_command *command)
+// {
+// 	t_token	*token;
+// 	t_tree *tree;
+// 	t_token *tmp;
+
+// 	ft_init_tree(tree);
+// 	tmp = command->tokens;
+// 	token = command->tokens;
+// 	while (token->next != NULL)
+// 	{
+// 		if (ft_is_valid(token, tree) == false);
+// 			return (ft_error(ECMD));
+// 		if (ft_what_type(token, tree) == false)
+// 			return (ft_error(ECMD));
+// 		token = token->next;	
+// 	}
+// 	ft_fill_tree(tmp, tree);
+// }
 
 
 
