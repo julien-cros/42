@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 15:33:32 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/03 15:46:47 by herbie           ###   ########.fr       */
+/*   Updated: 2023/08/07 17:19:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "structs.h"
 # include <stdbool.h>
 
-bool	ft_parse(t_shell *shell, char *line);
+bool	ft_parse(t_command *command, t_lexer *lexer, t_token *token);
 
 #endif /* PARSE_H */

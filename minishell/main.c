@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:00:58 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/15 15:48:10 by herbie           ###   ########.fr       */
+/*   Updated: 2023/08/07 17:16:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	ft_build_command(char *buffer)
 		token = ft_lexer_next(&lexer);
 	}
 	if (ft_create_subcommands(&command))
+	{
+		ft_parse(&command, &lexer, &token);
 		ft_print_subcommands(&command);
+	}
 	ft_clear_tokens(&command.tokens);
 }
 
