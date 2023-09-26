@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleep.h                                            :+:      :+:    :+:   */
+/*   action.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 16:07:32 by codespace         #+#    #+#             */
-/*   Updated: 2023/08/04 18:22:00 by codespace        ###   ########.fr       */
+/*   Created: 2023/09/25 11:07:19 by juliencros        #+#    #+#             */
+/*   Updated: 2023/09/25 11:07:33 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SLEEP_H
-# define SLEEP_H
+#ifndef ACTION_H
+# define ACTION_H
 
 # include "structs.h"
 
-void	ft_is_sleeping(t_philos *philos);
+void	*ft_single_philo(void *arg);
+void	*ft_multiple_philos(void *arg);
 
 #endif

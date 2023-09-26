@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.h                                            :+:      :+:    :+:   */
+/*   sleep_think.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 16:38:26 by codespace         #+#    #+#             */
-/*   Updated: 2023/08/04 12:02:48 by codespace        ###   ########.fr       */
+/*   Created: 2023/08/02 16:07:32 by codespace         #+#    #+#             */
+/*   Updated: 2023/09/25 10:58:05 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STATE_H
-# define STATE_H
+#ifndef SLEEP_THINK_H
+# define SLEEP_THINK_H
 
-#include "structs.h"
+# include "structs.h"
 
-t_bool	ft_check_state(t_philos *philos);
+void	ft_sleep_think(t_philos *philos);
 
 #endif

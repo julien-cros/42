@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: herbie <herbie@student.42.fr>              +#+  +:+       +#+         #
+#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 21:43:09 by herbie            #+#    #+#              #
-#    Updated: 2023/07/13 17:06:00 by herbie           ###   ########.fr        #
+#    Updated: 2023/08/08 17:32:55 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = \
 	main.c \
 	mem.c \
 	str.c \
+	str2.c \
 	char.c \
 	io.c \
 	print.c \
@@ -35,6 +36,11 @@ SRCS = \
 	history.c \
 	signals.c \
 	token.c \
+	here_doc.c \
+	get_line.c \
+	clear.c \
+	cmds.c \
+	split.c \
 
 OBJS = $(SRCS:.c=.o)
 

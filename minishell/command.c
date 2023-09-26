@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:14:02 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/15 15:48:10 by herbie           ###   ########.fr       */
+/*   Updated: 2023/08/08 17:03:01 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@ t_command	ft_command_new(void)
 	command.subcommand_length = 0;
 	return (command);
 }
+

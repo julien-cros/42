@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:00:58 by herbie            #+#    #+#             */
-/*   Updated: 2023/08/07 17:16:09 by codespace        ###   ########.fr       */
+/*   Updated: 2023/08/08 18:21:25 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "history.h"
 #include "token.h"
 #include "signals.h"
+#include "clear.h"
 #include <unistd.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -75,6 +76,7 @@ void	ft_build_command(char *buffer)
 		ft_print_subcommands(&command);
 	}
 	ft_clear_tokens(&command.tokens);
+	ft_clear_subcommands(&command.subcommands);
 }
 
 void	ft_await_command_entry(void)

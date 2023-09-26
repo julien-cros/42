@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:02:06 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/15 15:48:10 by herbie           ###   ########.fr       */
+/*   Updated: 2023/08/08 19:44:57 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 
 # include <stdbool.h>
 
+extern char	**environ;
+
 typedef enum e_token_types {
-	TOKEN_EOF,
-	TOKEN_INVALID,
-	TOKEN_SYMBOL,
-	TOKEN_GT,
-	TOKEN_LT,
-	TOKEN_GT_GT,
-	TOKEN_LT_LT,
-	TOKEN_PIPE,
-	TOKEN_SQ,
-	TOKEN_DQ,
+	TOKEN_EOF, // 0
+	TOKEN_INVALID, // 1
+	TOKEN_SYMBOL, // 2
+	TOKEN_GT, // 3 
+	TOKEN_LT, // 4
+	TOKEN_GT_GT, // 5
+	TOKEN_LT_LT, // 6
+	TOKEN_PIPE,	// 7
+	TOKEN_SQ, // 8
+	TOKEN_DQ, // 9
+	TOKEN_CMD, // 10
+	TOKEN_IN_FD, // 11
 }	t_token_types;
 
 typedef enum e_lexer_states {

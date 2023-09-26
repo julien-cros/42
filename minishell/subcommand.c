@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   subcommand.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:44:16 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/15 16:02:11 by herbie           ###   ########.fr       */
+/*   Updated: 2023/08/08 21:25:49 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #include "mem.h"
 #include "error.h"
 #include "token.h"
+#include "here_doc.h"
+#include "clear.h"
+#include "cmds.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -99,9 +102,13 @@ t_subcommand	*ft_build_subcommand(t_token *token_start, int token_length)
 	subcommand = ft_subcommand_new();
 	if (!subcommand)
 		return (NULL);
+	// if (!ft_set_cmds(subcommand, token_start, token_length))
+	// 	return (free(subcommand), NULL);
 	if (!ft_set_in_fd(subcommand, token_start, token_length))
 		return (free(subcommand), NULL);
 	if (!ft_set_out_fd(subcommand, token_start, token_length))
+		return (free(subcommand), NULL);
+	if (!ft_set_here_doc(subcommand, token_start, token_length))
 		return (free(subcommand), NULL);
 	return (subcommand);
 }

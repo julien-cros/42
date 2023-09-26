@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:52:39 by codespace         #+#    #+#             */
-/*   Updated: 2023/08/02 18:01:47 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/25 11:05:10 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include "structs.h"
 
+unsigned long	ft_get_time_in_ms(void);
+int				ft_get_time_diff(unsigned long time);
+int				ft_get_rounded_time_diff(unsigned long time, int round);
 void			ft_usleep(unsigned long time);
-unsigned long	ft_get_time(void);
 
 #endif

@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   exit.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 16:07:55 by codespace         #+#    #+#             */
-/*   Updated: 2023/08/02 16:09:31 by codespace        ###   ########.fr       */
+/*   Created: 2023/09/25 09:36:31 by juliencros        #+#    #+#             */
+/*   Updated: 2023/09/25 09:47:28 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "think.h"
+#ifndef EXIT_H
+# define EXIT_H
 
-void	ft_is_sleeping(t_philos *philos, t_data *data)
-{
+# include "structs.h"
 
-}
+void	ft_wait_for_exit(t_data *data, t_philos *philos);
 
-t_bool	ft_check_sleep(t_philos *philos, t_data *data)
-{
-
-}
+#endif

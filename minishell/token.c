@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:00:30 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/15 13:15:48 by herbie           ###   ########.fr       */
+/*   Updated: 2023/08/08 16:25:07 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,5 @@ bool	ft_append_token(t_token **tokens, t_token token)
 		(*tokens)->next = new_token;
 		*tokens = head;
 	}
-	return (true);
-}
-
-bool	ft_clear_tokens(t_token **tokens)
-{
-	t_token	*next;
-
-	while (*tokens)
-	{
-		next = (*tokens)->next;
-		free(*tokens);
-		*tokens = next;
-	}
-	*tokens = NULL;
 	return (true);
 }

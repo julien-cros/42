@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eat.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:06:49 by codespace         #+#    #+#             */
-/*   Updated: 2023/08/04 12:38:41 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/25 10:58:30 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "structs.h"
 
-void	ft_is_eating(t_philos *philos);
+void	ft_eat(t_philos *philos);
 
 #endif

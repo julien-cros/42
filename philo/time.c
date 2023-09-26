@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:53:27 by codespace         #+#    #+#             */
-/*   Updated: 2023/08/04 16:04:35 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/25 11:04:59 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned long ft_get_time(void)
+unsigned long	ft_get_time_in_ms(void)
 {
 	t_timeval	time;
-	unsigned long	time_in_ms;
 
 	gettimeofday(&time, NULL);
-	time_in_ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (time_in_ms);
+	return ((unsigned long)(time.tv_sec * 1000 + time.tv_usec / 1000));
 }
 
-// void	ft_usleep(unsigned long time_in_ms)
-// {
-// 	unsigned long	start_time;
-
-// 	start_time = ft_get_time();
-// 	while (ft_get_time() - start_time < time_in_ms)
-// 		usleep(100);
-// }
-
-unsigned long	ft_get_time_diff(unsigned long start_time)
+/**
+ * @brief The ft_get_time_diff function returns the difference between
+ * the current time and the time passed in milliseconds.
+ * 
+ * @param time
+ * @return int 
+ */
+int	ft_get_time_diff(unsigned long time)
 {
-	return (ft_get_time() - start_time);
+	unsigned long	current_time;
+
+	current_time = ft_get_time_in_ms();
+	return ((int)(current_time - time));
+}
+
+/**
+ * @brief The ft_get_rounded_time_diff function returns the difference
+ * between the current time and the time passed in milliseconds rounded
+ * to the nearest multiple of the round parameter.
+ * 
+ * @param time 
+ * @param round 
+ * @return int 
+ */
+int	ft_get_rounded_time_diff(unsigned long time, int round)
+{
+	unsigned long	current_time;
+
+	current_time = ft_get_time_in_ms();
+	return ((int)(current_time - time) - ((int)(current_time - time) % round));
 }
 
 /**
@@ -50,7 +66,7 @@ void	ft_usleep(unsigned long time)
 {
 	unsigned long	start_time;
 
-	start_time = ft_get_time();
+	start_time = ft_get_time_in_ms();
 	while ((unsigned long)ft_get_time_diff(start_time) < time)
 		usleep(100);
 }
