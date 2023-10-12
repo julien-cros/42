@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/09/26 14:11:55 by juliencros       ###   ########.fr        #
+#    Updated: 2023/10/12 14:50:55 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,9 @@ SRCS = \
 	eat.c \
 	sleep_think.c \
 	time.c \
-	ft_print.c \
 	exit.c \
 	action.c \
+	# ft_print.c \
 
 INCLUDES =	\
 

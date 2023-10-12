@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 22:59:46 by juliencros        #+#    #+#             */
-/*   Updated: 2023/09/26 14:14:40 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/12 14:52:16 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "structs.h"
 
-t_bool	ft_create_threads(t_data *data, t_philos *philos);
+t_bool	ft_spawn_threads(t_data *data, t_philo *philos);
 
 #endif

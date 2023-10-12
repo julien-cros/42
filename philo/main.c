@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:52:36 by juliencros        #+#    #+#             */
-/*   Updated: 2023/09/26 14:28:44 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/12 14:57:28 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,58 +21,79 @@
 #include "int.h"
 #include "threads.h"
 
-static void	ft_init_data(t_data *data);
-static void	ft_parse_data(t_data *data, int argc, char **argv);
-void		ft_init_philos(t_philos *philos, t_data *data,
-				pthread_mutex_t *forks);
-
-int	main(int argc, char **argv)
+void	ft_init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks);
+void	ft_init_data(t_data *data);
+t_bool	ft_parse_args(int argc, char **argv, t_data *data);
+				
+int	main(int argc, char *argv[])
 {
 	t_data			data;
-	t_philos		*philos;
+	t_philo			*philos;
 	pthread_mutex_t	*forks;
 
 	ft_init_data(&data);
-	ft_parse_data(&data, argc, argv);
-	forks = malloc(sizeof(pthread_mutex_t) * data.num_philo);
+	if (!ft_parse_args(argc, argv, &data))
+		return (ft_err(EARGS));
+	forks = malloc(sizeof(pthread_mutex_t) * data.philo_count);
 	if (!forks)
-		return (ft_error(EUNKN), 1);
-	philos = malloc(sizeof(t_philos) * data.num_philo);
+		return (ft_err(EUNKN), 1);
+	philos = malloc(sizeof(t_philo) * data.philo_count);
 	if (!philos)
-		return (ft_error(EUNKN), 1);
+		return (ft_err(EUNKN), 1);
 	ft_init_philos(philos, &data, forks);
-	if (!ft_create_threads(&data, philos))
-		return (ft_error(ETHRD));
+	if (!ft_spawn_threads(&data, philos))
+		return (ft_err(ETHRD));
 	free(forks);
 	return (0);
 }
 
-static void	ft_init_data(t_data *data)
+void	ft_init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks)
 {
-	data->num_philo = 0;
-	data->time_to_die = 0;
-	data->time_to_eat = 0;
-	data->time_to_sleep = 0;
+	int	i;
+
+	i = -1;
+	while (++i < data->philo_count)
+	{
+		philos[i].id = i + 1;
+		philos[i].eat_count = 0;
+		philos[i].data = data;
+		philos[i].last_meal_time = 0;
+		philos[i].start_time = 0;
+		philos[i].left_fork = &forks[i];
+		philos[i].right_fork = &forks[(i + 1) % data->philo_count];
+	}
+}
+
+/**
+ * @brief The ft_init_data function initializes the data struct with the
+ * correct values.
+ * 
+ * @param data 
+ */
+void	ft_init_data(t_data *data)
+{
+	data->philo_count = 0;
+	data->time_die_in_ms = 0;
+	data->time_eat_in_ms = 0;
+	data->time_sleep_in_ms = 0;
 	data->max_eat = -1;
 	data->start_time = 0;
-	data->is_ready = false;
 	data->is_game_over = false;
 }
 
-static void	ft_parse_data(t_data *data, int argc, char **argv)
+t_bool	ft_parse_args(int argc, char **argv, t_data *data)
 {
 	if (argc < 5 || argc > 6)
-		return (ft_error(EARGS), exit(1));
-	data->num_philo = ft_atoi(argv[1]);
-	data->time_to_die = ft_atoi(argv[2]);
-	data->time_to_eat = ft_atoi(argv[3]);
-	data->time_to_sleep = ft_atoi(argv[4]);
-	if (argv[5])
+		return (false);
+	data->philo_count = ft_atoi(argv[1]);
+	data->time_die_in_ms = ft_atoi(argv[2]);
+	data->time_eat_in_ms = ft_atoi(argv[3]);
+	data->time_sleep_in_ms = ft_atoi(argv[4]);
+	if (argc == 6)
 		data->max_eat = ft_atoi(argv[5]);
-	else
-		data->max_eat = -1;
-	if (data->num_philo < 1 || data->time_to_die < 1
-		|| data->time_to_eat < 1 || data->time_to_sleep < 1 
-		|| (argv[5] && data->max_eat < 1))
-		return (ft_error(EARGS), exit(1));
+	if (data->philo_count < 1 || data->time_die_in_ms < 1
+		|| data->time_eat_in_ms < 1 || data->time_sleep_in_ms < 1
+		|| (argc == 6 && data->max_eat < 1))
+		return (false);
+	return (true);
 }
