@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:32:09 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/12 14:51:40 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/12 16:07:41 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_data
 	int				time_sleep_in_ms;
 	int				max_eat;
 	uint64_t		start_time;
+	t_bool			is_ready;
 	t_bool			is_game_over;
 	pthread_mutex_t	data_mutex;
 	pthread_mutex_t	meal_mutex;

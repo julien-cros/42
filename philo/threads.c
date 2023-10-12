@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/12 14:55:09 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/12 18:50:13 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ t_bool	ft_spawn_threads(t_data *data, t_philo *philos)
 
 	if (!ft_init_mutexes(data, philos))
 		return (false);
-	pthread_mutex_lock(&data->data_mutex);
-	data->start_time = ft_get_unix_time();
-	pthread_mutex_unlock(&data->data_mutex);
 	i = -1;
+	// pthread_mutex_lock(&data->data_mutex);
+	// data->start_time = ft_get_unix_time();
+	// pthread_mutex_unlock(&data->data_mutex);
 	while (++i < data->philo_count)
 	{
 		pthread_mutex_lock(&data->data_mutex);
@@ -58,9 +58,30 @@ t_bool	ft_spawn_threads(t_data *data, t_philo *philos)
 				&ft_redirect_philo, &philos[i]))
 			return (false);
 	}
+	pthread_mutex_lock(&data->data_mutex);
+	data->start_time = ft_get_unix_time();
+	// printf("data = %lu\n", data->start_time);
+	// printf("runn!\n");
+	data->is_ready = true;
+	pthread_mutex_unlock(&data->data_mutex);
 	ft_wait_for_exit(data, philos);
 	ft_destroy_threads(data, philos);
 	return (true);
+}
+
+void	ft_wait_philos(t_philo *philo)
+{
+	while(1)
+	{
+		pthread_mutex_lock(&philo->data->data_mutex);
+		if (philo->data->is_ready == true)
+		{
+			pthread_mutex_unlock(&philo->data->data_mutex);
+			return ;
+		}	
+		pthread_mutex_unlock(&philo->data->data_mutex);
+		usleep(1);
+	}
 }
 
 /**
@@ -79,7 +100,11 @@ static void	*ft_redirect_philo(void *arg)
 	if (philo->data->philo_count == 1)
 		ft_single_philo(philo);
 	else
+	{
+		ft_wait_philos(philo);
+		// printf("time aft wait = %lu with philo %d", ft_get_unix_time(), philo->id);
 		ft_multiple_philos(philo);
+	}
 	return (NULL);
 }
 
