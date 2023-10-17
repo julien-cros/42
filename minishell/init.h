@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:14:55 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/13 17:18:55 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/17 15:20:28 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "structs.h"
 
-void	ft_init_data(t_data *data);
+t_data	ft_init_data(void);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:34:12 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/16 12:58:48 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/17 15:38:10 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ bool		ft_redirection(t_data *data, t_token *token)
 	char	*str;
 
 	is_child = 0;
-	// printf("\n--- in redirection ---\n\n");
+	printf("\n--- in redirection ---\n\n");
 	// printf("token->value = %s\n", token->value);
 	if (!token || !data)
 	{

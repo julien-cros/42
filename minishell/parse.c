@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 15:33:04 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/16 12:58:13 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/17 15:39:46 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,14 @@ bool	ft_parse(t_data *data)
 		data->is_parent = 1;
 		data->last = 1;
 		ft_find_cmd_token(data, tmp);
-		// ft_find_in_token(data, tmp);
-		// ft_print_tokens(tmp);
+		ft_find_in_token(data, tmp);
+		printf("ok\n");
+		// ft_print_tokens(tmp);	
 		// if (ft_if_builtin(cmd))
 		// 	ft_builtin_valid(tmp, data, cmd);
 		// else 
 		ft_redirection(data, tmp);
+		printf("aft redirection\n");
 		ft_reset_std(data);
 		ft_close_fds(data);
 		ft_reset_fds(data);
