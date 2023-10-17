@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:00:30 by herbie            #+#    #+#             */
-/*   Updated: 2023/08/08 16:25:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/15 16:44:54 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,22 @@ bool	ft_append_token(t_token **tokens, t_token token)
 		while ((*tokens)->next)
 			*tokens = (*tokens)->next;
 		(*tokens)->next = new_token;
+		new_token->prev = *tokens;
 		*tokens = head;
 	}
+	return (true);
+}
+
+bool	ft_clear_tokens(t_token **tokens)
+{
+	t_token	*next;
+
+	while (*tokens)
+	{
+		next = (*tokens)->next;
+		free(*tokens);
+		*tokens = next;
+	}
+	*tokens = NULL;
 	return (true);
 }

@@ -6,7 +6,7 @@
 #    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 21:43:09 by herbie            #+#    #+#              #
-#    Updated: 2023/08/08 17:32:55 by juliencros       ###   ########.fr        #
+#    Updated: 2023/10/16 16:46:39 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,26 +22,37 @@ SRCS = \
 	main.c \
 	mem.c \
 	str.c \
-	str2.c \
-	char.c \
-	io.c \
 	print.c \
 	display.c \
-	parse.c \
-	error.c \
-	lexer.c \
-	lexer_utils.c \
-	command.c \
-	subcommand.c \
 	history.c \
 	signals.c \
+	str2.c \
+	free.c \
+	fd.c \
+	init.c \
+	int.c \
+	shell_levels.c \
+	env.c \
+	lexer.c \
 	token.c \
-	here_doc.c \
+	char.c \
+	lexer_utils.c \
+	error.c \
+	parse.c \
+	redirection.c \
 	get_line.c \
-	clear.c \
-	cmds.c \
+	here_doc.c \
+	find.c \
+	execution.c \
+	find_cmd.c \
 	split.c \
-
+	args.c \
+	path_args.c \
+	builtin.c \
+	builtins_func.c \
+	echo.c \
+	export.c \
+	
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -62,4 +73,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean run fclean re 
+.PHONY: all clean run fclean re

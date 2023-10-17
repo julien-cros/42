@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   subcommand.h                                       :+:      :+:    :+:   */
+/*   builtins_func.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 14:44:28 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/14 14:44:28 by herbie           ###   ########.fr       */
+/*   Created: 2023/08/21 19:58:17 by juliencros        #+#    #+#             */
+/*   Updated: 2023/10/16 16:39:03 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SUBCOMMAND_H
-# define SUBCOMMAND_H
+#ifndef BUILTINS_FUNC_H
+# define BUILTINS_FUNC_H
 
 # include "structs.h"
-# include <stdbool.h>
 
-bool	ft_create_subcommands(t_command *command);
-
-#endif /* SUBCOMMAND_H */
+int		ft_env(t_data *data);
+// int		ft_unset(t_data *data);
+int		ft_pwd(t_data *data);
+int		ft_cd(t_data *data);
+int		ft_exit(t_data *data);
+#endif

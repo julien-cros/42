@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   history.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 11:35:47 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/13 18:54:56 by juliencros       ###   ########.fr       */
+/*   Created: 2023/10/13 17:14:22 by juliencros        #+#    #+#             */
+/*   Updated: 2023/10/16 12:39:42 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "history.h"
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+#include "init.h"
+#include <unistd.h>
 
-void	ft_history_new(void)
+void	ft_init_data(t_data *data)
 {
-	using_history();
+	data->in = dup(STDIN);
+	data->out = dup(STDOUT);
+	data->in_fd = -1;
+	data->out_fd = -1;
+	data->pipe_in = -1;
+	data->pipe_out = -1;
+	data->pid = -1;
+	data->charge = 0;
+	data->is_here_doc = false;
+	data->is_executable = true;
+	data->is_parent = false;
+	data->is_builtin = false;
+	data->last = 0;
+	data->return_status = 0;
+	data->exit = -1;
 }
 
-void	ft_history_add(char *buffer)
-{
-	add_history(buffer);
-}
-
-void	ft_history_clear(void)
-{
-	clear_history();
-}

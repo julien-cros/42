@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:15:16 by herbie            #+#    #+#             */
-/*   Updated: 2023/05/21 11:53:40 by herbie           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:09:09 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,22 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	while (n--)
 		((unsigned char *)dest)[n] = ((char *)src)[n];
 	return (dest);
+}
+
+/***
+ * @brief The ft_memdel function frees the memory space pointed to by ptr, which
+ * must have been returned by a previous call to malloc(), calloc() or
+ * realloc(). Otherwise, or if free(ptr) has already been called before,
+ * undefined behavior occurs. If ptr is NULL, no operation is performed.
+ * @param ptr
+ * @return void*
+ */
+void	*ft_memdel(void *ptr)
+{
+	if (ptr)
+	{
+		free(ptr);
+		ptr = NULL;
+	}
+	return (NULL);
 }

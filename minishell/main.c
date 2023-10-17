@@ -6,104 +6,110 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:00:58 by herbie            #+#    #+#             */
-/*   Updated: 2023/08/08 18:21:25 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/15 16:48:04 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.h"
-#include "io.h"
-#include "parse.h"
 #include "structs.h"
-#include "print.h"
-#include "error.h"
-#include "lexer.h"
-#include "command.h"
-#include "subcommand.h"
+#include "init.h"
 #include "history.h"
-#include "token.h"
+#include "env.h"
+#include "shell_levels.h"
 #include "signals.h"
-#include "clear.h"
-#include <unistd.h>
+#include "free.h"
+#include "token.h"
+#include "lexer.h"
+#include "error.h"
+#include "parse.h"
 #include <stdbool.h>
-#include <stdio.h>
 #include <readline/readline.h>
+#include <stdio.h>
+#include <unistd.h>
 
-# define SUBCOMMAND_FMT \
-	"Subcommand(in_fd=%d, out_fd=%d, path='%s', \
-	mode=%d, is_heredoc=%d)\n"
-# define SUBCOMMAND_ARG(subcommand) \
-	subcommand.in_fd, subcommand.out_fd, subcommand.path, \
-	subcommand.mode, subcommand.is_heredoc
-	#include "mem.h"
+t_signal	g_signal;
 
-void	ft_print_subcommands(t_command *command)
+
+
+void	ft_init_signal(void)
 {
-	t_subcommand	*subcommand;
-
-	subcommand = command->subcommands;
-	while (subcommand)
-	{
-		t_subcommand tmp;
-		ft_memcpy(&tmp, subcommand, sizeof(t_subcommand));
-		printf(SUBCOMMAND_FMT, SUBCOMMAND_ARG(tmp));
-		subcommand = subcommand->next;
-	}
+	g_signal.sigint = 0;
+	g_signal.sigquit = 0;
+	g_signal.exit_status = 0;
+	g_signal.pid = 0;
 }
 
-void	ft_build_command(char *buffer)
+// ft_build_command(char *buffer, char **envp)
+void ft_build_data_minishell(t_data *data, char *buffer, char **envp)
 {
-	t_command	command;
-	t_lexer		lexer;
-	t_token		token;
+	t_lexer lexer;
+	t_token token;
+	t_token prev;
+	int i;
 
-	command = ft_command_new();
+	i = 0;
 	lexer = ft_lexer_new(buffer);
-	token = ft_lexer_next(&lexer);
+	token = ft_lexer_next(&lexer, &prev);
 	while (token.type != TOKEN_EOF)
 	{
 		if (token.type == TOKEN_INVALID)
 		{
 			ft_invalid_token(lexer, token);
-			break ;
+			ft_clear_tokens(&data->tokens); // check if it's tokens have to be freed here julien
+			return;
 		}
-		if (ft_append_token(&command.tokens, token))
-			command.token_length++;
-		token = ft_lexer_next(&lexer);
+		if (ft_append_token(&data->tokens, token))
+			data->token_length++;
+		token = ft_lexer_next(&lexer, &prev);	
+		
 	}
-	if (ft_create_subcommands(&command))
-	{
-		ft_parse(&command, &lexer, &token);
-		ft_print_subcommands(&command);
-	}
-	ft_clear_tokens(&command.tokens);
-	ft_clear_subcommands(&command.subcommands);
+	t_token *tmp;
+	tmp = data->tokens;
+	// while (tmp)
+	// {
+	// 	if (tmp->prev)
+	// 		printf("token: %d   |  prev: %d\n", tmp->type, tmp->prev->type);
+	// 	else
+	// 		printf("token: %d   |  prev: NULL\n", tmp->type);
+	// 	tmp = tmp->next;
+	// }
+	// ft_print_tokens(data->tokens);
+	ft_parse(data);
+	ft_clear_tokens(&data->tokens);
 }
 
-void	ft_await_command_entry(void)
+void ft_await_command_entry(t_data *data, char **envp)
 {
-	char	*buffer;
+	char *buffer;
 
-	while (true)
+while (data->exit == -1)
 	{
+		ft_init_signal();
 		buffer = readline("minishell> ");
 		if (!buffer)
+		{
 			ft_handle_ctrl_d();
+		}
 		if (ft_strlen(buffer) > 0)
 		{
 			ft_history_add(buffer);
-			ft_build_command(buffer);
+			ft_build_data_minishell(data, buffer, envp);
 		}
 		free(buffer);
 	}
 }
 
-int	main(int argc, char **argv, char **envp)
+int		main(int argc, char **argv, char **envp)
 {
+	t_data	data;
+
 	(void)argc;
 	(void)argv;
-	(void)envp;
-	ft_history_new();
-	ft_signals_register();
-	ft_await_command_entry();
+	ft_init_data(&data);
+	ft_init_env(&data, envp);
+	ft_init_secret_env(&data, envp);
+	ft_increment_shell_level(data.envp);
+	ft_await_command_entry(&data, envp);
+	ft_free_env(data.envp);
+	ft_free_env(data.secret_env); 
 	return (0);
 }

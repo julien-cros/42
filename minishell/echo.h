@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   echo.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 17:05:20 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/15 16:44:24 by juliencros       ###   ########.fr       */
+/*   Created: 2023/09/19 12:06:11 by juliencros        #+#    #+#             */
+/*   Updated: 2023/10/16 12:16:57 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_H
-# define TOKEN_H
+#ifndef ECHO_H
+# define ECHO_H
 
-# include "structs.h"
-# include <stdbool.h>
+#include "structs.h"
 
-# define PIPE_NOT_FOUND -1
+int	ft_echo(t_token *token, t_data *data);
 
-int		ft_find_next_pipe(t_token *token);
-bool	ft_append_token(t_token **tokens, t_token token);
-bool	ft_clear_tokens(t_token **tokens);
-
-#endif /* TOKEN_H */
+#endif

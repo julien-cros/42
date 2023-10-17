@@ -6,12 +6,13 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:14:22 by herbie            #+#    #+#             */
-/*   Updated: 2023/08/08 15:40:22 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/13 17:39:38 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
 #include "mem.h"
+#include "str2.h"
 #include <stdlib.h>
 
 /**

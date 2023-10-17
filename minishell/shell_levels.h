@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command.h                                          :+:      :+:    :+:   */
+/*   shell_levels.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: herbie <herbie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:13:44 by herbie            #+#    #+#             */
-/*   Updated: 2023/07/13 17:40:39 by herbie           ###   ########.fr       */
+/*   Created: 2023/10/13 19:04:56 by juliencros        #+#    #+#             */
+/*   Updated: 2023/10/14 10:47:49 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMAND_H
-# define COMMAND_H
+#ifndef SHELL_LEVELS_H
+# define SHELL_LEVELS_H
 
-# include "structs.h"
-# include <stdbool.h>
+#include "structs.h"
 
-t_command	ft_command_new(void);
+void	ft_increment_shell_level(t_env *env);
 
-#endif /* COMMAND_H */
+#endif

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   history.c                                          :+:      :+:    :+:   */
+/*   fd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 11:35:47 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/13 18:54:56 by juliencros       ###   ########.fr       */
+/*   Created: 2023/10/13 17:23:09 by juliencros        #+#    #+#             */
+/*   Updated: 2023/10/14 15:26:46 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "history.h"
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+#include "structs.h"
 
-void	ft_history_new(void)
+void	ft_close(int fd)
 {
-	using_history();
+	if (fd > 0)
+		close(fd);
 }
 
-void	ft_history_add(char *buffer)
+void	ft_reset_std(t_data *data)
 {
-	add_history(buffer);
+	dup2(data->in, STDIN);
+	dup2(data->out, STDOUT);
 }
 
-void	ft_history_clear(void)
+void	ft_close_fds(t_data *data)
 {
-	clear_history();
+	ft_close(data->in_fd);
+	ft_close(data->out_fd);
+	ft_close(data->pipe_in);
+	ft_close(data->pipe_out);
+}
+
+void	ft_reset_fds(t_data *data)
+{
+	data->in_fd = -1;
+	data->out_fd = -1;
+	data->pipe_in = -1;
+	data->pipe_out = -1;
+	data->pid = -1;
 }

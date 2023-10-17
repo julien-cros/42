@@ -6,87 +6,138 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 15:33:04 by herbie            #+#    #+#             */
-/*   Updated: 2023/08/17 14:38:54 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/16 12:58:13 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "structs.h"
-#include <stdio.h>
-#include <fcntl.h>
+#include "redirection.h"
+#include "fd.h"
+#include "token.h"
+#include "find.h"
+#include "free.h"
+#include "str2.h"
+#include "builtin.h"
+#include <stdbool.h>
 
-bool	ft_check_first(t_command *command);
-bool	ft_parse(t_command *command, t_lexer *lexer, t_token *token)
+// t_token	*next_run(t_token *token)
+// {
+// 	while (token && token->type != TOKEN_SYMBOL)
+// 	{
+// 		token = token->next;
+// 		if (token && token->type == TOKEN_SYMBOL && token->prev == NULL)
+// 			;
+// 		else if (token && token->type == TOKEN_SYMBOL && token->prev->type < TOKEN_SYMBOL)
+// 			token = token->next;
+// 	}
+// 	// if (token)
+// 	// 	printf("token->value = %s\n", token->value);
+// 	return (token);
+// }
+
+void ft_print_tokens(t_token *tokens)
 {
-	// (void)command;	
-	(void)lexer;
-	(void)token;
-	// char *path;
-	printf ("command->tokens->type: %d\ncommand->tokens->value: %.*s\n", command->tokens->type, command->tokens->length , command->tokens->value);
-	if (!ft_check_first(command))
-		return (false);
-	while (command->tokens->next != NULL)
+	t_token *tmp;
+	char *str;
+
+	tmp = tokens;
+	while (tmp)
 	{
-		printf ("command->tokens->type: %d\ncommand->tokens->value: %s\n  command->next->type: %d\n  command->next->value: %s\n", command->tokens->type, command->tokens->value, command->tokens->next->type, command->tokens->next->value);
-		if (command->tokens->type == command->tokens->next->type)
-			return (printf("error1: %d\n", command->tokens->type), false);
-		if (command->tokens->type != TOKEN_CMD && command->tokens->next->type == TOKEN_PIPE)
-			return (printf("error2: %d\n", command->tokens->type), false);
-		if (command->tokens->type == TOKEN_PIPE && command->tokens->next->type 
-		!= TOKEN_CMD)
-			return (printf("error3: %d\n", command->tokens->type), false);
-		command->tokens = command->tokens->next;
+		str = ft_substr(tmp->value, 0, tmp->length);
+		printf("token: %s   |   type: %d\n", str, tmp->type);
+		if (tmp->prev)
+			printf("prev: %s\n", tmp->prev->value);
+		free(str);
+		tmp = tmp->next;
 	}
-	// printf("command-tokens->length: %d\n", command->tokens->length);
-	// printf("command->token->lenght: %d\n", command->tokens->length);
-	// printf("command->tokens->next->length: %d\n", command->tokens->next->length);
-	// printf("command->token->value: %s\n", command->tokens->value[command->tokens->length]);
-	// printf("command->subcommands->next->path: %s\n", command->subcommands->next->path);
-	// printf("command->tokens->type: %d\n", command->tokens->type);
-	// printf("command->tokens->value: %s\n", command->tokens->value);
-	// printf("command->tokens->length: %d\n", command->tokens->length);
-	// printf("command->tokens->next->type: %d\n", command->tokens->next->type);
-	// printf("command->tokens->next->value: %s\n", command->tokens->next->value);
-	// printf("command->tokens->next->length: %d\n", command->tokens->next->length);
-	// printf("command->tokens->next->next->type: %d\n", command->tokens->next->next->type);
-	// printf("command->tokens->next->next->value: %s\n", command->tokens->next->next->value);
-	// printf("command->tokens->next->next->length: %d\n", command->tokens->next->next->length);
-	return (printf("parsing ok\n"), true);
 }
 
-bool	ft_check_first(t_command *command)
+void	ft_find_cmd_token(t_data *data, t_token *token)
 {
-	// printf ("--------1------\ncommand->tokens->type: %d\ncommand->tokens->value: %s\n------------\n", command->tokens->type, command->tokens->value);
-	// if (command->tokens->type != TOKEN_LT
-	// 	&& command->tokens->type != TOKEN_GT
-	// 	&& command->tokens->type != TOKEN_GT_GT
-	// 	&& command->tokens->type != TOKEN_LT_LT
-	// 	&& command->tokens->type != TOKEN_CMD
-	// 	&& command->tokens->type != TOKEN_IN_FD)
-	// 	return (printf("error4: %d\n", command->tokens->type), false);
+	t_token *head;
 
-	// if (command->tokens->type == TOKEN_CMD
-	// 	&& command->tokens->next->type != TOKEN_LT
-	// 	&& command->tokens->next->type != TOKEN_GT
-	// 	&& command->tokens->next->type != TOKEN_GT_GT
-	// 	&& command->tokens->next->type != TOKEN_LT_LT)
-	// 	return (printf("error5: %d\n", command->tokens->type), false);
+	head = token;
+	while (token)
+	{
+		if (ft_is_io_symbol(token))
+			token = token->next->next;
+		if (token && token->type == TOKEN_SYMBOL && token->prev == NULL)
+			token->type = TOKEN_CMD;
+		else if (token && token->type == TOKEN_SYMBOL && token->prev->type == TOKEN_PIPE)
+			token->type = TOKEN_CMD;
+		else if (token && token->type == TOKEN_SYMBOL && token->prev && token->prev->prev 
+			&& ft_is_io_symbol(token->prev->prev))
+			token->type = TOKEN_CMD;
+		if (token)
+			token = token->next;
+	}
+	token = head;
+}
 
+void	ft_find_in_token(t_data *data, t_token *token)
+{
+	int		in_fd;
+	char	*in_file;
+	t_token	*head;
+
+	in_fd = -1;
+	head = token;
+	while (token)
+	{
+		if (token && token->type == TOKEN_SYMBOL 
+			&& ft_find_prev_type(token, TOKEN_CMD) 
+			&& !ft_is_io_symbol(token->prev))
+		{
+			in_file = ft_substr(token->value, 0, token->length);
+			in_fd = open(in_file, O_RDONLY);
+			if (in_fd != -1)
+			{
+				token->type = TOKEN_IN_FILE;
+				close(in_fd);
+				free(in_file);
+				token = head;
+				return ;
+			}
+		}
+		token = token->next;
+	}
+}
+
+
+bool	ft_parse(t_data *data)
+{
+	t_token	*tmp;
+	int		status;
+	// char *cmd;
+
+	tmp = data->tokens;
+	// cmd = ft_substr(tmp->value, 0, tmp->length);
+	printf("parsing\n");
+	while (data->exit == -1 && tmp)
+	{
+		data->charge = 1;
+		data->is_parent = 1;
+		data->last = 1;
+		ft_find_cmd_token(data, tmp);
+		// ft_find_in_token(data, tmp);
+		// ft_print_tokens(tmp);
+		// if (ft_if_builtin(cmd))
+		// 	ft_builtin_valid(tmp, data, cmd);
+		// else 
+		ft_redirection(data, tmp);
+		ft_reset_std(data);
+		ft_close_fds(data);
+		ft_reset_fds(data);
+		waitpid(-1, &status, 0);
+		status = WEXITSTATUS(status);
+		data->return_status = (data->last == 0) ? status : data->return_status;
+		if (data->is_parent == false)
+		{
+			ft_clear_tokens(&data->tokens);
+			exit(data->return_status);
+		}
+		data->is_executable = 0;
+		tmp = NULL;
+	}
 	return (true);
 }
-
-// - look if we are in single or double quote
-// - if we are in single quote, we don't care about anything
-// - if we are in double quote, we don't care about anything except $
-
-// - if < or <<, we are looking for a infile in next token
-// - if << we are looking for a here_doc in next token and we append it to infile
-
-// - if > or >>, we are looking for a outfile in next token
-// - if >> we are looking for a outfile in next token and we append it to outfile
-
-// always check when literal symbol if command exept when we are in single quote or double quote or after <, <<, >, >>
-
-
-
-// - if parsing ok we create a tree

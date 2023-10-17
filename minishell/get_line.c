@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 17:05:20 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/15 16:44:24 by juliencros       ###   ########.fr       */
+/*   Created: 2023/08/10 14:39:30 by juliencros        #+#    #+#             */
+/*   Updated: 2023/10/14 15:21:09 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_H
-# define TOKEN_H
+#include "get_line.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdbool.h>
 
-# include "structs.h"
-# include <stdbool.h>
+char	*ft_get_line(char *line, char limiter, int fd)
+{
+	int		i;
+	char	buffer;
 
-# define PIPE_NOT_FOUND -1
-
-int		ft_find_next_pipe(t_token *token);
-bool	ft_append_token(t_token **tokens, t_token token);
-bool	ft_clear_tokens(t_token **tokens);
-
-#endif /* TOKEN_H */
+	i = 0;
+	if (!line)
+		return (NULL);
+	while (read(fd, &buffer, 1) > 0 && buffer != limiter)
+	{
+		line[i] = buffer;
+		i++;
+	}
+	line[i] = '\n';
+	line[i + 1] = '\0';
+	return (line);
+}

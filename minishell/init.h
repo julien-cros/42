@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   io.h                                               :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 16:13:30 by herbie            #+#    #+#             */
-/*   Updated: 2023/04/27 19:31:18 by codespace        ###   ########.fr       */
+/*   Created: 2023/10/13 17:14:55 by juliencros        #+#    #+#             */
+/*   Updated: 2023/10/13 17:18:55 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IO_H
-# define IO_H
+#ifndef INIT_H
+# define INIT_H
 
-# define BUFFER_SIZE 10000
+# include "structs.h"
 
-int	ft_read(char **line, int fd, char limiter);
+void	ft_init_data(t_data *data);
 
-#endif /* IO_H */
+#endif

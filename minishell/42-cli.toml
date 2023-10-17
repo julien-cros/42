@@ -1,6 +1,0 @@
-name = "minishell"
-
-[scripts]
-build = { cmd = "make" }
-clean = { cmd = "make fclean" }
-lint = { cmd = "norminette ." }

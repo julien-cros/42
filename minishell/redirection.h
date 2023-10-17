@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command.c                                          :+:      :+:    :+:   */
+/*   redirection.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:14:02 by herbie            #+#    #+#             */
-/*   Updated: 2023/08/08 17:03:01 by juliencros       ###   ########.fr       */
+/*   Created: 2023/10/11 11:32:32 by codespace         #+#    #+#             */
+/*   Updated: 2023/10/15 12:37:23 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "command.h"
-#include "mem.h"
-#include "error.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
+#ifndef REDIRECTION_H
+# define REDIRECTION_H
 
-t_command	ft_command_new(void)
-{
-	t_command	command;
+# include "structs.h"
+#include <stdbool.h>
 
-	command.tokens = NULL;
-	command.token_length = 0;
-	command.subcommands = NULL;
-	command.subcommand_length = 0;
-	return (command);
-}
+bool	ft_redirection(t_data *data, t_token *token);
 
+#endif
