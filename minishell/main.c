@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:00:58 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/17 15:37:10 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/17 15:48:59 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,10 @@ void ft_build_data_minishell(char *buffer, char **envp)
 	ft_init_env(&data, envp);
 	ft_init_secret_env(&data, envp);
 	ft_increment_shell_level(data.envp);
-	printf("bfr lexer new\n");
 	lexer = ft_lexer_new(buffer);
 	token = ft_lexer_next(&lexer, &prev);
-	printf("aft lexer next\n");
 	while (token.type != TOKEN_EOF)
 	{
-		printf("token is valid\n");
 		if (token.type == TOKEN_INVALID)
 		{
 			ft_invalid_token(lexer, token);
@@ -67,22 +64,9 @@ void ft_build_data_minishell(char *buffer, char **envp)
 		}
 		if (ft_append_token(&data.tokens, token))
 			data.token_length++;
-		printf("lexer next\n");
 		token = ft_lexer_next(&lexer, &prev);	
 		
 	}
-	// t_token *tmp;
-	// tmp = data->tokens;
-	// while (tmp)
-	// {
-	// 	if (tmp->prev)
-	// 		printf("token: %d   |  prev: %d\n", tmp->type, tmp->prev->type);
-	// 	else
-	// 		printf("token: %d   |  prev: NULL\n", tmp->type);
-	// 	tmp = tmp->next;
-	// }
-	// ft_print_tokens(data->tokens);
-	printf("bfr parse\n");
 	ft_parse(&data);
 	ft_clear_tokens(&data.tokens);
 	ft_free_env(data.envp);
@@ -97,7 +81,6 @@ while (true)
 	{
 		ft_init_signal();
 		buffer = readline("minishell> ");
-		printf("aft readline\n");
 		if (!buffer)
 		{
 			ft_handle_ctrl_d();
@@ -115,7 +98,8 @@ int		main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
+	ft_history_new();
+	ft_signals_register();
 	ft_await_command_entry(envp);
-
 	return (0);
 }
