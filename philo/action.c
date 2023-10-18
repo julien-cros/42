@@ -3,24 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:53:47 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/12 17:42:17 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/17 16:36:16 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "action.h"
+#include "structs.h"
 #include "time.h"
-#include "ft_print.h"
-#include "sleep_think.h"
-#include "eat.h"
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
-
-// void	ft_wait_philos(t_philo *philo);
 
 /**
  * @brief The ft_single_philo function is used when there is only one
@@ -53,7 +49,6 @@ void	*ft_multiple_philos(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	// ft_wait_philos(philo);
 	pthread_mutex_lock(&philo->data->data_mutex);
 	philo->start_time = ft_get_unix_time();
 	philo->last_meal_time = ft_get_unix_time();
@@ -70,7 +65,6 @@ void	*ft_multiple_philos(void *arg)
 		pthread_mutex_unlock(&philo->data->meal_mutex);
 		ft_eat(philo);
 		ft_sleep_and_think(philo);
-		usleep(1);
 	}
 	pthread_mutex_unlock(&philo->data->meal_mutex);
 	return (NULL);
@@ -144,26 +138,3 @@ void	ft_sleep_and_think(t_philo *philo)
 	ft_usleep(sleep_time);
 	ft_print(philo, "is thinking", sleep_time);
 }
-
-// void	ft_wait_philos(t_philo *philo)
-// {
-// 	pthread_mutex_lock(&philo->data->data_mutex);
-// 	if (philo->eat_count != 0 || philo->data->is_game_over)
-// 	{
-// 		pthread_mutex_unlock(&philo->data->data_mutex);
-// 		return ;
-// 	}
-// 	pthread_mutex_unlock(&philo->data->data_mutex);
-// 	while(1)
-// 	{
-// 		pthread_mutex_lock(&philo->data->data_mutex);
-// 		if (philo->data->is_ready == true)
-// 		{
-// 			pthread_mutex_unlock(&philo->data->data_mutex);
-// 			return ;
-// 		}	
-// 		// printf("is_ready = %d  |  philo count = %d  |  is_game_over = %d\n", philo->data->is_ready, philo->eat_count, philo->data->is_game_over);
-// 		pthread_mutex_unlock(&philo->data->data_mutex);
-// 		usleep(1);
-// 	}
-// }
