@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:00:30 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/17 15:08:24 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/18 09:44:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	ft_append_token(t_token **tokens, t_token token)
 	else
 	{
 		head = *tokens;
-		while ((*tokens)->next)
+		while ((*tokens) && (*tokens)->next)
 			*tokens = (*tokens)->next;
 		(*tokens)->next = new_token;
 		new_token->prev = *tokens;

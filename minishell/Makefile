@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 21:43:09 by herbie            #+#    #+#              #
-#    Updated: 2023/10/16 16:46:39 by juliencros       ###   ########.fr        #
+#    Updated: 2023/10/18 09:33:51 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,6 @@ SRCS = \
 	char.c \
 	lexer_utils.c \
 	error.c \
-	parse.c \
-	redirection.c \
 	get_line.c \
 	here_doc.c \
 	find.c \
@@ -52,6 +50,8 @@ SRCS = \
 	builtins_func.c \
 	echo.c \
 	export.c \
+	parse.c \
+	redirection.c \
 	
 OBJS = $(SRCS:.c=.o)
 

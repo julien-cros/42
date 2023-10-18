@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:13 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/15 16:46:52 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 09:34:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,7 @@ t_token	ft_lexer_next(t_lexer *lexer, t_token *prev)
 	token.value = &lexer->raw[lexer->cursor];
 	token.length = 0;
 	token.next = NULL;
-	if (prev->value)
-		token.prev = prev;
-	else
-		token.prev = NULL;
+	token.prev = prev;
 	if (lexer->cursor >= lexer->length)
 	{
 		token.type = TOKEN_EOF;

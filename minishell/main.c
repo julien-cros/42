@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:00:58 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/17 15:48:59 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 09:43:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,17 @@
 
 t_signal	g_signal;
 
+t_token ft_init_token(void)
+{
+	t_token token;
 
+	token.type = TOKEN_INVALID;
+	token.value = NULL;
+	token.length = 0;
+	token.next = NULL;
+	// token.prev = NULL;
+	return (token);
+}
 
 void	ft_init_signal(void)
 {
@@ -39,41 +49,35 @@ void	ft_init_signal(void)
 }
 
 // ft_build_command(char *buffer, char **envp)
-void ft_build_data_minishell(char *buffer, char **envp)
+void ft_build_data_minishell(t_data *data, char *buffer, char **envp)
 {
-	t_data data;
 	t_lexer lexer;
 	t_token token;
 	t_token prev;
 	int i;
 
 	i = 0;
-	data = ft_init_data();
-	ft_init_env(&data, envp);
-	ft_init_secret_env(&data, envp);
-	ft_increment_shell_level(data.envp);
+	prev = ft_init_token();
 	lexer = ft_lexer_new(buffer);
-	token = ft_lexer_next(&lexer, &prev);
+	token = ft_lexer_next(&lexer, NULL);
 	while (token.type != TOKEN_EOF)
 	{
 		if (token.type == TOKEN_INVALID)
 		{
 			ft_invalid_token(lexer, token);
-			ft_clear_tokens(&data.tokens); // check if it's tokens have to be freed here julien
-			return;
+			ft_clear_tokens(&data->tokens); // check if it's tokens have to be freed here julien
+			return ;
 		}
-		if (ft_append_token(&data.tokens, token))
-			data.token_length++;
+		if (ft_append_token(&data->tokens, token))
+			data->token_length++;
 		token = ft_lexer_next(&lexer, &prev);	
 		
 	}
-	ft_parse(&data);
-	ft_clear_tokens(&data.tokens);
-	ft_free_env(data.envp);
-	ft_free_env(data.secret_env); 
+	ft_parse(data);
+	ft_clear_tokens(&data->tokens);
 }
 
-void ft_await_command_entry(char **envp)
+void ft_await_command_entry(t_data *data, char **envp)
 {
 	char *buffer;
 
@@ -88,7 +92,7 @@ while (true)
 		if (ft_strlen(buffer) > 0)
 		{
 			ft_history_add(buffer);
-			ft_build_data_minishell(buffer, envp);
+			ft_build_data_minishell(data, buffer, envp);
 		}
 		free(buffer);
 	}
@@ -98,8 +102,16 @@ int		main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
+	t_data data;
+
+	data = ft_init_data();
 	ft_history_new();
 	ft_signals_register();
-	ft_await_command_entry(envp);
+	ft_init_env(&data, envp);
+	ft_init_secret_env(&data, envp);
+	ft_increment_shell_level(data.envp);
+	ft_await_command_entry(&data, envp);
+	ft_free_env(data.envp);
+	ft_free_env(data.secret_env); 
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:34:12 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/17 15:38:10 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/17 14:02:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	ft_in_and_dup(t_data *data, t_token *token)
 	if (token->type == TOKEN_LT_LT)
 		ft_set_here_doc(data, token, token->length);
 	else
-		data->in_fd= open(str, O_RDONLY, S_IRWXU);
+		data->in_fd= open(str, O_RDONLY, 0644);
 	free(str);
 	if (data->in_fd == -1)
 	{
@@ -156,11 +156,11 @@ bool		ft_redirection(t_data *data, t_token *token)
 		else
 			ft_in_and_dup(data, head);
 	}
-	// else if (head->next && (head->next->type == TOKEN_GT || head->next->type == TOKEN_GT_GT))
-	// {
-	// 	printf("in gt gt\n");
-	// 	ft_out_and_dup(data, head->next);
-	// }
+	else if (head->next && (head->next->type == TOKEN_GT || head->next->type == TOKEN_GT_GT))
+	{
+		printf("in gt gt\n");
+		ft_out_and_dup(data, head->next);
+	}
 	else if (head && ft_find_type(head, TOKEN_PIPE, -1))
 		is_child = ft_fork_and_pipe(data);
 	if(head->next && is_child != 1 && (ft_find_type(head->next, TOKEN_CMD, -1)))

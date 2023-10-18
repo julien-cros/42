@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 15:33:04 by herbie            #+#    #+#             */
-/*   Updated: 2023/10/17 15:39:46 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/18 08:09:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,6 @@
 #include "str2.h"
 #include "builtin.h"
 #include <stdbool.h>
-
-// t_token	*next_run(t_token *token)
-// {
-// 	while (token && token->type != TOKEN_SYMBOL)
-// 	{
-// 		token = token->next;
-// 		if (token && token->type == TOKEN_SYMBOL && token->prev == NULL)
-// 			;
-// 		else if (token && token->type == TOKEN_SYMBOL && token->prev->type < TOKEN_SYMBOL)
-// 			token = token->next;
-// 	}
-// 	// if (token)
-// 	// 	printf("token->value = %s\n", token->value);
-// 	return (token);
-// }
 
 void ft_print_tokens(t_token *tokens)
 {
@@ -120,7 +105,6 @@ bool	ft_parse(t_data *data)
 		data->last = 1;
 		ft_find_cmd_token(data, tmp);
 		ft_find_in_token(data, tmp);
-		printf("ok\n");
 		// ft_print_tokens(tmp);	
 		// if (ft_if_builtin(cmd))
 		// 	ft_builtin_valid(tmp, data, cmd);
