@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 15:06:13 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 13:35:38 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 14:50:33 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,32 @@ void	ft_init_data(t_data *data)
 	data->max_eat = -1;
 	data->start_time = 0;
 	data->is_game_over = false;
+}
+
+/**
+ * @brief The ft_init_mutexes function initializes the mutexes for the forks,
+ * the data, the meal and the print. It returns false if any of the mutexes
+ * fail to initialize.
+ * 
+ * @param data 
+ * @param philos 
+ * @return t_bool 
+ */
+t_bool	ft_init_mutexes(t_data *data, t_philo *philos)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->philo_count)
+	{
+		if (pthread_mutex_init(philos[i].left_fork, NULL) != 0)
+			return (false);
+	}
+	if (pthread_mutex_init(&data->data_mutex, NULL) != 0)
+		return (false);
+	if (pthread_mutex_init(&data->meal_mutex, NULL) != 0)
+		return (false);
+	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
+		return (false);
+	return (true);
 }

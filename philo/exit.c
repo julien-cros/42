@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:36:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 13:36:09 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 14:37:08 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <pthread.h>
 #include <stdio.h>
 
-static t_bool	ft_did_die(t_data *data, t_philo *philo);
 static t_bool	ft_did_eat(t_data *data, t_philo *philos);
 
 /**
@@ -32,7 +31,7 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
 	int	i;
 
 	ft_wait_until(data->start_time);
-	ft_usleep(10);
+	ft_usleep(10, data);
 	while (true)
 	{
 		i = -1;
@@ -43,7 +42,7 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
 			if (ft_did_eat(data, philos))
 				return ;
 		}
-		ft_usleep(10);
+		ft_usleep(10, data);
 	}
 }
 
@@ -56,7 +55,7 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
  * @param philo 
  * @return t_bool 
  */
-static t_bool	ft_did_die(t_data *data, t_philo *philo)
+t_bool	ft_did_die(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->meal_mutex);
 	if (ft_get_time_diff(philo->last_meal_time) > data->time_die_in_ms)

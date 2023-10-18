@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 15:06:52 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/12 14:54:27 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 14:50:05 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "structs.h"
 # include "pthread.h"
 
-// int		ft_init_parse(int argc, char **argv, t_data *data);
-// void	ft_init_philos(t_philos *philos, t_data *data, pthread_mutex_t *forks);
-// t_bool	ft_init_mutex(t_data *data, t_philos *philos);
+void	ft_init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks);
+void	ft_init_data(t_data *data);
+t_bool	ft_init_mutexes(t_data *data, t_philo *philos);
 
 #endif

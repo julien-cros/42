@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 13:40:35 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 14:52:10 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 #include <unistd.h>
 #include "ft_print.h"
 #include "action.h"
+#include "init.h"
 #include "exit.h"
 
 static void		*ft_redirect_philo(void *arg);
-static t_bool	ft_init_mutexes(t_data *data, t_philo *philos);
 static void		ft_destroy_threads(t_data *data, t_philo *philos);
 
 /**
@@ -80,34 +80,6 @@ static void	*ft_redirect_philo(void *arg)
 	else
 		ft_multiple_philos(philo);
 	return (NULL);
-}
-
-/**
- * @brief The ft_init_mutexes function initializes the mutexes for the forks,
- * the data, the meal and the print. It returns false if any of the mutexes
- * fail to initialize.
- * 
- * @param data 
- * @param philos 
- * @return t_bool 
- */
-static t_bool	ft_init_mutexes(t_data *data, t_philo *philos)
-{
-	int	i;
-
-	i = -1;
-	while (++i < data->philo_count)
-	{
-		if (pthread_mutex_init(philos[i].left_fork, NULL) != 0)
-			return (false);
-	}
-	if (pthread_mutex_init(&data->data_mutex, NULL) != 0)
-		return (false);
-	if (pthread_mutex_init(&data->meal_mutex, NULL) != 0)
-		return (false);
-	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
-		return (false);
-	return (true);
 }
 
 /**
