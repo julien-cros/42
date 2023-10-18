@@ -6,15 +6,15 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 17:46:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/12 14:50:47 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 13:16:09 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #ifndef FT_PRINT_H
-// # define FT_PRINT_H
+#ifndef FT_PRINT_H
+# define FT_PRINT_H
 
-// # include "structs.h"
+# include "structs.h"
 
-// void	ft_print(t_philos *philos, char *str, long int time);
+void	ft_print(t_philo *philo, char *msg, int arg_ms);
 
-// #endif
+#endif

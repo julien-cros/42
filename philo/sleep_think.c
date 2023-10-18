@@ -6,24 +6,28 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:07:13 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/12 14:52:54 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 13:21:15 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "sleep_think.h"
-// #include <stdio.h>
-// #include "time.h"
-// #include "ft_print.h"
-// #include <unistd.h>
+#include "sleep_think.h"
+#include "time2.h"
+#include "ft_print.h"
+#include <unistd.h>
 
-// void	ft_sleep_think(t_philos *philos)
-// {
-// 	int	sleep_time;
+/**
+ * @brief The ft_sleep_and_think function sleeps and thinks.
+ *
+ * @param philo
+ */
+void	ft_sleep_and_think(t_philo *philo)
+{
+	int	sleep_time;
 
-// 	pthread_mutex_lock(&philos->data->data_mutex);
-// 	sleep_time = philos->data->time_to_sleep;
-// 	pthread_mutex_unlock(&philos->data->data_mutex);
-// 	ft_print(philos, "is sleeping", sleep_time);
-// 	ft_usleep(sleep_time);
-// 	ft_print(philos, "is thinking", sleep_time);
-// }
+	pthread_mutex_lock(&philo->data->data_mutex);
+	sleep_time = philo->data->time_sleep_in_ms;
+	pthread_mutex_unlock(&philo->data->data_mutex);
+	ft_print(philo, "is sleeping", sleep_time);
+	ft_usleep(sleep_time);
+	ft_print(philo, "is thinking", sleep_time);
+}

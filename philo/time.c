@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:53:27 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/12 14:52:28 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 13:18:11 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,5 @@ int	ft_get_rounded_time_diff(uint64_t time, int round)
 	uint64_t	current_time;
 
 	current_time = ft_get_unix_time();
-	return ((int)(current_time - time) - ((int)(current_time - time) % round));
-}
-
-/**
- * @brief The ft_usleep function sleeps for the specified time in
- * milliseconds.
- *
- * @param time
- */
-void	ft_usleep(uint64_t time)
-{
-	uint64_t	start_time;
-
-	start_time = ft_get_unix_time();
-	while ((uint64_t)ft_get_time_diff(start_time) < time)
-		usleep(100);
+	return ((int)(((current_time - time) / round) * round));
 }

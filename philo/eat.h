@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:06:49 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/12 14:58:58 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 13:08:45 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "structs.h"
 
-// void	ft_eat(t_philos *philos);
+void	ft_eat(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/17 16:36:56 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 13:40:35 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 #include "ft_print.h"
 #include "action.h"
 #include "exit.h"
-
 
 static void		*ft_redirect_philo(void *arg);
 static t_bool	ft_init_mutexes(t_data *data, t_philo *philos);
