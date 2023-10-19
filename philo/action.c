@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:53:47 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 16:04:39 by codespace        ###   ########.fr       */
+/*   Updated: 2023/10/19 11:18:04 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "action.h"
 #include "structs.h"
 #include "time.h"
-#include "ft_print.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <pthread.h>

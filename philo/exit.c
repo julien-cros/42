@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:36:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 19:04:15 by codespace        ###   ########.fr       */
+/*   Updated: 2023/10/19 11:30:44 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exit.h"
 #include "time.h"
-#include "time2.h"
 #include "structs.h"
 #include <pthread.h>
 #include <stdio.h>
@@ -42,7 +41,6 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
 			if (ft_did_eat(data, philos))
 				return ;
 		}
-		ft_usleep(10, data);
 	}
 }
 
@@ -62,7 +60,7 @@ t_bool	ft_did_die(t_data *data, t_philo *philo)
 	{
 		pthread_mutex_lock(&data->print_mutex);
 		printf("[%dms] %d died\n",
-			ft_get_rounded_time_diff(data->start_time, data->time_die_in_ms),
+			ft_get_time_diff(data->start_time),
 			philo->id);
 		data->is_game_over = true;
 		pthread_mutex_unlock(&data->print_mutex);
@@ -97,7 +95,7 @@ static t_bool	ft_did_eat(t_data *data, t_philo *philos)
 	{
 		pthread_mutex_lock(&data->print_mutex);
 		printf("[%dms] all philosophers have eaten %d times\n",
-			ft_get_rounded_time_diff(data->start_time, data->time_eat_in_ms),
+			ft_get_time_diff(data->start_time),
 			data->max_eat);
 		data->is_game_over = true;
 		pthread_mutex_unlock(&data->print_mutex);

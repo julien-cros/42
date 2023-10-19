@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:53:27 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/18 13:18:11 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/19 11:31:39 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,34 @@ int	ft_get_time_diff(uint64_t time)
 }
 
 /**
- * @brief The ft_get_rounded_time_diff function returns the difference
- * between the current time and the time passed in milliseconds rounded
- * to the nearest multiple of the round parameter.
- * 
- * @param time 
- * @param round 
- * @return int 
+ * @brief The ft_usleep function sleeps for the specified time in
+ * milliseconds.
+ *
+ * @param time
  */
-int	ft_get_rounded_time_diff(uint64_t time, int round)
+void	ft_usleep(uint64_t time, t_data *data)
 {
-	uint64_t	current_time;
+	uint64_t	start_time;
 
-	current_time = ft_get_unix_time();
-	return ((int)(((current_time - time) / round) * round));
+	start_time = ft_get_unix_time();
+	while ((uint64_t)ft_get_time_diff(start_time) < time)
+	{
+		pthread_mutex_lock(&data->meal_mutex);
+		if (data->is_game_over)
+			return (pthread_mutex_unlock(&data->meal_mutex), (void)0);
+		pthread_mutex_unlock(&data->meal_mutex);
+		usleep(100);
+	}
+}
+
+/**
+ * @brief The ft_wait_until function waits until the specified time in
+ * milliseconds.
+ *
+ * @param time
+ */
+void	ft_wait_until(uint64_t time)
+{
+	while (ft_get_unix_time() < time)
+		continue ;
 }

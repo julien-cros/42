@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:06:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/18 19:02:51 by codespace        ###   ########.fr       */
+/*   Updated: 2023/10/19 11:30:11 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "eat.h"
 #include <stdio.h>
 #include "time.h"
-#include "time2.h"
 #include "free.h"
 #include "ft_print.h"
 #include <unistd.h>
@@ -34,13 +33,13 @@ void	ft_eat(t_philo *philo)
 		pthread_mutex_lock(philo->right_fork);
 	else
 		pthread_mutex_lock(philo->left_fork);
-	ft_print(philo, "has taken a fork", eat_time);
+	ft_print(philo, "has taken a fork");
 	if (philo->id & 1)
 		pthread_mutex_lock(philo->left_fork);
 	else
 		pthread_mutex_lock(philo->right_fork);
-	ft_print(philo, "has taken a fork", eat_time);
-	ft_print(philo, "is eating", eat_time);
+	ft_print(philo, "has taken a fork");
+	ft_print(philo, "is eating");
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal_time = ft_get_unix_time();
 	philo->eat_count++;
