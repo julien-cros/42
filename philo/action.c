@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:53:47 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/19 19:30:35 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/19 19:41:35 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*ft_single_philo(void *arg)
 
 	philo = (t_philo *)arg;
 	pthread_mutex_lock(&philo->data->print_mutex);
-	printf("[0ms] %d has taken a fork\n", philo->id);
+	printf("0 %d has taken a fork\n", philo->id);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 	return (NULL);
 }

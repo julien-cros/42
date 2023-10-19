@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 17:47:24 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/19 17:58:03 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/19 19:41:41 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_print(t_philo *philo, char *msg)
 	if (!philo->data->is_game_over)
 	{
 		pthread_mutex_lock(&philo->data->print_mutex);
-		printf("[%dms] %d %s\n",
+		printf("%d %d %s\n",
 			ft_get_time_diff(philo->data->start_time),
 			philo->id, msg);
 		pthread_mutex_unlock(&philo->data->print_mutex);
