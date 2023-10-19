@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sleep_think.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:07:13 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/19 11:30:39 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/19 20:19:07 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	ft_sleep_and_think(t_philo *philo)
 	ft_print(philo, "is sleeping");
 	ft_usleep(sleep_time, philo->data);
 	ft_print(philo, "is thinking");
+	ft_usleep(philo->data->time_eat_in_ms, philo->data);
 }
