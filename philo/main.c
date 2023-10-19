@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:52:36 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 16:50:24 by codespace        ###   ########.fr       */
+/*   Updated: 2023/10/19 19:35:59 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "init.h"
 #include "structs.h"
 #include "error.h"
-#include "free.h"
 #include "init.h"
 #include "int.h"
 #include "threads.h"

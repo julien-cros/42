@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:36:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/19 11:30:44 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/19 19:34:28 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,17 @@
 #include <pthread.h>
 #include <stdio.h>
 
+static t_bool	ft_did_die(t_data *data, t_philo *philo);
 static t_bool	ft_did_eat(t_data *data, t_philo *philos);
 
-/**
- * @brief The ft_wait_for_exit function waits for a philosopher to die or for
- * all philosophers to eat the maximum number of times.
- * 
- * @param data 
- * @param philos 
- */
 void	ft_wait_for_exit(t_data *data, t_philo *philos)
 {
 	int	i;
 
 	ft_wait_until(data->start_time);
-	ft_usleep(10, data);
 	while (true)
 	{
+		ft_usleep(5, data);
 		i = -1;
 		while (++i < data->philo_count)
 		{
@@ -48,18 +42,18 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
  * @brief The ft_did_die function checks if a philosopher has died. If so, it
  * prints a message to the standard output and sets the is_game_over flag to
  * true.
- * 
- * @param data 
- * @param philo 
- * @return t_bool 
+ *
+ * @param data
+ * @param philo
+ * @return t_bool
  */
-t_bool	ft_did_die(t_data *data, t_philo *philo)
+static t_bool	ft_did_die(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->meal_mutex);
 	if (ft_get_time_diff(philo->last_meal_time) > data->time_die_in_ms)
 	{
 		pthread_mutex_lock(&data->print_mutex);
-		printf("[%dms] %d died\n",
+		printf("%d %d died\n",
 			ft_get_time_diff(data->start_time),
 			philo->id);
 		data->is_game_over = true;
@@ -75,10 +69,10 @@ t_bool	ft_did_die(t_data *data, t_philo *philo)
  * @brief The ft_did_eat function checks if all philosophers have eaten the
  * maximum number of times. If so, it prints a message to the standard output
  * and sets the is_game_over flag to true.
- * 
- * @param data 
- * @param philos 
- * @return t_bool 
+ *
+ * @param data
+ * @param philos
+ * @return t_bool
  */
 static t_bool	ft_did_eat(t_data *data, t_philo *philos)
 {
@@ -94,7 +88,7 @@ static t_bool	ft_did_eat(t_data *data, t_philo *philos)
 	if (have_all_eaten == data->philo_count)
 	{
 		pthread_mutex_lock(&data->print_mutex);
-		printf("[%dms] all philosophers have eaten %d times\n",
+		printf("%d all philosophers have eaten %d times\n",
 			ft_get_time_diff(data->start_time),
 			data->max_eat);
 		data->is_game_over = true;

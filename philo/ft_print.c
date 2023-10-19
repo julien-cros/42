@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 17:47:24 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/19 11:16:28 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/19 17:58:03 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_print(t_philo *philo, char *msg)
 	{
 		pthread_mutex_lock(&philo->data->print_mutex);
 		printf("[%dms] %d %s\n",
-			ft_get_time_diff(philo->start_time),
+			ft_get_time_diff(philo->data->start_time),
 			philo->id, msg);
 		pthread_mutex_unlock(&philo->data->print_mutex);
 	}

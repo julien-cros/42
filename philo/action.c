@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:53:47 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/19 11:18:04 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/19 19:30:35 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
+
 
 /**
  * @brief The ft_single_philo function is used when there is only one
@@ -49,14 +50,8 @@ void	*ft_multiple_philos(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	pthread_mutex_lock(&philo->data->data_mutex);
-	philo->start_time = ft_get_unix_time();
-	philo->last_meal_time = ft_get_unix_time();
-	pthread_mutex_unlock(&philo->data->data_mutex);
 	if (philo->id & 1)
-	{
 		usleep(1);
-	}
 	while (pthread_mutex_lock(&philo->data->meal_mutex) == 0
 		&& !philo->data->is_game_over)
 	{

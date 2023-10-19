@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/19 11:18:01 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/19 19:36:17 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <pthread.h>
 #include "error.h"
 #include "init.h"
-#include "free.h"
 #include "time.h"
 #include <sys/time.h>
 #include <unistd.h>
@@ -48,15 +47,12 @@ t_bool	ft_spawn_threads(t_data *data, t_philo *philos)
 	i = -1;
 	while (++i < data->philo_count)
 	{
-		pthread_mutex_lock(&data->data_mutex);
-		philos[i].start_time = ft_get_unix_time();
-		philos[i].last_meal_time = ft_get_unix_time();
-		pthread_mutex_unlock(&data->data_mutex);
 		if (pthread_create(&philos[i].thread, NULL,
 				&ft_redirect_philo, &philos[i]))
 			return (false);
 	}
-	ft_wait_for_exit(data, philos);
+	if (data->philo_count > 1)
+		ft_wait_for_exit(data, philos);
 	ft_destroy_threads(data, philos);
 	return (true);
 }
@@ -74,6 +70,12 @@ static void	*ft_redirect_philo(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->data->max_eat == 0 || philo->data->time_die_in_ms == 0)
+		return (NULL);
+	pthread_mutex_lock(&philo->data->meal_mutex);
+	philo->last_meal_time = ft_get_unix_time();
+	pthread_mutex_unlock(&philo->data->meal_mutex);
+	ft_wait_until(philo->data->start_time);
 	if (philo->data->philo_count == 1)
 		ft_single_philo(philo);
 	else

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:06:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/19 11:30:11 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/19 19:36:14 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "eat.h"
 #include <stdio.h>
 #include "time.h"
-#include "free.h"
 #include "ft_print.h"
 #include <unistd.h>
 
