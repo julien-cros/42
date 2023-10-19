@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:32:09 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/12 16:07:41 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/19 08:39:45 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,5 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }	t_philo;
-
-void	ft_init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks);
-void	ft_init_data(t_data *data);
 
 #endif /* STRUCTS_H */

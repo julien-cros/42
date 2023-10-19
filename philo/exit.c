@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:36:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 17:54:41 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 19:04:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
 	int	i;
 
 	ft_wait_until(data->start_time);
-	ft_usleep(10);
+	ft_usleep(10, data);
 	while (true)
 	{
 		i = -1;
@@ -42,7 +42,7 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
 			if (ft_did_eat(data, philos))
 				return ;
 		}
-		ft_usleep(10);
+		ft_usleep(10, data);
 	}
 }
 

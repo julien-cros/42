@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:52:36 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 14:47:49 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 16:50:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	main(int argc, char *argv[])
 	if (!ft_spawn_threads(&data, philos))
 		return (ft_err(ETHRD));
 	free(forks);
+	free(philos);
 	return (0);
 }

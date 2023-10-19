@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:06:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/18 17:57:07 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 19:02:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_eat(t_philo *philo)
 	philo->last_meal_time = ft_get_unix_time();
 	philo->eat_count++;
 	pthread_mutex_unlock(&philo->data->meal_mutex);
-	ft_usleep(eat_time);
+	ft_usleep(eat_time, philo->data);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time2.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:17:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 17:54:27 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 19:01:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "structs.h"
 
-void	ft_usleep(uint64_t time);//, t_data *data);
+void	ft_usleep(uint64_t time, t_data *data);
 void	ft_wait_until(uint64_t time);
 
 #endif

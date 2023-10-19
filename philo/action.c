@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:53:47 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/18 17:53:38 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/18 16:04:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ void	*ft_multiple_philos(void *arg)
 	pthread_mutex_unlock(&philo->data->data_mutex);
 	if (philo->id & 1)
 	{
-		pthread_mutex_lock(&philo->data->data_mutex);
-		usleep(philo->data->time_eat_in_ms * 0.9 + 1);
-		// usleep(1);
-		pthread_mutex_unlock(&philo->data->data_mutex);
+		usleep(1);
 	}
 	while (pthread_mutex_lock(&philo->data->meal_mutex) == 0
 		&& !philo->data->is_game_over)
