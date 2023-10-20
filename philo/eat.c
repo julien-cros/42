@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:06:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/19 19:43:27 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/20 18:48:09 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	ft_eat(t_philo *philo)
 	pthread_mutex_lock(&philo->data->data_mutex);
 	eat_time = philo->data->time_eat_in_ms;
 	pthread_mutex_unlock(&philo->data->data_mutex);
-	if (philo->id & 1)
+	if (philo->id % 2)
 		pthread_mutex_lock(philo->right_fork);
 	else
 		pthread_mutex_lock(philo->left_fork);
 	ft_print(philo, "has taken a fork");
-	if (philo->id & 1)
+	if (philo->id % 2)
 		pthread_mutex_lock(philo->left_fork);
 	else
 		pthread_mutex_lock(philo->right_fork);

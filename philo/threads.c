@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/19 19:41:23 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/20 17:30:48 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ t_bool	ft_spawn_threads(t_data *data, t_philo *philos)
 				&ft_redirect_philo, &philos[i]))
 			return (false);
 	}
-	if (data->philo_count > 1)
-		ft_wait_for_exit(data, philos);
+	ft_wait_for_exit(data, philos);
 	ft_destroy_threads(data, philos);
 	return (true);
 }

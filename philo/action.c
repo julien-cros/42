@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:53:47 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/19 20:31:23 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:45:18 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
-
 
 /**
  * @brief The ft_single_philo function is used when there is only one
@@ -50,8 +49,8 @@ void	*ft_multiple_philos(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->id & 1)
-		usleep(1);
+	if (philo->id % 2)
+		ft_usleep(philo->data->time_eat_in_ms, philo->data);
 	while (pthread_mutex_lock(&philo->data->meal_mutex) == 0
 		&& !philo->data->is_game_over)
 	{
