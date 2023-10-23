@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:53:27 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/20 19:19:07 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/21 11:41:12 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,4 @@ void	ft_usleep(uint64_t time, t_data *data)
 		pthread_mutex_unlock(&data->meal_mutex);
 		usleep(100);
 	}
-}
-
-/**
- * @brief The ft_wait_until function waits until the specified time in
- * milliseconds.
- *
- * @param time
- */
-void	ft_wait_until(uint64_t time)
-{
-	while (ft_get_unix_time() < time)
-		continue ;
 }

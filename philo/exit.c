@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:36:54 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/20 17:02:29 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/21 11:41:21 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_wait_for_exit(t_data *data, t_philo *philos)
 {
 	int	i;
 
-	ft_wait_until(data->start_time);
 	while (true)
 	{
 		ft_usleep(5, data);

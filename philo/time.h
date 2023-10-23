@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:52:39 by codespace         #+#    #+#             */
-/*   Updated: 2023/10/19 11:29:32 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/21 11:41:08 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@
 uint64_t	ft_get_unix_time(void);
 int			ft_get_time_diff(uint64_t time);
 void		ft_usleep(uint64_t time, t_data *data);
-void		ft_wait_until(uint64_t time);
 
 #endif

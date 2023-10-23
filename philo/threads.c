@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/20 17:30:48 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/21 11:41:16 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ static void	*ft_redirect_philo(void *arg)
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal_time = ft_get_unix_time();
 	pthread_mutex_unlock(&philo->data->meal_mutex);
-	ft_wait_until(philo->data->start_time);
 	if (philo->data->philo_count == 1)
 		ft_single_philo(philo);
 	else
