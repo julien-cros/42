@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcros <jcros@student.42.fr>                +#+  +:+       +#+         #
+#    By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:56:15 by juliencros        #+#    #+#              #
-#    Updated: 2023/10/21 11:59:43 by jcros            ###   ########.fr        #
+#    Updated: 2023/10/23 13:40:35 by juliencros       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,9 @@ SRCS = \
 	int.c \
 	error.c \
 	threads.c \
-	eat.c \
-	sleep_think.c \
 	time.c \
 	exit.c \
-	action.c \
-	ft_print.c \
+	actions.c \
 	parse.c \
 
 INCLUDES =	\

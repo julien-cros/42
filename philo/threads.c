@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/21 11:41:16 by jcros            ###   ########.fr       */
+/*   Updated: 2023/10/23 13:40:49 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "time.h"
 #include <sys/time.h>
 #include <unistd.h>
-#include "action.h"
+#include "actions.h"
 #include "init.h"
 #include "exit.h"
 
