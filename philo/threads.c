@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:03:20 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/23 13:40:49 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/23 13:45:48 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		ft_destroy_threads(t_data *data, t_philo *philos);
 
 /**
  * @brief The ft_spawn_threads function creates the threads and initializes
- * the mutexes. It also sets the start time and the last meal time for each
+ * the mutexes. It als sets the start time and the last meal time for each
  * philo. When the threads are created, it sets the is_ready flag to true, 
  * which allows the threads to start.
  * 

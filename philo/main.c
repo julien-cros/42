@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:52:36 by juliencros        #+#    #+#             */
-/*   Updated: 2023/10/23 13:38:23 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/10/26 11:45:54 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 		return (free(forks), ft_err(EUNKN));
 	ft_init_philos(philos, &data, forks);
 	if (!ft_spawn_threads(&data, philos))
-		return (free(philos), 	free(forks), ft_err(ETHRD));
+		return (free(philos), free(forks), ft_err(ETHRD));
 	free(forks);
 	free(philos);
 	return (0);
