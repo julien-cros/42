@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_execute.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:12:07 by juliencros        #+#    #+#             */
-/*   Updated: 2023/05/02 14:37:24 by jcros            ###   ########.fr       */
+/*   Updated: 2023/12/08 10:09:07 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ int	ft_setup(int fd[2], pid_t *pid, t_pipex *pipex, int i)
 	{
 		if (dup2(fd[0], STDIN_FILENO) == -1)
 			return (-1);
-	}	
+	}
 	return (0);
 }
