@@ -6,11 +6,11 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:56:54 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/03 22:35:30 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/12/08 10:00:28 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_strchr(const char *s, int c)
 {

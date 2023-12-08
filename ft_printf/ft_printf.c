@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:26:31 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/05 12:39:12 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/12/08 10:01:12 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	ft_is_legal(char s1, char s2);
 
 int	ft_printf(const char *format, ...)
 {
-	int	i;
-	int	bytes;
+	int		i;
+	int		bytes;
 	va_list	ap;
 
 	va_start(ap, format);
@@ -58,9 +58,11 @@ static int	ft_print(char s, va_list *ap)
 	if (s == 'u')
 		return (ft_putunnbr_fd(va_arg(*ap, unsigned int), 1));
 	if (s == 'x')
-		return (ft_putnbr_base_fd(va_arg(*ap, unsigned int), "0123456789abcdef", 1));
+		return (ft_putnbr_base_fd(va_arg(*ap, unsigned int),
+				"0123456789abcdef", 1));
 	if (s == 'X')
-		return (ft_putnbr_base_fd(va_arg(*ap, unsigned int), "0123456789ABCDEF", 1));
+		return (ft_putnbr_base_fd(va_arg(*ap, unsigned int),
+				"0123456789ABCDEF", 1));
 	if (s == '%')
 		return (ft(putchar('%')));
 	return (0);

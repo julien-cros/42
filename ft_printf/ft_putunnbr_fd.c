@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:50:31 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/03 22:35:20 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/12/08 10:01:53 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned int	ft_putunnbr_fd(unsigned int nb, int fd)
 	bytes = 1;
 	if (nb < 0)
 		bytes += ft_putchar_fd('-', fd);
-	if ( nb > 9)
+	if (nb > 9)
 		bytes += ft_putunnbr_fd(nb / 10, fd);
 	ft_putchar_fd(nb % 10 + 48, fd);
 	return (bytes);

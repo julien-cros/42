@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 22:15:51 by juliencros        #+#    #+#             */
-/*   Updated: 2022/12/03 22:33:31 by juliencros       ###   ########.fr       */
+/*   Updated: 2023/12/08 10:01:36 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_printnbr_fd(unsigned long n, char *base, int fd)
 
 	bytes = 1;
 	size = ft_strlen(base);
-
 	if (n)
 	{
 		bytes += ft_printnbr_fd(n / size, base, fd);
