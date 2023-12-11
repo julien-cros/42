@@ -15,9 +15,6 @@ PhoneBook::~PhoneBook( void ) {
 }
 
 contact::contact( void ) {
-
-	std::cout << "contact constructor called" << std::endl;
-	return ;
 }
 
 contact::~contact( void ) {
@@ -27,31 +24,43 @@ contact::~contact( void ) {
 }
 
 void PhoneBook::add( void ) {
-	if (index == 8)
-		index = 0;
-	contacts[index] = new contact;
+	if (this->index == MAX_CONTACT)
+		this->index = 0;
+	contacts[this->index] = new contact;
 	std::cout << "add called" << std::endl;
-	while (contacts[index]->first_name == "" ) {
+	while (contacts[this->index]->first_name == "" ) {
 		std::cout << "Please enter a first name: ";
-		std::getline (std::cin, contacts[index]->first_name);
+		std::getline (std::cin, contacts[this->index]->first_name);
+		if (std::cin.eof())
+			return ;
 	}
-	while (contacts[index]->last_name == "" ) {
+	while (contacts[this->index]->last_name == "" ) {
 		std::cout << "Please enter a last name: ";
-		std::getline (std::cin, contacts[index]->last_name);
+		std::getline (std::cin, contacts[this->index]->last_name);
+		if (std::cin.eof())
+			return ;
 	}
-	while (contacts[index]->nickname == "" ) {
+	while (contacts[this->index]->nickname == "" ) {
 		std::cout << "Please enter a nickname: ";
-		std::getline (std::cin, contacts[index]->nickname);
+		std::getline (std::cin, contacts[this->index]->nickname);
+		if (std::cin.eof())
+			return ;
 	}
-	while (contacts[index]->phone_number == "" ) {
+	while (contacts[this->index]->phone_number == "" ) {
 		std::cout << "Please enter a phone number: ";
-		std::getline (std::cin, contacts[index]->phone_number);
+		std::getline (std::cin, contacts[this->index]->phone_number);
+		if (std::cin.eof())
+			return ;
 	}
-	while (contacts[index]->darkest_secret == "" ) {
+	while (contacts[this->index]->darkest_secret == "" ) {
 		std::cout << "Please enter the darkest secret: ";
-		std::getline (std::cin, contacts[index]->darkest_secret);
+		std::getline (std::cin, contacts[this->index]->darkest_secret);
+		if (std::cin.eof())
+			return ;
 	}
 	index++;
+	if (this->length < MAX_CONTACT)
+		this->length++;
 	return ;
 }
 
@@ -63,17 +72,20 @@ void ft_truncate(std::string str) {
 	}
 	else
 		std::cout << str;
-	std::cout.width(10 - str.length());
+	std::cout.width(10 - str.length() + 1);
 }
 
 void PhoneBook::search( void ) {
 	int i = 0;
-	while (contacts[i]->first_name.length() && i < 8) {
+	if (this->length == 0)
+	{
+		std::cout << "No contacts to display" << std::endl;
+			return ;
+	}
+	while (i < this->length) {
 		std::cout << "|";
-		std::cout.width(5);
 		std::cout << i;
-		std::cout.width(5);
-
+		std::cout.width(9);
 		std::cout << "|";
 		ft_truncate(contacts[i]->first_name);
 		std::cout << "|";
@@ -81,33 +93,30 @@ void PhoneBook::search( void ) {
 		std::cout << "|";
 		ft_truncate(contacts[i]->nickname);
 		std::cout << "|" << std::endl;
-
 		i++;
 	}
 	
 	while (1) {
-		if (index == 0)
-		{
-			std::cout << "No contacts to search" << std::endl;
-			return ;
-		}
+		int input;
 		std::cout << "Please enter an index: ";
-		std::cin >> index;
-		if (index < 0 || index > 7)
+		std::cin >> input;
+		if (std::cin.eof())
+			return ;
+		if (input < 0 || input > MAX_CONTACT - 1)
 			std::cout << "Invalid index" << std::endl;
 		else
 		{
-			if (contacts[index]->first_name.length() )
+			if (input < this->length)
 			{
-				std::cout << contacts[index]->first_name << std::endl;
-				std::cout << contacts[index]->last_name << std::endl;
-				std::cout << contacts[index]->nickname << std::endl;
-				std::cout << contacts[index]->phone_number << std::endl;
-				std::cout << contacts[index]->darkest_secret << std::endl;
+				std::cout << contacts[input]->first_name << std::endl;
+				std::cout << contacts[input]->last_name << std::endl;
+				std::cout << contacts[input]->nickname << std::endl;
+				std::cout << contacts[input]->phone_number << std::endl;
+				std::cout << contacts[input]->darkest_secret << std::endl;
 				return ;
 			}
+			else
 				std::cout << "No contacts for the moment at the index" << std::endl;
-				continue ;
 		}
 	}
 	return ;

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+#define MAX_CONTACT 3
+
 class contact {
 
 	public:
@@ -26,8 +28,11 @@ class PhoneBook {
 		void add( void );
 		void search( void );
 		void exit( void );
-		contact *contacts[8];
+		contact *contacts[MAX_CONTACT];
 		int index;
+		int length;
 };
+
+// void ft_init_contact(contact **contact);
 
 #endif
