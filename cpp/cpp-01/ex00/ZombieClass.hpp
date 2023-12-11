@@ -2,8 +2,10 @@
 
 class ZombieClass {
 private:
+
 	std::string name;
 public:
+
 	ZombieClass(std::string name);
 	~ZombieClass();
 	void announce();
@@ -12,3 +14,4 @@ public:
 ZombieClass *newZombie(std::string name);
 
 void randomChump(std::string name);
+
