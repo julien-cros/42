@@ -21,12 +21,12 @@ int main(){
 	while (command != "EXIT") {
 		std::cout << "Please enter a command: ADD, SEARCH, EXIT" << std::endl << ">";
 		std::cin >> command;
+		if (std::cin.eof())
+			return (0);
 		if (command == "ADD")
 			phonebook.add();
 		else if (command == "SEARCH")
 			phonebook.search();
-		else if (command == "EXIT")
-			phonebook.exit();
 		else
 			std::cout << "Invalid command" << std::endl;
 		// ft_print_contacts(phonebook);

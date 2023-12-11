@@ -68,7 +68,7 @@ void ft_truncate(std::string str) {
 
 void PhoneBook::search( void ) {
 	int i = 0;
-	while (contacts[i]) {
+	while (contacts[i]->first_name.length() && i < 8) {
 		std::cout << "|";
 		std::cout.width(5);
 		std::cout << i;
@@ -110,12 +110,5 @@ void PhoneBook::search( void ) {
 				continue ;
 		}
 	}
-	return ;
-}
-
-void PhoneBook::exit( void ) {
-
-	std::cout << "exit" << std::endl;
-	exit();
 	return ;
 }
