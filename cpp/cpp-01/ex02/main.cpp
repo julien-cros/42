@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 
-#include "Zombie.hpp"
-
 using namespace std;
 
 int main(void)

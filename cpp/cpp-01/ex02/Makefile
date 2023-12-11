@@ -1,4 +1,4 @@
-NAME = Zombie
+NAME = BonjourIciLeCerveau
 
 CC = g++ -std=c++98
 CFLAGS = -Wall -Wextra -Werror
@@ -8,8 +8,6 @@ RM = rm
 RMFLAG = -f
 
 SRCS = main.cpp \
-		Zombie.cpp \
-		ZombieHorde.cpp \
 
 OBJS = $(SRCS:.c=.o)
 
