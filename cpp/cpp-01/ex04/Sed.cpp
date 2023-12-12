@@ -11,8 +11,8 @@ Sed::~Sed()
 }
 
 void Sed::replace(std::string pattern, std::string replace) {
-	std::ifstream ifs(this->in_file);
-	std::ofstream ofs(this->out_file);
+	std::ifstream ifs(this->in_file.c_str());
+	std::ofstream ofs(this->out_file.c_str());
 	std::string line;
 
 	if (ifs.fail()) {

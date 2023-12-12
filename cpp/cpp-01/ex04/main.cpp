@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv) {
 	if (argc != 4) {
-		std::cout << "Usage: ./replace <filename> <string to replace> <string to replace with>" << std::endl;
+		std::cout << "Usage: ./sed <filename> <string to replace> <string to replace with>" << std::endl;
 		return 1;
 	}
 	Sed sed(argv[1]);
