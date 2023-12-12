@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
 
-#include "ZombieClass.hpp"
+#include "Zombie.hpp"
 
 int main(){
 	
-	ZombieClass *zombie1 = newZombie("Zombie1");
-	ZombieClass *zombie2 = newZombie("Zombie2");
+	Zombie *zombie1 = newZombie("Zombie1");
+	Zombie *zombie2 = newZombie("Zombie2");
 
 
 	

@@ -8,7 +8,7 @@ RM = rm
 RMFLAG = -f
 
 SRCS = main.cpp \
-		ZombieClass.cpp \
+		Zombie.cpp \
 
 OBJS = $(SRCS:.c=.o)
 
