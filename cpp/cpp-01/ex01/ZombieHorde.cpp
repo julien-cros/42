@@ -1,5 +1,6 @@
 #include "Zombie.hpp"
 
+// cppcheck-suppress passedByValue
 Zombie *zombieHorde(int N, std::string name)
 {
 	Zombie *Horde = new Zombie[N];
