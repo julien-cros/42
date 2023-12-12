@@ -5,9 +5,9 @@
 
 class Sed {
 	public:
-		Sed(std::string in_file);
+		explicit Sed(std::string const &in_file);
 		~Sed();
-		void replace(std::string pattern, std::string replace);
+		void replace(std::string const &pattern, std::string const &replace);
 
 	private:
 		std::string in_file;

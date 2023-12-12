@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Sed.hpp"
 
-Sed::Sed(std::string in_file) : in_file(in_file), out_file(in_file + ".replace")
+Sed::Sed(std::string const &in_file) : in_file(in_file), out_file(in_file + ".replace")
 {
 }
 
@@ -10,7 +10,7 @@ Sed::~Sed()
 {
 }
 
-void Sed::replace(std::string pattern, std::string replace) {
+void Sed::replace(std::string const &pattern, std::string const &replace) {
 	std::ifstream ifs(this->in_file.c_str());
 	std::ofstream ofs(this->out_file.c_str());
 	std::string line;
