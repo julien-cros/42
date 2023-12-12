@@ -3,7 +3,7 @@
 class Harl
 {
 public:
-	void complain(std::string level);
+	void complain(std::string const &level);
 	Harl();
 	~Harl();
 
