@@ -4,8 +4,6 @@
 int main(){
 
 	PhoneBook phonebook;
-	phonebook.index = 0;
-	phonebook.length = 0;
 
 	std::string command = "";
 	while (1) {

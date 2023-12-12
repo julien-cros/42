@@ -2,7 +2,7 @@
 #include <string>
 #include "PhoneBookClass.hpp"
 
-PhoneBook::PhoneBook( void ) {
+PhoneBook::PhoneBook( void ) : index(0), length(0), contacts(){
 
 	std::cout << "PhoneBook constructor called" << std::endl;
 	return ;
