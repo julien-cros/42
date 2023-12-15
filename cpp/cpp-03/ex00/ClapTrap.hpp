@@ -12,7 +12,7 @@ class ClapTrap
 		int attackDamage; 
 
 	public:
-		explicit ClapTrap(std::string name);
+		explicit ClapTrap(std::string const &name);
 		~ClapTrap();
 		void attack(std::string const &target);
 		void takeDamage(unsigned int amount);
