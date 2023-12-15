@@ -65,13 +65,3 @@ int ClapTrap::getEnergyPoints()
 {
 	return (this->energyPoints);
 }
-
-int ClapTrap::getAttackDamage()
-{
-	return (this->attackDamage);
-}
-
-void ClapTrap::setHitPoints(int hitPoints)
-{
-	this->hitPoints = hitPoints;
-}
