@@ -12,8 +12,8 @@ class Fixed
 	public:
 		Fixed();
 		Fixed(const Fixed &copy);
-		Fixed(const int value);
-		Fixed(const float value);
+		explicit Fixed(const int value);
+		explicit Fixed(const float value);
 		~Fixed();
 		Fixed &operator=(const Fixed &copy);
 		int getRawBits(void) const;
