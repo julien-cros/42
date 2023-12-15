@@ -75,13 +75,3 @@ void ClapTrap::setHitPoints(int hitPoints)
 {
 	this->hitPoints = hitPoints;
 }
-
-void ClapTrap::setEnergyPoints(int energyPoints)
-{
-	this->energyPoints = energyPoints;
-}
-
-void ClapTrap::setAttackDamage(int attackDamage)
-{
-	this->attackDamage = attackDamage;
-}

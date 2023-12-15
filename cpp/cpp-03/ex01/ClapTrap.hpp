@@ -9,7 +9,7 @@ class ClapTrap
 		std::string name;
 		int hitPoints;
 		int energyPoints; 
-		int attackDamage; 
+		int attackDamage;
 
 	public:
 		explicit ClapTrap(std::string const &name);
@@ -23,11 +23,8 @@ class ClapTrap
 		int getHitPoints();
 		int getEnergyPoints();
 		int getAttackDamage();
-		
-		void setHitPoints(int hitPoints);
-		void setEnergyPoints(int energyPoints);
-		void setAttackDamage(int attackDamage);
 
+		void setHitPoints(int hitPoints);
 };
 
 #endif
