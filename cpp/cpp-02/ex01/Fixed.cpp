@@ -12,6 +12,16 @@ Fixed::Fixed(const Fixed &rhs)
 	this->setRawBits(rhs.getRawBits());
 }
 
+Fixed::Fixed(const int value) : value(value << Fixed::bits)
+{
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float value) : value(roundf(value * (1 << Fixed::bits)))
+{
+	std::cout << "Float constructor called" << std::endl;
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -43,4 +53,10 @@ int Fixed::toInt(void) const
 float Fixed::toFloat(void) const
 {
 	return ((float)this->value / (1 << Fixed::bits));
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &rhs)
+{
+	out << rhs.toFloat();
+	return (out);
 }
