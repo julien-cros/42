@@ -13,7 +13,7 @@ int main( void ) {
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 
-	std::cout << "My tests:" << std::endl;
+	std::cout << std::endl << "My tests:" << std::endl;
 
 	Fixed c(42);
 	Fixed d(21);
@@ -24,6 +24,9 @@ int main( void ) {
 	std::cout << "d = " << d << std::endl;
 	std::cout << "e = " << e << std::endl;
 	std::cout << "f = " << f << std::endl;
+	
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 
 	std::cout << "c + d = " << c + d << std::endl;
 	std::cout << "c - d = " << c - d << std::endl;
