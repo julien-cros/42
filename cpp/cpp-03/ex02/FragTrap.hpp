@@ -7,7 +7,7 @@
 class FragTrap : public ClapTrap
 {
 	public:
-		explicit FragTrap(std::string name);
+		explicit FragTrap(std::string const &name);
 		~FragTrap();
 		void highFivesGuys(void);
 };

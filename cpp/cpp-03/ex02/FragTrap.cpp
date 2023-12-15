@@ -3,7 +3,7 @@
 #include "ClapTrap.hpp"
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(std::string const &name) : ClapTrap(name)
 {
 	std::cout << "FragTrap constructor called" << std::endl;
 	this->setHitPoints(100);
