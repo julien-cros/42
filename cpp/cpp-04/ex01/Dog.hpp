@@ -15,7 +15,9 @@ class Dog : public Animal
 		Dog();
 		explicit Dog(std::string const &name);
 		virtual ~Dog();
+		Dog &operator=(Dog const &copy);
 		void makeSound() const;
+		Dog(Dog const &copy);
 };
 
 #endif

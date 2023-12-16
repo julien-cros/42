@@ -16,6 +16,8 @@ class Cat : public Animal
 		explicit Cat(std::string const &name);
 		virtual ~Cat();
 		void makeSound() const;
+		Cat &operator=(Cat const &copy);
+		Cat(Cat const &copy);
 };
 
 #endif
