@@ -1,8 +1,7 @@
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
-#include <iostream>
-
+# include <iostream>
 class Animal
 {
 	protected:
@@ -10,7 +9,7 @@ class Animal
 	
 	public:
 		Animal();
-		Animal(std::string const &type);
+		explicit Animal(std::string const &type);
 		virtual ~Animal();
 		std::string getType() const;
 		virtual void makeSound() const;

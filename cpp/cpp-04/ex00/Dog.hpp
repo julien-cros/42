@@ -11,7 +11,7 @@ class Dog : public Animal
 		
 	public:
 		Dog();
-		Dog(std::string const &name);
+		explicit Dog(std::string const &name);
 		virtual ~Dog();
 		void makeSound() const;
 };

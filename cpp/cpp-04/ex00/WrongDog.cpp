@@ -19,11 +19,6 @@ WrongDog::~WrongDog()
 	std::cout << "WrongDog destructor called" << std::endl;
 }
 
-std::string WrongDog::getName() const
-{
-	return (this->name);
-}
-
 void WrongDog::makeSound() const
 {
 	std::cout << this->name << " Miaou!" << std::endl;

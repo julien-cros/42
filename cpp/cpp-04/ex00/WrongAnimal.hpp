@@ -2,7 +2,6 @@
 # define WRONGANIMAL_HPP
 
 # include <iostream>
-
 class WrongAnimal
 {
 	protected:
@@ -10,7 +9,7 @@ class WrongAnimal
 	
 	public:
 		WrongAnimal();
-		WrongAnimal(std::string const &type);
+		explicit WrongAnimal(std::string const &type);
 		virtual ~WrongAnimal();
 		std::string getType() const;
 		virtual void makeSound() const;
