@@ -9,6 +9,7 @@ RMFLAG = -f
 
 SRCS =	main.cpp \
 		PhoneBookClass.cpp \
+		ContactClass.cpp
 
 
 OBJS = $(SRCS:.cpp=.o)

@@ -19,6 +19,8 @@ int main(){
 			phonebook.search();
 		else
 			std::cout << "Invalid command" << std::endl;
+		command.clear();
+		std::cin.clear();
 	}
 	return (0);
 }

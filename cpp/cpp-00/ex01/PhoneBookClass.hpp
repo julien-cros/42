@@ -3,21 +3,10 @@
 
 #include <iostream>
 #include <string>
+#include "ContactClass.hpp"
 
 #define MAX_CONTACT 8
 
-class contact {
-
-	public:
-
-		contact( void );
-		~contact( void );
-		std::string first_name;
-		std::string last_name;
-		std::string nickname;
-		std::string phone_number;
-		std::string darkest_secret;
-};
 
 class PhoneBook {
 
@@ -27,9 +16,10 @@ class PhoneBook {
 		~PhoneBook( void );
 		void add( void );
 		void search( void );
-		contact *contacts[MAX_CONTACT];
+		Contact *Contacts[MAX_CONTACT];
 		int index;
 		int length;
+
 };
 
 #endif
