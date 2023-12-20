@@ -8,6 +8,7 @@
 #include "Brain.hpp"
 
 int main() {
+	// Animal *animal = new Animal();
 	Dog *dog = new Dog();
 	Cat *cat = new Cat();
 	WrongAnimal *wrong = new WrongAnimal();
