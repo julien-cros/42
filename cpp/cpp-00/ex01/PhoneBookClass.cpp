@@ -111,9 +111,16 @@ void PhoneBook::search( void ) {
 		std::cin >> input;
 		if (std::cin.eof())
 			return ;
+		if (std::cin.fail())
+		{
+			std::cout << "Invalid index search" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(100000,'\n');
+			continue ;
+		}
 		if (input < 0 || input > MAX_CONTACT - 1)
-					std::cout << "Invalid index" << std::endl;
-					else
+				std::cout << "Invalid index" << std::endl;
+		else
 		{
 			if (input < this->length)
 			{
