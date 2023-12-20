@@ -8,30 +8,26 @@
 #include "Brain.hpp"
 
 int main() {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* wrong = new WrongAnimal();
-	const WrongAnimal* wrongDog = new WrongDog();
-	const WrongAnimal* wrongCat = new WrongCat();
+	Dog *dog = new Dog();
+	Cat *cat = new Cat();
+	WrongAnimal *wrong = new WrongAnimal();
+	WrongAnimal* wrongDog = new WrongDog();
+	WrongAnimal* wrongCat = new WrongCat();
 
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	std::cout << dog->getType() << " " << std::endl;
+	std::cout << cat->getType() << " " << std::endl;
+	dog->makeSound();
+	cat->makeSound();
 
 	wrong->makeSound();
 	wrongDog->makeSound();
 	wrongCat->makeSound();
 
-	delete meta;
-	delete j;
-	delete i;
+	delete dog;
+	delete cat;
 	delete wrong;
 	delete wrongDog;
 	delete wrongCat;
-
 	return 0;
 }
