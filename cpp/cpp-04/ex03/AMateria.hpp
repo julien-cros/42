@@ -24,4 +24,12 @@ public:
 	virtual void use(ICharacter &target);
 };
 
+class IMateriaSource
+{
+public:
+virtual ~IMateriaSource() {}
+virtual void learnMateria(AMateria*) = 0;
+virtual AMateria* createMateria(std::string const & type) = 0;
+};
+
 #endif

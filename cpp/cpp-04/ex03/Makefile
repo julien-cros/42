@@ -10,6 +10,8 @@ RMFLAG = -f
 SRCS = main.cpp \
 		AMateria.cpp \
 		ICharacter.cpp \
+		Ice.cpp \
+		Cure.cpp \
 
 OBJS = $(SRCS:.c=.o)
 
