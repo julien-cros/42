@@ -32,7 +32,7 @@ clean:
 	$(RM) $(RMFLAG)
 
 fclean: clean
-	$(RM) $(RMFLAG) $(NAME)
+	$(RM) $(RMFLAG) $(NAME) $(OBJS)
 
 re: fclean all
 
