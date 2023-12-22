@@ -1,35 +1,25 @@
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#ifndef AMAteria_HPP
+# define AMAteria_HPP
 
-#include <iostream>
-#include <string>
-#include "ICharacter.hpp"
+# include <iostream>
+# include <string>
+# include "ICharacter.hpp"
 
+class ICharacter;
 class AMateria
 {
-protected:
-	std::string type;
+	protected:
+		std::string type;
 
-public:
-	AMateria();
-	AMateria(std::string const &type);
-	AMateria(AMateria const &src);
-	virtual ~AMateria();
-
-	AMateria &operator=(AMateria const &rhs);
-
-	std::string const &getType() const; // Returns the materia type
-
-	virtual AMateria *clone() const = 0;
-	virtual void use(ICharacter &target);
-};
-
-class IMateriaSource
-{
-public:
-virtual ~IMateriaSource() {}
-virtual void learnMateria(AMateria*) = 0;
-virtual AMateria* createMateria(std::string const & type) = 0;
+	public:
+		AMateria();
+		AMateria(std::string const & type);
+		AMateria(AMateria const & src);
+		virtual ~AMateria();
+		AMateria & operator=(AMateria const & rhs);
+		std::string const & getType() const; //Returns the materia type
+		virtual AMateria* clone() const = 0;
+		virtual void use(ICharacter& target);
 };
 
 #endif

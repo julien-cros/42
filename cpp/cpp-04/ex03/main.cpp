@@ -1,88 +1,59 @@
-#include <iostream>
-#include <string>
 #include "AMateria.hpp"
+#include "Character.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
-#include "ICharacter.hpp"
-#include "Caracter.hpp"
-#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 
-int main() 
+int main()
 {
-	{
-		IMateriaSource* src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		ICharacter* me = new Character("me");
-		AMateria* tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-		ICharacter* bob = new Character("bob");
-		me->use(0, *bob);
-		me->use(1, *bob);
-		std::cout << std::endl;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
 
-		delete bob;
-		delete me;
-		delete src;
-	}
-	{
-		std::cout << "1. Create new MateriaSource and learn materias (check maximum too):" << std::endl;
-		IMateriaSource* src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		AMateria *mat = new Cure();
-		src->learnMateria(mat);
-		std::cout << std::endl;
-		
-		std::cout << "2. Create 2 new characters and test deep copy:" << std::endl;
-		Character *dur0 = new Character("Alice");
-		ICharacter *dur1 = new Character(*dur0);
-		delete dur0;
-		delete dur1;
-		std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "========== MY TEST ==============" << std::endl;
+	std::cout << std::endl;
+	
+	IMateriaSource	*source = new MateriaSource();
+	AMateria		*temp;
+	ICharacter		*boby = new Character("Boby");
 
-		std::cout << "3. Create materias and equip them (also check unknown materias):" << std::endl;
-		AMateria* tmp;
-		ICharacter *dur2 = new Character("Alice");
-		tmp = src->createMateria("ice");
-		dur2->equip(tmp);
-		tmp = src->createMateria("cure");
-		dur2->equip(tmp);
-		tmp = src->createMateria("hi");
-		dur2->equip(tmp);
-		delete src;
-		std::cout << std::endl;
+	source->learnMateria(new Cure());
+	source->learnMateria(new Ice());
 
-		std::cout << "4. Check maximum equipped too:" << std::endl;
-		AMateria *cure = new Cure();
-		AMateria *ice = new Ice();
-		dur2->equip(cure);
-		dur2->equip(cure);
-		dur2->equip(ice);
-		dur2->unequip(2);
-		delete cure; // Cure must be deleted manually when unequipped
-		dur2->unequip(2);
-		dur2->unequip(6);
-		std::cout << std::endl;
+	temp = source->createMateria("ice");
+	boby->equip(temp);
+	temp = source->createMateria("cure");
+	boby->equip(temp);
+	temp = source->createMateria("ice");
+	boby->equip(temp);
 
-		std::cout << "5. Use materias on new chacarter:" << std::endl;
-		ICharacter* bob = new Character("Bob");
-		dur2->use(0, *bob);
-		dur2->use(1, *bob);
-		dur2->use(2, *bob);
-		dur2->use(6, *bob);
-		dur2->use(-4, *bob);
-		dur2->use(3, *bob);
-		delete bob;
-		std::cout << std::endl;
+	boby->use(0, *boby);
+	boby->use(1, *boby);
+	boby->use(2, *boby);
+	boby->use(3, *boby);
 
-		delete dur2;
+	boby->unequip(1);
+	
+	boby->use(0, *boby);
+	boby->use(1, *boby);
+	boby->use(2, *boby);
 
-		return (0); 
-	}
-}
+	source->getMemory();
+
+	delete source;
+	delete boby;
+	return 0;
+}	
