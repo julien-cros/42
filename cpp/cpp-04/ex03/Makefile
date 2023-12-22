@@ -9,7 +9,6 @@ RMFLAG = -f
 
 SRCS = main.cpp \
 		AMateria.cpp \
-		ICharacter.cpp \
 		Character.cpp \
 		Ice.cpp \
 		Cure.cpp \

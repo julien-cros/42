@@ -39,13 +39,13 @@ int main()
 	boby->equip(temp);
 	temp = source->createMateria("ice");
 	boby->equip(temp);
+	temp = source->createMateria("cure");
+	boby->equip(temp);
 
 	boby->use(0, *boby);
 	boby->use(1, *boby);
 	boby->use(2, *boby);
 	boby->use(3, *boby);
-
-	boby->unequip(1);
 	
 	boby->use(0, *boby);
 	boby->use(1, *boby);
