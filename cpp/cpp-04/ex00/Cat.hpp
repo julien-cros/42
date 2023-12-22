@@ -11,6 +11,8 @@ class Cat : public Animal
 		
 	public:
 		Cat();
+		Cat(Cat const &other);
+		Cat &operator=(Cat const &other);
 		explicit Cat(std::string const &name);
 		virtual ~Cat();
 		void makeSound() const;

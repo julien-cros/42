@@ -16,7 +16,7 @@ class PhoneBook {
 		~PhoneBook( void );
 		void add( void );
 		void search( void );
-		Contact *Contacts[MAX_CONTACT];
+		Contact Contacts[MAX_CONTACT];
 		int index;
 		int length;
 

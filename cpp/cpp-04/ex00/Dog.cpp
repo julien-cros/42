@@ -21,3 +21,17 @@ void Dog::makeSound() const
 {
 	std::cout << "Woof!" << std::endl;
 }
+
+Dog::Dog(Dog const &other)
+{
+	std::cout << "Dog copy constructor called" << std::endl;
+	*this = other;
+}
+
+Dog &Dog::operator=(Dog const &other)
+{
+	std::cout << "Dog assignation operator called" << std::endl;
+	if (this != &other)
+		this->type = other.type;
+	return (*this);
+}

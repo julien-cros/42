@@ -27,3 +27,17 @@ void WrongAnimal::makeSound() const
 {
 	std::cout << this->type << "WrongAnimal!" << std::endl;
 }
+
+WrongAnimal::WrongAnimal(WrongAnimal const &copy)
+{
+	std::cout << "WrongAnimal copy constructor called" << std::endl;
+	*this = copy;
+}
+
+WrongAnimal &WrongAnimal::operator=(WrongAnimal const &copy)
+{
+	std::cout << "WrongAnimal assignation operator called" << std::endl;
+	if (this != &copy)
+		this->type = copy.type;
+	return (*this);
+}

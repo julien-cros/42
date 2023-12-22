@@ -23,3 +23,17 @@ void WrongCat::makeSound() const
 {
 	std::cout << this->name << " Woof!" << std::endl;
 }
+
+WrongCat::WrongCat(WrongCat const &other)
+{
+	std::cout << "WrongCat copy constructor called" << std::endl;
+	*this = other;
+}
+
+WrongCat &WrongCat::operator=(WrongCat const &other)
+{
+	std::cout << "WrongCat assignation operator called" << std::endl;
+	if (this != &other)
+		this->name = other.name;
+	return (*this);
+}
