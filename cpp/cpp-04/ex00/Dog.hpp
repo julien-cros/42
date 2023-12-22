@@ -11,6 +11,8 @@ class Dog : public Animal
 		
 	public:
 		Dog();
+		Dog(Dog const &other);
+		Dog &operator=(Dog const &other);
 		explicit Dog(std::string const &name);
 		virtual ~Dog();
 		void makeSound() const;
