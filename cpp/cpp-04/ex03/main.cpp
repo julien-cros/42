@@ -46,12 +46,14 @@ int main()
 	boby->use(1, *boby);
 	boby->use(2, *boby);
 	boby->use(3, *boby);
+
+	// boby->unequip(2);
 	
 	boby->use(0, *boby);
 	boby->use(1, *boby);
 	boby->use(2, *boby);
+	boby->use(3, *boby);
 
-	source->getMemory();
 
 	delete source;
 	delete boby;

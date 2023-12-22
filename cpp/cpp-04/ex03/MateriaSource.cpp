@@ -1,4 +1,5 @@
 #include "MateriaSource.hpp"
+#include "IMateriaSource.hpp"
 
 MateriaSource::MateriaSource() : index(0) {
 	
@@ -22,18 +23,6 @@ MateriaSource &	MateriaSource::operator=(MateriaSource const &cpy) {
 	return *this;
 }
 
-void	MateriaSource::getMemory() const {
-	std::cout << "MateriaSource memory:" << std::endl;
-	for (int i = 0; i < 4; i++) {
-		if (this->memory[i] != NULL) {
-			std::cout << "memory[" << i << "] = " << this->memory[i]->getType() << std::endl;
-		}
-		else {
-			std::cout << "memory[" << i << "] = NULL" << std::endl;
-		}
-	}
-}
-
 void	MateriaSource::learnMateria(AMateria *materia) {
 	if (this->index < 4) {
 		this->memory[this->index] = materia;
@@ -51,4 +40,8 @@ AMateria *	MateriaSource::createMateria(std::string const &type) {
 	}
 	std::cout << "MateriaSource memory doesn't contain " << type << std::endl;
 	return NULL;
+}
+
+IMateriaSource::~IMateriaSource()
+{
 }

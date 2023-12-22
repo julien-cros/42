@@ -10,6 +10,7 @@ Cure::~Cure() {
 }
 
 Cure &	Cure::operator=(Cure const &cpy) {
+	std::cout << "Cure assignation operator called" << std::endl;
 	if (this != &cpy) {
 		this->type = cpy.type;
 	}

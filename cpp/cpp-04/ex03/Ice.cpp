@@ -10,6 +10,7 @@ Ice::~Ice() {
 }
 
 Ice &	Ice::operator=(Ice const &cpy) {
+	std::cout << "Ice assignation operator called" << std::endl;
 	if (this != &cpy) {
 		this->type = cpy.type;
 	}

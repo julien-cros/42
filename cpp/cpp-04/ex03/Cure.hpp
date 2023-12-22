@@ -9,7 +9,7 @@ class Cure : public AMateria {
 	public:
 		Cure();
 		Cure(Cure const &src);
-		virtual	~Cure();
+		~Cure();
 
 		Cure &	operator=(Cure const &cpy);
 

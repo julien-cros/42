@@ -13,7 +13,6 @@ class MateriaSource : public IMateriaSource {
 		virtual	~MateriaSource();
 
 		MateriaSource &	operator=(MateriaSource const &cpy);
-		virtual void	getMemory() const;
 
 		virtual void	learnMateria(AMateria *materia);
 		virtual AMateria *	createMateria(std::string const &type);
