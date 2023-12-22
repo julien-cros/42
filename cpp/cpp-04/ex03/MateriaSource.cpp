@@ -1,9 +1,7 @@
 #include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource() : index(0) {
-	for (int i = 0; i < 4; i++) {
-		this->memory[i] = NULL;
-	}
+	
 }
 
 MateriaSource::MateriaSource(MateriaSource const &src) {
@@ -11,24 +9,14 @@ MateriaSource::MateriaSource(MateriaSource const &src) {
 }
 
 MateriaSource::~MateriaSource() {
-	for (int i = 0; i < 4; i++) {
-		if (this->memory[i] != NULL) {
-			delete this->memory[i];
-		}
-	}
 }
 
 MateriaSource &	MateriaSource::operator=(MateriaSource const &cpy) {
 	if (this != &cpy) {
-		for (int i = 0; i < 4; i++) {
-			if (this->memory[i] != NULL) {
-				delete this->memory[i];
-			}
-		}
-		for (int i = 0; i < 4; i++) {
-			if (cpy.memory[i] != NULL) {
-				this->memory[i] = cpy.memory[i]->clone();
-			}
+		{
+			this->index = cpy.index;
+		int idx = -1; while (++idx < 4)
+			this->memory[idx] = cpy.memory[idx];
 		}
 	}
 	return *this;
@@ -51,13 +39,16 @@ void	MateriaSource::learnMateria(AMateria *materia) {
 		this->memory[this->index] = materia;
 		this->index++;
 	}
+	else {
+		std::cout << "MateriaSource memory is full" << std::endl;
+	}
 }
 
 AMateria *	MateriaSource::createMateria(std::string const &type) {
-	for (int i = 0; i < 4; i++) {
-		if (this->memory[i] != NULL && this->memory[i]->getType() == type) {
-			return this->memory[i]->clone();
-		}
+	int	idx = -1; while (++idx < index) {
+		if (this->memory[idx]->getType() == type)
+			return this->memory[idx];
 	}
+	std::cout << "MateriaSource memory doesn't contain " << type << std::endl;
 	return NULL;
 }

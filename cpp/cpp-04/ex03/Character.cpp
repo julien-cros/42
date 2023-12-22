@@ -13,11 +13,6 @@ Character::Character(Character const &src)
 
 Character::~Character()
 {
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->inventory[i])
-			delete this->inventory[i];
-	}
 }
 
 Character & Character::operator=(Character const & rhs)
@@ -31,7 +26,7 @@ Character & Character::operator=(Character const & rhs)
 		{
 			if (this->inventory[i])
 				delete this->inventory[i];
-			this->inventory[i] = rhs.inventory[i]->clone();
+			this->inventory[i] = rhs.inventory[i];
 		}
 	}
 	return (*this);
