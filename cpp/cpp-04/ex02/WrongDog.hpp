@@ -11,6 +11,8 @@ class WrongDog : public WrongAnimal
 	
 	public:
 		WrongDog();
+		WrongDog(WrongDog const &copy);
+		WrongDog &operator=(WrongDog const &copy);
 		explicit WrongDog(std::string const &name);
 		virtual ~WrongDog();
 		void makeSound() const;

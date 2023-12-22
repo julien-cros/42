@@ -25,3 +25,17 @@ void Animal::makeSound() const
 {
 	std::cout << this->type << "just made sound!" << std::endl;
 }
+
+Animal::Animal(Animal const &other)
+{
+	std::cout << "Animal copy constructor called!" << std::endl;
+	*this = other;
+}
+
+Animal &Animal::operator=(Animal const &other)
+{
+	std::cout << "Animal assignation operator called!" << std::endl;
+	if (this != &other)
+		this->type = other.type;
+	return (*this);
+}

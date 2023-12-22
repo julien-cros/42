@@ -9,6 +9,8 @@ class WrongAnimal
 	
 	public:
 		WrongAnimal();
+		WrongAnimal(WrongAnimal const &copy);
+		WrongAnimal &operator=(WrongAnimal const &copy);
 		explicit WrongAnimal(std::string const &type);
 		virtual ~WrongAnimal();
 		std::string getType() const;

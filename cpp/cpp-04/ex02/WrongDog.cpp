@@ -23,3 +23,17 @@ void WrongDog::makeSound() const
 {
 	std::cout << this->name << " Miaou!" << std::endl;
 }
+
+WrongDog::WrongDog(WrongDog const &copy)
+{
+	std::cout << "WrongDog copy constructor called" << std::endl;
+	*this = copy;
+}
+
+WrongDog &WrongDog::operator=(WrongDog const &copy)
+{
+	std::cout << "WrongDog assignation operator called" << std::endl;
+	if (this != &copy)
+		this->name = copy.name;
+	return (*this);
+}
