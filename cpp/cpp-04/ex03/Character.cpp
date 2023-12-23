@@ -65,5 +65,5 @@ void Character::use(int idx, ICharacter &target)
 	if (idx >= 0 && idx < 4 && this->inventory[idx])
 		this->inventory[idx]->use(target);
 	else 
-		std::cout << "Invalid index" << std::endl;
+		std::cout << "There is nothing in here" << std::endl;
 }

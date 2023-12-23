@@ -10,6 +10,11 @@ MateriaSource::MateriaSource(MateriaSource const &src) {
 }
 
 MateriaSource::~MateriaSource() {
+	int	idx = -1;
+	
+	while (++idx < index) {
+		delete this->memory[idx];
+	}
 }
 
 MateriaSource &	MateriaSource::operator=(MateriaSource const &cpy) {

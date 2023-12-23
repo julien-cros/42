@@ -7,7 +7,7 @@
 int main()
 {
 	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
+	// src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
@@ -47,7 +47,14 @@ int main()
 	boby->use(2, *boby);
 	boby->use(3, *boby);
 
-	// boby->unequip(2);
+	boby->unequip(2);
+	boby->use(2, *boby);
+
+
+	temp = source->createMateria("ice");
+	boby->equip(temp);
+
+
 	
 	boby->use(0, *boby);
 	boby->use(1, *boby);
