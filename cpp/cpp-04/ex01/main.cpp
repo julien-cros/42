@@ -21,7 +21,7 @@ int main() {
 	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
-
+		
 	wrong->makeSound();
 	wrongDog->makeSound();
 	wrongCat->makeSound();
@@ -32,6 +32,18 @@ int main() {
 	delete wrong;
 	delete wrongDog;
 	delete wrongCat;
+
+	int index = 0;
+	Animal *array[100];
+
+	while (index < 50)
+		array[index++] = new Dog();
+	while (index < 100)
+		array[index++] = new Cat();
+
+	index = 0;
+	while (index < 100)
+		delete array[index++];
 
 	return 0;
 }
