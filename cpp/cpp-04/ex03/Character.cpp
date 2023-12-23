@@ -24,8 +24,6 @@ Character & Character::operator=(Character const & rhs)
 		this->name = rhs.name;
 		for (int i = 0; i < 4; i++)
 		{
-			if (this->inventory[i])
-				delete this->inventory[i];
 			this->inventory[i] = rhs.inventory[i];
 		}
 	}
