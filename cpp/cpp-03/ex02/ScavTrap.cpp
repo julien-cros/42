@@ -23,3 +23,21 @@ void ScavTrap::guardGate(){
 	}
 	std::cout << "ScavTrap " << this->getName() << " has entergit ed in Gate keeper mode!" << std::endl;
 }
+
+ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)
+{
+	if (this != &rhs)
+	{
+		this->energyPoints = rhs.energyPoints;
+		this->attackDamage = rhs.attackDamage;
+		this->hitPoints = rhs.hitPoints;
+		this->name = rhs.name;
+	}
+	return (*this);
+}
+
+ScavTrap::ScavTrap(ScavTrap const &rhs)
+{
+	std::cout << "ScavTrap copy constructor called" << std::endl;
+	*this = rhs;
+}
