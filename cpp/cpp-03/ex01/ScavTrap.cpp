@@ -2,6 +2,11 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap() : ClapTrap("ScavTrap-default")
+{
+	std::cout << "ScavTrap default constructor called" << std::endl;
+}
+
 ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name){
 	std::cout << "ScavTrap " << this->name << " is born!" << std::endl;
 }

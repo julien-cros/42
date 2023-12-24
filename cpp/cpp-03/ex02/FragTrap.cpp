@@ -3,6 +3,11 @@
 #include "ClapTrap.hpp"
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap() : ClapTrap("FragTrap-default")
+{
+	std::cout << "FragTrap default constructor called" << std::endl;
+}
+
 FragTrap::FragTrap(std::string const &name) : ClapTrap(name)
 {
 	std::cout << "FragTrap constructor called" << std::endl;
