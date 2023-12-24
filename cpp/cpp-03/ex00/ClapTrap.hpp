@@ -12,11 +12,14 @@ class ClapTrap
 		int attackDamage; 
 
 	public:
-		explicit ClapTrap(std::string const &name);
+		ClapTrap(std::string const &name);
+		ClapTrap(ClapTrap const &cpy);
+		ClapTrap & operator=(ClapTrap const & rhs);
 		~ClapTrap();
 		void attack(std::string const &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
+		std::string const & getName() const;
 };
 
 #endif

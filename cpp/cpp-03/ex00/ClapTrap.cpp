@@ -50,3 +50,25 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	std::cout << "ClapTrap " << this->name << " is repaired for " << amount << " points!" << std::endl;
 }
+
+std::string const & ClapTrap::getName() const
+{
+	return (this->name);
+}
+
+ClapTrap::ClapTrap(ClapTrap const &cpy)
+{
+	std::cout << "ClapTrap copy constructor called" << std::endl;
+	*this = cpy;
+
+}
+
+ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
+{
+	if (this != &rhs)
+	{
+		this->name = rhs.getName();
+	}
+	return (*this);
+}
+
