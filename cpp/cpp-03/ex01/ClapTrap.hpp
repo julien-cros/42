@@ -12,16 +12,16 @@ class ClapTrap
 		int attackDamage;
 
 	public:
+		ClapTrap();
 		explicit ClapTrap(std::string const &name);
 		ClapTrap(ClapTrap const &rhs);
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		void attack(std::string const &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		ClapTrap & operator=(ClapTrap const & rhs);
-		std::string const & getName() const;
+		ClapTrap & operator=(ClapTrap const &rhs);
 		int getHitPoints();
 		int getEnergyPoints();
 

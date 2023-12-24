@@ -2,6 +2,10 @@
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() :  name("Claptrap-default"), hitPoints(10), energyPoints(10), attackDamage(0)
+{
+	std::cout << "ClapTrap default constructor called" << std::endl;
+}
 ClapTrap::ClapTrap(std::string const &name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << "ClapTrap constructor called" << std::endl;
@@ -51,11 +55,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "ClapTrap " << this->name << " is repaired for " << amount << " points!" << std::endl;
 }
 
-std::string const & ClapTrap::getName() const
-{
-	return (this->name);
-}
-
 ClapTrap::ClapTrap(ClapTrap const &cpy)
 {
 	std::cout << "ClapTrap copy constructor called" << std::endl;
@@ -67,7 +66,10 @@ ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
 {
 	if (this != &rhs)
 	{
-		this->name = rhs.getName();
+		this->energyPoints = rhs.energyPoints;
+		this->attackDamage = rhs.attackDamage;
+		this->hitPoints = rhs.hitPoints;
+		this->name = rhs.name;
 	}
 	return (*this);
 }
