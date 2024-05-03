@@ -6,7 +6,7 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat bureaucrat("ok", 3);
+		Bureaucrat bureaucrat("ok", 150);
 
 		std::cout << bureaucrat << std::endl;
 		
@@ -25,6 +25,10 @@ int main(void)
 
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
