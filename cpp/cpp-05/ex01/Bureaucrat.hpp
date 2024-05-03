@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:15:36 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/23 11:30:10 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 15:46:14 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ class Bureaucrat
 	void incrementGrade();
 	void decrementGrade();
 	void signForm(Form &form);
-
-	// const std::string Bureaucrat::GradeTooHighException() const;
-	// const std::string Bureaucrat::GradeTooLowException() const;
 
 	class GradeTooHighException : public std::exception
 	{

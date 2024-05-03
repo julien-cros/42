@@ -46,4 +46,20 @@ int main(void)
 	{
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	catch (Form::AlreadySignedException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 }
