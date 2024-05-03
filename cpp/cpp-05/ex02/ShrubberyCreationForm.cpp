@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 13:33:28 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/30 14:37:51 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 15:54:21 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ const std::string &ShrubberyCreationForm::getTarget() const
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (this->signStatus == false)
-		throw GradeNotSignedExeption();
+		throw FormNotSignedExeption();
 	if (executor.getGrade() > this->getRequierdGradeToExecute())
 		throw GradeTooLowException();
 

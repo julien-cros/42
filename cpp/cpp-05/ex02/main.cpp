@@ -8,7 +8,7 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat bureaucrat("Dylan", 10);
+		Bureaucrat bureaucrat("Dylan", 1);
 		Bureaucrat bureaucrat2("Benoit", 2);
 
 		// ShrubberyCreationForm form("garden");
@@ -24,11 +24,27 @@ int main(void)
 
 		std::cout << form << std::endl;
 	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 	catch (AForm::GradeTooLowException &e)
 	{
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 	catch (AForm::GradeTooHighException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	catch (AForm::AlreadySignedException &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	catch (AForm::FormNotSignedExeption &e)
 	{
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}

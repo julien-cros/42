@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 13:34:14 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/30 14:39:50 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 15:54:21 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ const std::string &RobotomyRequestForm::getTarget() const
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (this->signStatus == false)
-		throw GradeNotSignedExeption();
+		throw FormNotSignedExeption();
 	if (executor.getGrade() > this->getRequierdGradeToExecute())
 		throw GradeTooLowException();
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:18:34 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/30 14:48:01 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 15:54:21 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void Bureaucrat::executeForm(AForm const & form) const
 		throw e;
 		// std::cout << this->getName() << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}
-	catch (AForm::GradeNotSignedExeption & e)
+	catch (AForm::FormNotSignedExeption & e)
 	{
 		throw e;
 		// std::cout << this->getName() << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;

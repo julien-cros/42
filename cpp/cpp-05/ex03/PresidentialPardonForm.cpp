@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 13:34:46 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/30 14:40:31 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 16:16:22 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ const std::string &PresidentialPardonForm::getTarget() const
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	if (this->signStatus == false)
-		throw GradeNotSignedExeption();
+		throw FormNotSignedExeption();
 	if (executor.getGrade() > this->getRequierdGradeToExecute())
 		throw GradeTooLowException();
 

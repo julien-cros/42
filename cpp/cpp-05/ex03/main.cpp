@@ -10,4 +10,9 @@ int main(void)
 		Intern someRandomIntern;
 		AForm *rrf;
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+		if (rrf)
+		{
+			std::cout << rrf->getName() << std::endl;
+		}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:18:34 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/30 14:48:01 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 16:02:58 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ void Bureaucrat::signForm(AForm &form)
 	}
 	catch (AForm::GradeTooLowException & e)
 	{
-		std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+		throw e;
+		// std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 	catch (AForm::AlreadySignedException & e)
 	{
-		std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+		throw e;
+		// std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
@@ -107,8 +109,9 @@ void Bureaucrat::executeForm(AForm const & form) const
 		throw e;
 		// std::cout << this->getName() << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}
-	catch (AForm::GradeNotSignedExeption & e)
+	catch (AForm::FormNotSignedExeption & e)
 	{
+		
 		throw e;
 		// std::cout << this->getName() << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}

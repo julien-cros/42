@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 09:27:42 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/29 15:24:46 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 15:54:21 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ public:
 		public:
 			const char *what() const throw();
 	};
-	class GradeNotSignedExeption : public std::exception
+	class FormNotSignedExeption : public std::exception
 	{
 		public:
 			const char *what() const throw();

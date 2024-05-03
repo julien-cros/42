@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 09:27:36 by juliencros        #+#    #+#             */
-/*   Updated: 2024/04/30 14:41:53 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/03 15:54:21 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ const char *AForm::AlreadySignedException::what() const throw()
 	return ("The form is alerady signed");
 }
 
-const char *AForm::GradeNotSignedExeption::what() const throw()
+const char *AForm::FormNotSignedExeption::what() const throw()
 {
 	return ("The form has to be signed before being execute");
 }

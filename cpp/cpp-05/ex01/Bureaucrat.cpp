@@ -6,7 +6,7 @@
 /*   By: jcros <jcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:18:34 by juliencros        #+#    #+#             */
-/*   Updated: 2024/05/03 15:49:49 by jcros            ###   ########.fr       */
+/*   Updated: 2024/05/03 16:04:59 by jcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ void Bureaucrat::signForm(Form &form)
 	}
 	catch (Form::GradeTooLowException & e)
 	{
-		throw Form::GradeTooLowException();
+		throw e;
 		// std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 	catch (Form::AlreadySignedException & e)
 	{
-		throw Form::AlreadySignedException();
+		throw e;
 		// std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
