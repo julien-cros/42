@@ -12,9 +12,6 @@ enum e_type
 {
 	CHAR,
 	NUM,
-	// INT,
-	// FLOAT,
-	// DOUBLE,
 	UNKNOWN,
 	INF,
 };
@@ -34,7 +31,7 @@ public:
 	class InvalidScalarException : public std::exception
 	{
 	public:
-		const char *what() const throw() { return "Invalid scalar"; }
+		const char *what() const throw() { return "Invalid scalar exception"; }
 	};
 };
 

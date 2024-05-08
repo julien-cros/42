@@ -4,7 +4,6 @@ void ScalarConverter::convert(const std::string &input)
 {
 	if (input.length() == 0)
 	{
-		// throw something for error handling
 		std::cout << "Error: Empty input" << std::endl;
 		return;
 	}
@@ -23,46 +22,37 @@ void ScalarConverter::convert(const std::string &input)
 		printSpecial(input);
 		break;
 	case (UNKNOWN):
-		std::cout << "Error: Unknown type" << std::endl;
+		throw InvalidScalarException();
+		// std::cout << "pas bon " << std::endl;
 		break;
 	}
 }
 
 e_type ScalarConverter::setType(const std::string &input)
 {
-	int i = 1;
+	bool findDot = false;
+	int i = 0;
+
 	if (input.length() == 1 && !isdigit(input[0]))
 		return CHAR;
 	else if (input == "+inf" || input == "-inf" || input == "+inff" || input == "-inff" || input == "nan" || input == "nanf")
 		return INF;
-	else if (input.find('.') && input[input.length() - 1] == 'f')
+	if (input[0] == '-' || input[0] == '+')
+		i++;
+	while (i < input.length() - 1)
 	{
-		while (isdigit(input[i]) && input[i + 1])
-			i++;
-		return NUM;
+		if (input[i] == '.' && findDot == true)
+			return (UNKNOWN);
+		if (input[i] == '.')
+			findDot = true;
+		else if (!isdigit(input[i]))
+			return (UNKNOWN);
+		i++;
 	}
-	else if (input.find('.'))
-	{
-		while (isdigit(input[i]))
-			i++;
-		return NUM;
-	}
-	else if (input[0] == '-' || input[0] == '+')
-	{
-		while (isdigit(input[i]))
-			i++;
-		if (!input[i])
-			return NUM;
-	}
-	else if (isdigit(input[0]))
-	{
-		i = 1;
-		while (isdigit(input[i]))
-			i++;
-		if (!input[i])
-			return NUM;
-	}
-	return UNKNOWN;
+
+	if ((input[i] == 'f' && !isdigit(input[i - 1])) || (i == 1 && findDot == true) || (i == 0 && input[i] == 'f'))
+		return (UNKNOWN);
+	return NUM;
 }
 
 // print  int \ char \ float \ double
