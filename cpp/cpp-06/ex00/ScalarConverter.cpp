@@ -23,7 +23,6 @@ void ScalarConverter::convert(const std::string &input)
 		break;
 	case (UNKNOWN):
 		throw InvalidScalarException();
-		// std::cout << "pas bon " << std::endl;
 		break;
 	}
 }
@@ -55,8 +54,6 @@ e_type ScalarConverter::setType(const std::string &input)
 	return NUM;
 }
 
-// print  int \ char \ float \ double
-
 void ScalarConverter::printChar(const std::string &input)
 {
 	double value = double(input[0]);
@@ -67,9 +64,9 @@ void ScalarConverter::printChar(const std::string &input)
 	}
 	else
 		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
-	std::cout << "float: " << static_cast<float>(input[0]) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(input[0]) << std::endl;
+	std::cout << "int: " << static_cast<int>(value) << std::endl;
+	std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
 void ScalarConverter::printNum(const std::string &input)
