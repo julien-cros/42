@@ -8,7 +8,6 @@ RM = rm
 RMFLAG = -f
 
 SRCS = main.cpp \
-	MutantStack.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

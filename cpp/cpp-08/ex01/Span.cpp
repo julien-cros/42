@@ -1,5 +1,6 @@
 #include "Span.hpp"
 #include <deque>
+#include <algorithm>
 
 Span::Span() : N(0)
 {

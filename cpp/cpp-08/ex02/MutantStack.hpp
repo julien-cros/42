@@ -13,7 +13,7 @@ public:
 	~MutantStack(){};
 	MutantStack(const MutantStack &copy) : std::stack<T>() { *this = copy; };
 
-	void operator=(const MutantStack &rhs)
+	MutantStack &operator=(const MutantStack &rhs)
 	{
 		std::stack<T>::operator=();
 		{

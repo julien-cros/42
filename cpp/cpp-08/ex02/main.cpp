@@ -9,6 +9,7 @@ int main()
 	stack.push(5);
 	stack.push(3);
 	stack.push(7);
+	stack.push(2);
 	stack.push(4);
 	std::cout << "Top number: " << stack.top() << std::endl;
 
