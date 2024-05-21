@@ -4,6 +4,7 @@
 #include <numeric>
 #include <limits>
 #include <iterator>
+#include <random>
 
 Span::Span() : N(0)
 {
@@ -31,7 +32,7 @@ Span &Span::operator=(const Span &rhs)
 
 void Span::addNumber(int value)
 {
-	if (_deque.size() == N)
+	if (_deque.size() >= N)
 		throw MaxSizeException();
 
 	_deque.push_back(value);
@@ -60,4 +61,12 @@ int Span::longestSpan()
 			copy = _deque;
 	std::sort(copy.begin(), copy.end());
 	return (copy[copy.size() - 1] - copy[0]);
+}
+
+void Span::fill(int i)
+{
+	for (int j = 0; j < i; j++)
+	{
+		addNumber(rand());
+			}
 }

@@ -21,6 +21,7 @@ public:
 	void addNumber(int value);
 	int shortestSpan();
 	int longestSpan();
+	void fill(int i);
 
 	class MaxSizeException : public std::exception
 	{
