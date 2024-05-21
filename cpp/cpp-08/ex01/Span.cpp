@@ -1,6 +1,9 @@
 #include "Span.hpp"
 #include <deque>
 #include <algorithm>
+#include <numeric>
+#include <limits>
+#include <iterator>
 
 Span::Span() : N(0)
 {
@@ -39,18 +42,13 @@ int Span::shortestSpan()
 	if (_deque.size() < 2)
 		throw TooLittleException();
 
-	std::deque<int>
-			copy = _deque;
+	std::deque<int> copy = _deque;
 	std::sort(copy.begin(), copy.end());
+	std::deque<int> diffArray(copy);
 
-	int between = copy[1] - copy[0];
-	for (size_t i = 0; i < copy.size() - 1; i++)
-	{
-		// std::cout << (copy[i] - copy[i - 1]) << "  ";
-		if ((copy[i + 1] - copy[i]) < between)
-			between = copy[i + 1] - copy[i];
-	}
-	return (between);
+	std::adjacent_difference(copy.begin(), copy.end(), diffArray.begin());
+	int minValue = *std::min_element((diffArray.begin()), diffArray.end());
+	return (minValue);
 }
 
 int Span::longestSpan()
