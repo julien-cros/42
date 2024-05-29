@@ -1,4 +1,5 @@
 #include "ScalarConverter.hpp"
+#include <limits>
 
 void ScalarConverter::convert(const std::string &input)
 {
@@ -49,7 +50,7 @@ e_type ScalarConverter::setType(const std::string &input)
 		i++;
 	}
 
-	if ((input[i] == 'f' && !isdigit(input[i - 1])) || (i == 1 && findDot == true) || (i == 0 && input[i] == 'f'))
+	if ((input[i] != 'f' && !isdigit(input[i]) && input[i] != '.') || (i == 1 && findDot == true) || (i == 0 && input[i] == 'f'))
 		return (UNKNOWN);
 	return NUM;
 }
@@ -73,7 +74,7 @@ void ScalarConverter::printNum(const std::string &input)
 {
 	double value = std::stod(input);
 
-	if (value > INT_MAX || value < INT_MIN)
+	if (value < std::numeric_limits<double>::min() || value > std::numeric_limits<double>::max())
 	{
 		std::cout << "int: impossible" << std::endl;
 		std::cout << "char: impossible" << std::endl;
@@ -87,8 +88,14 @@ void ScalarConverter::printNum(const std::string &input)
 			std::cout << "'" << static_cast<char>(value) << "'" << std::endl;
 		else
 			std::cout << "Non displayable" << std::endl;
-		std::cout << "int: " << static_cast<int>(value) << std::endl;
-		std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+		if (value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max())
+			std::cout << "int: impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(value) << std::endl;
+		if (value < std::numeric_limits<float>::min() || value > std::numeric_limits<float>::max())
+			std::cout << "float: impossible" << std::endl;
+		else
+			std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
 		std::cout << "double: " << static_cast<double>(value) << std::endl;
 	}
 }
