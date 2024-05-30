@@ -16,10 +16,10 @@ public:
 private:
 	std::stack<int> _num;
 
-	class InvalidExpression : public std::exception
+	class Error : public std::exception
 	{
 	public:
-		const char *what() const throw() { return "Invalid expression"; };
+		const char *what() const throw() { return "Error"; };
 	};
 	class InvalidTooBig : public std::exception
 	{

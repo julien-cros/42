@@ -17,9 +17,28 @@ RPN &RPN::operator=(const RPN &rhs)
 	return *this;
 }
 
+bool verifyExpression(const std::string &expression)
+{
+	int op = 0;
+	int num = 0;
+	for (int i = 0; i < expression.length(); i++)
+	{
+		if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/')
+			op++;
+		else if (isdigit(expression[i]))
+			num++;
+		else if (expression[i] != ' ')
+			return false;
+	}
+	if (op != num - 1)
+		return false;
+	return true;
+}
+
 double RPN::run(const std::string &expression)
 {
-
+	if (!verifyExpression(expression))
+		throw Error();
 	for (int i = 0; i < expression.length(); i++)
 	{
 		char c = expression[i];
@@ -32,18 +51,17 @@ double RPN::run(const std::string &expression)
 		}
 
 		if (_num.size() < 2)
-			throw InvalidExpression();
+			throw Error();
 
-		if (expression[i] == '+' && i % 2 == 0)
+		if (expression[i] == '+')
 		{
 			double b = _num.top();
 			_num.pop();
 			double a = _num.top();
 			_num.pop();
 			_num.push(a + b);
-			std::cout << a << " + " << b << " = " << a + b << std::endl;
 		}
-		else if (expression[i] == '-' && i % 2 == 0)
+		else if (expression[i] == '-')
 		{
 			double b = _num.top();
 			_num.pop();
@@ -51,9 +69,8 @@ double RPN::run(const std::string &expression)
 			_num.pop();
 
 			_num.push(a - b);
-			std::cout << a << " - " << b << " = " << a - b << std::endl;
 		}
-		else if (expression[i] == '*' && i % 2 == 0)
+		else if (expression[i] == '*')
 		{
 			double b = _num.top();
 			_num.pop();
@@ -61,9 +78,8 @@ double RPN::run(const std::string &expression)
 			_num.pop();
 
 			_num.push(a * b);
-			std::cout << a << " * " << b << " = " << a * b << std::endl;
 		}
-		else if (expression[i] == '/' && i % 2 == 0)
+		else if (expression[i] == '/')
 		{
 			double b = _num.top();
 			_num.pop();
@@ -72,11 +88,10 @@ double RPN::run(const std::string &expression)
 			_num.push(a / b);
 
 			if (b == 0)
-				throw InvalidExpression();
-			std::cout << a << " / " << b << " = " << a / b << std::endl;
+				throw Error();
 		}
 		else
-			throw InvalidExpression();
+			throw Error();
 	}
 	return _num.top();
 }
