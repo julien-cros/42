@@ -22,6 +22,10 @@ BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
+	if (this == &rhs)
+		return *this;
+	_database = rhs._database;
+	_input = rhs._input;
 	return *this;
 }
 

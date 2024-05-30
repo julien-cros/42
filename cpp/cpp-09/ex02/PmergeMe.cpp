@@ -6,7 +6,7 @@
 /*   By: juliencros <juliencros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:42:51 by juliencros        #+#    #+#             */
-/*   Updated: 2024/05/30 08:29:53 by juliencros       ###   ########.fr       */
+/*   Updated: 2024/05/30 12:20:18 by juliencros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ PmergeMe::~PmergeMe() {}
 
 PmergeMe::PmergeMe(const PmergeMe &src) { (void)src; }
 
-void PmergeMe::operator=(const PmergeMe &rhs) { (void)rhs; }
+PmergeMe &PmergeMe::operator=(const PmergeMe &rhs) { return *this; }
 
 int PmergeMe::binarySearch(const std::vector<int> &vec, int value, int end)
 {

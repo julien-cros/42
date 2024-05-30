@@ -12,7 +12,7 @@ private:
 	~PmergeMe();
 	PmergeMe(const PmergeMe &src);
 
-	void operator=(const PmergeMe &rhs);
+	PmergeMe &operator=(const PmergeMe &rhs);
 	static void insertElement(std::vector<int> &vec, int value, int end);
 	static void insertElement(std::list<int> &lst, int value, int end);
 	static int binarySearch(const std::vector<int> &vec, int value, int end);

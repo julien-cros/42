@@ -17,16 +17,16 @@ int main(int argc, char *argv[])
 
 	for (int i = 1; i < argc; i++)
 	{
-		for (int j = 0; j < strlen(argv[i]); j++)
+		for (size_t j = 0; j < strlen(argv[i]); j++)
 		{
 			if (!isdigit(argv[i][j]))
 			{
-				std::cout << "Error: '" << argv[i][j] << "' is not an integer." << std::endl;
-				return (1);
+				std::cerr << "Error: '" << argv[i][j] << "' is not a positive integer" << std::endl;
+				return 1;
 			}
 		}
 		int n = std::atoi(argv[i]);
- 
+
 		if (n < 0)
 		{
 			std::cerr << "Error: " << n << " is not a positive integer" << std::endl;
