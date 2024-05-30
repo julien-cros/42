@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <random>
 #include "PmergeMe.hpp"
 
 int main(int argc, char *argv[])
@@ -9,7 +11,8 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	std::vector<int> data;
+	std::vector<int> vector;
+	std::list<int> list;
 
 	for (int i = 1; i < argc; i++)
 	{
@@ -19,18 +22,38 @@ int main(int argc, char *argv[])
 		{
 			std::cerr << "Error: " << n << " is not a positive integer" << std::endl;
 			return 1;
-		}
-		data.push_back(n);
+		};
+		vector.push_back(n);
+		list.push_back(n);
 	}
 
-	PmergeMe::merge(data);
-
-	for (size_t i = 0; i < data.size(); i++)
+	std::cout << "before: ";
+	for (size_t i = 0; i < vector.size(); i++)
 	{
-		std::cout << data[i];
-		if (i < data.size() - 1)
+		std::cout << vector[i];
+		if (i < vector.size() - 1)
 			std::cout << " ";
 		else
 			std::cout << std::endl;
 	}
+	unsigned long start = clock();
+	PmergeMe::merge(vector);
+	unsigned long end = (clock() - start) / (double)CLOCKS_PER_SEC * 1000000;
+
+	std::cout << "after: ";
+	for (size_t i = 0; i < vector.size(); i++)
+	{
+		std::cout << vector[i];
+		if (i < vector.size() - 1)
+			std::cout << " ";
+		else
+			std::cout << std::endl;
+	}
+	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector: " << end << "us" << std::endl;
+
+	start = clock();
+	PmergeMe::merge(list);
+	end = (clock() - start) / (double)CLOCKS_PER_SEC * 1000000;
+
+	std::cout << "Time to process a range of " << list.size() << " elements with std::list: " << end << "us" << std::endl;
 }
