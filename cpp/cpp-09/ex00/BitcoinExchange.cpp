@@ -46,10 +46,6 @@ void BitcoinExchange::parseDatabase(std::string database)
 
 std::string BitcoinExchange::parseDate(std::string line)
 {
-
-	// between 2009 to 2022
-	// month between 1 to 12
-	// day between 1 to 31
 	int year;
 	int month;
 	int day;
@@ -59,7 +55,7 @@ std::string BitcoinExchange::parseDate(std::string line)
 	day = std::stoi(line.substr(8, 2));
 
 	if (year < 2007 || month < 1 || month > 12 || day < 1 || day > 31)
-		throw InvalidDate();
+		throw InvalidDate(line.substr(0, 10));
 
 	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -67,7 +63,7 @@ std::string BitcoinExchange::parseDate(std::string line)
 		daysInMonth[1] = 29;
 
 	if (day > daysInMonth[month - 1])
-		throw InvalidDate();
+		throw InvalidDate(line.substr(0, 10));
 
 	return line.substr(0, 10);
 }

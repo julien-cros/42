@@ -41,7 +41,10 @@ public:
 	class InvalidDate : public std::exception
 	{
 	public:
-		const char *what() const throw() { return "Invalid Date."; };
+		explicit InvalidDate(std::string InvalidDate)
+		{
+			std::cout << "Error: Bad Input => " << InvalidDate << std::endl;
+		};
 	};
 
 	class TooHighValue : public std::exception

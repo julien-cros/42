@@ -10,8 +10,6 @@ int main(int argc, char **argv)
 		BitcoinExchange exchange;
 
 		exchange.exchange(argv[1]);
-		std::cout
-				<< "ok" << std::endl;
 	}
 	catch (std::exception &e)
 	{
