@@ -7,7 +7,8 @@ FROM debian:12
 
 RUN apt update
 RUN apt upgrade
-RUN apt install -y nginx openssl
+RUN apt-get install -y nginx \
+		openssl
 
 # RUN rm -f /etc/nginx/sites-available/default
 COPY conf/default /etc/nginx/sites-available/default
