@@ -2,29 +2,22 @@ THIS_FILE := $(lastword $(MAKEFILE_LIST))
 .PHONY: build up start down destroy stop restart logs logs-api ps login-timescale login-api db-shell
 
 build:
-	docker-compose -f src/docker-compose.yml build $(c)
+	docker compose -f srcs/docker-compose.yml build $(c)
 up:
-	docker-compose -f src/docker-compose.yml up -d $(c)
-start:
-	docker-compose -f src/docker-compose.yml start $(c)
+	docker compose -f srcs/docker-compose.yml up -d $(c)
 down:
-	docker-compose -f src/docker-compose.yml down $(c)
+	docker compose -f srcs/docker-compose.yml down $(c)
 destroy:
-	docker-compose -f src/docker-compose.yml down -v $(c)
+	docker compose -f srcs/docker-compose.yml down -v $(c)
+	docker system prune -af $(c)
 stop:
-	docker-compose -f src/docker-compose.yml stop $(c)
+	docker compose -f srcs/docker-compose.yml stop $(c)
 restart:
-	docker-compose -f src/docker-compose.yml stop $(c)
-	docker-compose -f src/docker-compose.yml up -d $(c)
+	docker compose -f srcs/docker-compose.yml stop $(c)
+	docker compose -f srcs/docker-compose.yml up -d $(c)
 logs:
-	docker-compose -f src/docker-compose.yml logs --tail=100 -f $(c)
-logs-api:
-	docker-compose -f src/docker-compose.yml logs --tail=100 -f api
+	docker compose -f srcs/docker-compose.yml logs --tail=100 -f $(c)
 ps:
-	docker-compose -f src/docker-compose.yml ps
-login-timescale:
-	docker-compose -f src/docker-compose.yml exec timescale /bin/bash
-login-api:
-	docker-compose -f src/docker-compose.yml exec api /bin/bash
-db-shell:
-	docker-compose -f src/docker-compose.yml exec timescale psql -Upostgres
+	docker compose -f srcs/docker-compose.yml ps
+volume:
+	docker volume ls
