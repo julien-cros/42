@@ -43,7 +43,7 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
 
 # EXPOSE 9000
 
-CMD ["php-fpm8.2", "-F"]
+CMD ["/usr/sbin/php-fpm8.2", "-F"]
 # FROM alpine:3.20.0
 
 # RUN apk update
