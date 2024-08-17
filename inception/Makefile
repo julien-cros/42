@@ -1,22 +1,23 @@
-THIS_FILE := $(lastword $(MAKEFILE_LIST))
-.PHONY: build up start down destroy stop restart logs logs-api ps login-timescale login-api db-shell
+.PHONY: build up start down destroy stop restart logs ps
 
 build:
-	docker compose -f srcs/docker-compose.yml build $(c)
+	docker compose -f srcs/docker-compose.yml build
 up:
-	docker compose -f srcs/docker-compose.yml up -d $(c)
+	docker compose -f srcs/docker-compose.yml up -d
 down:
-	docker compose -f srcs/docker-compose.yml down $(c)
+	docker compose -f srcs/docker-compose.yml down
 destroy:
-	docker compose -f srcs/docker-compose.yml down -v $(c)
-	docker system prune -af $(c)
+	docker compose -f srcs/docker-compose.yml down -v
+	docker system prune -af
+	sudo rm -rf /home/jcros/data/mariadb/*
+	sudo rm -rf /home/jcros/data/wordpress/*
 stop:
-	docker compose -f srcs/docker-compose.yml stop $(c)
+	docker compose -f srcs/docker-compose.yml stop
 restart:
-	docker compose -f srcs/docker-compose.yml stop $(c)
-	docker compose -f srcs/docker-compose.yml up -d $(c)
+	docker compose -f srcs/docker-compose.yml stop
+	docker compose -f srcs/docker-compose.yml up -d
 logs:
-	docker compose -f srcs/docker-compose.yml logs --tail=100 -f $(c)
+	docker compose -f srcs/docker-compose.yml logs
 ps:
 	docker compose -f srcs/docker-compose.yml ps
 volume:
